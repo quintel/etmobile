@@ -23,7 +23,7 @@ class Input extends React.Component {
           {selectableLevels.map((text, index) => (
             <LevelButton
               key={index}
-              isActive={this.state.level === index}
+              active={this.state.level === index}
               onClick={() => this.handleLevelChange(index)}
             >
               {text}
