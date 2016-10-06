@@ -2,6 +2,7 @@ body {
   margin: 0;
   padding: 0;
   font-family: sans-serif;
+  line-height: 1.5;
 }
 
 .input-list .input {
@@ -9,10 +10,32 @@ body {
   padding: 2rem;
 }
 
+.input-list .input h2 {
+  margin-top: 0;
+}
+
+.input-list .input code {
+  color: #999;
+  float: right;
+}
+
 .input-list .input:nth-child(2n) {
   background: #ddd;
 }
 
-.input-list .description p:last-child {
-  margin-bottom: 0;
+.input-list .buttons button {
+  cursor: pointer;
+  padding: 0.5rem 1rem;
+}
+
+.input-list .buttons button + button {
+  margin-left: -1px;
+}
+
+.input-list .buttons button.active {
+  color: green;
+}
+
+.input-list .description {
+  color: #555;
 }

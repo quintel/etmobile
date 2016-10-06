@@ -1,11 +1,39 @@
 import React, { PropTypes } from 'react';
+import LevelButton from './LevelButton';
 
-const Input = props => (
-  <div className="input">
-    <strong>{ props.name }</strong>: <code>{props.code}</code>
-    <div className="description" dangerouslySetInnerHTML={props.description} />
-  </div>
-);
+const selectableLevels = ['Zero', 'Low', 'Medium', 'High'];
+
+class Input extends React.Component {
+  constructor() {
+    super();
+    this.state = { level: 1 };
+  }
+
+  handleLevelChange(level) {
+    this.setState({ level });
+  }
+
+  render() {
+    return (
+      <div className="input">
+        <code>{this.props.code}</code>
+        <h2 className="name">{this.props.name}</h2>
+        <div className="description" dangerouslySetInnerHTML={this.props.description} />
+        <div className="buttons">
+          {selectableLevels.map((text, index) => (
+            <LevelButton
+              key={index}
+              isActive={this.state.level === index}
+              onClick={() => this.handleLevelChange(index)}
+            >
+              {text}
+            </LevelButton>
+          ))}
+        </div>
+      </div>
+    );
+  }
+}
 
 Input.propTypes = {
   code: PropTypes.string.isRequired,
