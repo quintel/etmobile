@@ -3,8 +3,8 @@ import 'normalize.css';
 import React from 'react';
 import { render } from 'react-dom';
 
-import App from './App';
+import Root from './containers/Root';
 
 import './index.css';
 
-render(<App />, document.getElementById('root'));
+render(<Root />, document.getElementById('root'));
