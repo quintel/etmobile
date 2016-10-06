@@ -1,15 +1,21 @@
-import React from 'react';
-import inputs from '../data/inputs';
+import React, { PropTypes } from 'react';
+import Input from './Input';
 
-const InputList = () => (
-  <ul className="input-list">
-    {inputs.map(input => (
-      <li key={ input.code }>
-        <strong>{ input.name }</strong>: <code>{ input.code }</code>
-        <div dangerouslySetInnerHTML={ input.description } />
-      </li>
+const InputList = props => (
+  <div className="input-list">
+    {props.inputs.map(input => (
+      <Input
+        key={input.code}
+        code={input.code}
+        name={input.name}
+        description={input.description}
+      />
     ))}
-  </ul>
+  </div>
 );
+
+InputList.propTypes = {
+  inputs: PropTypes.arrayOf(PropTypes.shape(Input.propTypes)).isRequired
+};
 
 export default InputList;

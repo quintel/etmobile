@@ -3,3 +3,16 @@ body {
   padding: 0;
   font-family: sans-serif;
 }
+
+.input-list .input {
+  background: #eee;
+  padding: 2rem;
+}
+
+.input-list .input:nth-child(2n) {
+  background: #ddd;
+}
+
+.input-list .description p:last-child {
+  margin-bottom: 0;
+}
