@@ -1,0 +1,29 @@
+{
+  "ecmaFeatures": {
+    "jsx": true,
+    "modules": true
+  },
+  "env": {
+    "browser": true,
+    "node": true
+  },
+  "extends": "airbnb",
+  "parser": "babel-eslint",
+  "rules": {
+    "quotes": [2, "single"],
+    "strict": [2, "never"],
+    "comma-dangle": [2, "never"],
+    "import/no-extraneous-dependencies": ["error", { "devDependencies": ["**/*.test.js", "**/*.spec.js"] }],
+    "babel/generator-star-spacing": 1,
+    "react/jsx-filename-extension": 0,
+    "babel/new-cap": 1,
+    "babel/object-shorthand": 1,
+    "babel/arrow-parens": 0,
+    "babel/no-await-in-loop": 1,
+    "react/no-unused-prop-types": [2, { skipShapeProps: true }],
+  },
+  "plugins": [
+    "babel",
+    "react"
+  ]
+}
