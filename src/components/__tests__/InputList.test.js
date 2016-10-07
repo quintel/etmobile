@@ -15,8 +15,8 @@ it('renders an empty InputList', () => {
 
 it('renders an InputList with two inputs', () => {
   const inputs = [
-    { code: 'abcdef', name: 'Input 1', description: { __html: '' } },
-    { code: 'ghijkl', name: 'Input 2', description: { __html: '' } }
+    { code: 'abc', name: 'Input 1', description: { __html: '' }, levels: [] },
+    { code: 'def', name: 'Input 2', description: { __html: '' }, levels: [] }
   ];
 
   const wrapper = shallow(<InputList inputs={inputs} />);
@@ -25,9 +25,9 @@ it('renders an InputList with two inputs', () => {
   expect(wrapper.find('.input-list').length).toEqual(1);
   expect(inputEls.length).toEqual(2);
 
-  expect(inputEls.get(0).props.code).toEqual('abcdef');
+  expect(inputEls.get(0).props.code).toEqual('abc');
   expect(inputEls.get(0).props.name).toEqual('Input 1');
 
-  expect(inputEls.get(1).props.code).toEqual('ghijkl');
+  expect(inputEls.get(1).props.code).toEqual('def');
   expect(inputEls.get(1).props.name).toEqual('Input 2');
 });

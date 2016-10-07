@@ -8,6 +8,7 @@ const InputList = props => (
         key={input.code}
         code={input.code}
         name={input.name}
+        levels={input.levels}
         description={input.description}
       />
     ))}

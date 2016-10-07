@@ -6,12 +6,20 @@ import { shallow, mount } from 'enzyme';
 import Input from '../Input';
 import LevelButton from '../LevelButton';
 
+const levelsFixture = () => ([
+  { name: 'Zero' },
+  { name: 'Low', default: true },
+  { name: 'Medium' },
+  { name: 'High' }
+]);
+
 it('renders the name of the input', () => {
   const wrapper = shallow(
     <Input
       code="abcdef"
       name="My Input"
       description={{ __html: 'Hello there!' }}
+      levels={levelsFixture()}
     />
   );
 
@@ -24,6 +32,7 @@ it('renders the description', () => {
       code="abcdef"
       name="My Input"
       description={{ __html: 'Hello there' }}
+      levels={levelsFixture()}
     />
   );
 
@@ -36,6 +45,7 @@ it('renders four level buttons', () => {
       code="abcdef"
       name="My Input"
       description={{ __html: 'Hello there' }}
+      levels={levelsFixture()}
     />
   );
 
@@ -55,6 +65,7 @@ it('defaults the "Low" button to be active', () => {
       code="abcdef"
       name="My Input"
       description={{ __html: 'Hello there' }}
+      levels={levelsFixture()}
     />
   );
 

@@ -2,6 +2,12 @@ const inputs = [
   {
     code: 'number_of_energy_power_wind_turbine_offshore',
     name: 'Offshore wind turbines',
+    levels: [
+      { name: 'Zero', value: 0 },
+      { name: 'Low', value: 33, default: true },
+      { name: 'Medium', value: 66 },
+      { name: 'High', value: 100 }
+    ],
     description: {
       __html: `
         <p>
@@ -17,6 +23,12 @@ const inputs = [
   {
     code: 'number_of_energy_power_combined_cycle_network_gas',
     name: 'Gas-fired power plants',
+    levels: [
+      { name: 'Zero', value: 0 },
+      { name: 'Low', value: 33, default: true },
+      { name: 'Medium', value: 66 },
+      { name: 'High', value: 100 }
+    ],
     description: {
       __html: `
         <p>
@@ -33,6 +45,11 @@ const inputs = [
   {
     code: 'transport_car_using_electricity_share',
     name: 'Electric cars',
+    levels: [
+      { name: 'Low', value: 33, default: true },
+      { name: 'Medium', value: 66 },
+      { name: 'High', value: 100 }
+    ],
     description: {
       __html: `
         <p>

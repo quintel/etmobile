@@ -1,16 +1,22 @@
 import React, { PropTypes } from 'react';
 import LevelButton from './LevelButton';
 
-const selectableLevels = ['Zero', 'Low', 'Medium', 'High'];
-
 class Input extends React.Component {
   constructor() {
     super();
-    this.state = { level: 1 };
+    this.state = { level: undefined };
   }
 
   handleLevelChange(level) {
     this.setState({ level });
+  }
+
+  currentLevel() {
+    if (this.state.level !== undefined) {
+      return this.state.level;
+    }
+
+    return this.props.levels.findIndex(post => post.default) || 0;
   }
 
   render() {
@@ -20,13 +26,13 @@ class Input extends React.Component {
         <h2 className="name">{this.props.name}</h2>
         <div className="description" dangerouslySetInnerHTML={this.props.description} />
         <div className="buttons">
-          {selectableLevels.map((text, index) => (
+          {this.props.levels.map((level, index) => (
             <LevelButton
               key={index}
-              active={this.state.level === index}
+              active={this.currentLevel() === index}
               onClick={() => this.handleLevelChange(index)}
             >
-              {text}
+              {level.name}
             </LevelButton>
           ))}
         </div>
@@ -40,6 +46,9 @@ Input.propTypes = {
   description: PropTypes.shape({
     __html: PropTypes.string.isRequired
   }).isRequired,
+  levels: PropTypes.arrayOf(PropTypes.shape({
+    name: PropTypes.string.isRequired
+  })).isRequired,
   name: PropTypes.string.isRequired
 };
 
