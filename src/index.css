@@ -5,6 +5,11 @@ body {
   line-height: 1.5;
 }
 
+header {
+  background: #ccc;
+  padding: 0.5rem 2rem;
+}
+
 .input-list .input {
   background: #eee;
   padding: 2rem;

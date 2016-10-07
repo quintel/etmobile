@@ -18,7 +18,8 @@
     "eslint-plugin-react": "^6.3.0",
     "normalize.css": "^5.0.0",
     "react": "^15.3.2",
-    "react-dom": "^15.3.2"
+    "react-dom": "^15.3.2",
+    "react-headroom": "^2.1.2"
   },
   "scripts": {
     "start": "react-scripts start",
