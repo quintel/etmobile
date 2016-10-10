@@ -10,6 +10,10 @@ header {
   padding: 0.5rem 2rem;
 }
 
+#root {
+  padding-bottom: 3rem; /* spacing for the dashboard */
+}
+
 .input-list .input {
   background: #eee;
   padding: 2rem;
@@ -46,18 +50,22 @@ header {
 }
 
 .dashboard {
+  border-top: 1px solid white;
+  bottom: 0;
   display: flex;
+  line-height: 1;
+  position: fixed;
+  width: 100%;
 }
 
 .dashboard .dashboard-item {
   background: #ccc;
+  border-right: 1px solid white;
   flex: 1;
   text-align: center;
-  margin-top: 1px;
-  margin-right: 1px;
-  padding: 0.5rem 1rem;
+  padding: 1rem;
 }
 
 .dashboard .dashboard-item:last-child {
-  margin-right: 0;
+  border-right: none;
 }

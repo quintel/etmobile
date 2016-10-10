@@ -5,7 +5,6 @@ const Dashboard = () => (
     <div className="dashboard-item">A</div>
     <div className="dashboard-item">B</div>
     <div className="dashboard-item">C</div>
-    <div className="dashboard-item">D</div>
   </div>
 );
 
