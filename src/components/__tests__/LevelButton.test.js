@@ -7,7 +7,7 @@ import LevelButton from '../LevelButton';
 
 it('renders an active button', () => {
   const wrapper = shallow(
-    <LevelButton active onClick={() => {}}>
+    <LevelButton active onClick={() => {}} index={0}>
       My Button
     </LevelButton>
   );
@@ -19,7 +19,7 @@ it('renders an active button', () => {
 
 it('renders an inactive button', () => {
   const wrapper = shallow(
-    <LevelButton onClick={() => {}}>
+    <LevelButton onClick={() => {}} index={0}>
       My Button
     </LevelButton>
   );
@@ -33,7 +33,7 @@ it('binds the onClick listener', () => {
   const onClick = jest.fn();
 
   const wrapper = shallow(
-    <LevelButton onClick={onClick}>
+    <LevelButton onClick={onClick} index={0}>
       My Button
     </LevelButton>
   );

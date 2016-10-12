@@ -4,7 +4,9 @@ import LevelButton from './LevelButton';
 class Input extends React.Component {
   constructor() {
     super();
+
     this.state = { level: undefined };
+    this.handleLevelChange = this.handleLevelChange.bind(this);
   }
 
   handleLevelChange(level) {
@@ -34,8 +36,9 @@ class Input extends React.Component {
             <LevelButton
               key={index}
               active={this.currentLevel() === index}
-              onClick={() => this.handleLevelChange(index)}
+              onClick={this.handleLevelChange}
               disabled={this.props.isLoading}
+              index={index}
             >
               {level.name}
             </LevelButton>
