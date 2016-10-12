@@ -1,4 +1,5 @@
 <h1 align="center">ETMobile</h1>
+<p align="center">A simple mobile interface for the Energy Transition Model.</p>
 
 <p align="center">
   <a href="https://travis-ci.org/quintel/etmobile">
