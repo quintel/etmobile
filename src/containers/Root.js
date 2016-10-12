@@ -6,16 +6,22 @@ import Dashboard from '../components/Dashboard';
 
 import inputs from '../data/inputs';
 
-import { createScenario } from '../utils/api';
+import { createScenario, updateScenario } from '../utils/api';
 
 class Root extends React.Component {
   constructor() {
     super();
+
     this.state = { scenarioID: undefined };
+    this.handleUpdateInput = this.handleUpdateInput.bind(this);
   }
 
   componentDidMount() {
     createScenario().then(({ id }) => this.setState({ scenarioID: id }));
+  }
+
+  handleUpdateInput(inputCode, value) {
+    updateScenario(this.state.scenarioID, { [inputCode]: value });
   }
 
   render() {
@@ -24,7 +30,11 @@ class Root extends React.Component {
         <Headroom>
           <header>Energy Transition Model</header>
         </Headroom>
-        <InputList inputs={inputs} scenarioID={this.state.scenarioID} />
+        <InputList
+          onUpdateInput={this.handleUpdateInput}
+          inputs={inputs}
+          scenarioID={this.state.scenarioID}
+        />
         <Dashboard />
       </div>
     );

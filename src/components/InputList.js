@@ -11,6 +11,7 @@ const InputList = props => (
           name={input.name}
           levels={input.levels}
           description={input.description}
+          onUpdateInput={props.onUpdateInput}
           isLoading={props.scenarioID === undefined}
         />
       ))}
@@ -20,7 +21,8 @@ const InputList = props => (
 
 InputList.propTypes = {
   inputs: PropTypes.arrayOf(PropTypes.shape(Input.propTypes)).isRequired,
-  scenarioID: PropTypes.number
+  scenarioID: PropTypes.number,
+  onUpdateInput: PropTypes.func.isRequired
 };
 
 export default InputList;

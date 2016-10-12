@@ -7,10 +7,10 @@ import Input from '../Input';
 import LevelButton from '../LevelButton';
 
 const levelsFixture = () => ([
-  { name: 'Zero' },
-  { name: 'Low', default: true },
-  { name: 'Medium' },
-  { name: 'High' }
+  { name: 'Zero', value: 0 },
+  { name: 'Low', value: 2, default: true },
+  { name: 'Medium', value: 4 },
+  { name: 'High', value: 6 }
 ]);
 
 it('renders the name of the input', () => {
@@ -75,4 +75,40 @@ it('defaults the "Low" button to be active', () => {
   expect(buttons.get(1).props.active).toEqual(true);
   expect(buttons.get(2).props.active).toEqual(false);
   expect(buttons.get(3).props.active).toEqual(false);
+});
+
+it('calls onUpdateInput when a new level is selected', () => {
+  const onUpdateInput = jest.fn();
+
+  const wrapper = mount(
+    <Input
+      code="abcdef"
+      name="My Input"
+      description={{ __html: 'Hello there' }}
+      levels={levelsFixture()}
+      onUpdateInput={onUpdateInput}
+    />
+  );
+
+  wrapper.instance().handleLevelChange(3);
+
+  expect(onUpdateInput).toHaveBeenCalled();
+});
+
+it('calls onUpdateInput when the same level is selected', () => {
+  const onUpdateInput = jest.fn();
+
+  const wrapper = mount(
+    <Input
+      code="abcdef"
+      name="My Input"
+      description={{ __html: 'Hello there' }}
+      levels={levelsFixture()}
+      onUpdateInput={onUpdateInput}
+    />
+  );
+
+  wrapper.instance().handleLevelChange(1);
+
+  expect(onUpdateInput).not.toHaveBeenCalled();
 });

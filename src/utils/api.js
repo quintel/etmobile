@@ -62,3 +62,29 @@ export const fetchScenario = (id) => {
     method: 'PUT'
   }).then(checkStatus).then(parseJSON);
 };
+
+/**
+ * Updates an existing scenario on ETEngine.
+ *
+ * The promise will be rejected if the scenario does not exist, or the input
+ * values provided result in a server-side validation error.
+ *
+ * @param {number} id The scenario ID
+ * @param {object} userValues Input keys and values to be sent
+ *
+ * @return {Promise}
+ */
+export const updateScenario = (id, userValues = {}) => {
+  if (typeof id !== 'number') {
+    return Promise.reject(`Invalid scenario ID: ${id}`);
+  }
+
+  return fetch(`${endpoint}/api/v3/scenarios/${id}`, {
+    headers,
+    method: 'PUT',
+    body: JSON.stringify({
+      autobalance: true,
+      scenario: { user_values: userValues }
+    })
+  }).then(checkStatus).then(parseJSON);
+};

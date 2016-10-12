@@ -8,7 +8,12 @@ class Input extends React.Component {
   }
 
   handleLevelChange(level) {
-    this.setState({ level });
+    if (level !== this.currentLevel()) {
+      const { code, levels } = this.props;
+
+      this.setState({ level });
+      this.props.onUpdateInput(code, levels[level].value);
+    }
   }
 
   currentLevel() {
@@ -48,9 +53,11 @@ Input.propTypes = {
   }).isRequired,
   isLoading: PropTypes.bool,
   levels: PropTypes.arrayOf(PropTypes.shape({
-    name: PropTypes.string.isRequired
+    name: PropTypes.string.isRequired,
+    value: PropTypes.number.isRequired
   })).isRequired,
-  name: PropTypes.string.isRequired
+  name: PropTypes.string.isRequired,
+  onUpdateInput: PropTypes.func
 };
 
 export default Input;

@@ -7,7 +7,7 @@ import InputList from '../InputList';
 import Input from '../Input';
 
 it('renders an empty InputList', () => {
-  const wrapper = shallow(<InputList inputs={[]} />);
+  const wrapper = shallow(<InputList inputs={[]} onUpdateInput={() => {}} />);
 
   expect(wrapper.find('.input-list').length).toEqual(1);
   expect(wrapper.find(Input).length).toEqual(0);
@@ -19,7 +19,10 @@ it('renders an InputList with two inputs', () => {
     { code: 'def', name: 'Input 2', description: { __html: '' }, levels: [] }
   ];
 
-  const wrapper = shallow(<InputList inputs={inputs} />);
+  const wrapper = shallow(
+    <InputList inputs={inputs} onUpdateInput={() => {}} />
+  );
+
   const inputEls = wrapper.find(Input);
 
   expect(wrapper.find('.input-list').length).toEqual(1);
