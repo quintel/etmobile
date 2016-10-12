@@ -2,9 +2,9 @@
 <p align="center">A simple mobile interface for the Energy Transition Model.</p>
 
 <p align="center">
-  <a href="https://travis-ci.org/quintel/etmobile"><img alt="Master branch build status" src="https://img.shields.io/travis/quintel/etmobile.svg?maxAge=2592000" /></a>
+  <a href="https://travis-ci.org/quintel/etmobile"><img alt="Master branch build status" src="https://img.shields.io/travis/quintel/etmobile/master.svg" /></a>
 
-  <a href="https://codecov.io/gh/quintel/etmobile"><img alt="Code coverage status" src="https://img.shields.io/codecov/c/github/quintel/etmobile.svg?maxAge=2592000" /></a>
+  <a href="https://codecov.io/gh/quintel/etmobile"><img alt="Code coverage status" src="https://img.shields.io/codecov/c/github/quintel/etmobile/master.svg" /></a>
 </p>
 
 --
