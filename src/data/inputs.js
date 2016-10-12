@@ -4,9 +4,9 @@ const inputs = [
     name: 'Offshore wind turbines',
     levels: [
       { name: 'Zero', value: 0 },
-      { name: 'Low', value: 33, default: true },
-      { name: 'Medium', value: 66 },
-      { name: 'High', value: 100 }
+      { name: 'Low', value: 73.4, default: true },
+      { name: 'Medium', value: 500 },
+      { name: 'High', value: 1000 }
     ],
     description: {
       __html: `
@@ -25,9 +25,9 @@ const inputs = [
     name: 'Gas-fired power plants',
     levels: [
       { name: 'Zero', value: 0 },
-      { name: 'Low', value: 33, default: true },
-      { name: 'Medium', value: 66 },
-      { name: 'High', value: 100 }
+      { name: 'Low', value: 10, default: true },
+      { name: 'Medium', value: 20 },
+      { name: 'High', value: 30 }
     ],
     description: {
       __html: `
@@ -46,8 +46,8 @@ const inputs = [
     code: 'transport_car_using_electricity_share',
     name: 'Electric cars',
     levels: [
-      { name: 'Low', value: 33, default: true },
-      { name: 'Medium', value: 66 },
+      { name: 'Low', value: 14, default: true },
+      { name: 'Medium', value: 50 },
       { name: 'High', value: 100 }
     ],
     description: {
