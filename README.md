@@ -1,3 +1,13 @@
+<h1 align="center">ETMobile</h1>
+
+<p align="center">
+  <a href="https://travis-ci.org/quintel/etmobile">
+    <img alt="Master branch build status" src="https://travis-ci.org/quintel/etmobile.svg?style=flat-square&branch=master" />
+  </a>
+</p>
+
+--
+
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
 
 Below you will find some information on how to perform common tasks.  
