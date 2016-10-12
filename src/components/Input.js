@@ -30,6 +30,7 @@ class Input extends React.Component {
               key={index}
               active={this.currentLevel() === index}
               onClick={() => this.handleLevelChange(index)}
+              disabled={this.props.isLoading}
             >
               {level.name}
             </LevelButton>
@@ -45,6 +46,7 @@ Input.propTypes = {
   description: PropTypes.shape({
     __html: PropTypes.string.isRequired
   }).isRequired,
+  isLoading: PropTypes.bool,
   levels: PropTypes.arrayOf(PropTypes.shape({
     name: PropTypes.string.isRequired
   })).isRequired,

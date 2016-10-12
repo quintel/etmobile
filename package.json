@@ -4,6 +4,7 @@
   "private": true,
   "devDependencies": {
     "enzyme": "^2.4.1",
+    "fetch-mock": "^5.5.0",
     "react-addons-test-utils": "^15.3.2",
     "react-scripts": "0.6.1"
   },
@@ -19,7 +20,8 @@
     "normalize.css": "^5.0.0",
     "react": "^15.3.2",
     "react-dom": "^15.3.2",
-    "react-headroom": "^2.1.2"
+    "react-headroom": "^2.1.2",
+    "whatwg-fetch": "^1.0.0"
   },
   "scripts": {
     "start": "react-scripts start",
