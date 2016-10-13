@@ -153,6 +153,19 @@ describe('updateScenario', () => {
     )
   ));
 
+  it('simplifies returned gquery results', () => {
+    fetchMock.restore(); // remove successful mock
+
+    fetchMock.put('http://etengine.dev/api/v3/scenarios/1', {
+      scenario: {},
+      gqueries: { query_one: { present: 15, future: 25, unit: 'PJ' } }
+    });
+
+    return updateScenario(1).then(
+      data => expect(data.gqueries.query_one).toEqual(25),
+    );
+  });
+
   it('rejects the promise if the scenario does not exist', () => {
     fetchMock.restore(); // remove successful mock
 

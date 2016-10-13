@@ -27,6 +27,18 @@ const checkStatus = (response) => {
 const parseJSON = response => response.json();
 
 /**
+ * Reduces gquery results from ETEngine to a simple object containing keys and
+ * the future value of each query.
+ */
+const simplifyScenario = ({ gqueries, ...rest }) => {
+  const queryResults = Object.keys(gqueries).reduce((memo, key) => (
+    { ...memo, [key]: gqueries[key].future }
+  ), {});
+
+  return { ...rest, gqueries: queryResults };
+};
+
+/**
  * Creates a new scenario on ETEngine.
  * @return Promise
  */
@@ -74,7 +86,7 @@ export const fetchScenario = (id) => {
  *
  * @return {Promise}
  */
-export const updateScenario = (id, userValues = {}) => {
+export const updateScenario = (id, userValues = {}, queries = []) => {
   if (typeof id !== 'number') {
     return Promise.reject(`Invalid scenario ID: ${id}`);
   }
@@ -84,7 +96,8 @@ export const updateScenario = (id, userValues = {}) => {
     method: 'PUT',
     body: JSON.stringify({
       autobalance: true,
-      scenario: { user_values: userValues }
+      scenario: { user_values: userValues },
+      gqueries: queries
     })
-  }).then(checkStatus).then(parseJSON);
+  }).then(checkStatus).then(parseJSON).then(simplifyScenario);
 };
