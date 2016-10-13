@@ -11,7 +11,7 @@ header {
 }
 
 #root {
-  padding-bottom: 3rem; /* spacing for the dashboard */
+  padding-bottom: 4.5rem; /* spacing for the dashboard */
 }
 
 .input-list .input {
@@ -56,11 +56,18 @@ header {
 .dashboard .dashboard-item {
   background: #ccc;
   border-right: 1px solid white;
+  color: #555;
   flex: 1;
+  line-height: 1.3;
   text-align: center;
-  padding: 1rem;
+  padding: 1rem 0.5rem;
 }
 
 .dashboard .dashboard-item:last-child {
   border-right: none;
+}
+
+.dashboard .dashboard-item .value {
+  color: black;
+  display: block;
 }

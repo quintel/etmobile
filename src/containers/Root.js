@@ -3,25 +3,41 @@ import Headroom from 'react-headroom';
 
 import InputList from '../components/InputList';
 import Dashboard from '../components/Dashboard';
+
 import inputs from '../data/inputs';
+import dashboard from '../data/dashboard';
 
 class Root extends React.Component {
   constructor() {
     super();
 
-    this.state = { scenarioID: undefined };
+    this.state = { scenarioID: undefined, queryResults: {} };
     this.handleUpdateInput = this.handleUpdateInput.bind(this);
   }
 
   componentDidMount() {
-    this.props.api.createScenario()
-      .then(({ id }) => this.setState({ scenarioID: id }));
+    this.props.api.createScenario().then(({ id }) => (
+      // ETEngine API does not support fetching queries when creating a request
+      // (yet), so we must make a second one.
+      this.fetchQueries(id)
+    ));
+  }
+
+  fetchQueries(scenarioID, inputKeys = {}) {
+    return this.props.api.updateScenario(
+      scenarioID,
+      inputKeys,
+      dashboard.map(item => item.query)
+    ).then((data) => {
+      this.setState({
+        scenarioID: data.scenario.id,
+        queryResults: data.gqueries
+      });
+    });
   }
 
   handleUpdateInput(inputCode, value) {
-    this.props.api.updateScenario(
-      this.state.scenarioID, { [inputCode]: value }
-    );
+    return this.fetchQueries(this.state.scenarioID, { [inputCode]: value });
   }
 
   render() {
@@ -35,7 +51,7 @@ class Root extends React.Component {
           inputs={inputs}
           scenarioID={this.state.scenarioID}
         />
-        <Dashboard />
+        <Dashboard items={dashboard} results={this.state.queryResults} />
       </div>
     );
   }
