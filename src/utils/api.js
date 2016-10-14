@@ -53,7 +53,10 @@ export const createScenario = () => (
         source: 'ETMobile'
       }
     })
-  }).then(checkStatus).then(parseJSON)
+  }).then(checkStatus).then(parseJSON).then(data => (
+    // Normalize the response to be like updateScenario.
+    { scenario: data, gqueries: {} }
+  ))
 );
 
 /**

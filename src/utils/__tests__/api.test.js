@@ -36,11 +36,15 @@ describe('createScenario', () => {
     })
   ));
 
-  it('provides the response body as a JS object', () => (
-    createScenario().then((data) => {
-      expect(data.id).toEqual(1);
-      expect(data.end_year).toEqual(2050);
+  it('provides the scenario data', () => (
+    createScenario().then(({ scenario }) => {
+      expect(scenario.id).toEqual(1);
+      expect(scenario.end_year).toEqual(2050);
     })
+  ));
+
+  it('provides no gquery results', () => (
+    createScenario().then(data => expect(data.gqueries).toEqual({}))
   ));
 });
 

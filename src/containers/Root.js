@@ -16,7 +16,7 @@ class Root extends React.Component {
   }
 
   componentDidMount() {
-    this.props.api.createScenario().then(({ id }) => (
+    this.props.api.createScenario().then(({ scenario: { id } }) => (
       // ETEngine API does not support fetching queries when creating a request
       // (yet), so we must make a second one.
       this.fetchQueries(id)

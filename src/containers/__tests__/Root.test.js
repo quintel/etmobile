@@ -1,4 +1,4 @@
-/* global it expect jest */
+/* global it expect jest jasmine spyOn */
 
 import React from 'react';
 import { shallow, mount } from 'enzyme';
@@ -21,17 +21,23 @@ it('renders an input list', () => {
 it('creates a new scenario when mounted', () => {
   const api = stubAPI();
 
-  const cPromise = new Promise(r => r({ id: 1 }));
+  const cPromise = new Promise(r => r({ scenario: { id: 1 }, gqueries: {} }));
   const uPromise = new Promise(r => r({ scenario: { id: 1 }, gqueries: {} }));
 
   api.createScenario = jest.fn().mockReturnValue(cPromise);
-  api.updateScenario = jest.fn().mockReturnValue(uPromise);
+  spyOn(api, 'updateScenario').and.callFake(() => (uPromise));
 
   const wrapper = mount(<Root api={api} />);
 
   return Promise.all([cPromise, uPromise]).then(() => {
     expect(api.createScenario).toHaveBeenCalled();
-    expect(api.updateScenario).toHaveBeenCalled();
+
+    expect(api.updateScenario).toHaveBeenCalledWith(
+      1,
+      {} /* inputs */,
+      jasmine.any(Array) /* queries */
+    );
+
     expect(wrapper.state('scenarioID')).toEqual(1);
   });
 });
