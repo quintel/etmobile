@@ -45,8 +45,15 @@ it('creates a new scenario when mounted', () => {
 it('sends updated inputs to the API', () => {
   const api = stubAPI();
   const wrapper = shallow(<Root api={api} />);
+  wrapper.setState({ scenarioID: 82 });
+
+  spyOn(api, 'updateScenario').and.callThrough();
 
   return wrapper.instance().handleUpdateInput('abc', 10)
-    .then(() => expect(api.updateScenario).toHaveBeenCalled())
+    .then(() => expect(api.updateScenario).toHaveBeenCalledWith(
+      82,
+      { abc: 10 } /* inputs */,
+      jasmine.any(Array) /* queries */
+    ))
     .catch(err => expect(err).toEqual(false));
 });
