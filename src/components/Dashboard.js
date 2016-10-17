@@ -12,7 +12,7 @@ const Dashboard = props => (
   <div className="dashboard">
     {props.items.map(item => (
       <div className="dashboard-item" key={item.query}>
-        {item.title}{' '}
+        {item.title}
         <span className="value">{formatValue(item, props.results)}</span>
       </div>
     ))}
