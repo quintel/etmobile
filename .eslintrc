@@ -1,32 +1,41 @@
 {
-  "ecmaFeatures": {
-    "jsx": true,
-    "modules": true
+  'ecmaFeatures': {
+    'jsx': true,
+    'modules': true
   },
-  "env": {
-    "browser": true,
-    "node": true
+  'env': {
+    'browser': true,
+    'node': true
   },
-  "extends": "airbnb",
-  "parser": "babel-eslint",
-  "rules": {
-    "quotes": [2, "single"],
-    "quote-props": [2, "consistent-as-needed"],
-    "strict": [2, "never"],
-    "comma-dangle": [2, "never"],
-    "max-len": [2, 80],
-    "no-prototype-builtins": 0,
-    "import/no-extraneous-dependencies": ["error", { "devDependencies": ["**/*.test.js", "**/*.spec.js"] }],
-    "babel/generator-star-spacing": 1,
-    "react/jsx-filename-extension": 0,
-    "babel/new-cap": 1,
-    "babel/object-shorthand": 1,
-    "babel/arrow-parens": 0,
-    "babel/no-await-in-loop": 1,
-    "react/no-unused-prop-types": [2, { skipShapeProps: true }],
+  'extends': 'airbnb',
+  'parser': 'babel-eslint',
+  'rules': {
+    'babel/arrow-parens': 'off',
+    'babel/generator-star-spacing': 'warn',
+    'babel/no-await-in-loop': 'warn',
+    'babel/object-shorthand': 'warn',
+    'comma-dangle': ['error', 'never'],
+    'import/no-extraneous-dependencies': ['error', {
+      devDependencies: ["**/*.test.js", "**/*.spec.js"]
+    }],
+    'max-len': ['error', {
+      code: 80,
+      tabWidth: 2,
+      ignoreUrls: true,
+      ignoreComments: false,
+      ignoreStrings: true,
+      ignoreTemplateLiterals: true,
+      ignoreTrailingComments: true
+    }],
+    'no-prototype-builtins': 'off',
+    'quote-props': ['error', 'consistent-as-needed'],
+    'quotes': ['error', 'single'],
+    'react/jsx-filename-extension': 'off',
+    'react/no-unused-prop-types': ['error', { skipShapeProps: true }],
+    'strict': ['error', 'never']
   },
-  "plugins": [
-    "babel",
-    "react"
+  'plugins': [
+    'babel',
+    'react'
   ]
 }
