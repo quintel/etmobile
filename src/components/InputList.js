@@ -12,7 +12,7 @@ const InputList = props => (
           levels={input.levels}
           description={input.description}
           onUpdateInput={props.onUpdateInput}
-          isLoading={props.scenarioID === undefined}
+          isLoading={props.isLoading}
         />
       ))}
     </div>
@@ -21,7 +21,7 @@ const InputList = props => (
 
 InputList.propTypes = {
   inputs: PropTypes.arrayOf(PropTypes.shape(Input.propTypes)).isRequired,
-  scenarioID: PropTypes.number,
+  isLoading: PropTypes.bool,
   onUpdateInput: PropTypes.func.isRequired
 };
 

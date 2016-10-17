@@ -49,7 +49,7 @@ class Root extends React.Component {
         <InputList
           onUpdateInput={this.handleUpdateInput}
           inputs={inputs}
-          scenarioID={this.state.scenarioID}
+          isLoading={this.state.scenarioID === undefined}
         />
         <Dashboard items={dashboard} results={this.state.queryResults} />
       </div>
