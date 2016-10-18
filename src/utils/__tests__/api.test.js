@@ -10,13 +10,15 @@ import {
   requests
 } from '../api';
 
+const endpoint = 'https://beta-engine.energytransitionmodel.com'
+
 const defaultScenario = {
   id: 1,
   title: 'API',
   area_code: 'nl',
   start_year: 2013,
   end_year: 2050,
-  url: 'http://etengine.dev/api/v3/scenarios/1',
+  url: `${endpoint}/api/v3/scenarios/1`,
   scaling: null,
   source: 'ETMobile',
   created_at: '2016-10-12T12:00:00.000+00:00'
@@ -26,14 +28,14 @@ afterEach(fetchMock.restore);
 
 describe('createScenario', () => {
   beforeEach(() => {
-    fetchMock.post('http://etengine.dev/api/v3/scenarios', defaultScenario);
+    fetchMock.post(`${endpoint}/api/v3/scenarios`, defaultScenario);
   });
 
   it('sends a request to create a scenario', () => (
     createScenario().then(() => {
       const [url, req] = fetchMock.lastCall();
 
-      expect(url).toEqual('http://etengine.dev/api/v3/scenarios');
+      expect(url).toEqual(`${endpoint}/api/v3/scenarios`);
       expect(req.method).toEqual('POST');
     })
   ));
@@ -62,7 +64,7 @@ describe('createScenario', () => {
 
 describe('fetchScenario', () => {
   beforeEach(() => {
-    fetchMock.put('http://etengine.dev/api/v3/scenarios/1', {
+    fetchMock.put(`${endpoint}/api/v3/scenarios/1`, {
       scenario: defaultScenario,
       gqueries: {}
     });
@@ -72,7 +74,7 @@ describe('fetchScenario', () => {
     fetchScenario(1).then(() => {
       const [url, req] = fetchMock.lastCall();
 
-      expect(url).toEqual('http://etengine.dev/api/v3/scenarios/1');
+      expect(url).toEqual(`${endpoint}/api/v3/scenarios/1`);
       expect(req.method).toEqual('PUT');
     })
   ));
@@ -95,7 +97,7 @@ describe('fetchScenario', () => {
   it('rejects the promise if the scenario does not exist', () => {
     fetchMock.restore(); // remove successful mock
 
-    fetchMock.put('http://etengine.dev/api/v3/scenarios/1', {
+    fetchMock.put(`${endpoint}/api/v3/scenarios/1`, {
       status: 404,
       body: { errors: ['Scenario not found'] }
     });
@@ -109,7 +111,7 @@ describe('fetchScenario', () => {
 
 describe('updateScenario', () => {
   beforeEach(() => {
-    fetchMock.put('http://etengine.dev/api/v3/scenarios/1', {
+    fetchMock.put(`${endpoint}/api/v3/scenarios/1`, {
       scenario: defaultScenario,
       gqueries: {}
     });
@@ -119,7 +121,7 @@ describe('updateScenario', () => {
     updateScenario(1, {}).then(() => {
       const [url, req] = fetchMock.lastCall();
 
-      expect(url).toEqual('http://etengine.dev/api/v3/scenarios/1');
+      expect(url).toEqual(`${endpoint}/api/v3/scenarios/1`);
       expect(req.method).toEqual('PUT');
     })
   ));
@@ -152,7 +154,7 @@ describe('updateScenario', () => {
   it('simplifies returned gquery results', () => {
     fetchMock.restore(); // remove successful mock
 
-    fetchMock.put('http://etengine.dev/api/v3/scenarios/1', {
+    fetchMock.put(`${endpoint}/api/v3/scenarios/1`, {
       scenario: {},
       gqueries: { query_one: { present: 15, future: 25, unit: 'PJ' } }
     });
@@ -165,7 +167,7 @@ describe('updateScenario', () => {
   it('rejects the promise if the scenario does not exist', () => {
     fetchMock.restore(); // remove successful mock
 
-    fetchMock.put('http://etengine.dev/api/v3/scenarios/1', {
+    fetchMock.put(`${endpoint}/api/v3/scenarios/1`, {
       status: 404,
       body: { errors: ['Scenario not found'] }
     });
@@ -179,7 +181,7 @@ describe('updateScenario', () => {
   it('rejects the promise if the inputs are invalid', () => {
     fetchMock.restore(); // remove successful mock
 
-    fetchMock.put('http://etengine.dev/api/v3/scenarios/1', {
+    fetchMock.put(`${endpoint}/api/v3/scenarios/1`, {
       status: 422,
       body: { errors: ['Input input_one cannot be greater than 1.5'] }
     });
@@ -193,7 +195,7 @@ describe('updateScenario', () => {
 
 describe('updateScenarioQueued', () => {
   it('sends a request to update a scenario', () => {
-    fetchMock.putOnce('http://etengine.dev/api/v3/scenarios/1', {
+    fetchMock.putOnce(`${endpoint}/api/v3/scenarios/1`, {
       scenario: defaultScenario,
       gqueries: {}
     });
@@ -201,7 +203,7 @@ describe('updateScenarioQueued', () => {
     return updateScenarioQueued(1, {}).then(() => {
       const [url, req] = fetchMock.lastCall();
 
-      expect(url).toEqual('http://etengine.dev/api/v3/scenarios/1');
+      expect(url).toEqual(`${endpoint}/api/v3/scenarios/1`);
       expect(req.method).toEqual('PUT');
     });
   });
@@ -213,7 +215,7 @@ describe('updateScenarioQueued', () => {
       resolveFirst = resolve;
     });
 
-    fetchMock.putOnce('http://etengine.dev/api/v3/scenarios/1', {
+    fetchMock.putOnce(`${endpoint}/api/v3/scenarios/1`, {
       scenario: defaultScenario,
       gqueries: { a: { future: 1 }, b: { future: 2 } }
     });
@@ -241,7 +243,7 @@ describe('updateScenarioQueued', () => {
       resolveFirst = resolve;
     });
 
-    fetchMock.putOnce('http://etengine.dev/api/v3/scenarios/1', {
+    fetchMock.putOnce(`${endpoint}/api/v3/scenarios/1`, {
       status: 422,
       body: { errors: ['Input input_one cannot be greater than 1.5'] }
     });
