@@ -28,8 +28,19 @@ header {
 }
 
 .input-list .buttons button {
+  background: white;
+  border: 1px solid #ccc;
   cursor: pointer;
   padding: 0.5rem 1rem;
+  position: relative;
+}
+
+.input-list .buttons button:active,
+.input-list .buttons button:focus {
+  border-color: #86bc9d;
+  box-shadow: 0 0 3px 1px mediumseagreen;
+  outline: none;
+  z-index: 3;
 }
 
 .input-list .buttons button + button {
@@ -37,7 +48,9 @@ header {
 }
 
 .input-list .buttons button.active {
-  color: green;
+  border-color: #86bc9d;
+  color: seagreen;
+  z-index: 2;
 }
 
 .input-list .description {
