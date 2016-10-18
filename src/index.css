@@ -5,9 +5,14 @@ body {
   line-height: 1.5;
 }
 
+.headroom {
+  z-index: 3 !important;
+}
+
 header {
   background: #ccc;
   padding: 0.5rem 2rem;
+  z-index: 3;
 }
 
 #root {
@@ -64,6 +69,7 @@ header {
   line-height: 1;
   position: fixed;
   width: 100%;
+  z-index: 3;
 }
 
 .dashboard .dashboard-item {
