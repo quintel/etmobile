@@ -4,8 +4,15 @@ import React from 'react';
 import { render } from 'react-dom';
 
 import Root from './containers/Root';
-import * as api from './utils/api';
+
+import {
+  createScenario,
+  updateScenarioQueued as updateScenario
+} from './utils/api';
 
 import './index.css';
 
-render(<Root api={api} />, document.getElementById('root'));
+render(
+  <Root api={{ createScenario, updateScenario }} />,
+  document.getElementById('root')
+);

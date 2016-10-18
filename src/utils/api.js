@@ -86,6 +86,7 @@ export const fetchScenario = (id) => {
  *
  * @param {number} id The scenario ID
  * @param {object} userValues Input keys and values to be sent
+ * @param {array} queries Queries results to be requested.
  *
  * @return {Promise}
  */
@@ -103,4 +104,73 @@ export const updateScenario = (id, userValues = {}, queries = []) => {
       gqueries: queries
     })
   }).then(checkStatus).then(parseJSON).then(simplifyScenario);
+};
+
+/**
+ * Internal: Tracks inputs and queries which should be sent to ETEngine in the
+ * next request.
+ */
+class PendingRequest {
+  constructor() {
+    this.inputs = {};
+    this.queries = new Set();
+
+    this.promise = new Promise((resolve, reject) => {
+      this.resolve = resolve;
+      this.reject = reject;
+    });
+  }
+
+  merge(inputs, queries) {
+    this.inputs = { ...this.inputs, ...inputs };
+    for (const query of queries) { this.queries.add(query); }
+  }
+}
+
+/**
+ * Contains the current and next (pending) request. Exported for tests.
+ */
+export const requests = { current: null, next: null };
+
+/**
+ * Updates an existing scenario on ETEngine.
+ *
+ * Semantically identical to updateScenario, updateScenarioQueued will wait to
+ * send new input values to ETEngine if there is already a request pending.
+ * Multiple calls to updateScenarioQueued will merge all requests into one.
+ *
+ * @param {number} id The scenario ID
+ * @param {object} userValues Input keys and values to be sent
+ * @param {array} queries Queries results to be requested.
+ *
+ * @return {Promise}
+ */
+export const updateScenarioQueued = (id, userValues = {}, queries = []) => {
+  if (!requests.current) {
+    // If no request is pending, send the values immediately.
+    requests.current = updateScenario(id, userValues, queries).then((data) => {
+      requests.current = null;
+      return data;
+    });
+
+    return requests.current;
+  }
+
+  requests.next = requests.next || new PendingRequest();
+  requests.next.merge(userValues, queries);
+
+  requests.current.then((data) => {
+    if (requests.next) {
+      // Send the next request.
+      requests.current = updateScenario(
+        id, requests.next.inputs, Array.from(requests.next.queries)
+      ).then(requests.next.resolve, requests.next.reject);
+
+      requests.next = null;
+    }
+
+    return data;
+  });
+
+  return requests.next.promise;
 };
