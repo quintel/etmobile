@@ -26,9 +26,22 @@ class Input extends React.Component {
     return this.props.levels.findIndex(post => post.default) || 0;
   }
 
+  backgroundImage() {
+    if (this.props.image) {
+      return `url(${
+        require(`../images/inputs/${this.props.image}`) // eslint-disable-line
+      })`;
+    }
+
+    return null;
+  }
+
   render() {
     return (
-      <div className={`input ${this.props.code}`}>
+      <div
+        className={`input ${this.props.code}`}
+        style={{ backgroundImage: this.backgroundImage() }}
+      >
         <h2 className="name">{this.props.name}</h2>
         <div className="description" dangerouslySetInnerHTML={this.props.description} />
         <div className="buttons">
@@ -54,6 +67,7 @@ Input.propTypes = {
   description: PropTypes.shape({
     __html: PropTypes.string.isRequired
   }).isRequired,
+  image: PropTypes.string,
   isLoading: PropTypes.bool,
   levels: PropTypes.arrayOf(PropTypes.shape({
     name: PropTypes.string.isRequired,

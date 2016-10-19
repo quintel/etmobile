@@ -10,6 +10,7 @@ const InputList = props => (
           code={input.code}
           name={input.name}
           levels={input.levels}
+          image={input.image}
           description={input.description}
           onUpdateInput={props.onUpdateInput}
           isLoading={props.isLoading}

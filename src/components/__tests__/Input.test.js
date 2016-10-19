@@ -112,3 +112,35 @@ it('calls onUpdateInput when the same level is selected', () => {
 
   expect(onUpdateInput).not.toHaveBeenCalled();
 });
+
+it('includes a background image when an image is specified', () => {
+  const wrapper = shallow(
+    <Input
+      code="abcdef"
+      name="My Input"
+      image="electric_cars.png"
+      description={{ __html: 'Hello there' }}
+      levels={levelsFixture()}
+    />
+  );
+
+  const styleAttrs = wrapper.closest('.input').prop('style');
+
+  expect(Object.keys(styleAttrs).includes('backgroundImage')).toEqual(true);
+  expect(styleAttrs.backgroundImage.includes('url(')).toEqual(true);
+});
+
+it('has no background image when no image is specified', () => {
+  const wrapper = shallow(
+    <Input
+      code="abcdef"
+      name="My Input"
+      description={{ __html: 'Hello there' }}
+      levels={levelsFixture()}
+    />
+  );
+
+  const styleAttrs = wrapper.closest('.input').prop('style');
+
+  expect(styleAttrs.backgroundImage).toEqual(null);
+});
