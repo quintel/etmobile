@@ -10,7 +10,7 @@ import {
   requests
 } from '../api';
 
-const endpoint = 'https://beta-engine.energytransitionmodel.com'
+const endpoint = process.env.REACT_APP_ETENGINE_URL;
 
 const defaultScenario = {
   id: 1,

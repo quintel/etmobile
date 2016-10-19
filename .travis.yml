@@ -5,6 +5,8 @@ node_js:
 cache:
   directories:
   - node_modules
+env:
+  - REACT_APP_ETENGINE_URL=https://engine.test
 script:
   - npm run coverage
 after_success:
