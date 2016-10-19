@@ -49,7 +49,7 @@ it('sends updated inputs to the API', () => {
 
   spyOn(api, 'updateScenario').and.callThrough();
 
-  return wrapper.instance().handleUpdateInput('abc', 10)
+  return wrapper.instance().handleUpdateInput({ abc: 10 })
     .then(() => expect(api.updateScenario).toHaveBeenCalledWith(
       82,
       { abc: 10 } /* inputs */,

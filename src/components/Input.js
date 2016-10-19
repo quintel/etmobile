@@ -14,7 +14,7 @@ class Input extends React.Component {
       const { code, levels } = this.props;
 
       this.setState({ level });
-      this.props.onUpdateInput(code, levels[level].value);
+      this.props.onUpdateInput({ [code]: levels[level].value });
     }
   }
 

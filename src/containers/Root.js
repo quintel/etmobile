@@ -36,8 +36,8 @@ class Root extends React.Component {
     });
   }
 
-  handleUpdateInput(inputCode, value) {
-    return this.fetchQueries(this.state.scenarioID, { [inputCode]: value });
+  handleUpdateInput(inputValues) {
+    return this.fetchQueries(this.state.scenarioID, inputValues);
   }
 
   render() {
