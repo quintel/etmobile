@@ -4,7 +4,7 @@ import React from 'react';
 import { shallow, mount } from 'enzyme';
 
 import Input from '../Input';
-import LevelButton from '../LevelButton';
+import ChoiceButton from '../ChoiceButton';
 
 const levelsFixture = () => ([
   { name: 'Zero', value: 0 },
@@ -49,7 +49,7 @@ it('renders four level buttons', () => {
     />
   );
 
-  const buttons = wrapper.find(LevelButton);
+  const buttons = wrapper.find(ChoiceButton);
 
   expect(buttons.length).toEqual(4);
 
@@ -69,7 +69,7 @@ it('defaults the "Low" button to be active', () => {
     />
   );
 
-  const buttons = wrapper.find(LevelButton);
+  const buttons = wrapper.find(ChoiceButton);
 
   expect(buttons.get(0).props.active).toEqual(false);
   expect(buttons.get(1).props.active).toEqual(true);

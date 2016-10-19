@@ -3,13 +3,13 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 
-import LevelButton from '../LevelButton';
+import ChoiceButton from '../ChoiceButton';
 
 it('renders an active button', () => {
   const wrapper = shallow(
-    <LevelButton active onClick={() => {}} index={0}>
+    <ChoiceButton active onClick={() => {}} index={0}>
       My Button
-    </LevelButton>
+    </ChoiceButton>
   );
 
   expect(wrapper.text()).toEqual('My Button');
@@ -19,9 +19,9 @@ it('renders an active button', () => {
 
 it('renders an inactive button', () => {
   const wrapper = shallow(
-    <LevelButton onClick={() => {}} index={0}>
+    <ChoiceButton onClick={() => {}} index={0}>
       My Button
-    </LevelButton>
+    </ChoiceButton>
   );
 
   expect(wrapper.text()).toEqual('My Button');
@@ -33,9 +33,9 @@ it('binds the onClick listener', () => {
   const onClick = jest.fn();
 
   const wrapper = shallow(
-    <LevelButton onClick={onClick} index={0}>
+    <ChoiceButton onClick={onClick} index={0}>
       My Button
-    </LevelButton>
+    </ChoiceButton>
   );
 
   wrapper.simulate('click');

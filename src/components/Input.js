@@ -1,5 +1,5 @@
 import React, { PropTypes } from 'react';
-import LevelButton from './LevelButton';
+import ChoiceButton from './ChoiceButton';
 
 class Input extends React.Component {
   constructor() {
@@ -46,7 +46,7 @@ class Input extends React.Component {
         <div className="description" dangerouslySetInnerHTML={this.props.description} />
         <div className="buttons">
           {this.props.levels.map((level, index) => (
-            <LevelButton
+            <ChoiceButton
               key={index}
               active={this.currentLevel() === index}
               onClick={this.handleLevelChange}
@@ -54,7 +54,7 @@ class Input extends React.Component {
               index={index}
             >
               {level.name}
-            </LevelButton>
+            </ChoiceButton>
           ))}
         </div>
       </div>

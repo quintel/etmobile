@@ -1,6 +1,6 @@
 import React, { PropTypes } from 'react';
 
-class LevelButton extends React.Component {
+class ChoiceButton extends React.Component {
   constructor() {
     super();
     this.handleClick = this.handleClick.bind(this);
@@ -23,7 +23,7 @@ class LevelButton extends React.Component {
   }
 }
 
-LevelButton.propTypes = {
+ChoiceButton.propTypes = {
   active: PropTypes.bool,
   disabled: PropTypes.bool,
   children: PropTypes.node.isRequired,
@@ -31,9 +31,9 @@ LevelButton.propTypes = {
   onClick: PropTypes.func.isRequired
 };
 
-LevelButton.defaultProps = {
+ChoiceButton.defaultProps = {
   active: false,
   disabled: false
 };
 
-export default LevelButton;
+export default ChoiceButton;
