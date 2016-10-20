@@ -5,25 +5,30 @@ class Input extends React.Component {
   constructor() {
     super();
 
-    this.state = { level: undefined };
-    this.handleLevelChange = this.handleLevelChange.bind(this);
+    this.state = { choice: null };
+    this.handleChoiceChange = this.handleChoiceChange.bind(this);
   }
 
-  handleLevelChange(level) {
-    if (level !== this.currentLevel()) {
-      const { code, levels } = this.props;
+  handleChoiceChange(choiceIndex) {
+    if (choiceIndex !== this.currentChoice()) {
+      const choice = this.props.choices[choiceIndex];
 
-      this.setState({ level });
-      this.props.onUpdateInput({ [code]: levels[level].value });
+      const inputValues = this.props.inputs.reduce((memo, input, index) => (
+        { ...memo, [input]: choice.values[index] }
+      ), {});
+
+      this.setState({ choice: choiceIndex });
+
+      this.props.onUpdateInput(inputValues);
     }
   }
 
-  currentLevel() {
-    if (this.state.level !== undefined) {
-      return this.state.level;
+  currentChoice() {
+    if (this.state.choice !== null) {
+      return this.state.choice;
     }
 
-    return this.props.levels.findIndex(post => post.default) || 0;
+    return this.props.choices.findIndex(choice => choice.default);
   }
 
   backgroundImage() {
@@ -45,15 +50,15 @@ class Input extends React.Component {
         <h2 className="name">{this.props.name}</h2>
         <div className="description" dangerouslySetInnerHTML={this.props.description} />
         <div className="buttons">
-          {this.props.levels.map((level, index) => (
+          {this.props.choices.map((choice, index) => (
             <ChoiceButton
               key={index}
-              active={this.currentLevel() === index}
-              onClick={this.handleLevelChange}
+              active={this.currentChoice() === index}
+              onClick={this.handleChoiceChange}
               disabled={this.props.isLoading}
               index={index}
             >
-              {level.name}
+              {choice.name}
             </ChoiceButton>
           ))}
         </div>
@@ -63,16 +68,17 @@ class Input extends React.Component {
 }
 
 Input.propTypes = {
+  choices: PropTypes.arrayOf(PropTypes.shape({
+    name: PropTypes.string.isRequired,
+    values: PropTypes.arrayOf(PropTypes.number).isRequired
+  })).isRequired,
   code: PropTypes.string.isRequired,
   description: PropTypes.shape({
     __html: PropTypes.string.isRequired
   }).isRequired,
   image: PropTypes.string,
+  inputs: PropTypes.arrayOf(PropTypes.string).isRequired,
   isLoading: PropTypes.bool,
-  levels: PropTypes.arrayOf(PropTypes.shape({
-    name: PropTypes.string.isRequired,
-    value: PropTypes.number.isRequired
-  })).isRequired,
   name: PropTypes.string.isRequired,
   onUpdateInput: PropTypes.func
 };

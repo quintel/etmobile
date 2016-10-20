@@ -6,12 +6,15 @@ import { shallow, mount } from 'enzyme';
 import Input from '../Input';
 import ChoiceButton from '../ChoiceButton';
 
-const levelsFixture = () => ([
-  { name: 'Zero', value: 0 },
-  { name: 'Low', value: 2, default: true },
-  { name: 'Medium', value: 4 },
-  { name: 'High', value: 6 }
-]);
+const choicesFixture = () => ({
+  inputs: ['abcdef'],
+  choices: [
+    { name: 'Zero', values: [0] },
+    { name: 'Low', values: [2], default: true },
+    { name: 'Medium', values: [4] },
+    { name: 'High', values: [6] }
+  ]
+});
 
 it('renders the name of the input', () => {
   const wrapper = shallow(
@@ -19,7 +22,7 @@ it('renders the name of the input', () => {
       code="abcdef"
       name="My Input"
       description={{ __html: 'Hello there!' }}
-      levels={levelsFixture()}
+      {...choicesFixture()}
     />
   );
 
@@ -32,7 +35,7 @@ it('renders the description', () => {
       code="abcdef"
       name="My Input"
       description={{ __html: 'Hello there' }}
-      levels={levelsFixture()}
+      {...choicesFixture()}
     />
   );
 
@@ -45,7 +48,7 @@ it('renders four level buttons', () => {
       code="abcdef"
       name="My Input"
       description={{ __html: 'Hello there' }}
-      levels={levelsFixture()}
+      {...choicesFixture()}
     />
   );
 
@@ -65,7 +68,7 @@ it('defaults the "Low" button to be active', () => {
       code="abcdef"
       name="My Input"
       description={{ __html: 'Hello there' }}
-      levels={levelsFixture()}
+      {...choicesFixture()}
     />
   );
 
@@ -85,12 +88,12 @@ it('calls onUpdateInput when a new level is selected', () => {
       code="abcdef"
       name="My Input"
       description={{ __html: 'Hello there' }}
-      levels={levelsFixture()}
       onUpdateInput={onUpdateInput}
+      {...choicesFixture()}
     />
   );
 
-  wrapper.instance().handleLevelChange(3);
+  wrapper.instance().handleChoiceChange(3);
 
   expect(onUpdateInput).toHaveBeenCalled();
 });
@@ -103,12 +106,12 @@ it('calls onUpdateInput when the same level is selected', () => {
       code="abcdef"
       name="My Input"
       description={{ __html: 'Hello there' }}
-      levels={levelsFixture()}
       onUpdateInput={onUpdateInput}
+      {...choicesFixture()}
     />
   );
 
-  wrapper.instance().handleLevelChange(1);
+  wrapper.instance().handleChoiceChange(1);
 
   expect(onUpdateInput).not.toHaveBeenCalled();
 });
@@ -120,7 +123,7 @@ it('includes a background image when an image is specified', () => {
       name="My Input"
       image="electric_cars.png"
       description={{ __html: 'Hello there' }}
-      levels={levelsFixture()}
+      {...choicesFixture()}
     />
   );
 
@@ -136,7 +139,7 @@ it('has no background image when no image is specified', () => {
       code="abcdef"
       name="My Input"
       description={{ __html: 'Hello there' }}
-      levels={levelsFixture()}
+      {...choicesFixture()}
     />
   );
 

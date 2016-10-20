@@ -4,16 +4,12 @@ import Input from './Input';
 const InputList = props => (
   <div>
     <div className="input-list">
-      {props.inputs.map(input => (
+      {props.inputs.map((input, index) => (
         <Input
-          key={input.code}
-          code={input.code}
-          name={input.name}
-          levels={input.levels}
-          image={input.image}
-          description={input.description}
-          onUpdateInput={props.onUpdateInput}
+          key={index}
+          {...input}
           isLoading={props.isLoading}
+          onUpdateInput={props.onUpdateInput}
         />
       ))}
     </div>

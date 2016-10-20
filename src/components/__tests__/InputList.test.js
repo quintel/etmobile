@@ -14,10 +14,10 @@ it('renders an empty InputList', () => {
 });
 
 it('renders an InputList with two inputs', () => {
-  const inputs = [
-    { code: 'abc', name: 'Input 1', description: { __html: '' }, levels: [] },
-    { code: 'def', name: 'Input 2', description: { __html: '' }, levels: [] }
-  ];
+  const inputs =
+    [['abc', 'Input 1'], ['def', 'Input 2']].map(([code, name]) => (
+      { code, name, description: { __html: '' }, inputs: [], choices: [] }
+    ));
 
   const wrapper = shallow(
     <InputList inputs={inputs} onUpdateInput={() => {}} />
