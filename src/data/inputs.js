@@ -1,73 +1,70 @@
 const inputs = [
   {
     code: 'number_of_energy_power_wind_turbine_offshore',
-    name: 'Offshore wind turbines',
-    image: 'wind_turbines.png',
+    name: 'Coal or wind?',
+    image: 'power.png',
     inputs: [
-      'number_of_energy_power_wind_turbine_offshore',
-      'number_of_energy_power_wind_turbine_coastal'
+      'number_of_energy_power_combined_cycle_coal',
+      'number_of_energy_power_wind_turbine_offshore'
     ],
     choices: [
-      { name: 'Zero', values: [0.0, 0.0] },
-      { name: 'Low', values: [73.4, 251], default: true },
-      { name: 'Medium', values: [500, 500] },
-      { name: 'High', values: [1000, 1000] }
+      { name: '3 coal plants', values: [3.0, 73.4] },
+      { name: '800 offshore turbines', values: [0.31, 871.3] }
     ],
     description: {
       __html: `
         <p>
-          Wind turbines produce renewable power without CO<sub>2</sub>
-          emissions. Although wind does not run out, it does not always blow.
-          This means that building windmills alone is not enough to ensure
-          supply. You would have a problem if you needed power and there was no
-          wind.
+          Let your imagination be your guide. Maybe there's a little something
+          happening right here. Follow the lay of the land. It's most important.
+          Let's put a touch more of the magic here.
         </p>
       `
     }
   },
   {
     code: 'number_of_energy_power_combined_cycle_network_gas',
-    name: 'Gas-fired power plants',
-    image: 'gas_plants.png',
-    inputs: ['number_of_energy_power_combined_cycle_network_gas'],
+    name: 'District heat or CHPs?',
+    image: 'heaters.png',
+    inputs: [
+      'households_water_heater_micro_chp_network_gas_share',
+      'households_water_heater_district_heating_steam_hot_water_share'
+    ],
     choices: [
-      { name: 'Zero', values: [0] },
-      { name: 'Low', values: [10], default: true },
-      { name: 'Medium', values: [20] },
-      { name: 'High', values: [30] }
+      { name: 'Micro-CHPs', values: [40.0, 3.4] },
+      { name: 'District heat', values: [0, 43.4] }
     ],
     description: {
       __html: `
         <p>
-          A gas-fired power plant is cheaper to build than a coal power plant.
-          However, power from gas costs more than power plants that burn coal. A
-          gas-fired power plant is easily powered up or down. That can come in
-          handy when there is no wind and solar panels do not produce
-          electricity because the sun is not shining. CO2 emissions of a
-          gas-fired power plant are half that of a coal-fired power plant.
+          Let's get wild today. Trees grow however makes them happy. But they're
+          very easily killed. Clouds are delicate. We spend so much of our life
+          looking - but never seeing. They say everything looks better with odd
+          numbers of things. But sometimes I put even numbers—just to upset the
+          critics.
         </p>
       `
     }
   },
   {
     code: 'transport_car_using_electricity_share',
-    name: 'Electric cars',
-    image: 'electric_cars.png',
-    inputs: ['transport_car_using_electricity_share'],
+    name: 'Electric or hydrogen cars?',
+    image: 'cars.png',
+    inputs: [
+      'transport_car_using_gasoline_mix_share',
+      'transport_car_using_electricity_share',
+      'transport_car_using_hydrogen_share'
+    ],
     choices: [
-      { name: 'Low', values: [14], default: true },
-      { name: 'Medium', values: [50] },
-      { name: 'High', values: [1000] }
+      { name: 'Electric cars', values: [0, 67.66, 0] },
+      { name: 'Hydrogen cars', values: [0, 0.14, 67.52] }
     ],
     description: {
       __html: `
         <p>
-          An electric car uses about half the energy of a diesel or
-          gasoline-powered car. Diesel and gasoline are made from oil. By
-          switching to electric cars, we will save a lot of oil and at the same
-          time use more electricity. Wind or solar powered cars will no longer
-          produce any CO2 emissions. Electric cars powered by modern coal or
-          gas-fired power plants will still emit less than conventional ones.
+          We'll paint one happy little tree right here. Now let's put some happy
+          little clouds in here. Let's make a nice big leafy tree. Let your
+          imagination be your guide. Just think about these things in your mind
+          - then bring them into your world.
         </p>
       `
     }
