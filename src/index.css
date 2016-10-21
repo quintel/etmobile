@@ -28,7 +28,9 @@ header {
 }
 
 .input-list .input h2 {
+  line-height: 1;
   margin-top: 0;
+  margin-bottom: 1rem;
 }
 
 .input-list .input:nth-child(2n) {
