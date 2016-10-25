@@ -23,7 +23,7 @@
       tabWidth: 2,
       ignoreUrls: true,
       ignoreComments: false,
-      ignoreStrings: true,
+      ignoreStrings: false,
       ignoreTemplateLiterals: true,
       ignoreTrailingComments: true
     }],
