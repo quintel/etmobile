@@ -1,11 +1,10 @@
 import React, { PropTypes } from 'react';
-import Headroom from 'react-headroom';
 
-import InputList from '../components/InputList';
 import Dashboard from '../components/Dashboard';
+import Question from '../components/Question';
 
-import inputs from '../data/inputs';
 import dashboard from '../data/dashboard';
+import questions from '../data/questions';
 
 class Root extends React.Component {
   constructor() {
@@ -43,14 +42,10 @@ class Root extends React.Component {
   render() {
     return (
       <div>
-        <Headroom>
-          <header>Energy Transition Model</header>
-        </Headroom>
-        <InputList
-          onUpdateInput={this.handleUpdateInput}
-          inputs={inputs}
-          isLoading={this.state.scenarioID === undefined}
-        />
+        <header>Energy Transition Model</header>
+        <main>
+          <Question onChoiceMade={this.handleUpdateInput} {...questions[0]} />
+        </main>
         <Dashboard items={dashboard} results={this.state.queryResults} />
       </div>
     );

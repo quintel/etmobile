@@ -4,7 +4,7 @@ import React from 'react';
 import { shallow, mount } from 'enzyme';
 
 import Root from '../Root';
-import InputList from '../../components/InputList';
+import Question from '../../components/Question';
 
 const stubAPI = () => ({
   createScenario: jest.fn().mockReturnValue(new Promise(r => r({ id: 1 }))),
@@ -15,7 +15,7 @@ const stubAPI = () => ({
 
 it('renders an input list', () => {
   const wrapper = shallow(<Root api={stubAPI()} />);
-  expect(wrapper.find(InputList).length).toEqual(1);
+  expect(wrapper.find(Question).length).toEqual(1);
 });
 
 it('creates a new scenario when mounted', () => {

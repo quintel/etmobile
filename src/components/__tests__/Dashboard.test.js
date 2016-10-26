@@ -8,7 +8,8 @@ import Dashboard from '../Dashboard';
 it('renders a dashboard without query results', () => {
   const data = [{
     query: 'hello_world',
-    title: 'Hi there!'
+    title: 'Hi there!',
+    icon: 'co2'
   }];
 
   const wrapper = shallow(<Dashboard items={data} results={{}} />);
@@ -16,14 +17,15 @@ it('renders a dashboard without query results', () => {
 
   expect(items.length).toEqual(1);
 
-  expect(items.get(0).props.children.includes('Hi there!')).toEqual(true);
+  expect(items.find('span.icon').props().alt).toEqual('Hi there!');
   expect(items.find('.value').text().includes('—')).toEqual(true);
 });
 
 it('renders a dashboard with query results', () => {
   const data = [{
     query: 'hello_world',
-    title: 'Hi there!'
+    title: 'Hi there!',
+    icon: 'co2'
   }];
 
   const results = { hello_world: 12.5 };
@@ -33,7 +35,7 @@ it('renders a dashboard with query results', () => {
 
   expect(items.length).toEqual(1);
 
-  expect(items.get(0).props.children.includes('Hi there!')).toEqual(true);
+  expect(items.find('span.icon').props().alt).toEqual('Hi there!');
   expect(items.find('.value').text().includes('12.5')).toEqual(true);
   expect(items.find('.value').text().includes('—')).toEqual(false);
 });
@@ -42,6 +44,7 @@ it('renders a dashboard with query results and a custom formatter', () => {
   const data = [{
     query: 'hello_world',
     title: 'Hi there!',
+    icon: 'co2',
     formatValue(v) { return `Value: ${v * 2}`; }
   }];
 
@@ -52,7 +55,7 @@ it('renders a dashboard with query results and a custom formatter', () => {
 
   expect(items.length).toEqual(1);
 
-  expect(items.get(0).props.children.includes('Hi there!')).toEqual(true);
+  expect(items.find('span.icon').props().alt).toEqual('Hi there!');
   expect(items.find('.value').text().includes('Value: 25')).toEqual(true);
   expect(items.find('.value').text().includes('—')).toEqual(false);
 });
