@@ -121,11 +121,13 @@ header {
 
 /* New Styles */
 
-main {
-  padding: 1rem;
+main.question-wrapper {
+  position: relative;
 }
 
 .question, .results {
+  padding: 1rem;
+  position: absolute;
   text-align: center;
 }
 

@@ -1,4 +1,7 @@
 import React, { PropTypes } from 'react';
+import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
+
+import 'animate.css';
 
 import Dashboard from '../components/Dashboard';
 import Question from '../components/Question';
@@ -71,12 +74,19 @@ class Root extends React.Component {
     if (questions[this.state.currentQuestion]) {
       content = (
         <div>
-          <main>
-            <Question
-              key={this.state.currentQuestion}
-              onChoiceMade={this.handleQuestionChoice}
-              {...questions[this.state.currentQuestion]}
-            />
+          <main className="question-wrapper">
+            <ReactCSSTransitionGroup
+              component="div"
+              transitionName={{ enter: 'fadeInUp', leave: 'fadeOutUp' }}
+              transitionEnterTimeout={1000}
+              transitionLeaveTimeout={1000}
+            >
+              <Question
+                key={this.state.currentQuestion}
+                onChoiceMade={this.handleQuestionChoice}
+                {...questions[this.state.currentQuestion]}
+              />
+            </ReactCSSTransitionGroup>
           </main>
           <Dashboard items={dashboard} results={this.state.queryResults} />
         </div>

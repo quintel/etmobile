@@ -51,7 +51,7 @@ class Question extends React.Component {
 
   render() {
     return (
-      <div className="question">
+      <div className="question animated">
         <h1>{this.props.name}</h1>
         <div className="icons">
           {this.props.choices.map((choice, index) => (
