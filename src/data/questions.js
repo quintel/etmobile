@@ -29,6 +29,36 @@ const questions = [
         </p>
       `
     }
+  },
+  {
+    code: 'batteries_or_hydro',
+    name: 'Batteries or hydro?',
+    inputs: [
+      'number_of_energy_power_combined_cycle_coal',
+      'number_of_energy_power_wind_turbine_offshore'
+    ],
+    choices: [
+      {
+        name: 'Build a hydroelectric dam',
+        icon: 'hydro',
+        values: [3.0, 73.4]
+      },
+      {
+        name: 'Install batteries in a million homes',
+        icon: 'battery',
+        isCorrect: true,
+        values: [0.31, 871.3]
+      }
+    ],
+    description: {
+      __html: `
+        <p>
+          In painting, you have unlimited power. You have the ability to move
+          mountains. You can bend rivers. But when I get home, the only thing I
+          have power over is the garbage.
+        </p>
+      `
+    }
   }
 ];
 

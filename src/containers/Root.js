@@ -10,8 +10,14 @@ class Root extends React.Component {
   constructor() {
     super();
 
-    this.state = { scenarioID: undefined, queryResults: {} };
+    this.state = {
+      currentQuestion: 0,
+      scenarioID: undefined,
+      queryResults: {}
+    };
+
     this.handleUpdateInput = this.handleUpdateInput.bind(this);
+    this.handleQuestionChoice = this.handleQuestionChoice.bind(this);
   }
 
   componentDidMount() {
@@ -39,14 +45,50 @@ class Root extends React.Component {
     return this.fetchQueries(this.state.scenarioID, inputValues);
   }
 
+  handleQuestionChoice(inputValues) {
+    const updatePromise = this.handleUpdateInput(inputValues);
+
+    let resolveChangeQuestion;
+
+    const changeQuestionPromise = new Promise((resolve) => {
+      resolveChangeQuestion = resolve;
+    });
+
+    window.setTimeout(() => {
+      this.setState({ currentQuestion: this.state.currentQuestion + 1 });
+      resolveChangeQuestion();
+    }, 1000);
+
+    // Consider the choice completed only once we have received a response from
+    // ETEngine and the state has been changed so as to display the next
+    // question.
+    return Promise.all([updatePromise, changeQuestionPromise]);
+  }
+
   render() {
+    let content;
+
+    if (questions[this.state.currentQuestion]) {
+      content = (
+        <div>
+          <main>
+            <Question
+              key={this.state.currentQuestion}
+              onChoiceMade={this.handleQuestionChoice}
+              {...questions[this.state.currentQuestion]}
+            />
+          </main>
+          <Dashboard items={dashboard} results={this.state.queryResults} />
+        </div>
+      );
+    } else {
+      content = <main className="results"><h1>Results page</h1></main>;
+    }
+
     return (
       <div>
         <header>Energy Transition Model</header>
-        <main>
-          <Question onChoiceMade={this.handleUpdateInput} {...questions[0]} />
-        </main>
-        <Dashboard items={dashboard} results={this.state.queryResults} />
+        {content}
       </div>
     );
   }

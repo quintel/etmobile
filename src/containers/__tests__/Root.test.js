@@ -49,11 +49,20 @@ it('sends updated inputs to the API', () => {
 
   spyOn(api, 'updateScenario').and.callThrough();
 
-  return wrapper.instance().handleUpdateInput({ abc: 10 })
+  return wrapper.instance().handleQuestionChoice({ abc: 10 })
     .then(() => expect(api.updateScenario).toHaveBeenCalledWith(
       82,
       { abc: 10 } /* inputs */,
       jasmine.any(Array) /* queries */
     ))
     .catch(err => expect(err).toEqual(false));
+});
+
+it('shows the results page when all questions are answered', () => {
+  const wrapper = shallow(<Root api={stubAPI()} />);
+
+  wrapper.setState({ currentQuestion: 9999 });
+
+  expect(wrapper.find(Question).length).toEqual(0);
+  expect(wrapper.find('.results').length).toEqual(1);
 });
