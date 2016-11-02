@@ -79,6 +79,7 @@ header {
 }
 
 .dashboard {
+  background: rgba(241,247,254,0.5);
   bottom: 0;
   display: flex;
   line-height: 1;
@@ -131,6 +132,10 @@ main.question-wrapper {
   position: absolute;
   text-align: center;
   width: 100%;
+}
+
+.question {
+  padding-bottom: 97px; /* to match the dashboard */
 }
 
 h1 {
