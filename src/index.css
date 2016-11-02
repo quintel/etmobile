@@ -219,19 +219,22 @@ h2 {
 
 .question button.correct,
 .question button.correct[disabled] {
-  opacity: 1;
-
   background-image: linear-gradient(#57b863, #41a94f);
   border: 1px solid #2e9d44;
   border-top-color: #3ba54e;
   border-bottom-color: #22963a;
+  opacity: 1;
   text-shadow: 0 1px 0 #268842;
 }
 
 .question button.incorrect,
 .question button.incorrect[disabled] {
+  background: linear-gradient(#c54444, #a92f2f);
+  border: 1px solid #8a1a1a;
+  border-top-color: #9e2828;
+  border-bottom-color: #961a1a;
   opacity: 1;
-  filter: hue-rotate(148deg) saturate(1.1) brightness(1);
+  text-shadow: 0 1px 0 #961a1a;
 }
 
 .question button .arrows {
