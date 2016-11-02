@@ -1,3 +1,11 @@
+@font-face {
+  font-family: 'moskextra-bold_800';
+  src: url('fonts/mosk_extra-bold_800.woff2') format('woff2'),
+       url('fonts/mosk_extra-bold_800.woff') format('woff');
+  font-weight: 800;
+  font-style: normal;
+}
+
 body {
   background-color: #f1f7fe;
   color: #222325;
@@ -5,6 +13,10 @@ body {
   padding: 0;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Droid Sans", sans-serif;
   line-height: 1.5;
+}
+
+button, input, optgroup, select, textarea {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Droid Sans", sans-serif;
 }
 
 .headroom {
@@ -140,7 +152,7 @@ main.question-wrapper {
 
 h1 {
   line-height: 1;
-  font-family: Mosk, -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Droid Sans", sans-serif;
+  font-family: moskextra-bold_800, -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Droid Sans", sans-serif;
   font-weight: 800;
   font-size: 2.5rem;
   margin: 0.5rem 0 1rem;
@@ -153,7 +165,7 @@ h1,
 
 h2 {
   color: #70757b;
-  font-family: Mosk, -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Droid Sans", sans-serif;
+  font-family: moskextra-bold_800, -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Droid Sans", sans-serif;
   font-size: 1rem;
   font-weight: 800;
   margin-top: -0.9rem;
@@ -214,10 +226,12 @@ h2 {
 }
 
 .question button .arrows {
-  font-family: Mosk, -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Droid Sans", sans-serif;
-  font-weight: 500;
-  font-size: 1.1rem;
+  display: inline-block;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Droid Sans", sans-serif;
+  font-size: 1.2rem;
   line-height: 0;
+  margin-top: 9px;
+  vertical-align: top;
 }
 
 .results .result-item {
