@@ -16,11 +16,10 @@ const dashboard = [
     }
   },
   {
-    title: 'Renewability',
-    query: 'renewability',
+    title: 'Leaderboard',
     icon: 'leaderboard',
-    formatValue(value) {
-      return `${Math.round(value * 10000) / 100}%`;
+    formatValue() {
+      return 'INOP';
     }
   }
 ];

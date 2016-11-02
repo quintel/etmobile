@@ -16,17 +16,21 @@ const itemIcon = (iconName) => {
 };
 
 const formatValue = (item, results) => {
+  if (!item.hasOwnProperty('query')) {
+    return item.formatValue(null, results);
+  }
+
   if (!results.hasOwnProperty(item.query)) {
     return '—';
   }
 
-  return (item.formatValue || (e => e))(results[item.query]);
+  return (item.formatValue || (e => e))(results[item.query], results);
 };
 
 const Dashboard = props => (
   <div className="dashboard">
-    {props.items.map(item => (
-      <div className="dashboard-item" key={item.query}>
+    {props.items.map((item, index) => (
+      <div className="dashboard-item" key={index}>
         <span
           className="icon"
           style={{ backgroundImage: `url(${itemIcon(item.icon)})` }}
@@ -43,7 +47,7 @@ Dashboard.propTypes = {
     PropTypes.shape({
       formatValue: PropTypes.func,
       icon: PropTypes.string.isRequired,
-      query: PropTypes.string.isRequired,
+      query: PropTypes.string,
       title: PropTypes.string.isRequired
     })
   ).isRequired,
