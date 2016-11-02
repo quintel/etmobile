@@ -23,14 +23,21 @@ class Root extends React.Component {
 
     this.handleUpdateInput = this.handleUpdateInput.bind(this);
     this.handleQuestionChoice = this.handleQuestionChoice.bind(this);
+    this.createScenarioPromise = null;
   }
 
   componentDidMount() {
-    this.props.api.createScenario().then(({ scenario: { id } }) => (
-      // ETEngine API does not support fetching queries when creating a request
-      // (yet), so we must make a second one.
-      this.fetchQueries(id)
-    ));
+    if (!this.createScenarioPromise) {
+      this.createScenarioPromise = this.props.api.createScenario();
+
+      this.createScenarioPromise.then(({ scenario: { id } }) => {
+        this.setState({ scenarioID: id });
+
+        // ETEngine API does not support fetching queries when creating a
+        // request (yet), so we must make a second one.
+        return this.fetchQueries(id);
+      });
+    }
   }
 
   fetchQueries(scenarioID, inputKeys = {}) {
@@ -47,7 +54,9 @@ class Root extends React.Component {
   }
 
   handleUpdateInput(inputValues) {
-    return this.fetchQueries(this.state.scenarioID, inputValues);
+    return this.createScenarioPromise.then(
+      ({ scenario: { id } }) => this.fetchQueries(id, inputValues)
+    );
   }
 
   handleQuestionChoice(inputValues) {

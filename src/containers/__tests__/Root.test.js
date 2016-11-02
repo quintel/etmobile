@@ -7,7 +7,9 @@ import Root from '../Root';
 import Question from '../../components/Question';
 
 const stubAPI = () => ({
-  createScenario: jest.fn().mockReturnValue(new Promise(r => r({ id: 1 }))),
+  createScenario: jest.fn().mockReturnValue(
+    new Promise(r => r({ scenario: { id: 1 }, gqueries: {} }))
+  ),
   updateScenario: jest.fn().mockReturnValue(
     new Promise(r => r({ scenario: { id: 1 }, gqueries: {} }))
   )
@@ -44,18 +46,16 @@ it('creates a new scenario when mounted', () => {
 
 it('sends updated inputs to the API', () => {
   const api = stubAPI();
-  const wrapper = shallow(<Root api={api} />);
-  wrapper.setState({ scenarioID: 82 });
+  const wrapper = mount(<Root api={api} />);
 
   spyOn(api, 'updateScenario').and.callThrough();
 
   return wrapper.instance().handleQuestionChoice({ abc: 10 })
     .then(() => expect(api.updateScenario).toHaveBeenCalledWith(
-      82,
+      1,
       { abc: 10 } /* inputs */,
       jasmine.any(Array) /* queries */
-    ))
-    .catch(err => expect(err).toEqual(false));
+    ));
 });
 
 it('shows the results page when all questions are answered', () => {
