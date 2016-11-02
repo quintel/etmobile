@@ -2,21 +2,21 @@ const questions = [
   {
     code: 'coal_or_wind',
     name: 'Coal or wind?',
-    inputs: [
-      'number_of_energy_power_combined_cycle_coal',
-      'number_of_energy_power_wind_turbine_offshore'
-    ],
     choices: [
       {
         name: 'Build 3 coal plants',
         icon: 'coal',
-        values: [3.0, 73.4]
+        inputs: {
+          number_of_energy_power_combined_cycle_coal: 3.0
+        }
       },
       {
         name: 'Build 800 offshore turbines',
         icon: 'wind',
         isCorrect: true,
-        values: [0.31, 871.3]
+        inputs: {
+          number_of_energy_power_wind_turbine_offshore: 871.3
+        }
       }
     ],
     description: {
@@ -33,21 +33,21 @@ const questions = [
   {
     code: 'batteries_or_hydro',
     name: 'Batteries or LED lightbulbs?',
-    inputs: [
-      'households_flexibility_p2p_electricity_market_penetration',
-      'households_lighting_led_electricity_share'
-    ],
     choices: [
       {
         name: 'Store electricity in batteries',
         icon: 'battery',
-        values: [100, 0.02]
+        inputs: {
+          households_flexibility_p2p_electricity_market_penetration: 100
+        }
       },
       {
         name: 'Use LED light bulbs',
         icon: 'ledLighting',
         isCorrect: true,
-        values: [0, 100]
+        inputs: {
+          households_lighting_led_electricity_share: 100
+        }
       }
     ],
     description: {
@@ -73,12 +73,17 @@ const questions = [
         name: 'Add one million electric cars',
         icon: 'electricVehicle',
         isCorrect: true,
-        values: [0.1, 0, 0]
+        inputs: {
+          transport_car_using_electricity_share: 20.0
+        }
       },
       {
         name: '5% of car journeys instead done by train',
         icon: 'train',
-        values: [0.1, -5, 5]
+        inputs: {
+          transport_useful_demand_car_kms: -5,
+          transport_useful_demand_trains: 5
+        }
       }
     ],
     description: {

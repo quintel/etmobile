@@ -5,13 +5,10 @@ import { shallow, mount } from 'enzyme';
 
 import Question, { ChoiceButton } from '../Question';
 
-const choicesFixture = () => ({
-  inputs: ['abcdef'],
-  choices: [
-    { name: 'Zero', icon: 'wind', values: [0], isCorrect: true },
-    { name: 'Low', icon: 'wind', values: [2] }
-  ]
-});
+const choicesFixture = () => ([
+  { name: 'Zero', icon: 'wind', inputs: { abcdef: 0 }, isCorrect: true },
+  { name: 'Low', icon: 'wind', inputs: { abcdef: 2 } }
+]);
 
 it('renders the name of the question', () => {
   const wrapper = shallow(
@@ -19,8 +16,8 @@ it('renders the name of the question', () => {
       code="abcdef"
       name="My Question"
       description={{ __html: 'Hello there!' }}
+      choices={choicesFixture()}
       onChoiceMade={() => {}}
-      {...choicesFixture()}
     />
   );
 
@@ -33,8 +30,8 @@ it('renders the description', () => {
       code="abcdef"
       name="My Question"
       description={{ __html: 'Hello there' }}
+      choices={choicesFixture()}
       onChoiceMade={() => {}}
-      {...choicesFixture()}
     />
   );
 
@@ -47,8 +44,8 @@ it('renders two question buttons', () => {
       code="abcdef"
       name="My Question"
       description={{ __html: 'Hello there' }}
+      choices={choicesFixture()}
       onChoiceMade={() => {}}
-      {...choicesFixture()}
     />
   );
 
@@ -66,8 +63,8 @@ it('renders a correctly-chosen question button', () => {
       code="abcdef"
       name="My Question"
       description={{ __html: 'Hello there' }}
+      choices={choicesFixture()}
       onChoiceMade={() => {}}
-      {...choicesFixture()}
     />
   );
 
@@ -98,8 +95,8 @@ it('renders an incorrectly-chosen question button', () => {
       code="abcdef"
       name="My Question"
       description={{ __html: 'Hello there' }}
+      choices={choicesFixture()}
       onChoiceMade={() => {}}
-      {...choicesFixture()}
     />
   );
 

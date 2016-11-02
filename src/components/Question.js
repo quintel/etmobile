@@ -39,10 +39,7 @@ class Question extends React.Component {
 
   onChoiceSelected(choiceIndex) {
     const choice = this.props.choices[choiceIndex];
-
-    const inputValues = this.props.inputs.reduce((memo, input, index) => (
-      { ...memo, [input]: choice.values[index] }
-    ), {});
+    const inputValues = choice.inputs;
 
     this.setState({ choice: choiceIndex });
 
@@ -96,14 +93,13 @@ ChoiceButton.propTypes = {
 Question.propTypes = {
   choices: PropTypes.arrayOf(PropTypes.shape({
     name: PropTypes.string.isRequired,
-    values: PropTypes.arrayOf(PropTypes.number).isRequired,
+    inputs: PropTypes.object.isRequired,
     icon: PropTypes.string.isRequired,
     isCorrect: PropTypes.bool
   })).isRequired,
   description: PropTypes.shape({
     __html: PropTypes.string.isRequired
   }).isRequired,
-  inputs: PropTypes.arrayOf(PropTypes.string).isRequired,
   onChoiceMade: PropTypes.func.isRequired,
   name: PropTypes.string.isRequired
 };
