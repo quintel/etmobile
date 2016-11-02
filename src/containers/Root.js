@@ -4,6 +4,7 @@ import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 import 'animate.css';
 
 import Dashboard from '../components/Dashboard';
+import ProgressBar from '../components/ProgressBar';
 import Question from '../components/Question';
 import Results from '../components/Results';
 
@@ -76,6 +77,10 @@ class Root extends React.Component {
       content = (
         <div>
           <main className="question-wrapper">
+            <ProgressBar
+              current={this.state.currentQuestion}
+              total={questions.length}
+            />
             <ReactCSSTransitionGroup
               component="div"
               transitionName={{ enter: 'fadeInUp', leave: 'fadeOutUp' }}
