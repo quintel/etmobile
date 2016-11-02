@@ -1,10 +1,10 @@
 const dashboard = [
   {
     title: 'CO2 Emissions',
-    query: 'dashboard_reduction_of_co2_emissions_versus_1990',
+    query: 'dashboard_co2_emissions_versus_start_year',
     icon: 'co2',
     formatValue(value) {
-      return `${Math.round(value * 10000) / 100}%`;
+      return `${Math.round(-value * 10000) / 100}%`;
     }
   },
   {

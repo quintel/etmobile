@@ -28,12 +28,12 @@ describe('total_costs', () => {
 describe('dashboard_reduction_of_co2_emissions_versus_1990', () => {
   it('formats values as a percentage', () => {
     const item = findItem('CO2 Emissions');
-    expect(item.formatValue(0.125)).toEqual('12.5%');
+    expect(item.formatValue(0.125)).toEqual('-12.5%');
   });
 
   it('rounds high precision values', () => {
     const item = findItem('CO2 Emissions');
-    expect(item.formatValue(0.125299128992)).toEqual('12.53%');
+    expect(item.formatValue(0.125299128992)).toEqual('-12.53%');
   });
 });
 
