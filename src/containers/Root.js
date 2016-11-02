@@ -5,6 +5,7 @@ import 'animate.css';
 
 import Dashboard from '../components/Dashboard';
 import Question from '../components/Question';
+import Results from '../components/Results';
 
 import dashboard from '../data/dashboard';
 import questions from '../data/questions';
@@ -92,7 +93,7 @@ class Root extends React.Component {
         </div>
       );
     } else {
-      content = <main className="results"><h1>Results page</h1></main>;
+      content = <Results />;
     }
 
     return (

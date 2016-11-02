@@ -59,7 +59,7 @@ it('sends updated inputs to the API', () => {
 });
 
 it('shows the results page when all questions are answered', () => {
-  const wrapper = shallow(<Root api={stubAPI()} />);
+  const wrapper = mount(<Root api={stubAPI()} />);
 
   wrapper.setState({ currentQuestion: 9999 });
 

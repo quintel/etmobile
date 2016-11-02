@@ -126,9 +126,11 @@ main.question-wrapper {
 }
 
 .question, .results {
+  box-sizing: border-box;
   padding: 1rem;
   position: absolute;
   text-align: center;
+  width: 100%;
 }
 
 h1 {
@@ -144,7 +146,17 @@ h1,
   text-shadow: 0 1px 0 white;
 }
 
-.question .icons img {
+h2 {
+  color: #70757b;
+  font-family: Mosk, -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Droid Sans", sans-serif;
+  font-size: 1rem;
+  font-weight: 800;
+  margin-top: -0.9rem;
+  text-transform: uppercase;
+}
+
+.question .icons img,
+.results .result-item .status img {
   border: 3px solid white;
   border-radius: 50%;
   box-shadow: 0 0px 0 1px rgba(0, 0, 0, 0.01), 0 1px 0 rgba(0, 0, 0, 0.03);
@@ -201,4 +213,58 @@ h1,
   font-weight: 500;
   font-size: 1.1rem;
   line-height: 0;
+}
+
+.results .result-item {
+  display: flex;
+  margin-bottom: 1rem;
+}
+
+.results .result-item.leaderboard {
+  align-items: center;
+}
+
+.results .status {
+  width: 81px;
+}
+
+.results .status .change {
+  background: linear-gradient(#4bb63e, #3aa92f);
+  background-clip: padding-box;
+  border: 3px solid white;
+  border-radius: 18px;
+  box-shadow: 0 0px 0 1px rgba(0, 0, 0, 0.01), 0 1px 0 rgba(0, 0, 0, 0.03);
+  color: white;
+  display: inline-block;
+  font-weight: bold;
+  padding: 0.14rem 0;
+  text-shadow: 0 1px 0 rgba(0, 0, 0, 0.3);
+  width: 75px;
+}
+
+.results .status .change.worse {
+  background: linear-gradient(#b63e3e, #a92f2f);
+}
+
+.results .info {
+  flex: 1;
+  padding-left: 1rem;
+  text-align: left;
+}
+
+.results .info p {
+  color: #70757b;
+}
+
+.results .info h4 {
+  margin: 0;
+}
+
+.results .info h4 + p {
+  margin-top: 0;
+}
+
+.results .info a {
+  color: #3b85c4;
+  text-decoration: none;
 }
