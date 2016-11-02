@@ -74,7 +74,7 @@ it('renders a correctly-chosen question button', () => {
 
   expect(buttons.length).toEqual(1);
   expect(buttons.props().disabled).toEqual(true);
-  expect(buttons.props().className).toEqual('correct');
+  expect(buttons.props().className).toMatch(/\bcorrect\b/);
 
   expect(buttons.props().children.find(
     child => child.match(/\bcorrect\b/i))
@@ -84,7 +84,9 @@ it('renders a correctly-chosen question button', () => {
     child => child.match(/\bincorrect\b/i))
   ).toEqual(undefined);
 
-  expect(wrapper.find('button[disabled]').length).toEqual(2);
+  expect(wrapper.find('button[disabled]').length)
+    .toEqual(wrapper.find('button').length);
+
   expect(wrapper.find('button.incorrect').length).toEqual(0);
 });
 
@@ -106,7 +108,7 @@ it('renders an incorrectly-chosen question button', () => {
 
   expect(buttons.length).toEqual(1);
   expect(buttons.props().disabled).toEqual(true);
-  expect(buttons.props().className).toEqual('incorrect');
+  expect(buttons.props().className).toMatch(/\bincorrect\b/);
 
   expect(buttons.props().children.find(
     child => child.match(/\bincorrect\b/i))
@@ -116,7 +118,9 @@ it('renders an incorrectly-chosen question button', () => {
     child => child.match(/\bcorrect\b/i))
   ).toEqual(undefined);
 
-  expect(wrapper.find('button[disabled]').length).toEqual(2);
+  expect(wrapper.find('button[disabled]').length)
+    .toEqual(wrapper.find('button').length);
+
   expect(wrapper.find('button.correct').length).toEqual(0);
 });
 
