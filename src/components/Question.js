@@ -1,4 +1,6 @@
 import React, { PropTypes } from 'react';
+import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
+
 import classNames from 'classnames';
 
 import * as choiceImages from '../images/choices';
@@ -8,7 +10,8 @@ export const ChoiceButton = (props) => {
 
   const classes = classNames({
     correct: isSelected && props.isCorrect,
-    incorrect: isSelected && !props.isCorrect
+    incorrect: isSelected && !props.isCorrect,
+    animated: true
   });
 
   let name = props.name;
@@ -66,16 +69,23 @@ class Question extends React.Component {
         />
 
         <div className="choices">
-          {this.props.choices.map((choice, index) => (
-            <ChoiceButton
-              key={index}
-              index={index}
-              isCorrect={choice.isCorrect}
-              name={choice.name}
-              onClick={this.onChoiceSelected}
-              selectedIndex={this.state.choice}
-            />
-          ))}
+          <ReactCSSTransitionGroup
+            component="div"
+            transitionName={{ enter: 'fadeIn', leave: 'bounceOut' }}
+            transitionEnterTimeout={1000}
+            transitionLeaveTimeout={1000}
+          >
+            {this.props.choices.map((choice, index) => (
+              <ChoiceButton
+                key={`${index}-${this.state.choice === index ? '1' : '0'}`}
+                index={index}
+                isCorrect={choice.isCorrect}
+                name={choice.name}
+                onClick={this.onChoiceSelected}
+                selectedIndex={this.state.choice}
+              />
+            ))}
+          </ReactCSSTransitionGroup>
         </div>
       </div>
     );

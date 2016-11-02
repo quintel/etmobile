@@ -71,7 +71,7 @@ class Root extends React.Component {
     window.setTimeout(() => {
       this.setState({ currentQuestion: this.state.currentQuestion + 1 });
       resolveChangeQuestion();
-    }, 1000);
+    }, 2000);
 
     // Consider the choice completed only once we have received a response from
     // ETEngine and the state has been changed so as to display the next
