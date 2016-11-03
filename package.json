@@ -2,6 +2,7 @@
   "name": "etmobile",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://quintel.github.io/etmobile",
   "devDependencies": {
     "enzyme": "^2.4.1",
     "fetch-mock": "^5.5.0",
