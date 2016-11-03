@@ -173,7 +173,7 @@ h2 {
 }
 
 .question .icons img,
-.results .result-item .status img {
+.results .result-item .status img.icon {
   border: 3px solid white;
   border-radius: 50%;
   box-shadow: 0 0px 0 1px rgba(0, 0, 0, 0.01), 0 1px 0 rgba(0, 0, 0, 0.03);
@@ -317,4 +317,24 @@ h2 {
   height: 4px;
   position: relative;
   transition: width 1s ease;
+}
+
+.choice-summary {
+  border-top: 1px solid #d3deea;
+  padding-top: 3rem;
+}
+
+.choice-summary h2 {
+  padding-bottom: 0.5rem;
+}
+
+.choice-summary .target-delta {
+  color: #4daf43;
+  font-size: 0.875rem;
+  font-weight: bold;
+}
+
+.choice-summary .target-delta img {
+  margin: -3px 5px 0 0;
+  vertical-align: middle;
 }

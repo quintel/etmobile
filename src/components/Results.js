@@ -1,6 +1,7 @@
 import React from 'react';
 
 import * as choiceImages from '../images/choices';
+import co2Svg from '../images/dashboard/co2_green.svg';
 
 const Results = () => (
   <main className="results animated" key="results">
@@ -68,6 +69,69 @@ const Results = () => (
         <p>
           <a>Learn more &raquo;</a>
         </p>
+      </div>
+    </div>
+
+    <div className="choice-summary">
+      <h2>Your choices</h2>
+      <div className="result-item">
+        <div className="status">
+          <img
+            src={choiceImages.wind}
+            className="icon"
+            width="75"
+            height="75"
+            alt="presentation"
+          />
+          <span className="target-delta">
+            <img
+              src={co2Svg}
+              width="24"
+              height="24"
+              alt="presentation"
+            />
+            -3.1%
+          </span>
+        </div>
+        <div className="info">
+          <h4>Built 800 wind turbines</h4>
+          <p>
+            Your decision to build wind turbines instead of a coal plant was
+            better for the environment, and is far healthier than coal, but
+            offers worse value for money in the short-term due to higher
+            installation costs.
+          </p>
+        </div>
+      </div>
+
+      <div className="result-item">
+        <div className="status">
+          <img
+            src={choiceImages.ledLighting}
+            width="75"
+            height="75"
+            alt="presentation"
+          />
+          <span className="target-delta">
+            <img
+              src={co2Svg}
+              width="24"
+              height="24"
+              alt="presentation"
+            />
+            -2.3%
+          </span>
+        </div>
+        <div className="info">
+          <h4>Switched to LED light bulbs</h4>
+          <p>
+            You chose to install LED light bulbs in every household instead of
+            strong excess energy in batteries. This quickly reduces
+            CO<sub>2</sub> emissions and lowers costs, but batteries offer a
+            great deal of flexibility in the long term as renewable energy
+            becomes more common.
+          </p>
+        </div>
       </div>
     </div>
   </main>
