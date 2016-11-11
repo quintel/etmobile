@@ -11,11 +11,13 @@ const correctChoicesText = (number) => {
   return `You made ${number} correct choice${number === 1 ? '' : 's'}`;
 };
 
-const Results = ({ gameState: { correctChoices } }) => (
+const Summary = ({ gameState: { lastChoice, correctChoices } }) => (
   <main className="results animated" key="results">
-    <h1>Oops!</h1>
-    <h2>
-      That was the wrong choice!
+    <h1>{ lastChoice.isCorrect ? 'Wow!' : 'Oops!' }</h1>
+    <h2 className="result">
+      { lastChoice.isCorrect ?
+        'You got all the questions correct!' :
+        'Sorry, that was the wrong choice' }
     </h2>
 
     <div className="result-item leaderboard">
@@ -122,10 +124,11 @@ const Results = ({ gameState: { correctChoices } }) => (
   </main>
 );
 
-Results.propTypes = {
+Summary.propTypes = {
   gameState: PropTypes.shape({
     correctChoices: PropTypes.number.isRequired,
+    lastChoice: PropTypes.shape({ isCorrect: PropTypes.boolean }).isRequired
   }).isRequired
 };
 
-export default Results;
+export default Summary;

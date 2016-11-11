@@ -6,7 +6,7 @@ import 'animate.css';
 import Dashboard from '../components/Dashboard';
 import ProgressBar from '../components/ProgressBar';
 import Question from '../components/Question';
-import Results from '../components/Results';
+import Summary from '../components/Summary';
 
 import dashboard from '../data/dashboard';
 import questions from '../data/questions';
@@ -56,7 +56,10 @@ class Root extends React.Component {
   }
 
   gameState() {
-    return { correctChoices: this.state.correctChoices };
+    return {
+      correctChoices: this.state.correctChoices,
+      lastChoice: this.state.lastChoice
+    };
   }
 
   handleUpdateInput(inputs) {
@@ -127,7 +130,7 @@ class Root extends React.Component {
         </div>
       );
     } else {
-      content = <Results gameState={this.gameState()} />;
+      content = <Summary gameState={this.gameState()} />;
     }
 
     return (

@@ -62,7 +62,7 @@ it('sends updated inputs to the API', () => {
 it('shows the results page when all questions are answered', () => {
   const wrapper = mount(<Root api={stubAPI()} />);
 
-  wrapper.setState({ currentQuestion: 9999 });
+  wrapper.setState({ lastChoice: { isCorrect: false }, currentQuestion: 9999 });
 
   expect(wrapper.find(Question).length).toEqual(0);
   expect(wrapper.find('.results').length).toEqual(1);

@@ -3,18 +3,21 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 
-import Results from '../Results';
+import Summary from '../Summary';
 
-const state = correctChoices => ({ correctChoices });
+const state = (correctChoices, isCorrect = false) => ({
+  lastChoice: { isCorrect },
+  correctChoices
+});
 
 it('renders without errors', () => {
-  const wrapper = shallow(<Results gameState={state(1)} />);
+  const wrapper = shallow(<Summary gameState={state(1)} />);
 
   expect(wrapper.find('h1').text()).toEqual('Oops!');
 });
 
 it('renders a custom message when no choices are correct', () => {
-  const wrapper = shallow(<Results gameState={state(0)} />);
+  const wrapper = shallow(<Summary gameState={state(0)} />);
 
   expect(wrapper.find('.leaderboard').text().includes(
     'You didn\'t make any correct choices'
@@ -22,7 +25,7 @@ it('renders a custom message when no choices are correct', () => {
 });
 
 it('renders a custom message when one choice is correct', () => {
-  const wrapper = shallow(<Results gameState={state(1)} />);
+  const wrapper = shallow(<Summary gameState={state(1)} />);
   const text = wrapper.find('.leaderboard').text();
 
   expect(text.includes('You made 1 correct choice')).toEqual(true);
@@ -30,9 +33,21 @@ it('renders a custom message when one choice is correct', () => {
 });
 
 it('renders a custom message when more than one choice is correct', () => {
-  const wrapper = shallow(<Results gameState={state(2)} />);
+  const wrapper = shallow(<Summary gameState={state(2)} />);
 
   expect(wrapper.find('.leaderboard').text().includes(
     'You made 2 correct choices'
   )).toEqual(true);
+});
+
+it('tells the visitor when their choice was incorrect', () => {
+  const wrapper = shallow(<Summary gameState={state(2, false)} />);
+
+  expect(wrapper.find('h1').text()).toEqual('Oops!');
+});
+
+it('tells the visitor when all choices were correct', () => {
+  const wrapper = shallow(<Summary gameState={state(2, true)} />);
+
+  expect(wrapper.find('h1').text()).toEqual('Wow!');
 });
