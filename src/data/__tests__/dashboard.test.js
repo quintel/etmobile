@@ -8,7 +8,8 @@ const findItem = query => data.find(item => item.title === query);
 for (const itemData of data) {
   if (itemData.hasOwnProperty('formatValue')) {
     it(`${itemData.query}.formatValue runs, returning a string`, () => {
-      expect(typeof itemData.formatValue(8.75)).toEqual('string');
+      const formatted = itemData.formatValue(8.75, {}, { correctChoices: 1 })
+      expect(typeof formatted).toEqual('string');
     });
   }
 }
@@ -38,8 +39,8 @@ describe('dashboard_reduction_of_co2_emissions_versus_1990', () => {
 });
 
 describe('leaderboard', () => {
-  it('is marked as INOP', () => {
+  it('shows the number of correct choices', () => {
     const item = findItem('Leaderboard');
-    expect(item.formatValue()).toEqual('INOP');
+    expect(item.formatValue(null, null, { correctChoices: 2 })).toEqual('2');
   });
 });

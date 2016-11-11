@@ -18,8 +18,8 @@ const dashboard = [
   {
     title: 'Leaderboard',
     icon: 'leaderboard',
-    formatValue() {
-      return 'INOP';
+    formatValue(ignore, results, gameState) {
+      return `${gameState.correctChoices || 0}`;
     }
   }
 ];

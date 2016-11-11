@@ -169,6 +169,7 @@ h2 {
   font-size: 1rem;
   font-weight: 800;
   margin-top: -0.9rem;
+  margin-bottom: 2rem;
   text-transform: uppercase;
 }
 
@@ -249,10 +250,6 @@ h2 {
 .results .result-item {
   display: flex;
   margin-bottom: 1rem;
-}
-
-.results .result-item.leaderboard {
-  align-items: center;
 }
 
 .results .status {

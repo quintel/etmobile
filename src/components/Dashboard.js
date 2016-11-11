@@ -15,16 +15,18 @@ const itemIcon = (iconName) => {
   }
 };
 
-const formatValue = (item, results) => {
+const formatValue = (item, results, gameState) => {
   if (!item.hasOwnProperty('query')) {
-    return item.formatValue(null, results);
+    return item.formatValue(null, results, gameState);
   }
 
   if (!results.hasOwnProperty(item.query)) {
     return '—';
   }
 
-  return (item.formatValue || (e => e))(results[item.query], results);
+  return (item.formatValue || (e => e))(
+    results[item.query], results, gameState
+  );
 };
 
 const Dashboard = props => (
@@ -36,13 +38,18 @@ const Dashboard = props => (
           style={{ backgroundImage: `url(${itemIcon(item.icon)})` }}
           alt={item.title}
         />
-        <span className="value">{formatValue(item, props.results)}</span>
+        <span className="value">
+          {formatValue(item, props.results, props.gameState)}
+        </span>
       </div>
     ))}
   </div>
 );
 
 Dashboard.propTypes = {
+  gameState: PropTypes.shape({
+    correctChoices: PropTypes.number.isRequired
+  }).isRequired,
   items: PropTypes.arrayOf(
     PropTypes.shape({
       formatValue: PropTypes.func,
@@ -51,7 +58,7 @@ Dashboard.propTypes = {
       title: PropTypes.string.isRequired
     })
   ).isRequired,
-  results: PropTypes.shape().isRequired
+  results: PropTypes.shape().isRequired,
 };
 
 export default Dashboard;

@@ -42,11 +42,9 @@ class Question extends React.Component {
 
   onChoiceSelected(choiceIndex) {
     const choice = this.props.choices[choiceIndex];
-    const inputValues = choice.inputs;
 
     this.setState({ choice: choiceIndex });
-
-    this.props.onChoiceMade(inputValues);
+    this.props.onChoiceMade(choice);
   }
 
   render() {

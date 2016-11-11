@@ -1,12 +1,22 @@
-import React from 'react';
+import React, { PropTypes } from 'react';
 
 import * as choiceImages from '../images/choices';
 import co2Svg from '../images/dashboard/co2_green.svg';
 
-const Results = () => (
+const correctChoicesText = (number) => {
+  if (number === 0) {
+    return 'You didn\'t make any correct choices.';
+  }
+
+  return `You made ${number} correct choice${number === 1 ? '' : 's'}`;
+};
+
+const Results = ({ gameState: { correctChoices } }) => (
   <main className="results animated" key="results">
-    <h1>Summary</h1>
-    <h2>8 out of 13 correct</h2>
+    <h1>Oops!</h1>
+    <h2>
+      That was the wrong choice!
+    </h2>
 
     <div className="result-item leaderboard">
       <div className="status">
@@ -19,9 +29,8 @@ const Results = () => (
       </div>
       <div className="info">
         <h4>You ranked 13th!</h4>
-        <p>
-          <a>View the leaderboard &raquo;</a>
-        </p>
+        <p>{correctChoicesText(correctChoices)}</p>
+        <p><a>View the leaderboard &raquo;</a></p>
       </div>
     </div>
 
@@ -41,30 +50,6 @@ const Results = () => (
           Greenhouse gas emissions cause climate change. Your choiced reduce
           those emissions, but not by enough. The EU target is to reduce
           emissions by 80% before 2050.
-        </p>
-        <p>
-          <a>Learn more &raquo;</a>
-        </p>
-      </div>
-    </div>
-
-    <div className="result-item">
-      <div className="status">
-        <img
-          src={choiceImages.coin}
-          width="75"
-          height="75"
-          alt="presentation"
-        />
-        <span className="change worse">+4.8%</span>
-      </div>
-      <div className="info">
-        <h4>Increased costs</h4>
-        <p>
-          Your decisions were more expensive than the status-quo. This is
-          inevitable when investing in new technologies and infrastructure
-          &ndash; as you did &ndash; but it can be hard to convince the public
-          that the cost is worth it.
         </p>
         <p>
           <a>Learn more &raquo;</a>
@@ -136,5 +121,11 @@ const Results = () => (
     </div>
   </main>
 );
+
+Results.propTypes = {
+  gameState: PropTypes.shape({
+    correctChoices: PropTypes.number.isRequired,
+  }).isRequired
+};
 
 export default Results;

@@ -47,10 +47,11 @@ it('creates a new scenario when mounted', () => {
 it('sends updated inputs to the API', () => {
   const api = stubAPI();
   const wrapper = mount(<Root api={api} />);
+  const choice = { inputs: { abc: 10 }, isCorrect: true };
 
   spyOn(api, 'updateScenario').and.callThrough();
 
-  return wrapper.instance().handleQuestionChoice({ abc: 10 })
+  return wrapper.instance().handleQuestionChoice(choice)
     .then(() => expect(api.updateScenario).toHaveBeenCalledWith(
       1,
       { abc: 10 } /* inputs */,

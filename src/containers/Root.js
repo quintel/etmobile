@@ -17,6 +17,8 @@ class Root extends React.Component {
 
     this.state = {
       currentQuestion: 0,
+      correctChoices: 0,
+      lastChoice: null,
       scenarioID: undefined,
       queryResults: {}
     };
@@ -44,7 +46,7 @@ class Root extends React.Component {
     return this.props.api.updateScenario(
       scenarioID,
       inputKeys,
-      dashboard.map(item => item.query)
+      dashboard.map(item => item.query).filter(query => query)
     ).then((data) => {
       this.setState({
         scenarioID: data.scenario.id,
@@ -53,14 +55,22 @@ class Root extends React.Component {
     });
   }
 
-  handleUpdateInput(inputValues) {
+  gameState() {
+    return { correctChoices: this.state.correctChoices };
+  }
+
+  handleUpdateInput(inputs) {
     return this.createScenarioPromise.then(
-      ({ scenario: { id } }) => this.fetchQueries(id, inputValues)
+      ({ scenario: { id } }) => this.fetchQueries(id, inputs)
     );
   }
 
-  handleQuestionChoice(inputValues) {
-    const updatePromise = this.handleUpdateInput(inputValues);
+  handleQuestionChoice(choice) {
+    const updatePromise = this.handleUpdateInput(choice.inputs);
+
+    if (choice.isCorrect) {
+      this.setState({ correctChoices: this.state.correctChoices + 1 });
+    }
 
     let resolveChangeQuestion;
 
@@ -69,7 +79,11 @@ class Root extends React.Component {
     });
 
     window.setTimeout(() => {
-      this.setState({ currentQuestion: this.state.currentQuestion + 1 });
+      this.setState({
+        lastChoice: choice,
+        currentQuestion: this.state.currentQuestion + 1
+      });
+
       resolveChangeQuestion();
     }, 2000);
 
@@ -81,8 +95,10 @@ class Root extends React.Component {
 
   render() {
     let content;
+    const lastChoice = this.state.lastChoice;
 
-    if (questions[this.state.currentQuestion]) {
+    if ((!lastChoice || lastChoice.isCorrect) &&
+        questions[this.state.currentQuestion]) {
       content = (
         <div>
           <main className="question-wrapper">
@@ -103,11 +119,15 @@ class Root extends React.Component {
               />
             </ReactCSSTransitionGroup>
           </main>
-          <Dashboard items={dashboard} results={this.state.queryResults} />
+          <Dashboard
+            items={dashboard}
+            results={this.state.queryResults}
+            gameState={this.gameState()}
+          />
         </div>
       );
     } else {
-      content = <Results />;
+      content = <Results gameState={this.gameState()} />;
     }
 
     return (

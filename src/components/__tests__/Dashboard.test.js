@@ -12,7 +12,10 @@ it('renders a dashboard without query results', () => {
     icon: 'co2'
   }];
 
-  const wrapper = shallow(<Dashboard items={data} results={{}} />);
+  const wrapper = shallow(
+    <Dashboard items={data} results={{}} gameState={{ correctChoices: 0 }} />
+  );
+
   const items = wrapper.find('.dashboard-item');
 
   expect(items.length).toEqual(1);
@@ -30,7 +33,14 @@ it('renders a dashboard with query results', () => {
 
   const results = { hello_world: 12.5 };
 
-  const wrapper = shallow(<Dashboard items={data} results={results} />);
+  const wrapper = shallow(
+    <Dashboard
+      items={data}
+      results={results}
+      gameState={{ correctChoices: 0 }}
+    />
+  );
+
   const items = wrapper.find('.dashboard-item');
 
   expect(items.length).toEqual(1);
@@ -50,7 +60,14 @@ it('renders a dashboard with query results and a custom formatter', () => {
 
   const results = { hello_world: 12.5 };
 
-  const wrapper = shallow(<Dashboard items={data} results={results} />);
+  const wrapper = shallow(
+    <Dashboard
+      items={data}
+      results={results}
+      gameState={{ correctChoices: 0 }}
+    />
+  );
+
   const items = wrapper.find('.dashboard-item');
 
   expect(items.length).toEqual(1);
