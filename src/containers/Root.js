@@ -25,6 +25,7 @@ class Root extends React.Component {
 
     this.handleUpdateInput = this.handleUpdateInput.bind(this);
     this.handleQuestionChoice = this.handleQuestionChoice.bind(this);
+    this.handleRestartGame = this.handleRestartGame.bind(this);
     this.createScenarioPromise = null;
   }
 
@@ -60,6 +61,16 @@ class Root extends React.Component {
       correctChoices: this.state.correctChoices,
       lastChoice: this.state.lastChoice
     };
+  }
+
+  handleRestartGame() {
+    const nextState = { lastChoice: null, correctChoices: 0 };
+
+    if (this.state.currentQuestion === questions.length) {
+      nextState.currentQuestion = 0;
+    }
+
+    this.setState(nextState);
   }
 
   handleUpdateInput(inputs) {
@@ -130,7 +141,12 @@ class Root extends React.Component {
         </div>
       );
     } else {
-      content = <Summary gameState={this.gameState()} />;
+      content = (
+        <Summary
+          gameState={this.gameState()}
+          onRestartGame={this.handleRestartGame}
+        />
+      );
     }
 
     return (

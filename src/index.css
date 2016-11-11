@@ -185,7 +185,7 @@ h2 {
   margin-left: 1rem;
 }
 
-.question button {
+.question button, .results button {
   background-image: linear-gradient(#5998de, #4488d7);
   border-radius: 5px;
   border: 1px solid #3c7bd0;
@@ -318,6 +318,7 @@ h2 {
 
 .choice-summary {
   border-top: 1px solid #d3deea;
+  margin-top: 2rem;
   padding-top: 3rem;
 }
 

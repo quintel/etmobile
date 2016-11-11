@@ -11,7 +11,7 @@ const correctChoicesText = (number) => {
   return `You made ${number} correct choice${number === 1 ? '' : 's'}`;
 };
 
-const Summary = ({ gameState: { lastChoice, correctChoices } }) => (
+const Summary = ({ onRestartGame, gameState: { lastChoice, correctChoices } }) => (
   <main className="results animated" key="results">
     <h1>{ lastChoice.isCorrect ? 'Wow!' : 'Oops!' }</h1>
     <h2 className="result">
@@ -58,6 +58,8 @@ const Summary = ({ gameState: { lastChoice, correctChoices } }) => (
         </p>
       </div>
     </div>
+
+    <button onClick={onRestartGame}>Try again?</button>
 
     <div className="choice-summary">
       <h2>Your choices</h2>
@@ -128,7 +130,8 @@ Summary.propTypes = {
   gameState: PropTypes.shape({
     correctChoices: PropTypes.number.isRequired,
     lastChoice: PropTypes.shape({ isCorrect: PropTypes.boolean }).isRequired
-  }).isRequired
+  }).isRequired,
+  onRestartGame: PropTypes.func.isRequired
 };
 
 export default Summary;

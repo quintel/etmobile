@@ -6,6 +6,8 @@ import { shallow, mount } from 'enzyme';
 import Root from '../Root';
 import Question from '../../components/Question';
 
+import questions from '../../data/questions';
+
 const stubAPI = () => ({
   createScenario: jest.fn().mockReturnValue(
     new Promise(r => r({ scenario: { id: 1 }, gqueries: {} }))
@@ -66,4 +68,32 @@ it('shows the results page when all questions are answered', () => {
 
   expect(wrapper.find(Question).length).toEqual(0);
   expect(wrapper.find('.results').length).toEqual(1);
+});
+
+it('resumes with the next question when restarting', () => {
+  const wrapper = mount(<Root api={stubAPI()} questions={questions} />);
+
+  wrapper.setState({ lastChoice: { isCorrect: false }, currentQuestion: 1 });
+  wrapper.instance().handleRestartGame();
+
+  expect(wrapper.find(Question).length).toEqual(1);
+  expect(wrapper.find('.results').length).toEqual(0);
+
+  expect(wrapper.state('currentQuestion')).toEqual(1);
+});
+
+it('starts over when restarting with all questions answered', () => {
+  const wrapper = mount(<Root api={stubAPI()} questions={questions} />);
+
+  wrapper.setState({
+    lastChoice: { isCorrect: false },
+    currentQuestion: questions.length
+  });
+
+  wrapper.instance().handleRestartGame();
+
+  expect(wrapper.find(Question).length).toEqual(1);
+  expect(wrapper.find('.results').length).toEqual(0);
+
+  expect(wrapper.state('currentQuestion')).toEqual(0);
 });
