@@ -7,7 +7,7 @@
     "enzyme": "^2.4.1",
     "fetch-mock": "^5.5.0",
     "react-addons-test-utils": "^15.3.2",
-    "react-scripts": "0.6.1"
+    "react-scripts": "0.7.0"
   },
   "dependencies": {
     "animate.css": "^3.5.2",
