@@ -11,6 +11,10 @@ import Summary from '../components/Summary';
 import dashboard from '../data/dashboard';
 import questions from '../data/questions';
 
+import shuffleArray from '../utils/shuffleArray';
+
+const gameQuestions = shuffleArray(questions);
+
 class Root extends React.Component {
   constructor() {
     super();
@@ -66,7 +70,7 @@ class Root extends React.Component {
   handleRestartGame() {
     const nextState = { lastChoice: null, correctChoices: 0 };
 
-    if (this.state.currentQuestion === questions.length) {
+    if (this.state.currentQuestion === gameQuestions.length) {
       nextState.currentQuestion = 0;
     }
 
@@ -112,13 +116,13 @@ class Root extends React.Component {
     const lastChoice = this.state.lastChoice;
 
     if ((!lastChoice || lastChoice.isCorrect) &&
-        questions[this.state.currentQuestion]) {
+        gameQuestions[this.state.currentQuestion]) {
       content = (
         <div>
           <main className="question-wrapper">
             <ProgressBar
               current={this.state.currentQuestion}
-              total={questions.length}
+              total={gameQuestions.length}
             />
             <ReactCSSTransitionGroup
               component="div"
@@ -129,7 +133,7 @@ class Root extends React.Component {
               <Question
                 key={this.state.currentQuestion}
                 onChoiceMade={this.handleQuestionChoice}
-                {...questions[this.state.currentQuestion]}
+                {...gameQuestions[this.state.currentQuestion]}
               />
             </ReactCSSTransitionGroup>
           </main>
