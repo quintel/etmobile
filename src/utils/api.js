@@ -50,7 +50,7 @@ export const createScenario = () => (
       scenario: {
         area_code: 'nl',
         end_year: 2050,
-        source: 'ETMobile'
+        source: 'ETMobile Client'
       }
     })
   }).then(checkStatus).then(parseJSON).then(data => (

@@ -4,6 +4,7 @@
   "private": true,
   "homepage": "https://quintel.github.io/etmobile",
   "devDependencies": {
+    "axios": "^0.15.2",
     "enzyme": "^2.4.1",
     "fetch-mock": "^5.5.0",
     "react-addons-test-utils": "^15.3.2",
@@ -32,6 +33,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "coverage": "react-scripts test --env=jsdom --coverage",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "build-answers": "babel-node scripts/buildAnswers.js"
   }
 }

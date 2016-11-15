@@ -63,11 +63,6 @@ const questions = [
   {
     code: 'electric_vehicles_or_trains',
     name: 'Travel by electric car or by train?',
-    inputs: [
-      'transport_car_using_electricity_share',
-      'transport_useful_demand_car_kms',
-      'transport_useful_demand_trains'
-    ],
     choices: [
       {
         name: 'Add one million electric cars',
