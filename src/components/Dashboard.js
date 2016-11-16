@@ -1,19 +1,6 @@
 import React, { PropTypes } from 'react';
 
-import co2Svg from '../images/dashboard/co2.svg';
-import costsSvg from '../images/dashboard/costs.svg';
-import leaderboardSvg from '../images/dashboard/leaderboard.svg';
-
-const itemIcon = (iconName) => {
-  switch (iconName) {
-    case 'costs':
-      return costsSvg;
-    case 'leaderboard':
-      return leaderboardSvg;
-    default:
-      return co2Svg;
-  }
-};
+import * as images from '../images/dashboard';
 
 const formatValue = (item, results, gameState) => {
   if (!item.hasOwnProperty('query')) {
@@ -35,7 +22,7 @@ const Dashboard = props => (
       <div className="dashboard-item" key={index}>
         <span
           className="icon"
-          style={{ backgroundImage: `url(${itemIcon(item.icon)})` }}
+          style={{ backgroundImage: `url(${images[item.icon]})` }}
           alt={item.title}
         />
         <span className="value">

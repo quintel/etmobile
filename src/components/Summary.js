@@ -1,7 +1,7 @@
 import React, { PropTypes } from 'react';
 
 import * as choiceImages from '../images/choices';
-import co2Svg from '../images/dashboard/co2_green.svg';
+import { co2Green } from '../images/dashboard';
 
 const correctChoicesText = (number) => {
   if (number === 0) {
@@ -74,7 +74,7 @@ const Summary = ({ onRestartGame, gameState: { lastChoice, correctChoices } }) =
           />
           <span className="target-delta">
             <img
-              src={co2Svg}
+              src={co2Green}
               width="24"
               height="24"
               alt="presentation"
@@ -103,7 +103,7 @@ const Summary = ({ onRestartGame, gameState: { lastChoice, correctChoices } }) =
           />
           <span className="target-delta">
             <img
-              src={co2Svg}
+              src={co2Green}
               width="24"
               height="24"
               alt="presentation"
