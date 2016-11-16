@@ -10,10 +10,12 @@ import Summary from '../components/Summary';
 
 import dashboard from '../data/dashboard';
 import questions from '../data/questions';
+import answers from '../data/answers';
 
 import shuffleArray from '../utils/shuffleArray';
+import mapAnswersToQuestions from '../utils/mapAnswersToQuestions';
 
-const gameQuestions = shuffleArray(questions);
+const gameQuestions = shuffleArray(mapAnswersToQuestions(questions, answers));
 
 class Root extends React.Component {
   constructor() {

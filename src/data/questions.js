@@ -1,3 +1,10 @@
+/**
+ * Any changes made to this file, such as reordering questions or choices, or
+ * adding/removing questions requires that the answers.js file be regenerated.
+ * Failing to do this will cause the wrong choices to be shown as correct.
+ *
+ * Recreate answers.js by running: npm run build-answers
+ */
 const questions = [
   {
     code: 'coal_or_wind',
@@ -13,7 +20,6 @@ const questions = [
       {
         name: 'Build 800 offshore turbines',
         icon: 'wind',
-        isCorrect: true,
         inputs: {
           number_of_energy_power_wind_turbine_offshore: 871.3
         }
@@ -44,7 +50,6 @@ const questions = [
       {
         name: 'Use LED light bulbs',
         icon: 'ledLighting',
-        isCorrect: true,
         inputs: {
           households_lighting_led_electricity_share: 100
         }
@@ -62,22 +67,21 @@ const questions = [
   },
   {
     code: 'electric_vehicles_or_trains',
-    name: 'Travel by electric car or by train?',
+    name: 'Travel by train or by electric car?',
     choices: [
-      {
-        name: 'Add one million electric cars',
-        icon: 'electricVehicle',
-        isCorrect: true,
-        inputs: {
-          transport_car_using_electricity_share: 20.0
-        }
-      },
       {
         name: '5% of car journeys instead done by train',
         icon: 'train',
         inputs: {
           transport_useful_demand_car_kms: -5,
           transport_useful_demand_trains: 5
+        }
+      },
+      {
+        name: 'Add one million electric cars',
+        icon: 'electricVehicle',
+        inputs: {
+          transport_car_using_electricity_share: 20.0
         }
       }
     ],
