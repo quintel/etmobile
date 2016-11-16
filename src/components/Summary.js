@@ -11,7 +11,9 @@ const correctChoicesText = (number) => {
   return `You made ${number} correct choice${number === 1 ? '' : 's'}`;
 };
 
-const Summary = ({ onRestartGame, gameState: { lastChoice, correctChoices } }) => (
+const Summary = ({
+  onRestartGame, gameState: { lastChoice, correctChoices }
+}) => (
   <main className="results animated" key="results">
     <h1>{ lastChoice.isCorrect ? 'Wow!' : 'Oops!' }</h1>
     <h2 className="result">
