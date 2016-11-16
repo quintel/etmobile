@@ -76,3 +76,28 @@ it('renders a dashboard with query results and a custom formatter', () => {
   expect(items.find('.value').text().includes('Value: 25')).toEqual(true);
   expect(items.find('.value').text().includes('—')).toEqual(false);
 });
+
+it('renders a dashboard without a query', () => {
+  const data = [{
+    title: 'Hi there!',
+    icon: 'co2',
+    formatValue() { return 'Hi'; }
+  }];
+
+  const results = { hello_world: 12.5 };
+
+  const wrapper = shallow(
+    <Dashboard
+      items={data}
+      results={results}
+      gameState={{ correctChoices: 0 }}
+    />
+  );
+
+  const items = wrapper.find('.dashboard-item');
+
+  expect(items.length).toEqual(1);
+
+  expect(items.find('.value').text().includes('Hi')).toEqual(true);
+  expect(items.find('.value').text().includes('—')).toEqual(false);
+});

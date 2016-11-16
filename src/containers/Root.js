@@ -6,8 +6,6 @@ import ProgressBar from '../components/ProgressBar';
 import Question from '../components/Question';
 import Summary from '../components/Summary';
 
-import dashboard from '../data/dashboard';
-
 class Root extends React.Component {
   constructor() {
     super();
@@ -44,7 +42,7 @@ class Root extends React.Component {
     return this.props.api.updateScenario(
       scenarioID,
       inputKeys,
-      dashboard.map(item => item.query).filter(query => query)
+      this.props.dashboard.map(item => item.query).filter(query => query)
     ).then((data) => {
       this.setState({
         scenarioID: data.scenario.id,
@@ -131,7 +129,7 @@ class Root extends React.Component {
             </ReactCSSTransitionGroup>
           </main>
           <Dashboard
-            items={dashboard}
+            items={this.props.dashboard}
             results={this.state.queryResults}
             gameState={this.gameState()}
           />
@@ -160,6 +158,7 @@ Root.propTypes = {
     createScenario: PropTypes.func.isRequired,
     updateScenario: PropTypes.func.isRequired
   }).isRequired,
+  dashboard: Dashboard.propTypes.items,
   questions: PropTypes.arrayOf(PropTypes.shape(
     { ...Question.propTypes, onChoiceMade: undefined }
   ))

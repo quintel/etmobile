@@ -27,6 +27,15 @@ const questions = [
   }
 ];
 
+const dashboard = [{
+  title: 'First Item',
+  query: 'dashboard_co2_emissions_versus_start_year',
+  icon: 'co2',
+  formatValue(value) {
+    return `${Math.round(-value * 10000) / 100}%`;
+  }
+}];
+
 const stubAPI = () => ({
   createScenario: jest.fn().mockReturnValue(
     new Promise(r => r({ scenario: { id: 1 }, gqueries: {} }))
@@ -37,7 +46,14 @@ const stubAPI = () => ({
 });
 
 it('renders an input list', () => {
-  const wrapper = shallow(<Root api={stubAPI()} questions={questions} />);
+  const wrapper = shallow(
+    <Root
+      api={stubAPI()}
+      dashboard={dashboard}
+      questions={questions}
+    />
+  );
+
   expect(wrapper.find(Question).length).toEqual(1);
 });
 
@@ -50,7 +66,13 @@ it('creates a new scenario when mounted', () => {
   api.createScenario = jest.fn().mockReturnValue(cPromise);
   spyOn(api, 'updateScenario').and.callFake(() => (uPromise));
 
-  const wrapper = mount(<Root api={api} questions={questions} />);
+  const wrapper = mount(
+    <Root
+      api={api}
+      dashboard={dashboard}
+      questions={questions}
+    />
+  );
 
   return Promise.all([cPromise, uPromise]).then(() => {
     expect(api.createScenario).toHaveBeenCalled();
@@ -67,8 +89,15 @@ it('creates a new scenario when mounted', () => {
 
 it('sends updated inputs to the API', () => {
   const api = stubAPI();
-  const wrapper = mount(<Root api={api} questions={questions} />);
   const choice = { inputs: { abc: 10 }, isCorrect: true };
+
+  const wrapper = mount(
+    <Root
+      api={api}
+      dashboard={dashboard}
+      questions={questions}
+    />
+  );
 
   spyOn(api, 'updateScenario').and.callThrough();
 
@@ -81,7 +110,13 @@ it('sends updated inputs to the API', () => {
 });
 
 it('shows the results page when all questions are answered', () => {
-  const wrapper = mount(<Root api={stubAPI()} questions={questions} />);
+  const wrapper = mount(
+    <Root
+      api={stubAPI()}
+      dashboard={dashboard}
+      questions={questions}
+    />
+  );
 
   wrapper.setState({ lastChoice: { isCorrect: false }, currentQuestion: 9999 });
 
@@ -90,7 +125,13 @@ it('shows the results page when all questions are answered', () => {
 });
 
 it('resumes with the next question when restarting', () => {
-  const wrapper = mount(<Root api={stubAPI()} questions={questions} />);
+  const wrapper = mount(
+    <Root
+      api={stubAPI()}
+      dashboard={dashboard}
+      questions={questions}
+    />
+  );
 
   wrapper.setState({ lastChoice: { isCorrect: false }, currentQuestion: 1 });
   wrapper.instance().handleRestartGame();
@@ -102,7 +143,13 @@ it('resumes with the next question when restarting', () => {
 });
 
 it('starts over when restarting with all questions answered', () => {
-  const wrapper = mount(<Root api={stubAPI()} questions={questions} />);
+  const wrapper = mount(
+    <Root
+      api={stubAPI()}
+      dashboard={dashboard}
+      questions={questions}
+    />
+  );
 
   wrapper.setState({
     lastChoice: { isCorrect: false },
