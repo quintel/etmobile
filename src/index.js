@@ -19,7 +19,7 @@ import {
 
 import './index.css';
 
-const gameQuestions = shuffleArray(mapAnswersToQuestions(questions, answers));
+const gameQuestions = shuffleArray(mapAnswersToQuestions(answers, questions));
 
 render(
   <Root api={{ createScenario, updateScenario }} questions={gameQuestions} />,

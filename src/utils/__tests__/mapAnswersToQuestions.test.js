@@ -10,7 +10,7 @@ const questions = [
 const answers = [[-1.0, 0.2], [-3.2, -3.3]];
 
 it('maps answers to each choice', () => {
-  const mapped = mapAnswersToQuestions(questions, answers);
+  const mapped = mapAnswersToQuestions(answers, questions);
 
   expect(mapped[0].choices[0].delta).toEqual(-1.0);
   expect(mapped[0].choices[1].delta).toEqual(0.2);
@@ -20,7 +20,7 @@ it('maps answers to each choice', () => {
 });
 
 it('maps isCorrect values to each choice', () => {
-  const mapped = mapAnswersToQuestions(questions, answers);
+  const mapped = mapAnswersToQuestions(answers, questions);
 
   expect(mapped[0].choices[0].isCorrect).toEqual(true);
   expect(mapped[0].choices[1].isCorrect).toEqual(false);
@@ -33,7 +33,7 @@ it('raises an error when a question answer is missing', () => {
   const missingQuestionAnswer = [[-1.0, 0.2]];
 
   expect(
-    () => mapAnswersToQuestions(questions, missingQuestionAnswer)
+    () => mapAnswersToQuestions(missingQuestionAnswer, questions)
   ).toThrowError('Answers length (1) and questions length (2) do not match');
 });
 
@@ -41,7 +41,7 @@ it('raises an error when a choice answer is missing', () => {
   const missingChoiceAnswer = [[-1.0, 0.2], [-3]];
 
   expect(
-    () => mapAnswersToQuestions(questions, missingChoiceAnswer)
+    () => mapAnswersToQuestions(missingChoiceAnswer, questions)
   ).toThrowError(
     'Answers length for question \'Q2\' (1) and number of choices (2) do ' +
     'not match'
