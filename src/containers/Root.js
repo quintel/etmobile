@@ -1,8 +1,6 @@
 import React, { PropTypes } from 'react';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 
-import 'animate.css';
-
 import Dashboard from '../components/Dashboard';
 import ProgressBar from '../components/ProgressBar';
 import Question from '../components/Question';

@@ -1,4 +1,5 @@
 import 'normalize.css';
+import 'animate.css';
 
 import React from 'react';
 import { render } from 'react-dom';
