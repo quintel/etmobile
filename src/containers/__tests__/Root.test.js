@@ -6,7 +6,26 @@ import { shallow, mount } from 'enzyme';
 import Root from '../Root';
 import Question from '../../components/Question';
 
-import questions from '../../data/questions';
+const questions = [
+  {
+    code: 'ab',
+    name: 'A or B?',
+    description: { __html: 'A description of this first question' },
+    choices: [
+      { name: 'Choice A', icon: 'coal', inputs: {}, isCorrect: true },
+      { name: 'Choice B', icon: 'wind', inputs: {} }
+    ]
+  },
+  {
+    code: 'cd',
+    name: 'C or D?',
+    description: { __html: 'A description of this other question' },
+    choices: [
+      { name: 'Choice C', icon: 'balloon', inputs: {} },
+      { name: 'Choice D', icon: 'battery', inputs: {}, isCorrect: true }
+    ]
+  }
+];
 
 const stubAPI = () => ({
   createScenario: jest.fn().mockReturnValue(
@@ -18,7 +37,7 @@ const stubAPI = () => ({
 });
 
 it('renders an input list', () => {
-  const wrapper = shallow(<Root api={stubAPI()} />);
+  const wrapper = shallow(<Root api={stubAPI()} questions={questions} />);
   expect(wrapper.find(Question).length).toEqual(1);
 });
 
@@ -31,7 +50,7 @@ it('creates a new scenario when mounted', () => {
   api.createScenario = jest.fn().mockReturnValue(cPromise);
   spyOn(api, 'updateScenario').and.callFake(() => (uPromise));
 
-  const wrapper = mount(<Root api={api} />);
+  const wrapper = mount(<Root api={api} questions={questions} />);
 
   return Promise.all([cPromise, uPromise]).then(() => {
     expect(api.createScenario).toHaveBeenCalled();
@@ -48,7 +67,7 @@ it('creates a new scenario when mounted', () => {
 
 it('sends updated inputs to the API', () => {
   const api = stubAPI();
-  const wrapper = mount(<Root api={api} />);
+  const wrapper = mount(<Root api={api} questions={questions} />);
   const choice = { inputs: { abc: 10 }, isCorrect: true };
 
   spyOn(api, 'updateScenario').and.callThrough();
@@ -62,7 +81,7 @@ it('sends updated inputs to the API', () => {
 });
 
 it('shows the results page when all questions are answered', () => {
-  const wrapper = mount(<Root api={stubAPI()} />);
+  const wrapper = mount(<Root api={stubAPI()} questions={questions} />);
 
   wrapper.setState({ lastChoice: { isCorrect: false }, currentQuestion: 9999 });
 

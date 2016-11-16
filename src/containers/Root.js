@@ -9,13 +9,6 @@ import Question from '../components/Question';
 import Summary from '../components/Summary';
 
 import dashboard from '../data/dashboard';
-import questions from '../data/questions';
-import answers from '../data/answers';
-
-import shuffleArray from '../utils/shuffleArray';
-import mapAnswersToQuestions from '../utils/mapAnswersToQuestions';
-
-const gameQuestions = shuffleArray(mapAnswersToQuestions(questions, answers));
 
 class Root extends React.Component {
   constructor() {
@@ -72,7 +65,7 @@ class Root extends React.Component {
   handleRestartGame() {
     const nextState = { lastChoice: null, correctChoices: 0 };
 
-    if (this.state.currentQuestion === gameQuestions.length) {
+    if (this.state.currentQuestion === this.props.questions.length) {
       nextState.currentQuestion = 0;
     }
 
@@ -118,13 +111,13 @@ class Root extends React.Component {
     const lastChoice = this.state.lastChoice;
 
     if ((!lastChoice || lastChoice.isCorrect) &&
-        gameQuestions[this.state.currentQuestion]) {
+        this.props.questions[this.state.currentQuestion]) {
       content = (
         <div>
           <main className="question-wrapper">
             <ProgressBar
               current={this.state.currentQuestion}
-              total={gameQuestions.length}
+              total={this.props.questions.length}
             />
             <ReactCSSTransitionGroup
               component="div"
@@ -135,7 +128,7 @@ class Root extends React.Component {
               <Question
                 key={this.state.currentQuestion}
                 onChoiceMade={this.handleQuestionChoice}
-                {...gameQuestions[this.state.currentQuestion]}
+                {...this.props.questions[this.state.currentQuestion]}
               />
             </ReactCSSTransitionGroup>
           </main>
@@ -168,7 +161,10 @@ Root.propTypes = {
   api: PropTypes.shape({
     createScenario: PropTypes.func.isRequired,
     updateScenario: PropTypes.func.isRequired
-  }).isRequired
+  }).isRequired,
+  questions: PropTypes.arrayOf(PropTypes.shape(
+    { ...Question.propTypes, onChoiceMade: undefined }
+  ))
 };
 
 export default Root;
