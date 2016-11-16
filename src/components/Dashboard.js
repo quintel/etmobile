@@ -58,7 +58,7 @@ Dashboard.propTypes = {
       title: PropTypes.string.isRequired
     })
   ).isRequired,
-  results: PropTypes.shape().isRequired,
+  results: PropTypes.shape().isRequired
 };
 
 export default Dashboard;
