@@ -55,7 +55,7 @@ const writeResults = (path, results) => {
 
       export default ${JSON.stringify(results, null, 2)};
     `,
-    err => console.log(err || 'The file was saved!')
+    err => console.log(err || `\nThe file was saved: ${path}`)
   );
 };
 
@@ -103,9 +103,15 @@ const fetchResults = (url, inputs) => (
  *                   completed.
  */
 const serialFetchResults = (baseline, results, requests, index, url) => {
-  const { qIndex, inputs, name } = requests[index];
+  const { qIndex, inputs, qName, cName } = requests[index];
 
-  console.log('Requesting:', name);
+
+  if (!results[qIndex]) {
+    console.log('');
+    console.log(qName);
+  }
+
+  process.stdout.write(`  - ${cName}`);
 
   return fetchResults(url, inputs)
     .then((response) => {
@@ -117,6 +123,8 @@ const serialFetchResults = (baseline, results, requests, index, url) => {
       } else {
         results[qIndex] = [delta];
       }
+
+      console.log(` = ${delta}%`);
 
       if (requests[index + 1]) {
         return serialFetchResults(baseline, results, requests, index + 1, url);
@@ -138,7 +146,8 @@ const questionsToRequests = (qs) => {
       requests.push({
         qIndex,
         inputs: choice.inputs,
-        name: `${question.name} - ${choice.name}`
+        qName: question.name,
+        cName: choice.name
       });
     });
   });
