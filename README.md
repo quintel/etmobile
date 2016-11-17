@@ -120,7 +120,7 @@ value of the `icon` field should match the name of one of these images,
 For example, if you wish to show "electric_vehicle.svg", the `icon` value should
 be "electricVehicle".
 
-If you add a new icon, be sure to add it's name to
+If you add a new icon, be sure to add its name to
 **src/images/choices/index.js**.
 
 #### Choice `inputs`
