@@ -7,12 +7,7 @@ import fs from 'fs';
 
 import questions from '../src/data/questions';
 
-// const axios = require('axios');
-// const fs = require('fs');
-// const questions = require('../src/data/questions');
-
-// const endpoint = 'https://beta-engine.energytransitionmodel.com';
-const endpoint = 'http://etengine.dev';
+const endpoint = 'https://beta-engine.energytransitionmodel.com';
 
 /**
  * Template string tag which removes leading space from each line in the string.
