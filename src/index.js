@@ -6,12 +6,14 @@ import { render } from 'react-dom';
 
 import Root from './containers/Root';
 
-import questions from './data/questions';
+// import questions from './data/questions';
 import answers from './data/answers';
+import choices from './data/choices';
 import dashboard from './data/dashboard';
 
 import shuffleArray from './utils/shuffleArray';
-import mapAnswersToQuestions from './utils/mapAnswersToQuestions';
+import mapAnswersToChoices from './utils/mapAnswersToChoices';
+import choicesToQuestions from './utils/choicesToQuestions';
 
 import {
   createScenario,
@@ -20,7 +22,8 @@ import {
 
 import './index.css';
 
-const gameQuestions = shuffleArray(mapAnswersToQuestions(answers, questions));
+const gameQuestions =
+  choicesToQuestions(shuffleArray(mapAnswersToChoices(answers, choices)));
 
 render(
   <Root
