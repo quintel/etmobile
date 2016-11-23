@@ -18,3 +18,4 @@ export { default as truck } from './truck.svg';
 export { default as turbine } from './turbine.svg';
 export { default as wrench } from './wrench.svg';
 export { default as ship } from './ship.svg';
+export { default as radiator } from './radiator.svg';
