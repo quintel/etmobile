@@ -12,7 +12,7 @@ export default [
     }
   },
   {
-    name: 'Build 800 offshore turbines',
+    name: 'Build 250 offshore turbines',
     header: 'Wind',
     icon: 'wind',
     description: `
@@ -20,7 +20,7 @@ export default [
       shadow right in there.
     `,
     inputs: {
-      number_of_energy_power_wind_turbine_offshore: 871.3
+      number_of_energy_power_wind_turbine_offshore: 321.3
     }
   },
   {
