@@ -16,3 +16,4 @@ export { default as switch } from './switch.svg';
 export { default as truck } from './truck.svg';
 export { default as turbine } from './turbine.svg';
 export { default as wrench } from './wrench.svg';
+export { default as ship } from './ship.svg';
