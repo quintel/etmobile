@@ -1,8 +1,8 @@
 {
   "main.css": "static/css/main.5f7490ca.css",
   "main.css.map": "static/css/main.5f7490ca.css.map",
-  "main.js": "static/js/main.6b40077c.js",
-  "main.js.map": "static/js/main.6b40077c.js.map",
+  "main.js": "static/js/main.eaff70ef.js",
+  "main.js.map": "static/js/main.eaff70ef.js.map",
   "static/media/balloon.svg": "static/media/balloon.99f79462.svg",
   "static/media/battery.svg": "static/media/battery.a36dda58.svg",
   "static/media/car.svg": "static/media/car.4db52d40.svg",
@@ -20,6 +20,7 @@
   "static/media/mosk_extra-bold_800.woff": "static/media/mosk_extra-bold_800.63cbbbc2.woff",
   "static/media/mosk_extra-bold_800.woff2": "static/media/mosk_extra-bold_800.b2671db4.woff2",
   "static/media/oil.svg": "static/media/oil.62bdcd6e.svg",
+  "static/media/radiator.svg": "static/media/radiator.27bc8867.svg",
   "static/media/ship.svg": "static/media/ship.8dc2a9c9.svg",
   "static/media/solar.svg": "static/media/solar.4b61fa96.svg",
   "static/media/switch.svg": "static/media/switch.327971fd.svg",
