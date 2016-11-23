@@ -27,7 +27,6 @@ export const ChoiceButton = (props) => {
       className={classes}
     >
       {name}{' '}
-      {isSelected ? '' : <span className="arrows">&raquo;</span>}
     </button>
   );
 };
