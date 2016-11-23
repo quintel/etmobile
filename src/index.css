@@ -225,16 +225,16 @@ h2 {
   margin-top: 1rem;
 }
 
-.question button.fadeIn {
-  margin-bottom: -95px;
-}
-
 .question .choices-container button {
   margin-top: 1rem;
   margin-bottom: 1rem;
   min-height: 5rem;
   padding-left: 0.75rem;
   padding-right: 0.75rem;
+}
+
+.question .choices-container button.fadeIn {
+  margin-bottom: -96px;
 }
 
 .question button.fadeIn:focus,
