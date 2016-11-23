@@ -81,7 +81,7 @@ export default [
   },
   {
     name: 'Replace old with new houses',
-    icon: 'House replacement',
+    icon: 'house',
     description: `
       Look around. Look at what we have. Beauty is everywhere – you only have to
       look to see it.
@@ -93,21 +93,12 @@ export default [
   },
   {
     name: 'Use hybrid heat pumps',
-    icon: 'hybridHeatPump',
+    icon: 'radiator',
     description: `
       Look around. Look at what we have. Beauty is everywhere – you only have to
       look to see it.
     `,
     inputs: {
-      households_space_heater_combined_network_gas_share: 0,
-      households_space_heater_heatpump_ground_water_electricity_share: 0,
-      households_space_heater_district_heating_steam_hot_water_share: 0,
-      households_space_heater_heatpump_air_water_electricity_share: 0,
-      households_space_heater_wood_pellets_share: 0,
-      households_space_heater_electricity_share: 0,
-      households_space_heater_network_gas_share: 0,
-      households_space_heater_crude_oil_share: 0,
-      households_space_heater_coal_share: 0,
       households_space_heater_hybrid_heatpump_air_water_electricity_share: 100
     }
   },
