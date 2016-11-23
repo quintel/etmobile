@@ -4,6 +4,7 @@ export { default as co2 } from './co2.svg';
 export { default as coin } from './coin.svg';
 export { default as coal } from './coal.svg';
 export { default as electricVehicle } from './electric_vehicle.svg';
+export { default as car } from './car.svg';
 export { default as ledLighting } from './led_lighting.svg';
 export { default as train } from './train.svg';
 export { default as wind } from './wind.svg';
