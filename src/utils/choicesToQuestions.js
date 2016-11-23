@@ -6,6 +6,10 @@ const choiceTitle = (choice, upcase) => {
     throw new Error('No "header" or "name" defined for', choice);
   }
 
+  if (!upcase && header.match(/^[A-Z]+\b/)) {
+    return header;
+  }
+
   return `${func.apply(header.charAt(0))}${header.substr(1)}`;
 };
 

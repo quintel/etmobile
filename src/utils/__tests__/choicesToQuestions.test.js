@@ -18,6 +18,17 @@ it('creates a question from two choices', () => {
   expect(question.choices).toContainEqual({ ...choices[1], isCorrect: false });
 });
 
+it('correctly capitalizes acronyms', () => {
+  const choices = [
+    { icon: 'wind', name: 'Wind', description: 'ABC.', delta: 0 },
+    { icon: 'lng', name: 'LNG', description: 'DEF.', delta: 0 }
+  ];
+
+  const question = choicesToQuestions(choices)[0];
+
+  expect(question.name).toEqual('Wind or LNG?');
+});
+
 it('assigns isCorrect to the choice with the lowest delta', () => {
   const choices = [
     { icon: 'coal', name: 'Coal', delta: 2 },
