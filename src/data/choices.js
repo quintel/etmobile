@@ -4,8 +4,11 @@ export default [
     header: 'Coal',
     icon: 'coal',
     description: `
-      In painting, you have unlimited power. You have the ability to move
-      mountains. You can bend rivers.
+      You can build a 800 megawatt electric (MWe) ultra-supercritical
+      pulverized coal-fired plant. Of all types of power plants, coal and
+      lignite-fired ones contribute most to pollution of the environment. This
+      is the most common type of modern coal-fired power plant in rich
+      countries with relatively strict regulations for air pollution.
     `,
     inputs: {
       number_of_energy_power_combined_cycle_coal: 1.0
@@ -17,7 +20,10 @@ export default [
     icon: 'gas',
     description: `
       You will build a(n additional) Combined Cycle Gas Turbine (CCGT) power
-      plant with an output capacity of 800 MW.
+      plant with an output capacity of 800 MW. Flexible gas-fired plants are
+      often used for meeting daily electricity demand peaks and therefore
+      produce less electricity per year than coal-fired plants of the same
+      production capacity.
     `,
     inputs: {
       number_of_energy_power_combined_cycle_network_gas: 1.0
@@ -28,8 +34,10 @@ export default [
     header: 'Wind',
     icon: 'wind',
     description: `
-      Mix up a little more shadow color here, then we can put us a little
-      shadow right in there.
+      You can build 250 wind turbines of 3 MWe each. Wind turbines produce
+      less electricity per MWe than fossil-fired or nuclear plants do because
+      of varying wind conditions. Offshore wind turbines produce at maximum
+      capacity ~40% of the time, if there is not too much need for maintenance.
     `,
     inputs: {
       number_of_energy_power_wind_turbine_offshore: 321.3
@@ -39,19 +47,20 @@ export default [
     name: 'Store electricity in batteries',
     icon: 'battery',
     description: `
-      See how you can move things around? You have unlimited power on this
-      canvas – you can literally, literally move mountains.
+      You can give an additional 20% of all households a battery that can store
+      19.8 kWh of electricity and can be charged using grid power or solar.
     `,
     inputs: {
-      households_flexibility_p2p_electricity_market_penetration: 100
+      households_flexibility_p2p_electricity_market_penetration: 20
     }
   },
   {
     name: 'Use LED light bulbs',
     icon: 'ledLighting',
     description: `
-      Look around. Look at what we have. Beauty is everywhere – you only have to
-      look to see it.
+      Replace all the light bulbs in households with LED-lights. A old-fashioned
+      incandescent light bulb lasts for 1,000 hours, but LED-lights last for
+      50.000 hours! So, less changing as well.
     `,
     inputs: {
       households_lighting_led_electricity_share: 100
@@ -200,16 +209,18 @@ export default [
     }
   },
   {
-    name: 'Make 50% of gas green',
-    header: '50% green gas',
+    name: 'Make 10% of gas green',
+    header: '10% green gas',
     icon: 'greenGas',
     description: `
-      Don’t forget to tell these special people in your life just how special
-      they are to you.
+      This increases the percentage of all gas used as green gas with 10%.
+      Green gas is biogas that has been upgraded to natural gas quality. It
+      can be fed into the gas mains. Biogas is conventionally produced by
+      bacteria that digest biological material. In the future, such gas may be
+      produced by 'gasification' of biomass.
     `,
     inputs: {
-      green_gas_total_share: 50,
-      natural_gas_total_share: 50
+      green_gas_total_share: 10,
     }
   },
   {
