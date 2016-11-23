@@ -5,7 +5,7 @@
 import axios from 'axios';
 import fs from 'fs';
 
-import questions from '../src/data/questions';
+import staticChoices from '../src/data/choices';
 
 const endpoint = 'https://beta-engine.energytransitionmodel.com';
 
@@ -98,28 +98,19 @@ const fetchResults = (url, inputs) => (
  *                   completed.
  */
 const serialFetchResults = (baseline, results, requests, index, url) => {
-  const { qIndex, inputs, qName, cName } = requests[index];
+  const { index: cIndex, inputs, name } = requests[index];
 
 
-  if (!results[qIndex]) {
-    console.log('');
-    console.log(qName);
-  }
-
-  process.stdout.write(`  - ${cName}`);
+  process.stdout.write(`${name} `);
 
   return fetchResults(url, inputs)
     .then((response) => {
       const co2 = response.data.gqueries.total_co2_emissions.future;
       const delta = parseFloat((-(1 - (co2 / baseline)) * 100).toFixed(4));
 
-      if (results[qIndex]) {
-        results[qIndex].push(delta);
-      } else {
-        results[qIndex] = [delta];
-      }
+      results[cIndex] = delta;
 
-      console.log(` = ${delta}%`);
+      console.log(`= ${delta}%`);
 
       if (requests[index + 1]) {
         return serialFetchResults(baseline, results, requests, index + 1, url);
@@ -130,21 +121,14 @@ const serialFetchResults = (baseline, results, requests, index, url) => {
 };
 
 /**
- * Converts the map of questions and choices to an array of requests which need
- * to be performed.
+ * Converts the map of choices to an array of requests which need to be
+ * performed.
  */
-const questionsToRequests = (qs) => {
+const choicesToRequests = (choices) => {
   const requests = [];
 
-  qs.forEach((question, qIndex) => {
-    question.choices.forEach((choice) => {
-      requests.push({
-        qIndex,
-        inputs: choice.inputs,
-        qName: question.name,
-        cName: choice.name
-      });
-    });
+  choices.forEach(({ name, inputs }, index) => {
+    requests.push({ index, inputs, name });
   });
 
   return requests;
@@ -159,7 +143,7 @@ createScenario().then((response) => {
       const fetchPromise = serialFetchResults(
         gqueries.total_co2_emissions.future,
         [],
-        questionsToRequests(questions),
+        choicesToRequests(staticChoices),
         0,
         response.data.url
       );
