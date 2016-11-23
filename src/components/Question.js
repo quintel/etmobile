@@ -61,31 +61,26 @@ class Question extends React.Component {
                 role="presentation"
               />
 
+              <ReactCSSTransitionGroup
+                component="div"
+                transitionName={{ enter: 'fadeIn', leave: 'bounceOut' }}
+                transitionEnterTimeout={1000}
+                transitionLeaveTimeout={1000}
+              >
+                <ChoiceButton
+                  key={`${index}-${this.state.choice === index ? '1' : '0'}`}
+                  index={index}
+                  isCorrect={choice.isCorrect}
+                  name={choice.name}
+                  onClick={this.onChoiceSelected}
+                  selectedIndex={this.state.choice}
+                />
+              </ReactCSSTransitionGroup>
+
               <p className="description" key={index}>
                 {choice.description}
               </p>
             </div>
-          ))}
-        </div>
-
-        <div className="choices-container">
-          {this.props.choices.map((choice, index) => (
-            <ReactCSSTransitionGroup
-              component="div"
-              key={`button-${index}`}
-              transitionName={{ enter: 'fadeIn', leave: 'bounceOut' }}
-              transitionEnterTimeout={1000}
-              transitionLeaveTimeout={1000}
-            >
-              <ChoiceButton
-                key={`${index}-${this.state.choice === index ? '1' : '0'}`}
-                index={index}
-                isCorrect={choice.isCorrect}
-                name={choice.name}
-                onClick={this.onChoiceSelected}
-                selectedIndex={this.state.choice}
-              />
-            </ReactCSSTransitionGroup>
           ))}
         </div>
       </div>
