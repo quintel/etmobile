@@ -59,7 +59,7 @@ export default [
   },
   {
     name: 'Use LED light bulbs in offices',
-    icon: 'ledLightingOffices',
+    icon: 'ledLighting',
     description: `
       Look around. Look at what we have. Beauty is everywhere – you only have to
       look to see it.
@@ -70,7 +70,7 @@ export default [
   },
   {
     name: 'Install solar PV panels',
-    icon: 'solarPV',
+    icon: 'solar',
     description: `
       Look around. Look at what we have. Beauty is everywhere – you only have to
       look to see it.
@@ -139,7 +139,7 @@ export default [
   {
     name: 'Increase electric trucks with 20%',
     header: 'Electric trucks',
-    icon: 'electricTruck',
+    icon: 'trucks',
     description: `
       Don’t forget to tell these special people in your life just how special
       they are to you.
@@ -151,7 +151,7 @@ export default [
   {
     name: 'Increase LNG trucks with 20%',
     header: 'LNG trucks',
-    icon: 'lngTruck',
+    icon: 'truck',
     description: `
       Don’t forget to tell these special people in your life just how special
       they are to you.
@@ -187,7 +187,7 @@ export default [
   {
     name: 'Double insulation of existing houses',
     header: 'Insulate existing houses',
-    icon: 'insulateOldHouses',
+    icon: 'house',
     description: `
       Don’t forget to tell these special people in your life just how special
       they are to you.
@@ -199,7 +199,7 @@ export default [
   {
     name: 'Double insulation of new houses',
     header: 'Insulate new houses',
-    icon: 'insulateNewHouses',
+    icon: 'house',
     description: `
       Don’t forget to tell these special people in your life just how special
       they are to you.
@@ -236,7 +236,7 @@ export default [
   {
     name: 'make refineries 1% per year more efficient',
     header: 'more efficient refineries',
-    icon: 'refinery',
+    icon: 'wrench',
     description: `
       don’t forget to tell these special people in your life just how special
       they are to you.
