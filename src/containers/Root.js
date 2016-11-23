@@ -146,7 +146,7 @@ class Root extends React.Component {
 
     return (
       <div>
-        <header>Energy Transition Model</header>
+        <header>Prototype ETMobile for GasTerra</header>
         {content}
       </div>
     );
