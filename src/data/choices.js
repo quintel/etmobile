@@ -1,6 +1,6 @@
 export default [
   {
-    name: 'Build 3 coal plants',
+    name: 'Build a coal plant',
     header: 'Coal',
     icon: 'coal',
     description: `
@@ -8,7 +8,19 @@ export default [
       mountains. You can bend rivers.
     `,
     inputs: {
-      number_of_energy_power_combined_cycle_coal: 3.0
+      number_of_energy_power_combined_cycle_coal: 1.0
+    }
+  },
+  {
+    name: 'Build a gas plant',
+    header: 'Gas',
+    icon: 'gas',
+    description: `
+      You will build a(n additional) Combined Cycle Gas Turbine (CCGT) power
+      plant with an output capacity of 800 MW.
+    `,
+    inputs: {
+      number_of_energy_power_combined_cycle_network_gas: 1.0
     }
   },
   {
@@ -125,6 +137,42 @@ export default [
     }
   },
   {
+    name: 'Increase electric trucks with 20%',
+    header: 'Electric trucks',
+    icon: 'electricTruck',
+    description: `
+      Don’t forget to tell these special people in your life just how special
+      they are to you.
+    `,
+    inputs: {
+      transport_truck_using_electricity_share: 20.0
+    }
+  },
+  {
+    name: 'Increase LNG trucks with 20%',
+    header: 'LNG trucks',
+    icon: 'lngTruck',
+    description: `
+      Don’t forget to tell these special people in your life just how special
+      they are to you.
+    `,
+    inputs: {
+      transport_truck_using_lng_mix_share: 20
+    }
+  },
+  {
+    name: 'Increase LNG ships with 20%',
+    header: 'LNG ships',
+    icon: 'lngShips',
+    description: `
+      Don’t forget to tell these special people in your life just how special
+      they are to you.
+    `,
+    inputs: {
+      transport_ship_using_lng_mix_share: 20
+    }
+  },
+  {
     name: 'Make fossil cars more efficient',
     header: 'Fossil cars more efficient',
     icon: 'combustionEngine',
@@ -174,15 +222,27 @@ export default [
     }
   },
   {
-    name: 'Make oil cheap',
-    header: 'Cheaper oil',
+    name: 'make oil cheap',
+    header: 'cheaper oil',
     icon: 'oil',
     description: `
-      Don’t forget to tell these special people in your life just how special
+      don’t forget to tell these special people in your life just how special
       they are to you.
     `,
     inputs: {
       costs_oil: -50
+    }
+  },
+  {
+    name: 'make refineries 1% per year more efficient',
+    header: 'more efficient refineries',
+    icon: 'refinery',
+    description: `
+      don’t forget to tell these special people in your life just how special
+      they are to you.
+    `,
+    inputs: {
+      industry_useful_demand_for_chemical_refineries_electricity_efficiency: 1
     }
   }
 ];
