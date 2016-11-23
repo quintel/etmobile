@@ -130,7 +130,7 @@ export default [
   {
     name: 'Increase electric trucks with 20%',
     header: 'Electric trucks',
-    icon: 'trucks',
+    icon: 'truck',
     description: `
       Don’t forget to tell these special people in your life just how special
       they are to you.
@@ -154,7 +154,7 @@ export default [
   {
     name: 'Increase LNG ships with 20%',
     header: 'LNG ships',
-    icon: 'lngShips',
+    icon: 'ship',
     description: `
       Don’t forget to tell these special people in your life just how special
       they are to you.
@@ -166,7 +166,7 @@ export default [
   {
     name: 'Make fossil cars more efficient',
     header: 'Fossil cars more efficient',
-    icon: 'combustionEngine',
+    icon: 'car',
     description: `
       Don’t forget to tell these special people in your life just how special
       they are to you.
