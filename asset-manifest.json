@@ -1,8 +1,8 @@
 {
   "main.css": "static/css/main.5f7490ca.css",
   "main.css.map": "static/css/main.5f7490ca.css.map",
-  "main.js": "static/js/main.69b7ef31.js",
-  "main.js.map": "static/js/main.69b7ef31.js.map",
+  "main.js": "static/js/main.9cf3fee3.js",
+  "main.js.map": "static/js/main.9cf3fee3.js.map",
   "static/media/balloon.svg": "static/media/balloon.99f79462.svg",
   "static/media/battery.svg": "static/media/battery.a36dda58.svg",
   "static/media/co2.svg": "static/media/co2.a2ee5105.svg",
@@ -11,10 +11,19 @@
   "static/media/coin.svg": "static/media/coin.971eb193.svg",
   "static/media/costs.svg": "static/media/costs.987ad911.svg",
   "static/media/electric_vehicle.svg": "static/media/electric_vehicle.c99dda8f.svg",
+  "static/media/gas.svg": "static/media/gas.ea215c43.svg",
+  "static/media/green_gas.svg": "static/media/green_gas.adf90d13.svg",
+  "static/media/house.svg": "static/media/house.2fe10ffd.svg",
   "static/media/leaderboard.svg": "static/media/leaderboard.7b0ebf68.svg",
   "static/media/led_lighting.svg": "static/media/led_lighting.b043efdb.svg",
   "static/media/mosk_extra-bold_800.woff": "static/media/mosk_extra-bold_800.63cbbbc2.woff",
   "static/media/mosk_extra-bold_800.woff2": "static/media/mosk_extra-bold_800.b2671db4.woff2",
+  "static/media/oil.svg": "static/media/oil.62bdcd6e.svg",
+  "static/media/solar.svg": "static/media/solar.4b61fa96.svg",
+  "static/media/switch.svg": "static/media/switch.327971fd.svg",
   "static/media/train.svg": "static/media/train.862ef9be.svg",
-  "static/media/wind.svg": "static/media/wind.a9021f1a.svg"
+  "static/media/truck.svg": "static/media/truck.06e52bb4.svg",
+  "static/media/turbine.svg": "static/media/turbine.7e199cc5.svg",
+  "static/media/wind.svg": "static/media/wind.a9021f1a.svg",
+  "static/media/wrench.svg": "static/media/wrench.e725f69e.svg"
 }
