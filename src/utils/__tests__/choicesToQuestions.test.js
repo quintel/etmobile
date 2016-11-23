@@ -16,7 +16,6 @@ it('creates a question from two choices', () => {
   expect(question.name).toEqual('Coal or wind?');
   expect(question.choices).toContainEqual({ ...choices[0], isCorrect: true });
   expect(question.choices).toContainEqual({ ...choices[1], isCorrect: false });
-  expect(question.description).toEqual({ __html: '<p>ABC. DEF.</p>' });
 });
 
 it('assigns isCorrect to the choice with the lowest delta', () => {
@@ -41,17 +40,6 @@ it('assigns isCorrect to the first choice when there is a tie', () => {
 
   expect(questions[0].choices[0].isCorrect).toEqual(true);
   expect(questions[0].choices[1].isCorrect).toEqual(false);
-});
-
-it('permits the description to be blank', () => {
-  const choices = [
-    { icon: 'coal', name: 'Coal', delta: 0, description: 'ABC.' },
-    { icon: 'wind', name: 'Wind', delta: 0 }
-  ];
-
-  const questions = choicesToQuestions(choices);
-
-  expect(questions[0].description).toEqual({ __html: '<p>ABC.</p>' });
 });
 
 it('raises an error if a choice has no name or title', () => {

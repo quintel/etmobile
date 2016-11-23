@@ -27,17 +27,12 @@ export default (choices) => {
     const first = choices[i];
     const second = choices[i + 1];
 
-    const desc = `${first.description || ''} ${second.description || ''}`;
-
     questions.push({
       name: `${choiceTitle(first, true)} or ${choiceTitle(second, false)}?`,
       choices: [
         { ...first, isCorrect: first.delta <= second.delta },
         { ...second, isCorrect: first.delta > second.delta }
-      ],
-      description: {
-        __html: `<p>${desc.trim()}</p>`
-      }
+      ]
     });
   }
 

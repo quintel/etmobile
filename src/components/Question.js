@@ -51,29 +51,32 @@ class Question extends React.Component {
     return (
       <div className="question animated">
         <h1>{this.props.name}</h1>
-        <div className="icons">
+
+        <div className="choices-container">
           {this.props.choices.map((choice, index) => (
-            <img
-              key={`icon-${index}`}
-              src={choiceImages[choice.icon]}
-              role="presentation"
-            />
+            <div className="choice-info" key={`choice-${index}`}>
+              <img
+                key={`icon-${index}`}
+                src={choiceImages[choice.icon]}
+                role="presentation"
+              />
+
+              <p className="description" key={index}>
+                {choice.description}
+              </p>
+            </div>
           ))}
         </div>
 
-        <div
-          className="description"
-          dangerouslySetInnerHTML={this.props.description}
-        />
-
-        <div className="choices">
-          <ReactCSSTransitionGroup
-            component="div"
-            transitionName={{ enter: 'fadeIn', leave: 'bounceOut' }}
-            transitionEnterTimeout={1000}
-            transitionLeaveTimeout={1000}
-          >
-            {this.props.choices.map((choice, index) => (
+        <div className="choices-container">
+          {this.props.choices.map((choice, index) => (
+            <ReactCSSTransitionGroup
+              component="div"
+              key={`button-${index}`}
+              transitionName={{ enter: 'fadeIn', leave: 'bounceOut' }}
+              transitionEnterTimeout={1000}
+              transitionLeaveTimeout={1000}
+            >
               <ChoiceButton
                 key={`${index}-${this.state.choice === index ? '1' : '0'}`}
                 index={index}
@@ -82,8 +85,8 @@ class Question extends React.Component {
                 onClick={this.onChoiceSelected}
                 selectedIndex={this.state.choice}
               />
-            ))}
-          </ReactCSSTransitionGroup>
+            </ReactCSSTransitionGroup>
+          ))}
         </div>
       </div>
     );
@@ -105,9 +108,6 @@ Question.propTypes = {
     icon: PropTypes.string.isRequired,
     isCorrect: PropTypes.bool
   })).isRequired,
-  description: PropTypes.shape({
-    __html: PropTypes.string.isRequired
-  }).isRequired,
   onChoiceMade: PropTypes.func.isRequired,
   name: PropTypes.string.isRequired
 };

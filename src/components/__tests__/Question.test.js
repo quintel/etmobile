@@ -6,8 +6,19 @@ import { shallow, mount } from 'enzyme';
 import Question, { ChoiceButton } from '../Question';
 
 const choicesFixture = () => ([
-  { name: 'Zero', icon: 'wind', inputs: { abcdef: 0 }, isCorrect: true },
-  { name: 'Low', icon: 'wind', inputs: { abcdef: 2 } }
+  {
+    name: 'Zero',
+    icon: 'wind',
+    inputs: { abcdef: 0 },
+    description: 'Hello',
+    isCorrect: true
+  },
+  {
+    name: 'Low',
+    icon: 'wind',
+    description: 'World',
+    inputs: { abcdef: 2 }
+  }
 ]);
 
 it('renders the name of the question', () => {
@@ -15,7 +26,6 @@ it('renders the name of the question', () => {
     <Question
       code="abcdef"
       name="My Question"
-      description={{ __html: 'Hello there!' }}
       choices={choicesFixture()}
       onChoiceMade={() => {}}
     />
@@ -29,13 +39,13 @@ it('renders the description', () => {
     <Question
       code="abcdef"
       name="My Question"
-      description={{ __html: 'Hello there' }}
       choices={choicesFixture()}
       onChoiceMade={() => {}}
     />
   );
 
-  expect(wrapper.find('.description').text()).toEqual('Hello there');
+  expect(wrapper.find('.description').at(0).text()).toEqual('Hello');
+  expect(wrapper.find('.description').at(1).text()).toEqual('World');
 });
 
 it('renders two question buttons', () => {
