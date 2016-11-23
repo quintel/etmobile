@@ -46,6 +46,60 @@ export default [
     }
   },
   {
+    name: 'Use LED light bulbs in offices',
+    icon: 'ledLightingOffices',
+    description: `
+      Look around. Look at what we have. Beauty is everywhere – you only have to
+      look to see it.
+    `,
+    inputs: {
+      buildings_lighting_led_electricity_share: 100
+    }
+  },
+  {
+    name: 'Install solar PV panels',
+    icon: 'solarPV',
+    description: `
+      Look around. Look at what we have. Beauty is everywhere – you only have to
+      look to see it.
+    `,
+    inputs: {
+      households_solar_pv_solar_radiation_market_penetration: 100
+    }
+  },
+  {
+    name: 'Replace old with new houses',
+    icon: 'House replacement',
+    description: `
+      Look around. Look at what we have. Beauty is everywhere – you only have to
+      look to see it.
+    `,
+    inputs: {
+      households_number_of_old_houses: 4.7,
+      households_number_of_new_houses: 2.7
+    }
+  },
+  {
+    name: 'Use hybrid heat pumps',
+    icon: 'hybridHeatPump',
+    description: `
+      Look around. Look at what we have. Beauty is everywhere – you only have to
+      look to see it.
+    `,
+    inputs: {
+      households_space_heater_combined_network_gas_share: 0,
+      households_space_heater_heatpump_ground_water_electricity_share: 0,
+      households_space_heater_district_heating_steam_hot_water_share: 0,
+      households_space_heater_heatpump_air_water_electricity_share: 0,
+      households_space_heater_wood_pellets_share: 0,
+      households_space_heater_electricity_share: 0,
+      households_space_heater_network_gas_share: 0,
+      households_space_heater_crude_oil_share: 0,
+      households_space_heater_coal_share: 0,
+      households_space_heater_hybrid_heatpump_air_water_electricity_share: 100
+    }
+  },
+  {
     name: '5% of car journeys instead done by train',
     header: 'Travel by train',
     icon: 'train',
@@ -68,6 +122,67 @@ export default [
     `,
     inputs: {
       transport_car_using_electricity_share: 20.0
+    }
+  },
+  {
+    name: 'Make fossil cars more efficient',
+    header: 'Fossil cars more efficient',
+    icon: 'combustionEngine',
+    description: `
+      Don’t forget to tell these special people in your life just how special
+      they are to you.
+    `,
+    inputs: {
+      transport_car_using_diesel_mix_efficiency: 2
+    }
+  },
+  {
+    name: 'Double insulation of existing houses',
+    header: 'Insulate existing houses',
+    icon: 'insulateOldHouses',
+    description: `
+      Don’t forget to tell these special people in your life just how special
+      they are to you.
+    `,
+    inputs: {
+      households_insulation_level_old_houses: 1.0
+    }
+  },
+  {
+    name: 'Double insulation of new houses',
+    header: 'Insulate new houses',
+    icon: 'insulateNewHouses',
+    description: `
+      Don’t forget to tell these special people in your life just how special
+      they are to you.
+    `,
+    inputs: {
+      households_insulation_level_new_houses: 3.0
+    }
+  },
+  {
+    name: 'Make 50% of gas green',
+    header: '50% green gas',
+    icon: 'greenGas',
+    description: `
+      Don’t forget to tell these special people in your life just how special
+      they are to you.
+    `,
+    inputs: {
+      green_gas_total_share: 50,
+      natural_gas_total_share: 50
+    }
+  },
+  {
+    name: 'Make oil cheap',
+    header: 'Cheaper oil',
+    icon: 'oil',
+    description: `
+      Don’t forget to tell these special people in your life just how special
+      they are to you.
+    `,
+    inputs: {
+      costs_oil: -50
     }
   }
 ];
