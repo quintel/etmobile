@@ -128,11 +128,6 @@ class Root extends React.Component {
               />
             </ReactCSSTransitionGroup>
           </main>
-          <Dashboard
-            items={this.props.dashboard}
-            results={this.state.queryResults}
-            gameState={this.gameState()}
-          />
         </div>
       );
     } else {
