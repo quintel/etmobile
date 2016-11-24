@@ -181,6 +181,16 @@ h2 {
   position: relative;
 }
 
+.question .choice-info .icon-wrapper img,
+.question .choice-info .badge {
+  left: 0;
+  margin: 0 auto;
+  position: absolute;
+  right: 0;
+  top: 3px;
+  z-index: 2;
+}
+
 .question .choice-info .badge {
   background: linear-gradient(#57b863, #41a94f);
   border: 3px solid white;
@@ -189,14 +199,10 @@ h2 {
   color: white;
   font-size: 1.25rem;
   height: 75px;
-  left: 0;
   line-height: 75px;
-  margin: 0 auto;
-  position: absolute;
-  right: 0;
   text-shadow: 0 1px 0 #268842;
-  top: 3px;
   width: 75px;
+  z-index: 3;
 }
 
 .question .choice-info .badge.incorrect {

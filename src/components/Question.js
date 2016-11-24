@@ -70,7 +70,7 @@ class Question extends React.Component {
               <div className="icon-wrapper">
                 <ReactCSSTransitionGroup
                   component="div"
-                  transitionName={{ enter: 'flipInY', leave: 'flipOutY' }}
+                  transitionName={{ enter: 'bounceIn', leave: 'fadeOut' }}
                   transitionEnterTimeout={1000}
                   transitionLeaveTimeout={0}
                 >
