@@ -11,13 +11,15 @@ const choicesFixture = () => ([
     icon: 'wind',
     inputs: { abcdef: 0 },
     description: 'Hello',
-    isCorrect: true
+    isCorrect: true,
+    delta: 1
   },
   {
     name: 'Low',
     icon: 'wind',
     description: 'World',
-    inputs: { abcdef: 2 }
+    inputs: { abcdef: 2 },
+    delta: 2
   }
 ]);
 
@@ -99,7 +101,6 @@ it('renders a correctly-chosen question button', () => {
 
   expect(wrapper.find('button.incorrect').length).toEqual(0);
 });
-
 
 it('renders an incorrectly-chosen question button', () => {
   const wrapper = mount(

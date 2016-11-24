@@ -176,8 +176,31 @@ h2 {
   width: 75px;
 }
 
-.question .icons img + img {
-  margin-left: 1rem;
+.question .icon-wrapper {
+  height: 87px;
+  position: relative;
+}
+
+.question .choice-info .badge {
+  background: linear-gradient(#57b863, #41a94f);
+  border: 3px solid white;
+  border-radius: 50%;
+  box-shadow: 0 0px 0 1px rgba(0, 0, 0, 0.01), 0 1px 0 rgba(0, 0, 0, 0.03);
+  color: white;
+  font-size: 1.25rem;
+  height: 75px;
+  left: 39px;
+  line-height: 75px;
+  margin: 0 auto;
+  position: absolute;
+  text-shadow: 0 1px 0 #268842;
+  top: 3px;
+  width: 75px;
+}
+
+.question .choice-info .badge.incorrect {
+  background: linear-gradient(#c54444, #a92f2f);
+  text-shadow: 0 1px 0 #961a1a;
 }
 
 .question .choices-container {
@@ -191,7 +214,7 @@ h2 {
 }
 
 .question .choices-container .description + .description,
-.question .choices-container div + div {
+.question .choices-container .choice-info + .choice-info {
   margin-right: 0;
   margin-left: 0.5rem;
 }

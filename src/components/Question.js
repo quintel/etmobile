@@ -31,6 +31,19 @@ export const ChoiceButton = (props) => {
   );
 };
 
+const ResultBadge = (props) => {
+  const classes = classNames({
+    animated: true,
+    badge: true,
+    correct: props.isCorrect,
+    incorrect: !props.isCorrect
+  });
+
+  const value = Math.round(props.value * 100) / 100;
+
+  return (<div className={classes}>{value}%</div>);
+};
+
 class Question extends React.Component {
   constructor() {
     super();
@@ -54,11 +67,26 @@ class Question extends React.Component {
         <div className="choices-container">
           {this.props.choices.map((choice, index) => (
             <div className="choice-info" key={`choice-${index}`}>
-              <img
-                key={`icon-${index}`}
-                src={choiceImages[choice.icon]}
-                role="presentation"
-              />
+              <div className="icon-wrapper">
+                <ReactCSSTransitionGroup
+                  component="div"
+                  transitionName={{ enter: 'flipInY', leave: 'flipOutY' }}
+                  transitionEnterTimeout={1000}
+                  transitionLeaveTimeout={0}
+                >
+                  {this.state.choice !== null ?
+                    <ResultBadge
+                      value={choice.delta}
+                      isCorrect={choice.isCorrect}
+                      key={`${index}-badge`}
+                    /> :
+                      <img
+                        key={`${index}-icon`}
+                        src={choiceImages[choice.icon]}
+                        role="presentation"
+                      />}
+                </ReactCSSTransitionGroup>
+              </div>
 
               <ReactCSSTransitionGroup
                 component="div"
@@ -88,6 +116,11 @@ class Question extends React.Component {
   }
 }
 
+ResultBadge.propTypes = {
+  value: PropTypes.number.isRequired,
+  isCorrect: PropTypes.bool
+};
+
 ChoiceButton.propTypes = {
   index: PropTypes.number.isRequired,
   isCorrect: PropTypes.bool,
@@ -98,6 +131,7 @@ ChoiceButton.propTypes = {
 
 Question.propTypes = {
   choices: PropTypes.arrayOf(PropTypes.shape({
+    delta: PropTypes.number.isRequired,
     name: PropTypes.string.isRequired,
     inputs: PropTypes.object.isRequired,
     icon: PropTypes.string.isRequired,
