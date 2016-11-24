@@ -1,7 +1,7 @@
 export default [
   {
     name: 'Build a coal plant',
-    header: 'Coal',
+    header: 'A coal power plant',
     icon: 'coal',
     description: `
       You can build a 800 megawatt electric (MWe) ultra-supercritical
@@ -16,7 +16,7 @@ export default [
   },
   {
     name: 'Build a gas plant',
-    header: 'Gas',
+    header: 'A gas power plant',
     icon: 'gas',
     description: `
       You will build a(n additional) Combined Cycle Gas Turbine (CCGT) power
@@ -70,8 +70,9 @@ export default [
     name: 'Use LED light bulbs in offices',
     icon: 'ledLighting',
     description: `
-      Look around. Look at what we have. Beauty is everywhere – you only have to
-      look to see it.
+      You can turn 100% of the lights at offices into LED lights. These lights
+      also need to be replaced a lot less that the old fashioned light bulbs,
+      so you will also save costs!
     `,
     inputs: {
       buildings_lighting_led_electricity_share: 100
@@ -81,8 +82,8 @@ export default [
     name: 'Install solar PV panels',
     icon: 'solar',
     description: `
-      Look around. Look at what we have. Beauty is everywhere – you only have to
-      look to see it.
+      With a solar panel on your roof, you will turn yourself from a mere
+      energy consumer into a producer.
     `,
     inputs: {
       households_solar_pv_solar_radiation_market_penetration: 100
@@ -92,8 +93,9 @@ export default [
     name: 'Replace old with new houses',
     icon: 'house',
     description: `
-      Look around. Look at what we have. Beauty is everywhere – you only have to
-      look to see it.
+      One million old houses will be replaced with newly build houses. Newly
+      build houses have much more stricter regulations with regards to
+      insulation.
     `,
     inputs: {
       households_number_of_old_houses: 4.7,
@@ -104,8 +106,11 @@ export default [
     name: 'Use hybrid heat pumps',
     icon: 'radiator',
     description: `
-      Look around. Look at what we have. Beauty is everywhere – you only have to
-      look to see it.
+      This heater is a combination of an electric heat pump that draws its heat
+      from the outside air and an efficient conventional gas-fired boiler.
+      Essentially, the hybrid heat pump offers a way to strongly reduce
+      natural gas demand for heating, while buying time for grid management
+      companies to reinforce grids.
     `,
     inputs: {
       households_space_heater_hybrid_heatpump_air_water_electricity_share: 100
@@ -116,12 +121,12 @@ export default [
     header: 'Travel by train',
     icon: 'train',
     description: `
-      They say everything looks better with odd numbers of things. But sometimes
-      I put even numbers – just to upset the critics.
+      People spent a lot of energy driving around in cars. What if we managed
+      to convice 5% to use the train in stead of a car, it will save energy,
+      CO2-emissions, costs and shorten traffic jams!
     `,
     inputs: {
-      transport_useful_demand_car_kms: -5,
-      transport_useful_demand_trains: 5
+      transport_useful_demand_car_kms: -0.15
     }
   },
   {
@@ -129,20 +134,23 @@ export default [
     header: 'Travel by electric car',
     icon: 'electricVehicle',
     description: `
-      Don’t forget to tell these special people in your life just how special
-      they are to you.
+      These cars use less than half the energy from 'well to wheels' of good
+      diesel cars and are even more efficient compared to gasoline engines.
+      They are emission free, which is bonus to the environment in our city
+      and villages!
     `,
     inputs: {
-      transport_car_using_electricity_share: 20.0
+      transport_car_using_electricity_share: 12.6
     }
   },
   {
     name: 'Increase electric trucks with 20%',
-    header: 'Electric trucks',
+    header: '20% electric trucks',
     icon: 'truck',
     description: `
-      Don’t forget to tell these special people in your life just how special
-      they are to you.
+      Trucks need to drive longer distances, and sometimes have less time to
+      stop and recharge. Siemens is testing electric trucks that can be
+      charges while driving on the highway with a catenary.
     `,
     inputs: {
       transport_truck_using_electricity_share: 20.0
@@ -153,8 +161,9 @@ export default [
     header: 'LNG trucks',
     icon: 'truck',
     description: `
-      Don’t forget to tell these special people in your life just how special
-      they are to you.
+      You can replace diesel trucks with electric trucks. But you may also
+      want to replace part of the fleet with liquified natural gas(LNG).
+      This fuel emmits about 30% less CO<sub>2</sub> per km.
     `,
     inputs: {
       transport_truck_using_lng_mix_share: 20
@@ -165,8 +174,9 @@ export default [
     header: 'LNG ships',
     icon: 'ship',
     description: `
-      Don’t forget to tell these special people in your life just how special
-      they are to you.
+      Compared to diesel ships, an LNG ship has a 50% advantage in its emissions
+      of sulfur particles and a 60% advantage in particulate matter. Because of
+      methane slip at the ships engine, the CO2 difference is very small.
     `,
     inputs: {
       transport_ship_using_lng_mix_share: 20
@@ -177,8 +187,9 @@ export default [
     header: 'Fossil cars more efficient',
     icon: 'car',
     description: `
-      Don’t forget to tell these special people in your life just how special
-      they are to you.
+      New cars become almost 2% more efficient every year. So, for
+      CO<sub>2</sub> emissions, it is vital that people replace their
+      old puffing machines with shiny new ones!
     `,
     inputs: {
       transport_car_using_diesel_mix_efficiency: 2
@@ -189,8 +200,10 @@ export default [
     header: 'Insulate existing houses',
     icon: 'house',
     description: `
-      Don’t forget to tell these special people in your life just how special
-      they are to you.
+      The most important insulation measures are roof, wall, floor insulation
+      and insulated glazing. These four account for roughly 75% of the total
+      potential savings. What if we can double the average insulation level
+      of all houses build before 1990?
     `,
     inputs: {
       households_insulation_level_old_houses: 1.0
@@ -201,8 +214,10 @@ export default [
     header: 'Insulate new houses',
     icon: 'house',
     description: `
-      Don’t forget to tell these special people in your life just how special
-      they are to you.
+      Newly build houses, namely those build after 1990, already have a higher
+      degree of insulation. In general, they have been built with cavity walls
+      containing insulation, insulated glazing, roofs and floors. What if we
+      insulate these houses further to their maximum potential?
     `,
     inputs: {
       households_insulation_level_new_houses: 3.0
@@ -228,8 +243,9 @@ export default [
     header: 'cheaper oil',
     icon: 'oil',
     description: `
-      don’t forget to tell these special people in your life just how special
-      they are to you.
+      The price of oil is tracked by many and discussed on a daily basis in
+      the news. Does it have an impact of the CO<sub>2</sub> emissions of our
+      energy system?
     `,
     inputs: {
       costs_oil: -50
@@ -240,8 +256,9 @@ export default [
     header: 'more efficient refineries',
     icon: 'wrench',
     description: `
-      don’t forget to tell these special people in your life just how special
-      they are to you.
+      Refineries use a lot of energy breaking down crude oil into oil products.
+      In the past decades, these plants have become a lot more efficient. What
+      if we keep making them 1% per year more efficient?
     `,
     inputs: {
       industry_useful_demand_for_chemical_refineries_electricity_efficiency: 1
