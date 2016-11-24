@@ -76,9 +76,10 @@ class Question extends React.Component {
                 />
               </ReactCSSTransitionGroup>
 
-              <p className="description" key={index}>
-                {choice.description}
-              </p>
+              <p
+                className="description"
+                dangerouslySetInnerHTML={{ __html: choice.description }}
+              />
             </div>
           ))}
         </div>
