@@ -1,6 +1,6 @@
 /* global it expect */
 
-import choicesToQuestions from '../choicesToQuestions';
+import questionFromChoices from '../questionFromChoices';
 
 it('creates a question from two choices', () => {
   const choices = [
@@ -8,10 +8,7 @@ it('creates a question from two choices', () => {
     { icon: 'wind', name: 'Wind', description: 'DEF.', delta: 0 }
   ];
 
-  const questions = choicesToQuestions(choices);
-  const question = questions[0];
-
-  expect(questions.length).toEqual(1);
+  const question = questionFromChoices(choices);
 
   expect(question.name).toEqual('Coal or wind?');
   expect(question.choices).toContainEqual({ ...choices[0], isCorrect: true });
@@ -24,7 +21,7 @@ it('correctly capitalizes acronyms', () => {
     { icon: 'lng', name: 'LNG', description: 'DEF.', delta: 0 }
   ];
 
-  const question = choicesToQuestions(choices)[0];
+  const question = questionFromChoices(choices);
 
   expect(question.name).toEqual('Wind or LNG?');
 });
@@ -35,10 +32,10 @@ it('assigns isCorrect to the choice with the lowest delta', () => {
     { icon: 'wind', name: 'Wind', delta: -2 }
   ];
 
-  const questions = choicesToQuestions(choices);
+  const question = questionFromChoices(choices);
 
-  expect(questions[0].choices[0].isCorrect).toEqual(false);
-  expect(questions[0].choices[1].isCorrect).toEqual(true);
+  expect(question.choices[0].isCorrect).toEqual(false);
+  expect(question.choices[1].isCorrect).toEqual(true);
 });
 
 it('assigns isCorrect to the first choice when there is a tie', () => {
@@ -47,22 +44,22 @@ it('assigns isCorrect to the first choice when there is a tie', () => {
     { icon: 'wind', name: 'Wind', delta: -2 }
   ];
 
-  const questions = choicesToQuestions(choices);
+  const question = questionFromChoices(choices);
 
-  expect(questions[0].choices[0].isCorrect).toEqual(true);
-  expect(questions[0].choices[1].isCorrect).toEqual(false);
+  expect(question.choices[0].isCorrect).toEqual(true);
+  expect(question.choices[1].isCorrect).toEqual(false);
 });
 
 it('raises an error if a choice has no name or title', () => {
   const choices = [{ icon: 'coal' }, { icon: 'wind', name: 'Wind' }];
-  expect(() => choicesToQuestions(choices)).toThrowError();
+  expect(() => questionFromChoices(choices)).toThrowError();
 });
 
 it('raises an error if only one choice is given', () => {
   const choices = [{ icon: 'wind', name: 'Wind' }];
-  expect(() => choicesToQuestions(choices)).toThrowError();
+  expect(questionFromChoices(choices)).toEqual(null);
 });
 
 it('raises an error if only no choices are given', () => {
-  expect(() => choicesToQuestions([])).toThrowError();
+  expect(questionFromChoices([])).toEqual(null);
 });

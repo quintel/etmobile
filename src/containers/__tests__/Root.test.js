@@ -1,30 +1,16 @@
 /* global it expect jest jasmine spyOn */
 
 import React from 'react';
-import { shallow, mount } from 'enzyme';
+import { mount } from 'enzyme';
 
 import Root from '../Root';
 import Question from '../../components/Question';
 
-const questions = [
-  {
-    code: 'ab',
-    name: 'A or B?',
-    description: { __html: 'A description of this first question' },
-    choices: [
-      { name: 'Choice A', icon: 'coal', inputs: {}, isCorrect: true },
-      { name: 'Choice B', icon: 'wind', inputs: {} }
-    ]
-  },
-  {
-    code: 'cd',
-    name: 'C or D?',
-    description: { __html: 'A description of this other question' },
-    choices: [
-      { name: 'Choice C', icon: 'balloon', inputs: {} },
-      { name: 'Choice D', icon: 'battery', inputs: {}, isCorrect: true }
-    ]
-  }
+const choices = [
+  { name: 'Choice A', icon: 'coal', inputs: {}, delta: 1 },
+  { name: 'Choice B', icon: 'wind', inputs: {}, delta: 2 },
+  { name: 'Choice C', icon: 'balloon', inputs: {}, delta: 1 },
+  { name: 'Choice D', icon: 'battery', inputs: {}, delta: 2 }
 ];
 
 const dashboard = [{
@@ -46,15 +32,20 @@ const stubAPI = () => ({
 });
 
 it('renders an input list', () => {
-  const wrapper = shallow(
+  const wrapper = mount(
     <Root
       api={stubAPI()}
       dashboard={dashboard}
-      questions={questions}
+      choices={choices}
     />
   );
 
   expect(wrapper.find(Question).length).toEqual(1);
+
+  const [firstChoice, secondChoice] = wrapper.state('currentQuestion').choices;
+
+  expect(firstChoice.name).toEqual('Choice A');
+  expect(secondChoice.name).toEqual('Choice B');
 });
 
 it('creates a new scenario when mounted', () => {
@@ -70,7 +61,7 @@ it('creates a new scenario when mounted', () => {
     <Root
       api={api}
       dashboard={dashboard}
-      questions={questions}
+      choices={choices}
     />
   );
 
@@ -95,7 +86,7 @@ it('sends updated inputs to the API', () => {
     <Root
       api={api}
       dashboard={dashboard}
-      questions={questions}
+      choices={choices}
     />
   );
 
@@ -114,7 +105,7 @@ it('shows the results page when all questions are answered', () => {
     <Root
       api={stubAPI()}
       dashboard={dashboard}
-      questions={questions}
+      choices={choices}
     />
   );
 
@@ -129,17 +120,20 @@ it('resumes with the next question when restarting', () => {
     <Root
       api={stubAPI()}
       dashboard={dashboard}
-      questions={questions}
+      choices={choices}
     />
   );
 
-  wrapper.setState({ lastChoice: { isCorrect: false }, currentQuestion: 1 });
+  wrapper.setState({ lastChoice: { isCorrect: false } });
   wrapper.instance().handleRestartGame();
 
   expect(wrapper.find(Question).length).toEqual(1);
   expect(wrapper.find('.results').length).toEqual(0);
 
-  expect(wrapper.state('currentQuestion')).toEqual(1);
+  const [firstChoice, secondChoice] = wrapper.state('currentQuestion').choices;
+
+  expect(firstChoice.name).toEqual('Choice C');
+  expect(secondChoice.name).toEqual('Choice D');
 });
 
 it('starts over when restarting with all questions answered', () => {
@@ -147,13 +141,13 @@ it('starts over when restarting with all questions answered', () => {
     <Root
       api={stubAPI()}
       dashboard={dashboard}
-      questions={questions}
+      choices={choices}
     />
   );
 
   wrapper.setState({
     lastChoice: { isCorrect: false },
-    currentQuestion: questions.length
+    availableChoices: []
   });
 
   wrapper.instance().handleRestartGame();
@@ -161,5 +155,8 @@ it('starts over when restarting with all questions answered', () => {
   expect(wrapper.find(Question).length).toEqual(1);
   expect(wrapper.find('.results').length).toEqual(0);
 
-  expect(wrapper.state('currentQuestion')).toEqual(0);
+  const [firstChoice, secondChoice] = wrapper.state('currentQuestion').choices;
+
+  expect(firstChoice.name).toEqual('Choice A');
+  expect(secondChoice.name).toEqual('Choice B');
 });

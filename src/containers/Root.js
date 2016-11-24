@@ -2,16 +2,16 @@ import React, { PropTypes } from 'react';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 
 import Dashboard from '../components/Dashboard';
-import ProgressBar from '../components/ProgressBar';
 import Question from '../components/Question';
 import Summary from '../components/Summary';
+
+import questionFromChoices from '../utils/questionFromChoices';
 
 class Root extends React.Component {
   constructor() {
     super();
 
     this.state = {
-      currentQuestion: 0,
       correctChoices: 0,
       lastChoice: null,
       scenarioID: undefined,
@@ -25,6 +25,8 @@ class Root extends React.Component {
   }
 
   componentDidMount() {
+    this.handleRestartGame();
+
     if (!this.createScenarioPromise) {
       this.createScenarioPromise = this.props.api.createScenario();
 
@@ -59,11 +61,22 @@ class Root extends React.Component {
   }
 
   handleRestartGame() {
-    const nextState = { lastChoice: null, correctChoices: 0 };
+    let choices = this.props.choices;
 
-    if (this.state.currentQuestion === this.props.questions.length) {
-      nextState.currentQuestion = 0;
+    if (this.state.currentQuestion && this.state.availableChoices.length > 1) {
+      // Visitor got a question wrong; don't restart from the beginning, but
+      // pick up with the next question.
+      choices = this.state.availableChoices;
     }
+
+    const question = questionFromChoices(choices);
+
+    const nextState = {
+      lastChoice: null,
+      correctChoices: 0,
+      availableChoices: choices.slice(2),
+      currentQuestion: question
+    };
 
     this.setState(nextState);
   }
@@ -88,9 +101,18 @@ class Root extends React.Component {
     });
 
     window.setTimeout(() => {
+      const question = questionFromChoices(this.state.availableChoices);
+      const availableChoices = this.state.availableChoices.slice(2);
+
+      // Push the unchosen choice back onto the list for later.
+      availableChoices.push(
+        this.state.currentQuestion.choices.find(other => other !== choice)
+      );
+
       this.setState({
         lastChoice: choice,
-        currentQuestion: this.state.currentQuestion + 1
+        currentQuestion: question,
+        availableChoices
       });
 
       resolveChangeQuestion();
@@ -106,15 +128,10 @@ class Root extends React.Component {
     let content;
     const lastChoice = this.state.lastChoice;
 
-    if ((!lastChoice || lastChoice.isCorrect) &&
-        this.props.questions[this.state.currentQuestion]) {
+    if ((!lastChoice || lastChoice.isCorrect) && this.state.currentQuestion) {
       content = (
         <div>
           <main className="question-wrapper">
-            <ProgressBar
-              current={this.state.currentQuestion}
-              total={this.props.questions.length}
-            />
             <ReactCSSTransitionGroup
               component="div"
               transitionName={{ enter: 'fadeInUp', leave: 'fadeOutUp' }}
@@ -122,21 +139,25 @@ class Root extends React.Component {
               transitionLeaveTimeout={1000}
             >
               <Question
-                key={this.state.currentQuestion}
+                key={this.state.currentQuestion.name}
                 onChoiceMade={this.handleQuestionChoice}
-                {...this.props.questions[this.state.currentQuestion]}
+                {...this.state.currentQuestion}
               />
             </ReactCSSTransitionGroup>
           </main>
         </div>
       );
-    } else {
+    } else if (lastChoice) {
       content = (
         <Summary
           gameState={this.gameState()}
           onRestartGame={this.handleRestartGame}
         />
       );
+    } else {
+      // Initial render state; prior to handleRestartGame creating the first
+      // question.
+      content = <p>Please wait...</p>;
     }
 
     return (
@@ -153,10 +174,8 @@ Root.propTypes = {
     createScenario: PropTypes.func.isRequired,
     updateScenario: PropTypes.func.isRequired
   }).isRequired,
-  dashboard: Dashboard.propTypes.items,
-  questions: PropTypes.arrayOf(PropTypes.shape(
-    { ...Question.propTypes, onChoiceMade: undefined }
-  ))
+  choices: Question.propTypes.choices,
+  dashboard: Dashboard.propTypes.items
 };
 
 export default Root;
