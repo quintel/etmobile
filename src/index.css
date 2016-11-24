@@ -141,13 +141,8 @@ main.question-wrapper {
 .question, .results {
   box-sizing: border-box;
   padding: 1rem;
-  position: absolute;
   text-align: center;
   width: 100%;
-}
-
-.question {
-  padding-bottom: 97px; /* to match the dashboard */
 }
 
 h1 {
@@ -269,6 +264,24 @@ h2 {
   line-height: 0;
   margin-top: 9px;
   vertical-align: top;
+}
+
+.question-wrapper footer {
+  border-top: 1px solid #d3deea;
+  color: #a0b1ce;
+  font-family: moskextra-bold_800, -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Droid Sans", sans-serif;
+  font-size: 0.75rem;
+  line-height: 1;
+  margin: 0 1rem;
+  padding-top: 1rem;
+  padding-bottom: 2rem;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.question-wrapper footer .correct-count {
+  display: block;
+  font-size: 4rem;
 }
 
 .results .result-item {

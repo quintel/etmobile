@@ -138,11 +138,23 @@ class Root extends React.Component {
               transitionEnterTimeout={1000}
               transitionLeaveTimeout={1000}
             >
-              <Question
+              <div
+                className="animated"
+                style={{ position: 'absolute' }}
                 key={this.state.currentQuestion.name}
-                onChoiceMade={this.handleQuestionChoice}
-                {...this.state.currentQuestion}
-              />
+              >
+                <Question
+                  onChoiceMade={this.handleQuestionChoice}
+                  {...this.state.currentQuestion}
+                />
+
+                <footer>
+                  <span className="correct-count">
+                    {this.state.correctChoices}
+                  </span>
+                  correct
+                </footer>
+              </div>
             </ReactCSSTransitionGroup>
           </main>
         </div>

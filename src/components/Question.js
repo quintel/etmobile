@@ -48,7 +48,7 @@ class Question extends React.Component {
 
   render() {
     return (
-      <div className="question animated">
+      <div className="question">
         <h1>{this.props.name}</h1>
 
         <div className="choices-container">
