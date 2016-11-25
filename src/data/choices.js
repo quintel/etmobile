@@ -83,7 +83,8 @@ export default [
     icon: 'solar',
     description: `
       With a solar panel on your roof, you will turn yourself from a mere
-      energy consumer into a producer.
+      energy consumer into a producer. What if <strong>all</strong> houses
+      would be equiped with solar PV panels?
     `,
     inputs: {
       households_solar_pv_solar_radiation_market_penetration: 100
