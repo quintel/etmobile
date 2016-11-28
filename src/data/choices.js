@@ -1,17 +1,32 @@
 export default [
   {
-    name: 'Build a coal plant',
-    header: 'A coal power plant',
+    name: 'Close a modern coal power plant',
+    header: 'Close a modern coal power plant',
     icon: 'coal',
     description: `
-      You can build a 800 megawatt electric (MWe) ultra-supercritical
+      You can close a modern 800 megawatt electric (MWe) ultra-supercritical
       pulverized coal-fired plant. Of all types of power plants, coal and
       lignite-fired ones contribute most to pollution of the environment. This
       is the most common type of modern coal-fired power plant in rich
       countries with relatively strict regulations for air pollution.
     `,
     inputs: {
-      number_of_energy_power_combined_cycle_coal: 1.0
+      number_of_energy_power_ultra_supercritical_coal: 0.3
+    }
+  },
+  {
+    name: 'Close a conventional coal power plant',
+    header: 'Close a conventional coal power plant',
+    icon: 'coal',
+    description: `
+      You can close a conventional 800 megawatt electric (MWe) ultra-supercritical
+      pulverized coal-fired plant. These plants are not build anymore in rich
+      countries, due to environmental restrictions. The Netherlands currently
+      still possesses 1,200 MW of production capacity of this type of power
+      plant.
+    `,
+    inputs: {
+      number_of_energy_power_supercritical_coal: 0.5
     }
   },
   {
