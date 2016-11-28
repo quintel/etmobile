@@ -191,6 +191,14 @@ h2 {
   z-index: 2;
 }
 
+.question .choice-info button.clickable-icon {
+  background: none;
+  border: none;
+  margin: 0;
+  outline: none;
+  padding: 0;
+}
+
 .question .choice-info .badge {
   background: linear-gradient(#57b863, #41a94f);
   border: 3px solid white;

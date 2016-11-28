@@ -3,33 +3,10 @@ import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 
 import classNames from 'classnames';
 
+import Chooser from './Chooser';
+import ChoiceButton from './ChoiceButton';
+
 import * as choiceImages from '../images/choices';
-
-export const ChoiceButton = (props) => {
-  const isSelected = props.index === props.selectedIndex;
-
-  const classes = classNames({
-    correct: isSelected && props.isCorrect,
-    incorrect: isSelected && !props.isCorrect,
-    animated: true
-  });
-
-  let name = props.name;
-
-  if (isSelected) {
-    name = props.isCorrect ? '✔︎ Correct!' : '✘ Incorrect!';
-  }
-
-  return (
-    <button
-      onClick={() => props.onClick(props.index)}
-      disabled={props.selectedIndex !== null}
-      className={classes}
-    >
-      {name}{' '}
-    </button>
-  );
-};
 
 const ResultBadge = (props) => {
   const classes = classNames({
@@ -80,11 +57,19 @@ class Question extends React.Component {
                       isCorrect={choice.isCorrect}
                       key={`${index}-badge`}
                     /> :
-                      <img
-                        key={`${index}-icon`}
-                        src={choiceImages[choice.icon]}
-                        role="presentation"
-                      />}
+                      <Chooser
+                        classNames={{ 'clickable-icon': true }}
+                        onClick={this.onChoiceSelected}
+                        index={index}
+                        isCorrect={choice.isCorrect}
+                        selectedIndex={this.state.choice}
+                      >
+                        <img
+                          key={`${index}-icon`}
+                          src={choiceImages[choice.icon]}
+                          role="presentation"
+                        />
+                      </Chooser>}
                 </ReactCSSTransitionGroup>
               </div>
 
@@ -98,10 +83,11 @@ class Question extends React.Component {
                   key={`${index}-${this.state.choice === index ? '1' : '0'}`}
                   index={index}
                   isCorrect={choice.isCorrect}
-                  name={choice.name}
                   onClick={this.onChoiceSelected}
                   selectedIndex={this.state.choice}
-                />
+                >
+                  {choice.name}
+                </ChoiceButton>
               </ReactCSSTransitionGroup>
 
               <p
@@ -119,14 +105,6 @@ class Question extends React.Component {
 ResultBadge.propTypes = {
   value: PropTypes.number.isRequired,
   isCorrect: PropTypes.bool
-};
-
-ChoiceButton.propTypes = {
-  index: PropTypes.number.isRequired,
-  isCorrect: PropTypes.bool,
-  name: PropTypes.string.isRequired,
-  onClick: PropTypes.func,
-  selectedIndex: PropTypes.number
 };
 
 Question.propTypes = {

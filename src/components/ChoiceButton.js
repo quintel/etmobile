@@ -1,39 +1,42 @@
 import React, { PropTypes } from 'react';
 
-class ChoiceButton extends React.Component {
-  constructor() {
-    super();
-    this.handleClick = this.handleClick.bind(this);
+import Chooser from './Chooser';
+
+/**
+ * A button which may be pressed to make a choice. The choice name is placed
+ * on the button.
+ */
+const ChoiceButton = (props) => {
+  const isSelected = props.index === props.selectedIndex;
+  const classes = { animated: true };
+
+  let name = props.children;
+
+  if (isSelected) {
+    name = props.isCorrect ? '✔︎ Correct!' : '✘ Incorrect!';
   }
 
-  handleClick() {
-    this.props.onClick(this.props.index);
-  }
-
-  render() {
-    return (
-      <button
-        className={this.props.active ? 'active' : ''}
-        disabled={this.props.disabled}
-        onClick={this.handleClick}
-      >
-        {this.props.children}
-      </button>
-    );
-  }
-}
+  return (
+    <Chooser
+      classNames={classes}
+      onClick={props.onClick}
+      index={props.index}
+      selectedIndex={props.selectedIndex}
+      isCorrect={props.isCorrect}
+    >
+      {name}
+    </Chooser>
+  );
+};
 
 ChoiceButton.propTypes = {
-  active: PropTypes.bool,
-  disabled: PropTypes.bool,
   children: PropTypes.node.isRequired,
   index: PropTypes.number.isRequired,
-  onClick: PropTypes.func.isRequired
+  isCorrect: PropTypes.bool,
+  onClick: PropTypes.func,
+  selectedIndex: PropTypes.number
 };
 
-ChoiceButton.defaultProps = {
-  active: false,
-  disabled: false
-};
+ChoiceButton.defaultProps = { isCorrect: false, selectedIndex: null };
 
 export default ChoiceButton;

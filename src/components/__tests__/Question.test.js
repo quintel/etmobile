@@ -3,7 +3,8 @@
 import React from 'react';
 import { shallow, mount } from 'enzyme';
 
-import Question, { ChoiceButton } from '../Question';
+import Question from '../Question';
+import ChoiceButton from '../ChoiceButton';
 
 const choicesFixture = () => ([
   {
@@ -65,8 +66,8 @@ it('renders two question buttons', () => {
 
   expect(buttons.length).toEqual(2);
 
-  expect(buttons.get(0).props.name).toEqual('Zero');
-  expect(buttons.get(1).props.name).toEqual('Low');
+  expect(buttons.get(0).props.children).toEqual('Zero');
+  expect(buttons.get(1).props.children).toEqual('Low');
 });
 
 it('renders a correctly-chosen question button', () => {
@@ -88,13 +89,9 @@ it('renders a correctly-chosen question button', () => {
   expect(buttons.props().disabled).toEqual(true);
   expect(buttons.props().className).toMatch(/\bcorrect\b/);
 
-  expect(buttons.props().children.find(
-    child => child.match(/\bcorrect\b/i))
-  ).not.toEqual(undefined);
 
-  expect(buttons.props().children.find(
-    child => child.match(/\bincorrect\b/i))
-  ).toEqual(undefined);
+  expect(buttons.props().children).toMatch(/\bcorrect\b/i);
+  expect(buttons.props().children).not.toMatch(/\bincorrect\b/i);
 
   expect(wrapper.find('button[disabled]').length)
     .toEqual(wrapper.find('button').length);
@@ -121,28 +118,11 @@ it('renders an incorrectly-chosen question button', () => {
   expect(buttons.props().disabled).toEqual(true);
   expect(buttons.props().className).toMatch(/\bincorrect\b/);
 
-  expect(buttons.props().children.find(
-    child => child.match(/\bincorrect\b/i))
-  ).not.toEqual(undefined);
-
-  expect(buttons.props().children.find(
-    child => child.match(/\bcorrect\b/i))
-  ).toEqual(undefined);
+  expect(buttons.props().children).not.toMatch(/\bcorrect\b/i);
+  expect(buttons.props().children).toMatch(/\bincorrect\b/i);
 
   expect(wrapper.find('button[disabled]').length)
     .toEqual(wrapper.find('button').length);
 
   expect(wrapper.find('button.correct').length).toEqual(0);
-});
-
-it('binds the onClick listener to the buttons', () => {
-  const onClick = jest.fn();
-
-  const wrapper = shallow(
-    <ChoiceButton name="Hello" onClick={onClick} index={0} />
-  );
-
-  wrapper.simulate('click');
-
-  expect(onClick).toHaveBeenCalled();
 });
