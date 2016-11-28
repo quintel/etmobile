@@ -1,32 +1,32 @@
 export default [
   {
-    name: 'Build a coal plant',
-    header: 'A coal power plant',
+    name: 'Close a modern coal power plant',
+    header: 'Close a modern coal power plant',
     icon: 'coal',
     description: `
-      You can build a 800 megawatt electric (MWe) ultra-supercritical
+      You can close a modern 800 megawatt electric (MWe) ultra-supercritical
       pulverized coal-fired plant. Of all types of power plants, coal and
       lignite-fired ones contribute most to pollution of the environment. This
       is the most common type of modern coal-fired power plant in rich
       countries with relatively strict regulations for air pollution.
     `,
     inputs: {
-      number_of_energy_power_combined_cycle_coal: 1.0
+      number_of_energy_power_ultra_supercritical_coal: 0.3
     }
   },
   {
-    name: 'Build a gas plant',
-    header: 'A gas power plant',
-    icon: 'gas',
+    name: 'Close a conventional coal power plant',
+    header: 'Close a conventional coal power plant',
+    icon: 'coal',
     description: `
-      You will build a(n additional) Combined Cycle Gas Turbine (CCGT) power
-      plant with an output capacity of 800 MW. Flexible gas-fired plants are
-      often used for meeting daily electricity demand peaks and therefore
-      produce less electricity per year than coal-fired plants of the same
-      production capacity.
+      You can close a conventional 800 megawatt electric (MWe) ultra-supercritical
+      pulverized coal-fired plant. These plants are not build anymore in rich
+      countries, due to environmental restrictions. The Netherlands currently
+      still possesses 1,200 MW of production capacity of this type of power
+      plant.
     `,
     inputs: {
-      number_of_energy_power_combined_cycle_network_gas: 1.0
+      number_of_energy_power_supercritical_coal: 0.5
     }
   },
   {
@@ -158,7 +158,7 @@ export default [
     }
   },
   {
-    name: 'Increase LNG trucks with 20%',
+    name: 'Use only LNG trucks',
     header: 'LNG trucks',
     icon: 'truck',
     description: `
@@ -167,11 +167,11 @@ export default [
       This fuel emmits about 30% less CO<sub>2</sub> per km.
     `,
     inputs: {
-      transport_truck_using_lng_mix_share: 20
+      transport_truck_using_lng_mix_share: 100
     }
   },
   {
-    name: 'Increase LNG ships with 20%',
+    name: 'Use only LNG ships',
     header: 'LNG ships',
     icon: 'ship',
     description: `
@@ -180,7 +180,7 @@ export default [
       methane slip at the ships engine, the CO2 difference is very small.
     `,
     inputs: {
-      transport_ship_using_lng_mix_share: 20
+      transport_ship_using_lng_mix_share: 100
     }
   },
   {
