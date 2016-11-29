@@ -1,25 +1,8 @@
 import React, { PropTypes } from 'react';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 
-import classNames from 'classnames';
-
-import Chooser from './Chooser';
 import ChoiceButton from './ChoiceButton';
-
-import * as choiceImages from '../images/choices';
-
-const ResultBadge = (props) => {
-  const classes = classNames({
-    animated: true,
-    badge: true,
-    correct: props.isCorrect,
-    incorrect: !props.isCorrect
-  });
-
-  const value = Math.round(props.value * 100) / 100;
-
-  return (<div className={classes}>{value}%</div>);
-};
+import IconOrBadge from './IconOrBadge';
 
 class Question extends React.Component {
   constructor() {
@@ -45,32 +28,12 @@ class Question extends React.Component {
           {this.props.choices.map((choice, index) => (
             <div className="choice-info" key={`choice-${index}`}>
               <div className="icon-wrapper">
-                <ReactCSSTransitionGroup
-                  component="div"
-                  transitionName={{ enter: 'bounceIn', leave: 'fadeOut' }}
-                  transitionEnterTimeout={1000}
-                  transitionLeaveTimeout={0}
-                >
-                  {this.state.choice !== null ?
-                    <ResultBadge
-                      value={choice.delta}
-                      isCorrect={choice.isCorrect}
-                      key={`${index}-badge`}
-                    /> :
-                      <Chooser
-                        classNames={{ 'clickable-icon': true }}
-                        onClick={this.onChoiceSelected}
-                        index={index}
-                        isCorrect={choice.isCorrect}
-                        selectedIndex={this.state.choice}
-                      >
-                        <img
-                          key={`${index}-icon`}
-                          src={choiceImages[choice.icon]}
-                          role="presentation"
-                        />
-                      </Chooser>}
-                </ReactCSSTransitionGroup>
+                <IconOrBadge
+                  choice={choice}
+                  index={index}
+                  selectedIndex={this.state.choice}
+                  onChoiceSelected={this.onChoiceSelected}
+                />
               </div>
 
               <ReactCSSTransitionGroup
@@ -101,11 +64,6 @@ class Question extends React.Component {
     );
   }
 }
-
-ResultBadge.propTypes = {
-  value: PropTypes.number.isRequired,
-  isCorrect: PropTypes.bool
-};
 
 Question.propTypes = {
   choices: PropTypes.arrayOf(PropTypes.shape({
