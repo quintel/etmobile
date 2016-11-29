@@ -89,10 +89,10 @@ const fetchResults = (url, inputs) => (
  * performing each request in serial.
  *
  * @param  {number} baseline Future CO2 emissions in the default scenario.
- * @param  {[type]} results  Array in which results are stored.
- * @param  {[type]} requests Array of requests to be performed.
- * @param  {[type]} index    Index of the request to be performed.
- * @param  {[type]} url      URL of the ETEngine scenario.
+ * @param  {array} results   Array in which results are stored.
+ * @param  {array} requests  Array of requests to be performed.
+ * @param  {number} index    Index of the request to be performed.
+ * @param  {string} url      URL of the ETEngine scenario.
  *
  * @return {Promise} Returns a promise which is resolved when all requests have
  *                   completed.
