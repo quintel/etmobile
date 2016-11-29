@@ -102,6 +102,34 @@ it('sends updated inputs to the API', () => {
     ));
 });
 
+it('increments correctChoices when a correct answer is given', () => {
+  const api = stubAPI();
+  const choice = { inputs: { abc: 10 }, isCorrect: true };
+
+  const wrapper = mount(
+    <Root api={api} dashboard={dashboard} choices={choices} />
+  );
+
+  const correct = wrapper.state('correctChoices');
+
+  return wrapper.instance().handleQuestionChoice(choice)
+    .then(() => expect(wrapper.state('correctChoices')).toEqual(correct + 1));
+});
+
+it('does not increment correctChoices when a wrong answer is given', () => {
+  const api = stubAPI();
+  const choice = { inputs: { abc: 10 }, isCorrect: false };
+
+  const wrapper = mount(
+    <Root api={api} dashboard={dashboard} choices={choices} />
+  );
+
+  const correct = wrapper.state('correctChoices');
+
+  return wrapper.instance().handleQuestionChoice(choice)
+    .then(() => expect(wrapper.state('correctChoices')).toEqual(correct));
+});
+
 it('shows the results page when all questions are answered', () => {
   const wrapper = mount(
     <Root
