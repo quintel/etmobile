@@ -52,7 +52,7 @@ it('renders the description', () => {
 });
 
 it('renders two question buttons', () => {
-  const wrapper = shallow(
+  const wrapper = mount(
     <Question
       code="abcdef"
       name="My Question"
