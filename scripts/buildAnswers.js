@@ -1,13 +1,22 @@
 /* eslint no-console: 0 */
 /* eslint no-param-reassign: 0 */
+/* eslint import/no-extraneous-dependencies: 0 */
 
-// eslint-disable-next-line import/no-extraneous-dependencies
 import axios from 'axios';
 import fs from 'fs';
+import process from 'process';
+import dotenv from 'dotenv';
 
 import staticChoices from '../src/data/choices';
 
-const endpoint = 'https://beta-engine.energytransitionmodel.com';
+dotenv.config({ silent: true });
+
+const endpoint = process.env.REACT_APP_ETENGINE_URL;
+
+if (!endpoint) {
+  console.error('No REACT_APP_ETENGINE_URL defined; do you have a .env file?');
+  process.exit(1);
+}
 
 /**
  * Template string tag which removes leading space from each line in the string.
