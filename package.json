@@ -37,6 +37,6 @@
     "coverage": "react-scripts test --env=jsdom --coverage",
     "eject": "react-scripts eject",
     "build-answers": "babel-node --presets es2015 scripts/buildAnswers.js",
-    "deploy": "gh-pages -d build"
+    "deploy": "[ -f .env ] && gh-pages -d build || echo 'No .env file found'"
   }
 }
