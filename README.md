@@ -32,7 +32,7 @@
    npm install yarn -g
    ```
 
-3. Finally, using Yarn, install the ETMobile dependencies:
+3. Using Yarn, install the ETMobile dependencies:
 
    ```sh
    yarn
@@ -41,6 +41,12 @@
    You may re-run this command in the future to install any new or updated
    dependencies (which will show up as "Module not found: ...") error messages
    in the application.
+
+4. Create a copy of the default environment file:
+
+   ```sh
+   cp .env.example .env
+   ```
 
 You may now run the development version of ETMobile with `npm start`. The tests
 can be performed with `npm test` and `npm run coverage`.
