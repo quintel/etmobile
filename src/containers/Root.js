@@ -27,6 +27,8 @@ class Root extends React.Component {
   componentDidMount() {
     this.handleRestartGame();
 
+    // If this is the first time this instance has been mounted, create a new
+    // ETEngine scenario to which we'll send inputs selected by the visitor.
     if (!this.createScenarioPromise) {
       this.createScenarioPromise = this.props.api.createScenario();
 
@@ -40,6 +42,19 @@ class Root extends React.Component {
     }
   }
 
+  /**
+   * Calls ETEngine with inputs from the choice selected by the visitor and
+   * returns Gquery results required to render the dashboard.
+   *
+   * This is called immediately after creating the scenario after the component
+   * is mounted, and every time the visitor makes a choice.
+   *
+   * @param {number} scenarioId The ID of the active ETEngine scenario.
+   * @param {object} inputKeys Keys and values of inputs to be sent to ETEngine.
+   *
+   * @return {Promise} A promise which will resolve when the ETEngine request
+   *                   completes.
+   */
   fetchQueries(scenarioID, inputKeys = {}) {
     return this.props.api.updateScenario(
       scenarioID,
@@ -60,6 +75,9 @@ class Root extends React.Component {
     };
   }
 
+  /**
+   * Restarts the game after a visitor got a question incorrect.
+   */
   handleRestartGame() {
     let choices = this.props.choices;
 
@@ -81,12 +99,25 @@ class Root extends React.Component {
     this.setState(nextState);
   }
 
+  /**
+   * Starts a scenario update, sending the given inputs to ETEngine.
+   */
   handleUpdateInput(inputs) {
     return this.createScenarioPromise.then(
       ({ scenario: { id } }) => this.fetchQueries(id, inputs)
     );
   }
 
+  /**
+   * Event triggered when the visitor makes a choice. Coordinates sending the
+   * values to ETEngine, updating the game state, and proceeding to the next
+   * question or results page.
+   *
+   * @param {object} choice The choice selected by the visitor.
+   *
+   * @return {Promise} A promise which resolves when the inputs have been
+   *                   updated and the next question has loaded.
+   */
   handleQuestionChoice(choice) {
     const updatePromise = this.handleUpdateInput(choice.inputs);
 
