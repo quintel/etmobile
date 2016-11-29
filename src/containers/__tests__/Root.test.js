@@ -7,10 +7,10 @@ import Root from '../Root';
 import Question from '../../components/Question';
 
 const choices = [
-  { name: 'Choice A', icon: 'coal', inputs: {}, delta: 1 },
-  { name: 'Choice B', icon: 'wind', inputs: {}, delta: 2 },
-  { name: 'Choice C', icon: 'balloon', inputs: {}, delta: 1 },
-  { name: 'Choice D', icon: 'battery', inputs: {}, delta: 2 }
+  { name: 'Choice A', description: '', icon: 'coal', inputs: {}, delta: 1 },
+  { name: 'Choice B', description: '', icon: 'wind', inputs: {}, delta: 2 },
+  { name: 'Choice C', description: '', icon: 'balloon', inputs: {}, delta: 1 },
+  { name: 'Choice D', description: '', icon: 'battery', inputs: {}, delta: 2 }
 ];
 
 const dashboard = [{
