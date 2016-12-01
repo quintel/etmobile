@@ -10,26 +10,42 @@
 ## Quick start guide
 
 1. The development version of ETMobile requires that you have Node.js installed.
-   macOS users with [Homebrew][homebrew] can install Node.js easily:
 
-   ```sh
-   brew update
-   brew install node
-   ```
+   * macOS users with [Homebrew][homebrew] can install Node.js easily:
 
-   If you already have Node.js installed, please check the version by running
-   `node -v`; version 6 or newer is required. Older versions may be updated by
-   running:
+     ```sh
+     brew update
+     brew install node
+     ```
 
-   ```sh
-   brew update
-   brew upgrade node
-   ```
+     If you already have Node.js installed, please check the version by running
+     `node -v`; version 6 or newer is required. Older versions may be updated by
+     running:
+
+     ```sh
+     brew update
+     brew upgrade node
+     ```
+
+   * Ubuntu users can use an [install script using a ppa](http://askubuntu.com/a/635469):
+
+     ```sh
+     sudo apt-get purge nodejs npm
+     curl -sL https://deb.nodesource.com/setup_6.x | sudo -E bash -
+     sudo apt-get install -y nodejs
+     ```
 
 2. Install [Yarn][yarn]:
 
    ```sh
    npm install yarn -g
+   ```
+
+   On Ubuntu, a [ppa can be used](https://yarnpkg.com/en/docs/install#linux-tab):
+
+   ```sh
+   curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
+   echo "deb http://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
    ```
 
 3. Using Yarn, install the ETMobile dependencies:
