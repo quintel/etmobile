@@ -26,6 +26,17 @@ it('correctly capitalizes acronyms', () => {
   expect(question.name).toEqual('Wind or LNG?');
 });
 
+it('does not downcase a single capital letter', () => {
+  const choices = [
+    { icon: 'wind', name: 'Wind', description: 'ABC.', delta: 0 },
+    { icon: 'lng', name: 'A coal power plant', description: 'DEF.', delta: 0 }
+  ];
+
+  const question = questionFromChoices(choices);
+
+  expect(question.name).toEqual('Wind or a coal power plant?');
+});
+
 it('assigns isCorrect to the choice with the lowest delta', () => {
   const choices = [
     { icon: 'coal', name: 'Coal', delta: 2 },
