@@ -11,8 +11,6 @@ it('creates a question from two choices', () => {
   const question = questionFromChoices(choices);
 
   expect(question.name).toEqual('Coal or wind?');
-  expect(question.choices).toContainEqual({ ...choices[0], isCorrect: true });
-  expect(question.choices).toContainEqual({ ...choices[1], isCorrect: false });
 });
 
 it('correctly capitalizes acronyms', () => {
@@ -38,7 +36,7 @@ it('assigns isCorrect to the choice with the lowest delta', () => {
   expect(question.choices[1].isCorrect).toEqual(true);
 });
 
-it('assigns isCorrect to the first choice when there is a tie', () => {
+it('assigns isCorrect to both choices when there is a tie', () => {
   const choices = [
     { icon: 'coal', name: 'Coal', delta: -2 },
     { icon: 'wind', name: 'Wind', delta: -2 }
@@ -47,7 +45,7 @@ it('assigns isCorrect to the first choice when there is a tie', () => {
   const question = questionFromChoices(choices);
 
   expect(question.choices[0].isCorrect).toEqual(true);
-  expect(question.choices[1].isCorrect).toEqual(false);
+  expect(question.choices[1].isCorrect).toEqual(true);
 });
 
 it('raises an error if a choice has no name or title', () => {
