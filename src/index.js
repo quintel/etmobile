@@ -5,6 +5,8 @@ import React from 'react';
 import { render } from 'react-dom';
 import { HashRouter, Match, propTypes as RouterPropTypes } from 'react-router';
 
+import ReactGA from 'react-ga';
+
 import Root from './containers/Root';
 import NewChallenge from './components/NewChallenge';
 import FrontPage from './components/FrontPage';
@@ -30,6 +32,9 @@ require('smoothscroll-polyfill').polyfill();
 const gameChoices = shuffleArray(mapAnswersToChoices(answers, choices));
 
 const scrollToTop = () => window.scrollTo(0, 0);
+
+ReactGA.initialize('UA-88096029-1');
+ReactGA.pageview(window.location.pathname);
 
 class AppRouter extends React.Component {
   componentDidMount() {
