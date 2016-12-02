@@ -33,7 +33,7 @@ export default (choices) => {
     name: `${choiceTitle(first, true)} or ${choiceTitle(second, false)}?`,
     choices: [
       { ...first, isCorrect: first.delta <= second.delta },
-      { ...second, isCorrect: first.delta > second.delta }
+      { ...second, isCorrect: first.delta >= second.delta }
     ]
   };
 };
