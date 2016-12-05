@@ -20,6 +20,7 @@ class Root extends React.Component {
 
     this.handleUpdateInput = this.handleUpdateInput.bind(this);
     this.handleQuestionChoice = this.handleQuestionChoice.bind(this);
+    this.handleAcknowledge = this.handleAcknowledge.bind(this);
     this.handleRestartGame = this.handleRestartGame.bind(this);
     this.createScenarioPromise = null;
   }
@@ -125,34 +126,33 @@ class Root extends React.Component {
       this.setState({ correctChoices: this.state.correctChoices + 1 });
     }
 
-    let resolveChangeQuestion;
+    const question = questionFromChoices(this.state.availableChoices);
+    const availableChoices = this.state.availableChoices.slice(2);
 
-    const changeQuestionPromise = new Promise((resolve) => {
-      resolveChangeQuestion = resolve;
+    // Push the unchosen choice back onto the list for later.
+    availableChoices.push(
+      this.state.currentQuestion.choices.find(other => other !== choice)
+    );
+
+    this.nextState = {
+      waitForAcknowledge: false,
+      lastChoice: choice,
+      currentQuestion: question,
+      availableChoices
+    };
+
+    this.setState({
+      waitForAcknowledge: true
     });
-
-    window.setTimeout(() => {
-      const question = questionFromChoices(this.state.availableChoices);
-      const availableChoices = this.state.availableChoices.slice(2);
-
-      // Push the unchosen choice back onto the list for later.
-      availableChoices.push(
-        this.state.currentQuestion.choices.find(other => other !== choice)
-      );
-
-      this.setState({
-        lastChoice: choice,
-        currentQuestion: question,
-        availableChoices
-      });
-
-      resolveChangeQuestion();
-    }, 2000);
 
     // Consider the choice completed only once we have received a response from
     // ETEngine and the state has been changed so as to display the next
     // question.
-    return Promise.all([updatePromise, changeQuestionPromise]);
+    return updatePromise;
+  }
+
+  handleAcknowledge() {
+    this.setState(this.nextState);
   }
 
   render() {
@@ -160,6 +160,20 @@ class Root extends React.Component {
     const lastChoice = this.state.lastChoice;
 
     if ((!lastChoice || lastChoice.isCorrect) && this.state.currentQuestion) {
+      let acknowledge_button;
+      if (this.state.waitForAcknowledge) {
+        const finished = (this.nextState.lastChoice && !this.nextState.lastChoice.isCorrect) || !this.nextState.currentQuestion;
+
+        acknowledge_button = (
+          <button
+            className='acknowledge'
+            onClick={this.handleAcknowledge}
+          >
+            {finished ? 'Got it' : 'Next' }
+          </button>
+        );
+      }
+
       content = (
         <div>
           <main className="question-wrapper">
@@ -174,6 +188,8 @@ class Root extends React.Component {
                 style={{ position: 'absolute' }}
                 key={this.state.currentQuestion.name}
               >
+                {acknowledge_button}
+
                 <Question
                   onChoiceMade={this.handleQuestionChoice}
                   {...this.state.currentQuestion}
