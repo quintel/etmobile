@@ -7,6 +7,8 @@ import Summary from '../components/Summary';
 
 import questionFromChoices from '../utils/questionFromChoices';
 
+const NEXT_QUESTION_WAIT = process.env.NODE_ENV === 'test' ? 1 : 2000;
+
 class Root extends React.Component {
   constructor() {
     super();
@@ -147,7 +149,7 @@ class Root extends React.Component {
       });
 
       resolveChangeQuestion();
-    }, 2000);
+    }, NEXT_QUESTION_WAIT);
 
     // Consider the choice completed only once we have received a response from
     // ETEngine and the state has been changed so as to display the next
