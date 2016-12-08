@@ -2,6 +2,7 @@ import React, { PropTypes } from 'react';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 
 import Dashboard from '../components/Dashboard';
+import Header from '../components/Header';
 import Question from '../components/Question';
 import Summary from '../components/Summary';
 
@@ -207,7 +208,7 @@ class Root extends React.Component {
 
     return (
       <div>
-        <header>ETMobile - Reduce your CO2 emissions</header>
+        <Header />
         {content}
       </div>
     );
