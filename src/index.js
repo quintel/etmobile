@@ -38,12 +38,14 @@ render(
       />
 
       <Match
-        pattern="/play"
-        render={() => (
+        pattern="/play/:challengeId?"
+        render={({ params }) => (
           <Root
             api={{ createScenario, updateScenario }}
             dashboard={dashboard}
             choices={gameChoices}
+            base={base}
+            params={params}
           />
         )}
       />
