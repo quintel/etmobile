@@ -6,9 +6,43 @@ import Header from '../components/Header';
 import Question from '../components/Question';
 import Summary from '../components/Summary';
 
+import getPlayerId from '../utils/getPlayerId';
 import questionFromChoices from '../utils/questionFromChoices';
 
 const NEXT_QUESTION_WAIT = process.env.NODE_ENV === 'test' ? 1 : 2000;
+
+/**
+ * Returns the path to the Firebase endpoint for a leaderboard.
+ *
+ * @param  {string} leaderboard The leaderboard name; "all" or the challenge ID.
+ * @param  {string} playerId    The unique player ID.
+ * @return {string}             The full leaderboard endpoint path.
+ */
+const lbEndpoint = (leaderboard, playerId) => (
+  `/leaderboards/${leaderboard}/${playerId}`
+);
+
+/**
+ * Updates Firebase with a new high-score.
+ *
+ * @param {object} base        The re-base instance.
+ * @param {number} score       The high score to be stored.
+ * @param {string} challengeId The unique challenge ID, or null.
+ *
+ * Returns a Promise which wraps the update promises.
+ */
+const updateHighScore = (base, score, challengeId) => {
+  const playerId = getPlayerId();
+
+  const data = { score, at: new Date().getTime() };
+  const promises = [base.update(lbEndpoint('all', playerId), { data })];
+
+  if (challengeId) {
+    promises.push(base.update(lbEndpoint(challengeId, playerId), { data }));
+  }
+
+  return Promise.all(promises);
+};
 
 class Root extends React.Component {
   constructor() {
@@ -16,6 +50,7 @@ class Root extends React.Component {
 
     this.state = {
       correctChoices: 0,
+      bestScore: 0,
       lastChoice: null,
       scenarioID: undefined,
       queryResults: {}
@@ -125,7 +160,22 @@ class Root extends React.Component {
     const updatePromise = this.handleUpdateInput(choice.inputs);
 
     if (choice.isCorrect) {
-      this.setState({ correctChoices: this.state.correctChoices + 1 });
+      const nextState = { correctChoices: this.state.correctChoices + 1 };
+
+      if (this.state.correctChoices + 1 > this.state.bestScore) {
+        nextState.bestScore = nextState.correctChoices;
+      }
+
+      this.setState(nextState);
+
+      // Update leaderboards!
+      if (nextState.hasOwnProperty('bestScore')) {
+        updateHighScore(
+          this.props.base,
+          nextState.bestScore,
+          this.props.params.challengeId
+        );
+      }
     }
 
     let resolveChangeQuestion;
@@ -215,13 +265,19 @@ class Root extends React.Component {
   }
 }
 
+Root.defaultProps = {
+  params: { challengeId: null }
+};
+
 Root.propTypes = {
   api: PropTypes.shape({
     createScenario: PropTypes.func.isRequired,
     updateScenario: PropTypes.func.isRequired
   }).isRequired,
+  base: PropTypes.shape({ update: PropTypes.func.isRequired }).isRequired,
   choices: Question.propTypes.choices,
-  dashboard: Dashboard.propTypes.items
+  dashboard: Dashboard.propTypes.items,
+  params: PropTypes.shape({ challengeId: PropTypes.string }).isRequired
 };
 
 export default Root;

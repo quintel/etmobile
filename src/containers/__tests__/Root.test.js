@@ -31,10 +31,13 @@ const stubAPI = () => ({
   )
 });
 
+const stubBase = () => ({ update: jest.fn() });
+
 it('renders an input list', () => {
   const wrapper = mount(
     <Root
       api={stubAPI()}
+      base={stubBase()}
       dashboard={dashboard}
       choices={choices}
     />
@@ -62,6 +65,7 @@ it('creates a new scenario when mounted', () => {
   const wrapper = mount(
     <Root
       api={api}
+      base={stubBase()}
       dashboard={dashboard}
       choices={choices}
     />
@@ -87,6 +91,7 @@ it('sends updated inputs to the API', () => {
   const wrapper = mount(
     <Root
       api={api}
+      base={stubBase()}
       dashboard={dashboard}
       choices={choices}
     />
@@ -107,7 +112,7 @@ it('increments correctChoices when a correct answer is given', () => {
   const choice = { inputs: { abc: 10 }, isCorrect: true };
 
   const wrapper = mount(
-    <Root api={api} dashboard={dashboard} choices={choices} />
+    <Root api={api} dashboard={dashboard} choices={choices} base={stubBase()} />
   );
 
   const correct = wrapper.state('correctChoices');
@@ -121,7 +126,7 @@ it('does not increment correctChoices when a wrong answer is given', () => {
   const choice = { inputs: { abc: 10 }, isCorrect: false };
 
   const wrapper = mount(
-    <Root api={api} dashboard={dashboard} choices={choices} />
+    <Root api={api} dashboard={dashboard} choices={choices} base={stubBase()} />
   );
 
   const correct = wrapper.state('correctChoices');
@@ -130,10 +135,48 @@ it('does not increment correctChoices when a wrong answer is given', () => {
     .then(() => expect(wrapper.state('correctChoices')).toEqual(correct));
 });
 
+it('updates the high score list without a challenge', () => {
+  const api = stubAPI();
+  const base = stubBase();
+  const choice = { inputs: { abc: 10 }, isCorrect: true };
+
+  const wrapper = mount(
+    <Root
+      api={api}
+      base={base}
+      dashboard={dashboard}
+      choices={choices}
+    />
+  );
+
+  return wrapper.instance().handleQuestionChoice(choice)
+    .then(() => expect(base.update.mock.calls.length).toEqual(1));
+});
+
+it('updates the high score list with a challenge', () => {
+  const api = stubAPI();
+  const base = stubBase();
+  const choice = { inputs: { abc: 10 }, isCorrect: true };
+
+  const wrapper = mount(
+    <Root
+      params={{ challengeId: 'abc' }}
+      api={api}
+      base={base}
+      dashboard={dashboard}
+      choices={choices}
+    />
+  );
+
+  return wrapper.instance().handleQuestionChoice(choice)
+    .then(() => expect(base.update.mock.calls.length).toEqual(2));
+});
+
 it('shows the results page when all questions are answered', () => {
   const wrapper = mount(
     <Root
       api={stubAPI()}
+      base={stubBase()}
       dashboard={dashboard}
       choices={choices}
     />
@@ -149,6 +192,7 @@ it('resumes with the next question when restarting', () => {
   const wrapper = mount(
     <Root
       api={stubAPI()}
+      base={stubBase()}
       dashboard={dashboard}
       choices={choices}
     />
@@ -172,6 +216,7 @@ it('starts over when restarting with all questions answered', () => {
   const wrapper = mount(
     <Root
       api={stubAPI()}
+      base={stubBase()}
       dashboard={dashboard}
       choices={choices}
     />
