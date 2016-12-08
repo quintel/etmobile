@@ -1,6 +1,8 @@
 import React, { PropTypes } from 'react';
 import { Redirect } from 'react-router';
 
+import Header from './Header';
+
 import randomId from '../utils/randomId';
 import challengeExpiry from '../utils/challengeExpiry';
 
@@ -63,7 +65,7 @@ class NewChallenge extends React.Component {
 
     return (
       <div>
-        <header>ETMobile - Reduce your CO2 emissions</header>
+        <Header />
 
         <div className="new-challenge-wrapper">
           <h1>Create a new challenge</h1>
