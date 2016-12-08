@@ -3,12 +3,16 @@ import 'animate.css';
 
 import React from 'react';
 import { render } from 'react-dom';
+import { HashRouter, Match, Redirect } from 'react-router';
 
 import Root from './containers/Root';
+import NewChallenge from './components/NewChallenge';
 
 import answers from './data/answers';
 import choices from './data/choices';
 import dashboard from './data/dashboard';
+
+import base from './utils/base';
 
 import shuffleArray from './utils/shuffleArray';
 import mapAnswersToChoices from './utils/mapAnswersToChoices';
@@ -23,10 +27,32 @@ import './index.css';
 const gameChoices = shuffleArray(mapAnswersToChoices(answers, choices));
 
 render(
-  <Root
-    api={{ createScenario, updateScenario }}
-    dashboard={dashboard}
-    choices={gameChoices}
-  />,
+  <HashRouter>
+    <div>
+      <Match
+        exactly
+        pattern="/"
+        render={() => (
+          <Redirect to={{ pathname: '/play' }} />
+        )}
+      />
+
+      <Match
+        pattern="/play"
+        render={() => (
+          <Root
+            api={{ createScenario, updateScenario }}
+            dashboard={dashboard}
+            choices={gameChoices}
+          />
+        )}
+      />
+
+      <Match
+        pattern="/new-challenge"
+        render={() => <NewChallenge base={base} />}
+      />
+    </div>
+  </HashRouter>,
   document.getElementById('root')
 );

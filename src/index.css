@@ -155,6 +155,7 @@ h1 {
 
 h1,
 .question .description {
+  text-align: center;
   text-shadow: 0 1px 0 white;
 }
 
@@ -234,7 +235,7 @@ h2 {
   margin-left: 0.5rem;
 }
 
-.question button, .results button {
+.question button, .results button, form button {
   background-image: linear-gradient(#5998de, #4488d7);
   border-radius: 5px;
   border: 1px solid #3c7bd0;
@@ -295,7 +296,7 @@ h2 {
   text-shadow: 0 1px 0 #961a1a;
 }
 
-.question button .arrows {
+button .arrows {
   display: inline-block;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Droid Sans", sans-serif;
   font-size: 1.2rem;
@@ -410,4 +411,65 @@ h2 {
 .choice-summary .target-delta img {
   margin: -3px 5px 0 0;
   vertical-align: middle;
+}
+
+.errors {
+  color: #bb1010;
+  list-style: none;
+  margin: 0 0 1rem;
+  padding: 0;
+}
+
+.errors li {
+  text-align: center;
+}
+
+#new-challenge {
+  margin-top: 2rem;
+}
+
+.field-wrapper {
+  background: rgba(255, 255, 255, 0.75);
+  border: 1px solid #d3deea;
+  border-radius: 5px;
+  margin-bottom: 1rem;
+  padding: 1rem 1rem 0rem;
+}
+
+.new-challenge-wrapper {
+  padding: 1rem;
+  box-sizing: border-box;
+}
+
+#new-challenge label {
+  display: block;
+  font-weight: bold;
+  padding-bottom: 1rem;
+}
+
+#new-challenge label .description {
+  color: #70757b;
+  display: block;
+  font-size: 0.875rem;
+  font-weight: normal;
+  margin-top: 0.25rem;
+}
+
+#new-challenge .field {
+  border-top: 1px solid #d3deea;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+}
+
+#new-challenge .field input, #new-challenge .field select {
+  background: none;
+  border: 0;
+  padding: 0.5rem 0;
+  width: 100%;
+}
+
+.field-wrapper.buttons {
+  border: none;
+  padding: 0;
+  text-align: center;
 }
