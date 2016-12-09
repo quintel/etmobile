@@ -55,16 +55,18 @@ class LeaderBoard extends React.Component {
     }
 
     return (
-      <ul className="leaderboard">
-        {this.state.results.sort(sortEntries).map((res, index) =>
-          <LeaderBoardItem
-            key={index}
-            at={new Date(res.at)}
-            score={res.score}
-            position={index + 1}
-          />
-        )}
-      </ul>
+      <div className="leaderboard">
+        <ul>
+          {this.state.results.sort(sortEntries).map((res, index) =>
+            <LeaderBoardItem
+              key={index}
+              at={new Date(res.at)}
+              score={res.score}
+              position={index + 1}
+            />
+          )}
+        </ul>
+      </div>
     );
   }
 }

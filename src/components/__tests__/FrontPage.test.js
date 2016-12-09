@@ -9,7 +9,8 @@ import LeaderBoard from '../LeaderBoard';
 
 const mockBase = () => ({
   bindToState: () => {},
-  removeBinding: () => {}
+  removeBinding: () => {},
+  fetch: () => {}
 });
 
 it('renders a link to the play page', () => {
