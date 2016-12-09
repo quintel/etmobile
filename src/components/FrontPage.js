@@ -18,7 +18,10 @@ const FrontPage = props => (
         <Link to="/play" className="button">Play the game!</Link>
       </div>
 
-      <LeaderBoard base={props.base} endpoint="all" />
+      <LeaderBoard
+        base={props.base}
+        endpoint="all"
+      />
 
       <ChallengeList base={props.base} active />
     </main>

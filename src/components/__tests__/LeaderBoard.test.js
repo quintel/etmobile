@@ -1,13 +1,30 @@
 /* global it expect jest */
 
 import React from 'react';
-import { mount } from 'enzyme';
+import { shallow, mount } from 'enzyme';
 
 import LeaderBoard from '../LeaderBoard';
 
 const mockBase = () => ({
   bindToState: jest.fn(),
   removeBinding: jest.fn()
+});
+
+it('renders a title, when set', () => {
+  const wrapper = shallow(
+    <LeaderBoard title="My leaderboard" base={mockBase()} endpoint="all" />
+  );
+
+  expect(wrapper.find('h6').length).toEqual(1);
+  expect(wrapper.find('h6').text()).toEqual('My leaderboard');
+});
+
+it('renders no title by default', () => {
+  const wrapper = shallow(
+    <LeaderBoard base={mockBase()} endpoint="all" />
+  );
+
+  expect(wrapper.find('h6').length).toEqual(0);
 });
 
 it('binds to the Firebase endpoint when mounting', () => {
