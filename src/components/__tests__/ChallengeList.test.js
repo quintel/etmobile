@@ -1,7 +1,6 @@
 /* global it expect jest */
 
 import React from 'react';
-// import { Link } from 'react-router';
 import { shallow, mount } from 'enzyme';
 import { MemoryRouter } from 'react-router';
 
@@ -28,7 +27,7 @@ it('fetches active challenges from Firebase', () => {
   expect(query.hasOwnProperty('endAt')).toEqual(false);
 
   // be within 100ms of now
-  expect(query.startAt / 10000).toBeCloseTo(new Date().getTime() / 10000);
+  expect(query.startAt / 10000).toBeCloseTo(new Date().getTime() / 10000, 1);
 });
 
 it('fetches inactive challenges from Firebase', () => {
@@ -45,7 +44,7 @@ it('fetches inactive challenges from Firebase', () => {
   expect(query.hasOwnProperty('startAt')).toEqual(false);
 
   // be within 100ms of now
-  expect(query.endAt / 10000).toBeCloseTo(new Date().getTime() / 10000);
+  expect(query.endAt / 10000).toBeCloseTo(new Date().getTime() / 10000, 1);
 });
 
 it('renders challenges', () => {

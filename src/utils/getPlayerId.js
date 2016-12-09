@@ -5,10 +5,7 @@ let storage;
 if (process.env.NODE_ENV === 'test' &&
       (typeof localStorage === 'undefined' || localStorage === null)) {
   // eslint-disable-next-line
-  const LocalStorage = require('node-localstorage').LocalStorage;
-
-  // eslint-disable-next-line no-global-assign
-  storage = new LocalStorage(`./tmp/scratch.${new Date().getTime()}`);
+  storage = require('localstorage-memory');
 }
 
 storage = storage || localStorage;
