@@ -3,10 +3,11 @@ import 'animate.css';
 
 import React from 'react';
 import { render } from 'react-dom';
-import { HashRouter, Match, Redirect } from 'react-router';
+import { HashRouter, Match } from 'react-router';
 
 import Root from './containers/Root';
 import NewChallenge from './components/NewChallenge';
+import FrontPage from './components/FrontPage';
 
 import answers from './data/answers';
 import choices from './data/choices';
@@ -32,9 +33,7 @@ render(
       <Match
         exactly
         pattern="/"
-        render={() => (
-          <Redirect to={{ pathname: '/play' }} />
-        )}
+        render={() => <FrontPage base={base} />}
       />
 
       <Match
