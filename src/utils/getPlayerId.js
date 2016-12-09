@@ -8,7 +8,7 @@ if (process.env.NODE_ENV === 'test' &&
   const LocalStorage = require('node-localstorage').LocalStorage;
 
   // eslint-disable-next-line no-global-assign
-  storage = new LocalStorage(`./scratch/${new Date().getTime()}`);
+  storage = new LocalStorage(`./tmp/scratch.${new Date().getTime()}`);
 }
 
 storage = storage || localStorage;
