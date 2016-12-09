@@ -200,7 +200,8 @@ h2 {
   padding: 0;
 }
 
-.question .choice-info .badge {
+.question .choice-info .badge,
+.leaderboard .position {
   background: linear-gradient(#57b863, #41a94f);
   border: 3px solid white;
   border-radius: 50%;
@@ -209,6 +210,7 @@ h2 {
   font-size: 1.25rem;
   height: 75px;
   line-height: 75px;
+  text-align: center;
   text-shadow: 0 1px 0 #268842;
   width: 75px;
   z-index: 3;
@@ -472,4 +474,31 @@ button .arrows {
   border: none;
   padding: 0;
   text-align: center;
+}
+
+.leaderboard {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.leaderboard li {
+  align-items: center;
+  display: flex;
+  margin-bottom: 0.5rem;
+  overflow: hidden;
+}
+
+.leaderboard .position {
+  background: linear-gradient(#b6c2d6, #92a3c1);
+  display: inline-block;
+  font-size: 2rem;
+  height: 60px;
+  line-height: 60px;
+  margin-right: 0.5rem;
+  text-shadow: 0 1px 0 #65799a;
+  width: 60px;
+}
+
+.leaderboard .details {
 }
