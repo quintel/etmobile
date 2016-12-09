@@ -50,12 +50,10 @@ class LeaderBoard extends React.Component {
   }
 
   render() {
-    if (!this.state.results) {
-      return <div>Loading results...</div>;
-    }
+    let content;
 
-    return (
-      <div className="leaderboard">
+    if (this.state.results) {
+      content = (
         <ul>
           {this.state.results.sort(sortEntries).map((res, index) =>
             <LeaderBoardItem
@@ -66,6 +64,15 @@ class LeaderBoard extends React.Component {
             />
           )}
         </ul>
+      );
+    } else {
+      content = <div>Loading results...</div>;
+    }
+
+    return (
+      <div className="leaderboard">
+        {this.props.title ? <h6>{this.props.title}</h6> : null}
+        {content}
       </div>
     );
   }
@@ -76,7 +83,8 @@ LeaderBoard.propTypes = {
     bindToState: PropTypes.func.isRequired,
     removeBinding: PropTypes.func.isRequired
   }).isRequired,
-  endpoint: PropTypes.string.isRequired
+  endpoint: PropTypes.string.isRequired,
+  title: PropTypes.string
 };
 
 export default LeaderBoard;
