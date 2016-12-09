@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { PropTypes } from 'react';
 import { Link } from 'react-router';
 
 import Header from './Header';
 import LeaderBoard from './LeaderBoard';
+import ChallengeList from '../components/ChallengeList';
 
 const FrontPage = props => (
   <div className="front-page">
@@ -18,13 +19,17 @@ const FrontPage = props => (
       </div>
 
       <LeaderBoard base={props.base} endpoint="all" />
-      <Link to="/new-challenge" className="button">Create a new challenge</Link>
+
+      <ChallengeList base={props.base} active />
     </main>
   </div>
 );
 
 FrontPage.propTypes = {
-  base: LeaderBoard.propTypes.base
+  base: PropTypes.shape({
+    ...LeaderBoard.propTypes.base,
+    ...ChallengeList.propTypes.base
+  })
 };
 
 export default FrontPage;
