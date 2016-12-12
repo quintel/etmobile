@@ -8,6 +8,7 @@ import Summary from '../components/Summary';
 
 import getPlayerId from '../utils/getPlayerId';
 import questionFromChoices from '../utils/questionFromChoices';
+import { setScore } from '../utils/highScore';
 
 const NEXT_QUESTION_WAIT = process.env.NODE_ENV === 'test' ? 1 : 2000;
 
@@ -35,9 +36,13 @@ const updateHighScore = (base, score, challengeId) => {
   const playerId = getPlayerId();
 
   const data = { score, at: new Date().getTime() };
-  const promises = [base.update(lbEndpoint('all', playerId), { data })];
+  const promises = [];
 
-  if (challengeId) {
+  if (setScore('all', score)) {
+    promises.push(base.update(lbEndpoint('all', playerId), { data }));
+  }
+
+  if (challengeId && setScore(challengeId, score)) {
     promises.push(base.update(lbEndpoint(challengeId, playerId), { data }));
   }
 
