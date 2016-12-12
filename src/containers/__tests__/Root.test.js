@@ -1,10 +1,15 @@
-/* global it expect jest jasmine spyOn */
+/* global it expect jest jasmine spyOn afterEach */
 
 import React from 'react';
 import { mount } from 'enzyme';
 
 import Root from '../Root';
 import Question from '../../components/Question';
+
+import { setScore } from '../../utils/highScore';
+import store from '../../utils/store';
+
+afterEach(store.clear);
 
 const choices = [
   { name: 'Choice A', description: '', icon: 'coal', inputs: {}, delta: 1 },
@@ -154,6 +159,28 @@ it('updates the high score list without a challenge', () => {
 });
 
 it('updates the high score list with a challenge', () => {
+  const api = stubAPI();
+  const base = stubBase();
+  const choice = { inputs: { abc: 10 }, isCorrect: true };
+
+  setScore('all', 10);
+  setScore('abc', 10);
+
+  const wrapper = mount(
+    <Root
+      params={{ challengeId: 'abc' }}
+      api={api}
+      base={base}
+      dashboard={dashboard}
+      choices={choices}
+    />
+  );
+
+  return wrapper.instance().handleQuestionChoice(choice)
+    .then(() => expect(base.update.mock.calls.length).toEqual(0));
+});
+
+it('does not update the high score list with a lower score', () => {
   const api = stubAPI();
   const base = stubBase();
   const choice = { inputs: { abc: 10 }, isCorrect: true };
