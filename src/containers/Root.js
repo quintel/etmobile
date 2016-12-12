@@ -6,7 +6,7 @@ import Header from '../components/Header';
 import Question from '../components/Question';
 import Summary from '../components/Summary';
 
-import getPlayerId from '../utils/getPlayerId';
+import authenticate from '../utils/authenticate';
 import questionFromChoices from '../utils/questionFromChoices';
 import { setScore } from '../utils/highScore';
 
@@ -16,11 +16,11 @@ const NEXT_QUESTION_WAIT = process.env.NODE_ENV === 'test' ? 1 : 2000;
  * Returns the path to the Firebase endpoint for a leaderboard.
  *
  * @param  {string} leaderboard The leaderboard name; "all" or the challenge ID.
- * @param  {string} playerId    The unique player ID.
+ * @param  {string} uid         The unique ID of the current user.
  * @return {string}             The full leaderboard endpoint path.
  */
-const lbEndpoint = (leaderboard, playerId) => (
-  `/leaderboards/${leaderboard}/${playerId}`
+const lbEndpoint = (leaderboard, uid) => (
+  `/leaderboards/${leaderboard}/${uid}`
 );
 
 /**
@@ -28,22 +28,21 @@ const lbEndpoint = (leaderboard, playerId) => (
  *
  * @param {object} base        The re-base instance.
  * @param {number} score       The high score to be stored.
+ * @param {string} uid         The unique ID of the current user.
  * @param {string} challengeId The unique challenge ID, or null.
  *
  * Returns a Promise which wraps the update promises.
  */
-const updateHighScore = (base, score, challengeId) => {
-  const playerId = getPlayerId();
-
+const updateHighScore = (base, score, uid, challengeId) => {
   const data = { score, at: new Date().getTime() };
   const promises = [];
 
   if (setScore('all', score)) {
-    promises.push(base.update(lbEndpoint('all', playerId), { data }));
+    promises.push(base.update(lbEndpoint('all', uid), { data }));
   }
 
   if (challengeId && setScore(challengeId, score)) {
-    promises.push(base.update(lbEndpoint(challengeId, playerId), { data }));
+    promises.push(base.update(lbEndpoint(challengeId, uid), { data }));
   }
 
   return Promise.all(promises);
@@ -69,6 +68,8 @@ class Root extends React.Component {
 
   componentDidMount() {
     this.handleRestartGame();
+
+    authenticate(this.props.base, ({ uid }) => this.setState({ uid }));
 
     // If this is the first time this instance has been mounted, create a new
     // ETEngine scenario to which we'll send inputs selected by the visitor.
@@ -174,10 +175,11 @@ class Root extends React.Component {
       this.setState(nextState);
 
       // Update leaderboards!
-      if (nextState.hasOwnProperty('bestScore')) {
+      if (nextState.hasOwnProperty('bestScore') && this.state.uid) {
         updateHighScore(
           this.props.base,
           nextState.bestScore,
+          this.state.uid,
           this.props.params.challengeId
         );
       }
@@ -279,7 +281,11 @@ Root.propTypes = {
     createScenario: PropTypes.func.isRequired,
     updateScenario: PropTypes.func.isRequired
   }).isRequired,
-  base: PropTypes.shape({ update: PropTypes.func.isRequired }).isRequired,
+  base: PropTypes.shape({
+    auth: PropTypes.func.isRequired,
+    onAuth: PropTypes.func.isRequired,
+    update: PropTypes.func.isRequired
+  }).isRequired,
   choices: Question.propTypes.choices,
   dashboard: Dashboard.propTypes.items,
   params: PropTypes.shape({ challengeId: PropTypes.string }).isRequired
