@@ -36,7 +36,11 @@ const stubAPI = () => ({
   )
 });
 
-const stubBase = () => ({ update: jest.fn() });
+const stubBase = () => ({
+  update: jest.fn(),
+  onAuth: cb => cb({ uid: 'xyz' }),
+  auth: () => ({ signInAnonymously: Promise.resolve({ uid: 'xyz' }) })
+});
 
 it('renders an input list', () => {
   const wrapper = mount(
@@ -265,4 +269,54 @@ it('starts over when restarting with all questions answered', () => {
   expect(secondChoice.name).toEqual('Choice B');
 
   expect(wrapper.find('footer .correct-count').text()).toEqual('0');
+});
+
+/**
+ * Authentication
+ */
+
+it('registers a new user', () => {
+  const base = stubBase();
+  const promise = Promise.resolve({ uid: 'xyz' });
+
+  base.onAuth = jest.fn(cb => cb(null));
+  base.auth = jest.fn().mockReturnValue({ signInAnonymously: () => promise });
+
+  const wrapper = mount(
+    <Root
+      api={stubAPI()}
+      base={base}
+      dashboard={dashboard}
+      choices={choices}
+    />
+  );
+
+  expect(base.onAuth).toHaveBeenCalled();
+  expect(base.auth).toHaveBeenCalled();
+
+  return promise.then(() => expect(wrapper.state('uid')).toEqual('xyz'));
+});
+
+it('authenticates an existing user', () => {
+  const base = stubBase();
+
+  base.onAuth = jest.fn(cb => cb({ uid: 'xyz' }));
+
+  base.auth = jest.fn().mockReturnValue({
+    signInAnonymously: () => Promise.resolve({ uid: 'xyz' })
+  });
+
+  const wrapper = mount(
+    <Root
+      api={stubAPI()}
+      base={base}
+      dashboard={dashboard}
+      choices={choices}
+    />
+  );
+
+  expect(base.onAuth).toHaveBeenCalled();
+  expect(base.auth).not.toHaveBeenCalled();
+
+  expect(wrapper.state('uid')).toEqual('xyz');
 });
