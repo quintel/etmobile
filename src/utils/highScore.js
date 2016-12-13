@@ -27,7 +27,7 @@ export const getScore = (leaderboard = 'all') => {
  * @return {boolean}
  */
 export const setScore = (leaderboard, score) => {
-  if (getScore(leaderboard) < score) {
+  if (getScore(leaderboard) <= score) {
     store.setItem(lbKey(leaderboard), score);
     return true;
   }

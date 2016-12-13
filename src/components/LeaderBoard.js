@@ -39,6 +39,9 @@ class LeaderBoard extends React.Component {
         asArray: true,
         queries: {
           orderByChild: 'score',
+          // Omit any entries with a score less than one (or null, which is the
+          // case if the visitor has no correct answers but sets a name).
+          startAt: 1,
           limitToLast: 10
         }
       }

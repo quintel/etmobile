@@ -1,7 +1,12 @@
 import React, { PropTypes } from 'react';
 
-import * as choiceImages from '../images/choices';
-import { co2Green } from '../images/dashboard';
+import { balloon } from '../images/choices';
+
+import {
+  clearPlayerName,
+  getPlayerName,
+  setPlayerName
+} from '../utils/playerName';
 
 const correctChoicesText = (number) => {
   if (number === 0) {
@@ -11,129 +16,106 @@ const correctChoicesText = (number) => {
   return `You made ${number} correct choice${number === 1 ? '' : 's'}`;
 };
 
-const Summary = ({
-  onRestartGame, gameState: { lastChoice, correctChoices }
-}) => (
-  <main className="results animated" key="results">
-    <h1>{ lastChoice.isCorrect ? 'Wow!' : 'Oops!' }</h1>
-    <h2 className="result">
-      { lastChoice.isCorrect ?
-        'You got all the questions correct!' :
-        'Sorry, that was the wrong choice' }
-    </h2>
-
-    <div className="result-item leaderboard">
-      <div className="status">
-        <img
-          src={choiceImages.balloon}
-          width="75"
-          height="75"
-          alt="presentation"
-        />
-      </div>
-      <div className="info">
-        <h4>You ranked 13th!</h4>
-        <p>{correctChoicesText(correctChoices)}</p>
-        <p><a>View the leaderboard &raquo;</a></p>
-      </div>
-    </div>
-
-    <div className="result-item">
-      <div className="status">
-        <img
-          src={choiceImages.co2}
-          width="75"
-          height="75"
-          alt="presentation"
-        />
-        <span className="change better">-6.5%</span>
-      </div>
-      <div className="info">
-        <h4>Reduced CO<sub>2</sub> emissions</h4>
-        <p>
-          Greenhouse gas emissions cause climate change. Your choiced reduce
-          those emissions, but not by enough. The EU target is to reduce
-          emissions by 80% before 2050.
-        </p>
-        <p>
-          <a>Learn more &raquo;</a>
-        </p>
-      </div>
-    </div>
-
-    <button onClick={onRestartGame}>Try again?</button>
-
-    <div className="choice-summary">
-      <h2>Your choices</h2>
-      <div className="result-item">
-        <div className="status">
-          <img
-            src={choiceImages.wind}
-            className="icon"
-            width="75"
-            height="75"
-            alt="presentation"
-          />
-          <span className="target-delta">
-            <img
-              src={co2Green}
-              width="24"
-              height="24"
-              alt="presentation"
-            />
-            -3.1%
-          </span>
-        </div>
-        <div className="info">
-          <h4>Built 800 wind turbines</h4>
-          <p>
-            Your decision to build wind turbines instead of a coal plant was
-            better for the environment, and is far healthier than coal, but
-            offers worse value for money in the short-term due to higher
-            installation costs.
-          </p>
-        </div>
-      </div>
-
-      <div className="result-item">
-        <div className="status">
-          <img
-            src={choiceImages.ledLighting}
-            width="75"
-            height="75"
-            alt="presentation"
-          />
-          <span className="target-delta">
-            <img
-              src={co2Green}
-              width="24"
-              height="24"
-              alt="presentation"
-            />
-            -2.3%
-          </span>
-        </div>
-        <div className="info">
-          <h4>Switched to LED light bulbs</h4>
-          <p>
-            You chose to install LED light bulbs in every household instead of
-            strong excess energy in batteries. This quickly reduces
-            CO<sub>2</sub> emissions and lowers costs, but batteries offer a
-            great deal of flexibility in the long term as renewable energy
-            becomes more common.
-          </p>
-        </div>
-      </div>
-    </div>
-  </main>
+/**
+ * Returns the path to the Firebase endpoint for a leaderboard.
+ *
+ * @param  {string} leaderboard The leaderboard name; "all" or the challenge ID.
+ * @param  {string} uid         The unique ID of the current user.
+ * @return {string}             The full leaderboard endpoint path.
+ */
+const lbEndpoint = (leaderboard, uid) => (
+  `/leaderboards/${leaderboard}/${uid}`
 );
 
+class Summary extends React.Component {
+  constructor() {
+    super();
+    this.onChangePlayerName = this.onChangePlayerName.bind(this);
+  }
+
+  /**
+   * Triggered when the visitor changes their name. Updates local stored version
+   * and the current and "all" leaderboards.
+   */
+  onChangePlayerName(event) {
+    const { base, challengeId, uid } = this.props;
+    const data = { who: event.target.value.trim() };
+
+    if (!data.who.length) {
+      clearPlayerName();
+      data.who = null;
+    } else {
+      setPlayerName(data.who);
+    }
+
+    base.update(lbEndpoint('all', uid), { data });
+
+    if (challengeId) {
+      base.update(lbEndpoint(challengeId, uid), { data });
+    }
+  }
+
+  render() {
+    const {
+      gameState: { lastChoice, correctChoices },
+      onRestartGame
+    } = this.props;
+
+    return (
+      <main className="results animated" key="results">
+        <h1>{ lastChoice.isCorrect ? 'Wow!' : 'Oops!' }</h1>
+        <h2 className="result">
+          { lastChoice.isCorrect ?
+            'You got all the questions correct!' :
+            'Sorry, that was the wrong choice' }
+        </h2>
+
+        <div className="result-item leaderboard">
+          <div className="status">
+            <img
+              src={balloon}
+              width="75"
+              height="75"
+              alt="presentation"
+            />
+          </div>
+          <div className="info">
+            <h4>{correctChoicesText(correctChoices)}</h4>
+            <div className="field-wrapper player-name">
+              <label htmlFor="player-name">
+                Your name
+                <span className="description">
+                  This is how you will appear on the leaderboard. You may remain
+                  anonymous if you prefer.
+                </span>
+              </label>
+              <div className="field">
+                <input
+                  id="player-name"
+                  placeholder="Anonymous"
+                  defaultValue={getPlayerName()}
+                  onChange={this.onChangePlayerName}
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <button onClick={onRestartGame}>Try again?</button>
+      </main>
+    );
+  }
+}
+
 Summary.propTypes = {
+  base: PropTypes.shape({ update: PropTypes.func.isRequired }).isRequired,
+  challengeId: PropTypes.string,
   gameState: PropTypes.shape({
     correctChoices: PropTypes.number.isRequired,
     lastChoice: PropTypes.shape({ isCorrect: PropTypes.boolean }).isRequired
   }).isRequired,
-  onRestartGame: PropTypes.func.isRequired
+  onRestartGame: PropTypes.func.isRequired,
+  uid: PropTypes.string
 };
 
 export default Summary;
