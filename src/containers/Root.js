@@ -9,6 +9,7 @@ import Summary from '../components/Summary';
 import authenticate from '../utils/authenticate';
 import questionFromChoices from '../utils/questionFromChoices';
 import { setScore } from '../utils/highScore';
+import { getPlayerName } from '../utils/playerName';
 
 const NEXT_QUESTION_WAIT = process.env.NODE_ENV === 'test' ? 1 : 2000;
 
@@ -34,7 +35,7 @@ const lbEndpoint = (leaderboard, uid) => (
  * Returns a Promise which wraps the update promises.
  */
 const updateHighScore = (base, score, uid, challengeId) => {
-  const data = { score, at: new Date().getTime() };
+  const data = { score, at: new Date().getTime(), who: getPlayerName() };
   const promises = [];
 
   if (setScore('all', score)) {
@@ -253,8 +254,11 @@ class Root extends React.Component {
     } else if (lastChoice) {
       content = (
         <Summary
+          base={this.props.base}
+          challengeId={this.props.params.challengeId}
           gameState={this.gameState()}
           onRestartGame={this.handleRestartGame}
+          uid={this.state.uid}
         />
       );
     } else {
