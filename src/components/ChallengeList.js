@@ -1,21 +1,10 @@
 import React, { PropTypes } from 'react';
 import { Link } from 'react-router';
-import distanceInWordsToNow from 'date-fns/distance_in_words_to_now';
+
+import Challenge from './Challenge';
 
 const sortChallenges = (left, right) => (
   left.name.toLowerCase() < right.name.toLowerCase() ? 0 : 1
-);
-
-const Challenge = props => (
-  <div className="challenge">
-    {props.name}{' '}
-    ends in {distanceInWordsToNow(new Date(props.expires))}
-
-    <div className="buttons">
-      <Link to={`/play/${props.id}`}>Play!</Link>{' '}
-      <span>Leaderboard</span>
-    </div>
-  </div>
 );
 
 class ChallengeList extends React.Component {
@@ -49,12 +38,13 @@ class ChallengeList extends React.Component {
           this.state.challenges.map(({ key, name, expires }) => (
             <Challenge
               key={key}
+              base={this.props.base}
               expires={new Date(expires)}
               id={key}
               name={name}
             />
           )) :
-            <p>Loading challenges...</p>
+          <p>Loading challenges...</p>
         }
 
         <Link to="/new-challenge" className="button">
@@ -64,12 +54,6 @@ class ChallengeList extends React.Component {
     );
   }
 }
-
-Challenge.propTypes = {
-  expires: PropTypes.instanceOf(Date).isRequired,
-  id: PropTypes.string.isRequired,
-  name: PropTypes.string.isRequired
-};
 
 ChallengeList.contextTypes = {
   router: PropTypes.shape({})

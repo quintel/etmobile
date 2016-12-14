@@ -6,7 +6,11 @@ import { MemoryRouter } from 'react-router';
 
 import ChallengeList from '../ChallengeList';
 
-const mockBase = () => ({ fetch: () => Promise.resolve([]) });
+const mockBase = () => ({
+  fetch: () => Promise.resolve([]),
+  bindToState: jest.fn(),
+  removeBinding: jest.fn()
+});
 
 it('renders a loading message prior to fetching challenges', () => {
   const wrapper = shallow(<ChallengeList active base={mockBase()} />);
@@ -14,7 +18,8 @@ it('renders a loading message prior to fetching challenges', () => {
 });
 
 it('fetches active challenges from Firebase', () => {
-  const base = { fetch: jest.fn().mockReturnValue(Promise.resolve([])) };
+  const base = mockBase();
+  base.fetch = jest.fn().mockReturnValue(Promise.resolve([]));
 
   // MemoryRouter is required to provide <Link /> with router context.
   mount(<MemoryRouter><ChallengeList active base={base} /></MemoryRouter>);
@@ -31,7 +36,8 @@ it('fetches active challenges from Firebase', () => {
 });
 
 it('fetches inactive challenges from Firebase', () => {
-  const base = { fetch: jest.fn().mockReturnValue(Promise.resolve([])) };
+  const base = mockBase();
+  base.fetch = jest.fn().mockReturnValue(Promise.resolve([]));
 
   // MemoryRouter is required to provide <Link /> with router context.
   mount(<MemoryRouter><ChallengeList base={base} /></MemoryRouter>);
@@ -48,13 +54,16 @@ it('fetches inactive challenges from Firebase', () => {
 });
 
 it('renders challenges', () => {
+  const expires = new Date(new Date().getTime() + 1000);
+
   const promise = Promise.resolve([
-    { key: 'abc', name: 'My first challenge', expires: new Date() + 1000 },
-    { key: 'def', name: 'another challenge', expires: new Date() + 1000 },
-    { key: 'hij', name: 'Z Final challenge', expires: new Date() + 1000 }
+    { key: 'abc', name: 'My first challenge', expires },
+    { key: 'def', name: 'another challenge', expires },
+    { key: 'hij', name: 'Z Final challenge', expires }
   ]);
 
-  const base = { fetch: jest.fn().mockReturnValue(promise) };
+  const base = mockBase();
+  base.fetch = jest.fn().mockReturnValue(promise);
 
   // MemoryRouter is required to provide <Link /> with router context.
   const wrapper = mount(
