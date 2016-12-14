@@ -79,3 +79,12 @@ it('renders the results', () => {
   expect(third.find('.position').text()).toEqual('3');
   expect(third.find('.visitor').text()).toContain('got 2 correct');
 });
+
+it('renders a message when there are no games played', () => {
+  const base = mockBase();
+  const wrapper = mount(<LeaderBoard base={base} endpoint="all" />);
+
+  wrapper.setState({ results: [] });
+
+  expect(wrapper.text()).toContain('No players yet');
+});
