@@ -55,7 +55,7 @@ class LeaderBoard extends React.Component {
   render() {
     let content;
 
-    if (this.state.results) {
+    if (this.state.results && this.state.results.length) {
       content = (
         <ul>
           {this.state.results.sort(sortEntries).map((res, index) =>
@@ -68,6 +68,8 @@ class LeaderBoard extends React.Component {
           )}
         </ul>
       );
+    } else if (this.state.results) {
+      content = <div>No players yet!</div>;
     } else {
       content = <div>Loading results...</div>;
     }
