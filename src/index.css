@@ -237,7 +237,7 @@ h2 {
   margin-left: 0.5rem;
 }
 
-.question button, .results button, form button, a.button {
+.question button, .results button, form button, .challenge button, a.button {
   background-image: linear-gradient(#5998de, #4488d7);
   border-radius: 5px;
   border: 1px solid #3c7bd0;
@@ -542,10 +542,26 @@ button .arrows {
   padding-bottom: 2rem;
 }
 
-.front-page .challenges .challenge {
+.front-page .challenges .buttons {
+  display: flex;
   margin-bottom: 1rem;
 }
 
-.front-page .challenges a.button {
+.front-page .challenges .buttons a.button,
+.front-page .challenges .buttons button {
+  flex: 1;
+  font-size: 0.875rem;
   margin-top: 1rem;
+  margin-right: 0.5rem;
+  padding: 0.375rem 0;
+}
+
+.front-page .challenges .buttons button:last-child {
+  margin-left: 0.5rem;
+  margin-right: 0;
+}
+
+.front-page .challenges .leaderboard {
+  margin-bottom: 1rem;
+  padding-bottom: 1rem;
 }
