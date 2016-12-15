@@ -25,7 +25,10 @@ const FrontPage = props => (
         </p>
 
         <div className="play-wrapper">
-          <Link to="/play" className="button">Play the game!</Link>
+          <Link to="/play" className="button">
+            Play the game{' '}
+            <span className="arrows">&raquo;</span>
+          </Link>
         </div>
 
         <p>
@@ -40,7 +43,12 @@ const FrontPage = props => (
         </p>
       </div>
 
-      <LeaderBoard base={props.base} endpoint="all" />
+      <LeaderBoard
+        base={props.base}
+        endpoint="all"
+        title="All-time high scores"
+      />
+
       <ChallengeList base={props.base} active />
     </main>
   </div>
