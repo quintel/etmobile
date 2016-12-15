@@ -6,7 +6,15 @@ import distanceInWordsToNow from 'date-fns/distance_in_words_to_now';
  * in ascending order, and simply calling "reverse" on the results seems to
  * cause re-renders.
  */
-const sortEntries = (a, b) => (a.score < b.score ? 1 : 0);
+const sortEntries = (a, b) => {
+  if (a.score !== b.score) {
+    // Sort by score
+    return a.score < b.score ? 2 : -2;
+  }
+
+  // Then by how recent the result is.
+  return a.at < b.at ? 1 : -1;
+};
 
 const LeaderBoardItem = props => (
   <li>

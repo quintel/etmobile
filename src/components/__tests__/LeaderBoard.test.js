@@ -80,6 +80,27 @@ it('renders the results', () => {
   expect(third.find('.visitor').text()).toContain('got 2 correct');
 });
 
+it('sorts equal-score results to be recent-first', () => {
+  const base = mockBase();
+  const wrapper = mount(<LeaderBoard base={base} endpoint="all" />);
+
+  wrapper.setState({ results: [
+    { at: new Date().getTime() - (60 * 1000), score: 2, key: 'a', who: 'abc' },
+    { at: new Date().getTime() - (120 * 1200), score: 2, key: 'b', who: 'def' },
+    { at: new Date().getTime() - (30 * 1200), score: 2, key: 'c', who: 'hij' }
+  ] });
+
+  expect(wrapper.find('li').length).toEqual(3);
+
+  const first = wrapper.find('li').at(0);
+  const second = wrapper.find('li').at(1);
+  const third = wrapper.find('li').at(2);
+
+  expect(first.find('.visitor').text()).toContain('hij');
+  expect(second.find('.visitor').text()).toContain('abc');
+  expect(third.find('.visitor').text()).toContain('def');
+});
+
 it('renders a message when there are no games played', () => {
   const base = mockBase();
   const wrapper = mount(<LeaderBoard base={base} endpoint="all" />);
