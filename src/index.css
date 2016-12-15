@@ -200,8 +200,7 @@ h2 {
   padding: 0;
 }
 
-.question .choice-info .badge,
-.leaderboard .position {
+.question .choice-info .badge {
   background: linear-gradient(#57b863, #41a94f);
   border: 3px solid white;
   border-radius: 50%;
@@ -497,6 +496,11 @@ button .arrows {
   text-align: center;
 }
 
+.leaderboard h2 {
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
 .leaderboard ul {
   list-style: none;
   margin: 0;
@@ -505,20 +509,43 @@ button .arrows {
 
 .leaderboard li {
   align-items: center;
+  background: white;
+  border: 1px solid #d3deea;
   display: flex;
-  margin-bottom: 0.5rem;
+  margin-top: -1px;
   overflow: hidden;
+  padding: 0.5rem;
+}
+
+.leaderboard li:first-child {
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+}
+
+.leaderboard li:last-child {
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+
+.leaderboard li img, .leaderboard .position {
+  border-right: 1px solid #d3deea;
+  margin-right: 0.5rem;
+  margin-left: 0.25rem;
+  padding-right: 0.5rem;
 }
 
 .leaderboard .position {
-  background: linear-gradient(#b6c2d6, #92a3c1);
+  color: #70757b;
   display: inline-block;
-  font-size: 2rem;
-  height: 60px;
-  line-height: 60px;
-  margin-right: 0.5rem;
-  text-shadow: 0 1px 0 #65799a;
-  width: 60px;
+  font-size: 1.75rem;
+  height: 50px;
+  line-height: 50px;
+  text-align: center;
+  width: 50px;
+}
+
+.leaderboard .details {
+  margin-top: -1px;
 }
 
 .leaderboard .at {
@@ -528,10 +555,6 @@ button .arrows {
 
 .front-page main {
   padding: 1rem;
-}
-
-.front-page .game-info {
-  text-align: center;
 }
 
 .front-page .play-wrapper {
@@ -548,6 +571,11 @@ button .arrows {
   border-bottom: 1px solid #d3deea;
   margin-bottom: 2rem;
   padding-bottom: 2rem;
+}
+
+.front-page .game-info {
+  text-align: center;
+  padding-bottom: 1rem;
 }
 
 .front-page .challenges .buttons {

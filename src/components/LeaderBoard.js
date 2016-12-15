@@ -1,6 +1,12 @@
 import React, { PropTypes } from 'react';
 import distanceInWordsToNow from 'date-fns/distance_in_words_to_now';
 
+import trophyGold from '../images/leaderboard/gold.svg';
+import trophySilver from '../images/leaderboard/silver.svg';
+import trophyBronze from '../images/leaderboard/bronze.svg';
+
+const positionImages = [null, trophyGold, trophySilver, trophyBronze];
+
 /**
  * Sorts leaderboard entries in descending score order. Firebase returns them
  * in ascending order, and simply calling "reverse" on the results seems to
@@ -18,10 +24,23 @@ const sortEntries = (a, b) => {
 
 const LeaderBoardItem = props => (
   <li>
-    <div className="position">{props.position}</div>
+    {positionImages[props.position] ?
+      <img
+        src={positionImages[props.position]}
+        alt={props.position}
+        height="50"
+        width="50"
+      /> :
+      <div className="position">{props.position}</div>
+    }
     <div className="details">
-      <div className="visitor">Anonymous got {props.score} correct</div>
-      <div className="at">{distanceInWordsToNow(props.at)} ago</div>
+      <div className="visitor">
+        {props.who || 'Anonymous'}
+      </div>
+      <div className="at">
+        got {props.score} correct{' '}
+        {distanceInWordsToNow(props.at)} ago
+      </div>
     </div>
   </li>
 );
@@ -29,7 +48,8 @@ const LeaderBoardItem = props => (
 LeaderBoardItem.propTypes = {
   at: PropTypes.instanceOf(Date).isRequired,
   position: PropTypes.number.isRequired,
-  score: PropTypes.number.isRequired
+  score: PropTypes.number.isRequired,
+  who: PropTypes.string
 };
 
 class LeaderBoard extends React.Component {
@@ -70,6 +90,7 @@ class LeaderBoard extends React.Component {
             <LeaderBoardItem
               key={index}
               at={new Date(res.at)}
+              who={res.who}
               score={res.score}
               position={index + 1}
             />
@@ -84,7 +105,7 @@ class LeaderBoard extends React.Component {
 
     return (
       <div className="leaderboard">
-        {this.props.title ? <h6>{this.props.title}</h6> : null}
+        {this.props.title ? <h2>{this.props.title}</h2> : null}
         {content}
       </div>
     );
