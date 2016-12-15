@@ -548,6 +548,11 @@ button .arrows {
   margin-top: -1px;
 }
 
+.leaderboard .notice {
+  text-align: center;
+  width: 100%;
+}
+
 .leaderboard .at {
   color: #70757b;
   font-size: 0.875rem;
