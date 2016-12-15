@@ -84,29 +84,39 @@ class LeaderBoard extends React.Component {
     let content;
 
     if (this.state.results && this.state.results.length) {
-      content = (
-        <ul>
-          {this.state.results.sort(sortEntries).map((res, index) =>
-            <LeaderBoardItem
-              key={index}
-              at={new Date(res.at)}
-              who={res.who}
-              score={res.score}
-              position={index + 1}
-            />
-          )}
-        </ul>
+      content = this.state.results.sort(sortEntries).map((res, index) =>
+        <LeaderBoardItem
+          key={index}
+          at={new Date(res.at)}
+          who={res.who}
+          score={res.score}
+          position={index + 1}
+        />
       );
     } else if (this.state.results) {
-      content = <div>No players yet!</div>;
+      content = (
+        <li>
+          <div className="notice">
+            No players yet!
+          </div>
+        </li>
+      );
     } else {
-      content = <div>Loading results...</div>;
+      content = (
+        <li>
+          <div className="notice">
+            Loading leaderboard&hellip;
+          </div>
+        </li>
+      );
     }
 
     return (
       <div className="leaderboard">
         {this.props.title ? <h2>{this.props.title}</h2> : null}
-        {content}
+        <ul>
+          {content}
+        </ul>
       </div>
     );
   }
