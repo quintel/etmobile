@@ -1,28 +1,46 @@
 import React, { PropTypes } from 'react';
 import { Link } from 'react-router';
 
-import Header from './Header';
 import LeaderBoard from './LeaderBoard';
 import ChallengeList from '../components/ChallengeList';
 
+import mosaic from '../images/mosaic.png';
+
 const FrontPage = props => (
   <div className="front-page">
-    <Header />
     <main>
+      <h1>
+        Energy Transition Model
+        <span className="subtitle">Reduce your CO<sub>2</sub> emissions</span>
+      </h1>
+      <div className="mosaic" style={{ backgroundImage: `url(${mosaic})` }}>
+        <div className="fade" />
+      </div>
       <div className="game-info">
         <p>
-          Gumbo beet greens corn soko endive gumbo gourd. Parsley shallot
-          courgette tatsoi pea sprouts fava bean collard greens dandelion okra
-          wakame tomato. Dandelion cucumber earthnut pea peanut soko zucchini.
+          <strong>
+            You will be presented with two choices; which one will lower
+            CO<sub>2</sub> the most? How many correct answers can you manage?
+          </strong>
         </p>
-        <Link to="/play" className="button">Play the game!</Link>
+
+        <div className="play-wrapper">
+          <Link to="/play" className="button">Play the game!</Link>
+        </div>
+
+        <p>
+          &ldquo;Energy transition&rdquo; is the process of converting a
+          region&apos;s sources of energy from older, polluting technologies to
+          newer, cleaner, more sustainable sources.
+        </p>
+
+        <p>
+          It also explores how emerging technologies like batteries and electric
+          cars may change the way we use energy in the future.
+        </p>
       </div>
 
-      <LeaderBoard
-        base={props.base}
-        endpoint="all"
-      />
-
+      <LeaderBoard base={props.base} endpoint="all" />
       <ChallengeList base={props.base} active />
     </main>
   </div>
