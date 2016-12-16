@@ -2,6 +2,7 @@ import React, { PropTypes } from 'react';
 import { Link } from 'react-router';
 
 import distanceInWordsToNow from 'date-fns/distance_in_words_to_now';
+import classNames from 'classnames';
 
 import Leaderboard from './LeaderBoard';
 
@@ -26,14 +27,23 @@ class Challenge extends React.Component {
       );
     }
 
+    const lbClasses = classNames({
+      active: this.state.showLeaderboard
+    });
+
     return (
       <div className="challenge">
         <strong>{this.props.name}</strong>{' '}
-        ends in {distanceInWordsToNow(new Date(this.props.expires))}
+        <span className="at">
+          Ends in {distanceInWordsToNow(new Date(this.props.expires))}
+        </span>
 
         <div className="buttons">
           <Link className="button" to={`/play/${this.props.id}`}>Play!</Link>{' '}
-          <button onClick={this.toggleLeaderboard}>Leaderboard</button>
+
+          <button className={lbClasses} onClick={this.toggleLeaderboard}>
+            Leaderboard
+          </button>
         </div>
 
         {leaderboard}

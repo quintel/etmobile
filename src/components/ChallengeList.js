@@ -1,5 +1,4 @@
 import React, { PropTypes } from 'react';
-import { Link } from 'react-router';
 
 import Challenge from './Challenge';
 
@@ -32,24 +31,25 @@ class ChallengeList extends React.Component {
   }
 
   render() {
-    return (
-      <div className="challenges">
-        {this.state.challenges ?
-          this.state.challenges.map(({ key, name, expires }) => (
-            <Challenge
-              key={key}
-              base={this.props.base}
-              expires={new Date(expires)}
-              id={key}
-              name={name}
-            />
-          )) :
-          <p>Loading challenges...</p>
-        }
+    if (!this.state.challenges) {
+      return (
+        <div className="challenge loading">
+          Loading challenges&hellip;
+        </div>
+      );
+    }
 
-        <Link to="/new-challenge" className="button">
-          Create a new challenge
-        </Link>
+    return (
+      <div>
+        {this.state.challenges.map(({ key, name, expires }) => (
+          <Challenge
+            key={key}
+            base={this.props.base}
+            expires={new Date(expires)}
+            id={key}
+            name={name}
+          />
+        ))}
       </div>
     );
   }
