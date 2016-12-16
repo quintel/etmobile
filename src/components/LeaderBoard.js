@@ -39,7 +39,7 @@ const LeaderBoardItem = props => (
       </div>
       <div className="at">
         got {props.score} correct{' '}
-        {distanceInWordsToNow(props.at)} ago
+        {distanceInWordsToNow(props.at, { addSuffix: true })}
       </div>
     </div>
   </li>
