@@ -496,9 +496,12 @@ button .arrows {
   text-align: center;
 }
 
-.leaderboard h2 {
-  margin-bottom: 1rem;
+.front-page h2 {
   text-align: center;
+}
+
+.leaderboard h2, .challenges h2 {
+  margin-bottom: 1rem;
 }
 
 .leaderboard ul {
@@ -553,7 +556,7 @@ button .arrows {
   width: 100%;
 }
 
-.leaderboard .at {
+.leaderboard .at, .challenge .at {
   color: #70757b;
   font-size: 0.875rem;
 }
@@ -583,28 +586,75 @@ button .arrows {
   padding-bottom: 1rem;
 }
 
-.front-page .challenges .buttons {
-  display: flex;
-  margin-bottom: 1rem;
+.front-page .challenges {
+  border-bottom: none;
 }
 
-.front-page .challenges .buttons a.button,
-.front-page .challenges .buttons button {
-  flex: 1;
+.front-page .challenges .challenge {
+  background: #fffff3;
+  border: 1px solid #d3deea;
+  border-radius: 5px;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+.front-page .challenges .challenge.loading {
+  background: white;
+  padding: 0.5rem;
+}
+
+.challenges .challenge .at {
+  display: block;
+}
+
+.front-page .challenges .buttons {
+  background: white;
+  border-top: 1px solid #d3deea;
+  display: flex;
+  margin: 1rem -1rem -1rem;
+}
+
+.challenges .buttons a.button,
+.challenges .buttons button {
+  background: none;
+  border: none;
+  border-right: 1px solid #d3deea;
+  border-radius: 0;
+  color: #3373cb;
+  flex: 3;
   font-size: 0.875rem;
-  margin-top: 1rem;
-  margin-right: 0.5rem;
-  padding: 0.375rem 0;
+  padding: 0.5rem 0;
+  text-shadow: none;
+}
+
+.challenges .buttons a.button {
+  color: #22963a;
+  font-weight: bold;
 }
 
 .front-page .challenges .buttons button:last-child {
-  margin-left: 0.5rem;
-  margin-right: 0;
+  border-right: none;
+  flex: 2;
+}
+
+.challenges .buttons button.active {
+  background: linear-gradient(#fff, #fffff3);
+  border-bottom: 1px solid #fffff3;
+  color: #000;
+  margin-bottom: -1px;
+}
+
+.challenges .button.new-challenge {
+  font-size: 0.875rem;
+  padding: 0.5rem;
 }
 
 .front-page .challenges .leaderboard {
-  margin-bottom: 1rem;
-  padding-bottom: 1rem;
+  border-bottom: 0;
+  border-top: 1px solid #d3deea;
+  margin: 1rem -1rem 0;
+  padding: 1rem 1rem 0;
 }
 
 .front-page h1 {

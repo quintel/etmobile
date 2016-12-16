@@ -49,7 +49,14 @@ const FrontPage = props => (
         title="All-time high scores"
       />
 
-      <ChallengeList base={props.base} active />
+      <div className="challenges">
+        <h2>Challenges</h2>
+        <ChallengeList base={props.base} active />
+
+        <Link to="/new-challenge" className="button new-challenge">
+          Create a new challenge
+        </Link>
+      </div>
     </main>
   </div>
 );
