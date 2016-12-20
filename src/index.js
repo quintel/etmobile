@@ -39,10 +39,12 @@ ReactGA.pageview(window.location.pathname);
 class AppRouter extends React.Component {
   componentDidMount() {
     // Enable scroll-to-top when navigating to a new page.
-    this.historyUnlisten = this.context.history.listen((info, type) => {
+    this.historyUnlisten = this.context.history.listen((location, type) => {
       if (type !== 'POP') {
         scrollToTop();
       }
+
+      ReactGA.pageview(location.pathname);
     });
   }
 
