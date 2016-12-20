@@ -3,7 +3,7 @@ import 'animate.css';
 
 import React from 'react';
 import { render } from 'react-dom';
-import { HashRouter, Match } from 'react-router';
+import { HashRouter, Match, propTypes as RouterPropTypes } from 'react-router';
 
 import Root from './containers/Root';
 import NewChallenge from './components/NewChallenge';
@@ -25,35 +25,64 @@ import {
 
 import './index.css';
 
+require('smoothscroll-polyfill').polyfill();
+
 const gameChoices = shuffleArray(mapAnswersToChoices(answers, choices));
+
+const scrollToTop = () => window.scrollTo(0, 0);
+
+class AppRouter extends React.Component {
+  componentDidMount() {
+    // Enable scroll-to-top when navigating to a new page.
+    this.historyUnlisten = this.context.history.listen((info, type) => {
+      if (type !== 'POP') {
+        scrollToTop();
+      }
+    });
+  }
+
+  componentWillUnmount() {
+    this.historyUnlisten();
+  }
+
+  render() {
+    return (
+      <div>
+        <Match
+          exactly
+          pattern="/"
+          render={() => <FrontPage base={base} />}
+        />
+
+        <Match
+          pattern="/play/:challengeId?"
+          render={({ params }) => (
+            <Root
+              api={{ createScenario, updateScenario }}
+              dashboard={dashboard}
+              choices={gameChoices}
+              base={base}
+              params={params}
+            />
+          )}
+        />
+
+        <Match
+          pattern="/new-challenge"
+          render={() => <NewChallenge base={base} />}
+        />
+      </div>
+    );
+  }
+}
+
+AppRouter.contextTypes = {
+  history: RouterPropTypes.historyContext.isRequired
+};
 
 render(
   <HashRouter>
-    <div>
-      <Match
-        exactly
-        pattern="/"
-        render={() => <FrontPage base={base} />}
-      />
-
-      <Match
-        pattern="/play/:challengeId?"
-        render={({ params }) => (
-          <Root
-            api={{ createScenario, updateScenario }}
-            dashboard={dashboard}
-            choices={gameChoices}
-            base={base}
-            params={params}
-          />
-        )}
-      />
-
-      <Match
-        pattern="/new-challenge"
-        render={() => <NewChallenge base={base} />}
-      />
-    </div>
+    <AppRouter />
   </HashRouter>,
   document.getElementById('root')
 );

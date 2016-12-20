@@ -207,6 +207,8 @@ class Root extends React.Component {
         availableChoices
       });
 
+      window.scroll({ top: 0, left: 0, behavior: 'smooth' });
+
       resolveChangeQuestion();
     }, NEXT_QUESTION_WAIT);
 
