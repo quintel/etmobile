@@ -213,7 +213,11 @@ it('shows the results page when all questions are answered', () => {
     />
   );
 
-  wrapper.setState({ lastChoice: { isCorrect: false }, currentQuestion: 9999 });
+  wrapper.setState({
+    lastChoice: { isCorrect: false },
+    lastQuestion: { choices: [] },
+    currentQuestion: 9999
+  });
 
   expect(wrapper.find(Question).length).toEqual(0);
   expect(wrapper.find('.results').length).toEqual(1);
@@ -229,7 +233,11 @@ it('resumes with the next question when restarting', () => {
     />
   );
 
-  wrapper.setState({ lastChoice: { isCorrect: false } });
+  wrapper.setState({
+    lastChoice: { isCorrect: false },
+    lastQuestion: { choices: [] }
+  });
+
   wrapper.instance().handleRestartGame();
 
   expect(wrapper.find(Question).length).toEqual(1);
@@ -255,6 +263,7 @@ it('starts over when restarting with all questions answered', () => {
 
   wrapper.setState({
     lastChoice: { isCorrect: false },
+    lastQuestion: { choices: [] },
     availableChoices: []
   });
 

@@ -1,5 +1,8 @@
 import React, { PropTypes } from 'react';
 
+import Choice from './Choice';
+import ChoiceSummary from './ChoiceSummary';
+
 import { balloon } from '../images/choices';
 
 import {
@@ -15,6 +18,12 @@ const correctChoicesText = (number) => {
 
   return `You made ${number} correct choice${number === 1 ? '' : 's'}`;
 };
+
+/**
+ * Sorts the two choices in the most recent question so that the correct answer
+ * always appears first.
+ */
+const sortChoicesByCO2 = (a, b) => (a.delta < b.delta ? -1 : 1);
 
 /**
  * Returns the path to the Firebase endpoint for a leaderboard.
@@ -57,7 +66,7 @@ class Summary extends React.Component {
 
   render() {
     const {
-      gameState: { lastChoice, correctChoices },
+      gameState: { lastChoice, lastQuestion, correctChoices },
       onRestartGame
     } = this.props;
 
@@ -67,7 +76,7 @@ class Summary extends React.Component {
         <h2 className="result">
           { lastChoice.isCorrect ?
             'You got all the questions correct!' :
-            'Sorry, that was the wrong choice' }
+            correctChoicesText(correctChoices) }
         </h2>
 
         <div className="result-item leaderboard">
@@ -80,7 +89,6 @@ class Summary extends React.Component {
             />
           </div>
           <div className="info">
-            <h4>{correctChoicesText(correctChoices)}</h4>
             <div className="field-wrapper player-name">
               <label htmlFor="player-name">
                 Your name
@@ -102,6 +110,14 @@ class Summary extends React.Component {
         </div>
 
         <button onClick={onRestartGame}>Try again?</button>
+
+        <div className="choice-summary">
+          <h2>The correct answer was&hellip;</h2>
+
+          {lastQuestion.choices.sort(sortChoicesByCO2).map((choice, index) => (
+            <ChoiceSummary key={index} {...choice} />
+          ))}
+        </div>
       </main>
     );
   }
@@ -112,7 +128,10 @@ Summary.propTypes = {
   challengeId: PropTypes.string,
   gameState: PropTypes.shape({
     correctChoices: PropTypes.number.isRequired,
-    lastChoice: PropTypes.shape({ isCorrect: PropTypes.boolean }).isRequired
+    lastChoice: PropTypes.shape({ isCorrect: PropTypes.boolean }).isRequired,
+    lastQuestion: PropTypes.shape({
+      choices: PropTypes.arrayOf(Choice.propTypes.choice)
+    })
   }).isRequired,
   onRestartGame: PropTypes.func.isRequired,
   uid: PropTypes.string
