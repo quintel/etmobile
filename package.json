@@ -11,7 +11,7 @@
     "fetch-mock": "^5.5.0",
     "gh-pages": "^0.12.0",
     "react-addons-test-utils": "^15.3.2",
-    "react-scripts": "0.7.0"
+    "react-scripts": "^0.8"
   },
   "dependencies": {
     "animate.css": "^3.5.2",
@@ -19,11 +19,11 @@
     "classnames": "^2.2.5",
     "date-fns": "^1.14.1",
     "eslint": "^3.7.1",
-    "eslint-config-airbnb": "^12.0.0",
-    "eslint-plugin-babel": "^3.3.0",
-    "eslint-plugin-import": "^1.16.0",
+    "eslint-config-airbnb": "^13.0.0",
+    "eslint-plugin-babel": "^4.0.0",
+    "eslint-plugin-import": "^2.2.0",
     "eslint-plugin-jsx": "0.0.2",
-    "eslint-plugin-jsx-a11y": "^2.2.2",
+    "eslint-plugin-jsx-a11y": "^2.2.3",
     "eslint-plugin-react": "^6.3.0",
     "localstorage-memory": "^1.0.2",
     "normalize.css": "^5.0.0",
@@ -35,7 +35,7 @@
     "react-headroom": "^2.1.2",
     "react-router": "4.0.0-alpha.6",
     "smoothscroll-polyfill": "^0.3.4",
-    "whatwg-fetch": "^1.0.0"
+    "whatwg-fetch": "^2.0.1"
   },
   "scripts": {
     "start": "react-scripts start",
