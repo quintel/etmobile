@@ -368,7 +368,7 @@ button .arrows {
   width: 75px;
 }
 
-.results .status .change.worse {
+.results .status .change.incorrect {
   background: linear-gradient(#b63e3e, #a92f2f);
 }
 

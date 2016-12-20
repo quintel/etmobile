@@ -116,6 +116,7 @@ class Root extends React.Component {
   gameState() {
     return {
       correctChoices: this.state.correctChoices,
+      lastQuestion: this.state.lastQuestion,
       lastChoice: this.state.lastChoice
     };
   }
@@ -136,6 +137,7 @@ class Root extends React.Component {
 
     const nextState = {
       lastChoice: null,
+      lastQuestion: null,
       correctChoices: 0,
       availableChoices: choices.slice(2),
       currentQuestion: question
@@ -165,6 +167,7 @@ class Root extends React.Component {
    */
   handleQuestionChoice(choice) {
     const updatePromise = this.handleUpdateInput(choice.inputs);
+    const lastQuestion = this.state.currentQuestion;
 
     if (choice.isCorrect) {
       const nextState = { correctChoices: this.state.correctChoices + 1 };
@@ -203,6 +206,7 @@ class Root extends React.Component {
 
       this.setState({
         lastChoice: choice,
+        lastQuestion: lastQuestion,
         currentQuestion: question,
         availableChoices
       });
