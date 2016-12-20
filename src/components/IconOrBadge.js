@@ -33,8 +33,8 @@ const IconOrBadge = ({ choice, selectedIndex, index, onChoiceSelected }) => {
       >
         <img
           key={`${index}-icon`}
+          alt=""
           src={choiceImages[choice.icon]}
-          role="presentation"
         />
       </Chooser>
     );
