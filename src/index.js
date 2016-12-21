@@ -20,11 +20,6 @@ import base from './utils/base';
 import shuffleArray from './utils/shuffleArray';
 import mapAnswersToChoices from './utils/mapAnswersToChoices';
 
-import {
-  createScenario,
-  updateScenarioQueued as updateScenario
-} from './utils/api';
-
 import './index.css';
 
 require('smoothscroll-polyfill').polyfill();
@@ -65,7 +60,6 @@ class AppRouter extends React.Component {
           pattern="/play/:challengeId?"
           render={({ params }) => (
             <Root
-              api={{ createScenario, updateScenario }}
               dashboard={dashboard}
               choices={gameChoices}
               base={base}
