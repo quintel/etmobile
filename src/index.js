@@ -7,7 +7,7 @@ import { HashRouter, Match, propTypes as RouterPropTypes } from 'react-router';
 
 import ReactGA from 'react-ga';
 
-import Root from './containers/Root';
+import Game from './components/Game';
 import NewChallenge from './components/NewChallenge';
 import FrontPage from './components/FrontPage';
 
@@ -58,7 +58,7 @@ class AppRouter extends React.Component {
         <Match
           pattern="/play/:challengeId?"
           render={({ params }) => (
-            <Root
+            <Game
               choices={gameChoices}
               base={base}
               params={params}

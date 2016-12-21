@@ -48,7 +48,7 @@ const updateHighScore = (base, score, uid, challengeId) => {
   return Promise.all(promises);
 };
 
-class Root extends React.Component {
+class Game extends React.Component {
   constructor() {
     super();
 
@@ -228,11 +228,11 @@ class Root extends React.Component {
   }
 }
 
-Root.defaultProps = {
+Game.defaultProps = {
   params: { challengeId: null }
 };
 
-Root.propTypes = {
+Game.propTypes = {
   base: PropTypes.shape({
     auth: PropTypes.func.isRequired,
     onAuth: PropTypes.func.isRequired,
@@ -242,4 +242,4 @@ Root.propTypes = {
   params: PropTypes.shape({ challengeId: PropTypes.string }).isRequired
 };
 
-export default Root;
+export default Game;
