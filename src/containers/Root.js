@@ -1,7 +1,6 @@
 import React, { PropTypes } from 'react';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 
-import Dashboard from '../components/Dashboard';
 import Header from '../components/Header';
 import Question from '../components/Question';
 import Summary from '../components/Summary';
@@ -240,7 +239,6 @@ Root.propTypes = {
     update: PropTypes.func.isRequired
   }).isRequired,
   choices: Question.propTypes.choices,
-  dashboard: Dashboard.propTypes.items,
   params: PropTypes.shape({ challengeId: PropTypes.string }).isRequired
 };
 

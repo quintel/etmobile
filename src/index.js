@@ -13,7 +13,6 @@ import FrontPage from './components/FrontPage';
 
 import answers from './data/answers';
 import choices from './data/choices';
-import dashboard from './data/dashboard';
 
 import base from './utils/base';
 
@@ -60,7 +59,6 @@ class AppRouter extends React.Component {
           pattern="/play/:challengeId?"
           render={({ params }) => (
             <Root
-              dashboard={dashboard}
               choices={gameChoices}
               base={base}
               params={params}
