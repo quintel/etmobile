@@ -57,60 +57,17 @@ class Root extends React.Component {
       correctChoices: 0,
       bestScore: 0,
       lastChoice: null,
-      scenarioID: undefined,
       queryResults: {}
     };
 
-    this.handleUpdateInput = this.handleUpdateInput.bind(this);
     this.handleQuestionChoice = this.handleQuestionChoice.bind(this);
     this.handleRestartGame = this.handleRestartGame.bind(this);
-    this.createScenarioPromise = null;
   }
 
   componentDidMount() {
     this.handleRestartGame();
 
     authenticate(this.props.base, ({ uid }) => this.setState({ uid }));
-
-    // If this is the first time this instance has been mounted, create a new
-    // ETEngine scenario to which we'll send inputs selected by the visitor.
-    if (!this.createScenarioPromise) {
-      this.createScenarioPromise = this.props.api.createScenario();
-
-      this.createScenarioPromise.then(({ scenario: { id } }) => {
-        this.setState({ scenarioID: id });
-
-        // ETEngine API does not support fetching queries when creating a
-        // request (yet), so we must make a second one.
-        return this.fetchQueries(id);
-      });
-    }
-  }
-
-  /**
-   * Calls ETEngine with inputs from the choice selected by the visitor and
-   * returns Gquery results required to render the dashboard.
-   *
-   * This is called immediately after creating the scenario after the component
-   * is mounted, and every time the visitor makes a choice.
-   *
-   * @param {number} scenarioId The ID of the active ETEngine scenario.
-   * @param {object} inputKeys Keys and values of inputs to be sent to ETEngine.
-   *
-   * @return {Promise} A promise which will resolve when the ETEngine request
-   *                   completes.
-   */
-  fetchQueries(scenarioID, inputKeys = {}) {
-    return this.props.api.updateScenario(
-      scenarioID,
-      inputKeys,
-      this.props.dashboard.map(item => item.query).filter(query => query)
-    ).then((data) => {
-      this.setState({
-        scenarioID: data.scenario.id,
-        queryResults: data.gqueries
-      });
-    });
   }
 
   gameState() {
@@ -147,15 +104,6 @@ class Root extends React.Component {
   }
 
   /**
-   * Starts a scenario update, sending the given inputs to ETEngine.
-   */
-  handleUpdateInput(inputs) {
-    return this.createScenarioPromise.then(
-      ({ scenario: { id } }) => this.fetchQueries(id, inputs)
-    );
-  }
-
-  /**
    * Event triggered when the visitor makes a choice. Coordinates sending the
    * values to ETEngine, updating the game state, and proceeding to the next
    * question or results page.
@@ -166,7 +114,6 @@ class Root extends React.Component {
    *                   updated and the next question has loaded.
    */
   handleQuestionChoice(choice) {
-    const updatePromise = this.handleUpdateInput(choice.inputs);
     const lastQuestion = this.state.currentQuestion;
 
     if (choice.isCorrect) {
@@ -206,9 +153,9 @@ class Root extends React.Component {
 
       this.setState({
         lastChoice: choice,
-        lastQuestion: lastQuestion,
         currentQuestion: question,
-        availableChoices
+        availableChoices,
+        lastQuestion
       });
 
       window.scroll({ top: 0, left: 0, behavior: 'smooth' });
@@ -219,7 +166,7 @@ class Root extends React.Component {
     // Consider the choice completed only once we have received a response from
     // ETEngine and the state has been changed so as to display the next
     // question.
-    return Promise.all([updatePromise, changeQuestionPromise]);
+    return changeQuestionPromise;
   }
 
   render() {
@@ -287,10 +234,6 @@ Root.defaultProps = {
 };
 
 Root.propTypes = {
-  api: PropTypes.shape({
-    createScenario: PropTypes.func.isRequired,
-    updateScenario: PropTypes.func.isRequired
-  }).isRequired,
   base: PropTypes.shape({
     auth: PropTypes.func.isRequired,
     onAuth: PropTypes.func.isRequired,

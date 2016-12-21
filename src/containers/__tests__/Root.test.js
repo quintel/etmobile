@@ -27,15 +27,6 @@ const dashboard = [{
   }
 }];
 
-const stubAPI = () => ({
-  createScenario: jest.fn().mockReturnValue(
-    new Promise(r => r({ scenario: { id: 1 }, gqueries: {} }))
-  ),
-  updateScenario: jest.fn().mockReturnValue(
-    new Promise(r => r({ scenario: { id: 1 }, gqueries: {} }))
-  )
-});
-
 const stubBase = () => ({
   update: jest.fn(),
   onAuth: cb => cb({ uid: 'xyz' }),
@@ -44,12 +35,7 @@ const stubBase = () => ({
 
 it('renders an input list', () => {
   const wrapper = mount(
-    <Root
-      api={stubAPI()}
-      base={stubBase()}
-      dashboard={dashboard}
-      choices={choices}
-    />
+    <Root base={stubBase()} dashboard={dashboard} choices={choices} />
   );
 
   expect(wrapper.find(Question).length).toEqual(1);
@@ -62,66 +48,11 @@ it('renders an input list', () => {
   expect(wrapper.find('footer .correct-count').text()).toEqual('0');
 });
 
-it('creates a new scenario when mounted', () => {
-  const api = stubAPI();
-
-  const cPromise = new Promise(r => r({ scenario: { id: 1 }, gqueries: {} }));
-  const uPromise = new Promise(r => r({ scenario: { id: 1 }, gqueries: {} }));
-
-  api.createScenario = jest.fn().mockReturnValue(cPromise);
-  spyOn(api, 'updateScenario').and.callFake(() => (uPromise));
-
-  const wrapper = mount(
-    <Root
-      api={api}
-      base={stubBase()}
-      dashboard={dashboard}
-      choices={choices}
-    />
-  );
-
-  return Promise.all([cPromise, uPromise]).then(() => {
-    expect(api.createScenario).toHaveBeenCalled();
-
-    expect(api.updateScenario).toHaveBeenCalledWith(
-      1,
-      {} /* inputs */,
-      jasmine.any(Array) /* queries */
-    );
-
-    expect(wrapper.state('scenarioID')).toEqual(1);
-  });
-});
-
-it('sends updated inputs to the API', () => {
-  const api = stubAPI();
-  const choice = { inputs: { abc: 10 }, isCorrect: true };
-
-  const wrapper = mount(
-    <Root
-      api={api}
-      base={stubBase()}
-      dashboard={dashboard}
-      choices={choices}
-    />
-  );
-
-  spyOn(api, 'updateScenario').and.callThrough();
-
-  return wrapper.instance().handleQuestionChoice(choice)
-    .then(() => expect(api.updateScenario).toHaveBeenCalledWith(
-      1,
-      { abc: 10 } /* inputs */,
-      jasmine.any(Array) /* queries */
-    ));
-});
-
 it('increments correctChoices when a correct answer is given', () => {
-  const api = stubAPI();
   const choice = { inputs: { abc: 10 }, isCorrect: true };
 
   const wrapper = mount(
-    <Root api={api} dashboard={dashboard} choices={choices} base={stubBase()} />
+    <Root dashboard={dashboard} choices={choices} base={stubBase()} />
   );
 
   const correct = wrapper.state('correctChoices');
@@ -131,11 +62,10 @@ it('increments correctChoices when a correct answer is given', () => {
 });
 
 it('does not increment correctChoices when a wrong answer is given', () => {
-  const api = stubAPI();
   const choice = { inputs: { abc: 10 }, isCorrect: false };
 
   const wrapper = mount(
-    <Root api={api} dashboard={dashboard} choices={choices} base={stubBase()} />
+    <Root dashboard={dashboard} choices={choices} base={stubBase()} />
   );
 
   const correct = wrapper.state('correctChoices');
@@ -145,17 +75,11 @@ it('does not increment correctChoices when a wrong answer is given', () => {
 });
 
 it('updates the high score list without a challenge', () => {
-  const api = stubAPI();
   const base = stubBase();
   const choice = { inputs: { abc: 10 }, isCorrect: true };
 
   const wrapper = mount(
-    <Root
-      api={api}
-      base={base}
-      dashboard={dashboard}
-      choices={choices}
-    />
+    <Root base={base} dashboard={dashboard} choices={choices} />
   );
 
   return wrapper.instance().handleQuestionChoice(choice)
@@ -163,7 +87,6 @@ it('updates the high score list without a challenge', () => {
 });
 
 it('updates the high score list with a challenge', () => {
-  const api = stubAPI();
   const base = stubBase();
   const choice = { inputs: { abc: 10 }, isCorrect: true };
 
@@ -173,7 +96,6 @@ it('updates the high score list with a challenge', () => {
   const wrapper = mount(
     <Root
       params={{ challengeId: 'abc' }}
-      api={api}
       base={base}
       dashboard={dashboard}
       choices={choices}
@@ -185,14 +107,12 @@ it('updates the high score list with a challenge', () => {
 });
 
 it('does not update the high score list with a lower score', () => {
-  const api = stubAPI();
   const base = stubBase();
   const choice = { inputs: { abc: 10 }, isCorrect: true };
 
   const wrapper = mount(
     <Root
       params={{ challengeId: 'abc' }}
-      api={api}
       base={base}
       dashboard={dashboard}
       choices={choices}
@@ -205,12 +125,7 @@ it('does not update the high score list with a lower score', () => {
 
 it('shows the results page when all questions are answered', () => {
   const wrapper = mount(
-    <Root
-      api={stubAPI()}
-      base={stubBase()}
-      dashboard={dashboard}
-      choices={choices}
-    />
+    <Root base={stubBase()} dashboard={dashboard} choices={choices} />
   );
 
   wrapper.setState({
@@ -225,12 +140,7 @@ it('shows the results page when all questions are answered', () => {
 
 it('resumes with the next question when restarting', () => {
   const wrapper = mount(
-    <Root
-      api={stubAPI()}
-      base={stubBase()}
-      dashboard={dashboard}
-      choices={choices}
-    />
+    <Root base={stubBase()} dashboard={dashboard} choices={choices} />
   );
 
   wrapper.setState({
@@ -253,12 +163,7 @@ it('resumes with the next question when restarting', () => {
 
 it('starts over when restarting with all questions answered', () => {
   const wrapper = mount(
-    <Root
-      api={stubAPI()}
-      base={stubBase()}
-      dashboard={dashboard}
-      choices={choices}
-    />
+    <Root base={stubBase()} dashboard={dashboard} choices={choices} />
   );
 
   wrapper.setState({
@@ -292,12 +197,7 @@ it('registers a new user', () => {
   base.auth = jest.fn().mockReturnValue({ signInAnonymously: () => promise });
 
   const wrapper = mount(
-    <Root
-      api={stubAPI()}
-      base={base}
-      dashboard={dashboard}
-      choices={choices}
-    />
+    <Root base={base} dashboard={dashboard} choices={choices} />
   );
 
   expect(base.onAuth).toHaveBeenCalled();
@@ -316,12 +216,7 @@ it('authenticates an existing user', () => {
   });
 
   const wrapper = mount(
-    <Root
-      api={stubAPI()}
-      base={base}
-      dashboard={dashboard}
-      choices={choices}
-    />
+    <Root base={base} dashboard={dashboard} choices={choices} />
   );
 
   expect(base.onAuth).toHaveBeenCalled();
