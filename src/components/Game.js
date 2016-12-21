@@ -55,8 +55,7 @@ class Game extends React.Component {
     this.state = {
       correctChoices: 0,
       bestScore: 0,
-      lastChoice: null,
-      queryResults: {}
+      lastChoice: null
     };
 
     this.handleQuestionChoice = this.handleQuestionChoice.bind(this);
