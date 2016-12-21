@@ -1,5 +1,4 @@
 import React, { PropTypes } from 'react';
-import ReactGA from 'react-ga';
 
 import { Match, propTypes as RouterPropTypes } from 'react-router';
 
@@ -7,6 +6,8 @@ import Game from '../components/Game';
 import NewChallenge from '../components/NewChallenge';
 import FrontPage from '../components/FrontPage';
 import Question from '../components/Question';
+
+import { pageview } from '../utils/analytics';
 
 class Root extends React.Component {
   componentDidMount() {
@@ -17,7 +18,7 @@ class Root extends React.Component {
         window.scrollTo(0, 0);
       }
 
-      ReactGA.pageview(location.pathname);
+      pageview(location.pathname);
     });
   }
 

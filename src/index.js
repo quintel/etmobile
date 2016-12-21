@@ -5,7 +5,8 @@ import React from 'react';
 import { render } from 'react-dom';
 import { HashRouter } from 'react-router';
 
-import ReactGA from 'react-ga';
+// Set up analytics.
+import { pageview } from './utils/analytics';
 
 import Root from './containers/Root';
 
@@ -23,8 +24,7 @@ require('smoothscroll-polyfill').polyfill();
 
 const gameChoices = shuffleArray(mapAnswersToChoices(answers, choices));
 
-ReactGA.initialize('UA-88096029-1');
-ReactGA.pageview(window.location.pathname);
+pageview(window.location.pathname);
 
 render(
   <HashRouter>
