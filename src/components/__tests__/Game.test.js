@@ -3,7 +3,7 @@
 import React from 'react';
 import { mount } from 'enzyme';
 
-import Root from '../Root';
+import Game from '../Game';
 import Question from '../../components/Question';
 
 import { setScore } from '../../utils/highScore';
@@ -26,7 +26,7 @@ const stubBase = () => ({
 
 it('renders an input list', () => {
   const wrapper = mount(
-    <Root base={stubBase()} choices={choices} />
+    <Game base={stubBase()} choices={choices} />
   );
 
   expect(wrapper.find(Question).length).toEqual(1);
@@ -43,7 +43,7 @@ it('increments correctChoices when a correct answer is given', () => {
   const choice = { inputs: { abc: 10 }, isCorrect: true };
 
   const wrapper = mount(
-    <Root choices={choices} base={stubBase()} />
+    <Game choices={choices} base={stubBase()} />
   );
 
   const correct = wrapper.state('correctChoices');
@@ -56,7 +56,7 @@ it('does not increment correctChoices when a wrong answer is given', () => {
   const choice = { inputs: { abc: 10 }, isCorrect: false };
 
   const wrapper = mount(
-    <Root choices={choices} base={stubBase()} />
+    <Game choices={choices} base={stubBase()} />
   );
 
   const correct = wrapper.state('correctChoices');
@@ -70,7 +70,7 @@ it('updates the high score list without a challenge', () => {
   const choice = { inputs: { abc: 10 }, isCorrect: true };
 
   const wrapper = mount(
-    <Root base={base} choices={choices} />
+    <Game base={base} choices={choices} />
   );
 
   return wrapper.instance().handleQuestionChoice(choice)
@@ -85,7 +85,7 @@ it('updates the high score list with a challenge', () => {
   setScore('abc', 10);
 
   const wrapper = mount(
-    <Root params={{ challengeId: 'abc' }} base={base} choices={choices} />
+    <Game params={{ challengeId: 'abc' }} base={base} choices={choices} />
   );
 
   return wrapper.instance().handleQuestionChoice(choice)
@@ -97,7 +97,7 @@ it('does not update the high score list with a lower score', () => {
   const choice = { inputs: { abc: 10 }, isCorrect: true };
 
   const wrapper = mount(
-    <Root params={{ challengeId: 'abc' }} base={base} choices={choices} />
+    <Game params={{ challengeId: 'abc' }} base={base} choices={choices} />
   );
 
   return wrapper.instance().handleQuestionChoice(choice)
@@ -106,7 +106,7 @@ it('does not update the high score list with a lower score', () => {
 
 it('shows the results page when all questions are answered', () => {
   const wrapper = mount(
-    <Root base={stubBase()} choices={choices} />
+    <Game base={stubBase()} choices={choices} />
   );
 
   wrapper.setState({
@@ -121,7 +121,7 @@ it('shows the results page when all questions are answered', () => {
 
 it('resumes with the next question when restarting', () => {
   const wrapper = mount(
-    <Root base={stubBase()} choices={choices} />
+    <Game base={stubBase()} choices={choices} />
   );
 
   wrapper.setState({
@@ -144,7 +144,7 @@ it('resumes with the next question when restarting', () => {
 
 it('starts over when restarting with all questions answered', () => {
   const wrapper = mount(
-    <Root base={stubBase()} choices={choices} />
+    <Game base={stubBase()} choices={choices} />
   );
 
   wrapper.setState({
@@ -178,7 +178,7 @@ it('registers a new user', () => {
   base.auth = jest.fn().mockReturnValue({ signInAnonymously: () => promise });
 
   const wrapper = mount(
-    <Root base={base} choices={choices} />
+    <Game base={base} choices={choices} />
   );
 
   expect(base.onAuth).toHaveBeenCalled();
@@ -197,7 +197,7 @@ it('authenticates an existing user', () => {
   });
 
   const wrapper = mount(
-    <Root base={base} choices={choices} />
+    <Game base={base} choices={choices} />
   );
 
   expect(base.onAuth).toHaveBeenCalled();
