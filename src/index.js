@@ -3,13 +3,11 @@ import 'animate.css';
 
 import React from 'react';
 import { render } from 'react-dom';
-import { HashRouter, Match, propTypes as RouterPropTypes } from 'react-router';
+import { HashRouter } from 'react-router';
 
 import ReactGA from 'react-ga';
 
-import Game from './components/Game';
-import NewChallenge from './components/NewChallenge';
-import FrontPage from './components/FrontPage';
+import Root from './containers/Root';
 
 import answers from './data/answers';
 import choices from './data/choices';
@@ -25,63 +23,12 @@ require('smoothscroll-polyfill').polyfill();
 
 const gameChoices = shuffleArray(mapAnswersToChoices(answers, choices));
 
-const scrollToTop = () => window.scrollTo(0, 0);
-
 ReactGA.initialize('UA-88096029-1');
 ReactGA.pageview(window.location.pathname);
 
-class AppRouter extends React.Component {
-  componentDidMount() {
-    // Enable scroll-to-top when navigating to a new page.
-    this.historyUnlisten = this.context.history.listen((location, type) => {
-      if (type !== 'POP') {
-        scrollToTop();
-      }
-
-      ReactGA.pageview(location.pathname);
-    });
-  }
-
-  componentWillUnmount() {
-    this.historyUnlisten();
-  }
-
-  render() {
-    return (
-      <div>
-        <Match
-          exactly
-          pattern="/"
-          render={() => <FrontPage base={base} />}
-        />
-
-        <Match
-          pattern="/play/:challengeId?"
-          render={({ params }) => (
-            <Game
-              choices={gameChoices}
-              base={base}
-              params={params}
-            />
-          )}
-        />
-
-        <Match
-          pattern="/new-challenge"
-          render={() => <NewChallenge base={base} />}
-        />
-      </div>
-    );
-  }
-}
-
-AppRouter.contextTypes = {
-  history: RouterPropTypes.historyContext.isRequired
-};
-
 render(
   <HashRouter>
-    <AppRouter />
+    <Root base={base} choices={gameChoices} />
   </HashRouter>,
   document.getElementById('root')
 );
