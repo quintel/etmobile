@@ -4,7 +4,9 @@ import React from 'react';
 // wrap many tests in a <MemoryRouter />
 const Header = () => (
   <header>
-    <a href="/">ETMobile - Reduce your CO2 emissions</a>
+    <a href={process.env.PUBLIC_URL || '/'}>
+      ETMobile - Reduce your CO2 emissions
+    </a>
   </header>
 );
 
