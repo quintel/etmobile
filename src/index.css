@@ -38,6 +38,11 @@ header {
   z-index: 3;
 }
 
+header a {
+  color: #8392a3;
+  text-decoration: none;
+}
+
 .input-list .input {
   background: #eee;
   background-repeat: no-repeat;
