@@ -56,6 +56,11 @@ const FrontPage = props => (
         <Link to="/new-challenge" className="button new-challenge">
           Create a new challenge
         </Link>
+
+        <p className="challenge-info">
+          Challenges allow your conference, classroom, or group to have a
+          leaderboard all to yourselves!
+        </p>
       </div>
     </main>
   </div>

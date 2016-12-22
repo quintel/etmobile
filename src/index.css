@@ -649,6 +649,12 @@ button .arrows {
   padding: 0.5rem;
 }
 
+.challenges .challenge-info {
+  color: #70757b;
+  font-size: 0.875rem;
+  text-align: center;
+}
+
 .front-page .challenges .leaderboard {
   border-bottom: 0;
   border-top: 1px solid #d3deea;
