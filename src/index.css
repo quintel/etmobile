@@ -583,10 +583,6 @@ button .arrows {
   padding-bottom: 1rem;
 }
 
-.front-page .challenges {
-  border-bottom: none;
-}
-
 .front-page .challenges .challenge {
   background: #fffff3;
   border: 1px solid #d3deea;
@@ -704,9 +700,22 @@ button .arrows {
   text-shadow: 0 1px 0 #268842;
 }
 
+.front-page footer {
+  color: #a9b2bb;
+  padding-bottom: 1rem;
+  font-size: 0.75rem;
+  text-align: center;
+}
+
+.front-page footer a {
+  border-bottom: 1px solid #ced1d4;
+  color: #a9b2bb;
+  text-decoration: none;
+}
+
 @media (min-width:1281px) {
   /* Narrow the UI on large displays. */
-  main {
+  #root {
     border-left: 1px solid #d6e1ed;
     border-right: 1px solid #d6e1ed;
     margin: 0 auto;
