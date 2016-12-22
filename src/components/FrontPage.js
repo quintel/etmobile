@@ -3,6 +3,7 @@ import { Link } from 'react-router';
 
 import LeaderBoard from './LeaderBoard';
 import ChallengeList from '../components/ChallengeList';
+import Footer from '../components/Footer';
 
 import mosaic from '../images/mosaic.png';
 
@@ -63,6 +64,8 @@ const FrontPage = props => (
         </p>
       </div>
     </main>
+
+    <Footer />
   </div>
 );
 
