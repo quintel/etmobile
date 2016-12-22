@@ -720,6 +720,11 @@ button .arrows {
 
 @media (min-width:1281px) {
   /* Narrow the UI on large displays. */
+  html, body, #root {
+    /* Extend the left and right borders the full height of the page. */
+    height: 100%;
+  }
+
   #root {
     border-left: 1px solid #d6e1ed;
     border-right: 1px solid #d6e1ed;
