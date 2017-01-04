@@ -1,0 +1,50 @@
+{
+  "rules": {
+    // Anyone may read, writes denied by default.
+    ".read": true,
+    ".write": false,
+
+    "challenges": {
+      ".indexOn": ["expires"],
+
+      // Only authed users may write.
+      ".write": "auth != null",
+
+      "$challenge_id": {
+        ".validate": "newData.hasChildren(['expires', 'name'])",
+
+        // Unix timestamp.
+        "expires": { ".validate": "newData.isNumber() && newData.val() > 0" },
+
+        // Challenge name must be a string.
+        "name": { ".validate": "newData.isString()" },
+
+        // No other fields can be included.
+        "$other": { ".validate": false }
+      }
+    },
+
+    "leaderboards": {
+      "$challenge_id": {
+        ".indexOn": ["score"],
+
+        "$uid": {
+          // Users may write only their own scores.
+          ".write": "$uid === auth.uid",
+
+          // Unix timestamp.
+          "at": { ".validate": "newData.isNumber() && newData.val() > 0" },
+
+          // Score should obviously not be less than zero.
+          "score": { ".validate": "newData.isNumber() && newData.val() >= 0" },
+
+          // If provided, a visitor name must be a string.
+          "who": { ".validate": "newData.isString()" },
+
+          // No other fields can be included.
+          "$other": { ".validate": false }
+        }
+      }
+    }
+  }
+}
