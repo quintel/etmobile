@@ -1,8 +1,10 @@
 /* global it expect jest */
 
 import React from 'react';
-import { shallow, mount } from 'enzyme';
 import { MemoryRouter } from 'react-router';
+import { FormattedMessage } from 'react-intl';
+
+import { mountWithIntl, shallowWithIntl } from '../../utils/intlEnzymeHelper';
 
 import ChallengeList from '../ChallengeList';
 
@@ -13,8 +15,10 @@ const mockBase = () => ({
 });
 
 it('renders a loading message prior to fetching challenges', () => {
-  const wrapper = shallow(<ChallengeList active base={mockBase()} />);
-  expect(wrapper.text()).toContain('Loading challenges');
+  const wrapper = shallowWithIntl(<ChallengeList active base={mockBase()} />);
+  const msg = wrapper.find('.loading').find(FormattedMessage);
+
+  expect(msg.props().id).toEqual('challenges.loadingChallenges');
 });
 
 it('fetches active challenges from Firebase', () => {
@@ -22,7 +26,9 @@ it('fetches active challenges from Firebase', () => {
   base.fetch = jest.fn().mockReturnValue(Promise.resolve([]));
 
   // MemoryRouter is required to provide <Link /> with router context.
-  mount(<MemoryRouter><ChallengeList active base={base} /></MemoryRouter>);
+  mountWithIntl(
+    <MemoryRouter><ChallengeList active base={base} /></MemoryRouter>
+  );
 
   expect(base.fetch).toHaveBeenCalled();
 
@@ -40,7 +46,9 @@ it('fetches inactive challenges from Firebase', () => {
   base.fetch = jest.fn().mockReturnValue(Promise.resolve([]));
 
   // MemoryRouter is required to provide <Link /> with router context.
-  mount(<MemoryRouter><ChallengeList base={base} /></MemoryRouter>);
+  mountWithIntl(
+    <MemoryRouter><ChallengeList base={base} /></MemoryRouter>
+  );
 
   expect(base.fetch).toHaveBeenCalled();
 
@@ -66,7 +74,7 @@ it('renders challenges', () => {
   base.fetch = jest.fn().mockReturnValue(promise);
 
   // MemoryRouter is required to provide <Link /> with router context.
-  const wrapper = mount(
+  const wrapper = mountWithIntl(
     <MemoryRouter><ChallengeList active base={base} /></MemoryRouter>
   );
 

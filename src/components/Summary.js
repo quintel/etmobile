@@ -1,5 +1,8 @@
 import React, { PropTypes } from 'react';
 
+import { FormattedMessage } from 'react-intl';
+import injectIntl from '../utils/injectIntl';
+
 import Choice from './Choice';
 import ChoiceSummary from './ChoiceSummary';
 
@@ -11,13 +14,9 @@ import {
   setPlayerName
 } from '../utils/playerName';
 
-const correctChoicesText = (number) => {
-  if (number === 0) {
-    return 'You didn\'t make any correct choices.';
-  }
-
-  return `You made ${number} correct choice${number === 1 ? '' : 's'}`;
-};
+const correctChoicesText = correct => (
+  <FormattedMessage id="summary.numberCorrect" values={{ correct }} />
+);
 
 /**
  * Sorts the two choices in the most recent question so that the correct answer
@@ -72,10 +71,14 @@ class Summary extends React.Component {
 
     return (
       <main className="results animated" key="results">
-        <h1>{ lastChoice.isCorrect ? 'Wow!' : 'Oops!' }</h1>
+        <h1>
+          <FormattedMessage
+            id={`summary.${lastChoice.isCorrect ? 'wow' : 'oops'}`}
+          />
+        </h1>
         <h2 className="result">
           { lastChoice.isCorrect ?
-            'You got all the questions correct!' :
+            <FormattedMessage id="summary.allCorrect" /> :
             correctChoicesText(correctChoices) }
         </h2>
 
@@ -91,16 +94,17 @@ class Summary extends React.Component {
           <div className="info">
             <div className="field-wrapper player-name">
               <label htmlFor="player-name">
-                Your name
+                <FormattedMessage id="leaderboard.yourName" />
                 <span className="description">
-                  This is how you will appear on the leaderboard. You may remain
-                  anonymous if you prefer.
+                  <FormattedMessage id="leaderboard.playerNameDescription" />
                 </span>
               </label>
               <div className="field">
                 <input
                   id="player-name"
-                  placeholder="Anonymous"
+                  placeholder={
+                    this.context.intl.formatMessage({ id: 'leaderboard.anon' })
+                  }
                   defaultValue={getPlayerName()}
                   onChange={this.onChangePlayerName}
                 />
@@ -109,10 +113,12 @@ class Summary extends React.Component {
           </div>
         </div>
 
-        <button onClick={onRestartGame}>Try again?</button>
+        <button onClick={onRestartGame}>
+          <FormattedMessage id="summary.tryAgain" />
+        </button>
 
         <div className="choice-summary">
-          <h2>The correct answer was&hellip;</h2>
+          <h2><FormattedMessage id="summary.correctWas" />&hellip;</h2>
 
           {lastQuestion.choices.sort(sortChoicesByCO2).map((choice, index) => (
             <ChoiceSummary key={index} {...choice} />
@@ -137,4 +143,4 @@ Summary.propTypes = {
   uid: PropTypes.string
 };
 
-export default Summary;
+export default injectIntl(Summary);

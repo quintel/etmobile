@@ -1,7 +1,7 @@
 /* global it expect jest */
 
 import React from 'react';
-import { shallow, mount } from 'enzyme';
+import { shallowWithIntl, mountWithIntl } from '../../utils/intlEnzymeHelper';
 
 import Question from '../Question';
 import ChoiceButton from '../ChoiceButton';
@@ -25,7 +25,7 @@ const choicesFixture = () => ([
 ]);
 
 it('renders the name of the question', () => {
-  const wrapper = shallow(
+  const wrapper = shallowWithIntl(
     <Question
       code="abcdef"
       name="My Question"
@@ -38,7 +38,7 @@ it('renders the name of the question', () => {
 });
 
 it('renders the description', () => {
-  const wrapper = mount(
+  const wrapper = mountWithIntl(
     <Question
       code="abcdef"
       name="My Question"
@@ -52,7 +52,7 @@ it('renders the description', () => {
 });
 
 it('renders two question buttons', () => {
-  const wrapper = mount(
+  const wrapper = mountWithIntl(
     <Question
       code="abcdef"
       name="My Question"
@@ -71,7 +71,7 @@ it('renders two question buttons', () => {
 });
 
 it('renders a correctly-chosen question button', () => {
-  const wrapper = mount(
+  const wrapper = mountWithIntl(
     <Question
       code="abcdef"
       name="My Question"
@@ -100,7 +100,7 @@ it('renders a correctly-chosen question button', () => {
 });
 
 it('renders an incorrectly-chosen question button', () => {
-  const wrapper = mount(
+  const wrapper = mountWithIntl(
     <Question
       code="abcdef"
       name="My Question"

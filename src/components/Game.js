@@ -1,5 +1,7 @@
 import React, { PropTypes } from 'react';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
+import { FormattedMessage } from 'react-intl';
+import injectIntl from '../utils/injectIntl';
 
 import Header from '../components/Header';
 import Question from '../components/Question';
@@ -195,7 +197,7 @@ class Game extends React.Component {
                   <span className="correct-count">
                     {this.state.correctChoices}
                   </span>
-                  correct
+                  <FormattedMessage id="game.correct" />
                 </footer>
               </div>
             </ReactCSSTransitionGroup>

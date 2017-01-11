@@ -1,4 +1,5 @@
 import React, { PropTypes } from 'react';
+import { FormattedMessage } from 'react-intl';
 
 const Footer = ({ startYear }) => {
   const endYear = new Date().getFullYear();
@@ -6,19 +7,33 @@ const Footer = ({ startYear }) => {
   return (
     <footer>
       <p>
-        Part of the{' '}
-        <a href="https://energytransitionmodel.com/">Energy Transition Model</a>
+        <FormattedMessage
+          id="footer.partOfTheETM"
+          values={{
+            etmLink: <a href="https://energytransitionmodel.com/">
+              <FormattedMessage id="footer.etm" />
+            </a>
+          }}
+        />
         <br />
-        Developed by Quintel Intelligence
+        <FormattedMessage id="footer.developedBy" />
         &copy; {startYear}{endYear !== startYear ? `-${endYear}` : null}
       </p>
       <p>
-        <a href="https://energytransitionmodel.com/privacy">Privacy</a>
+        <a href="https://energytransitionmodel.com/privacy">
+          <FormattedMessage id="footer.privacy" />
+        </a>
         {' '}|{' '}
-        <a href="https://energytransitionmodel.com/terms">Terms of Service</a>
+        <a href="https://energytransitionmodel.com/terms">
+          <FormattedMessage id="footer.terms" />
+        </a>
         <br />
-        Icons by Vectors Market and Freepik at{' '}
-        <a href="http://www.flaticon.com/">Flaticon</a>.
+        <FormattedMessage
+          id="footer.iconsBy"
+          values={{
+            link: <a href="http://www.flaticon.com/">Flaticon</a>
+          }}
+        />
       </p>
     </footer>
   );

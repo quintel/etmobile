@@ -1,7 +1,9 @@
 /* global it expect jest afterEach */
 
 import React from 'react';
-import { shallow } from 'enzyme';
+import { FormattedMessage } from 'react-intl';
+
+import { shallowWithIntl, mountWithIntl } from '../../utils/intlEnzymeHelper';
 
 import Summary from '../Summary';
 import ChoiceSummary from '../ChoiceSummary';
@@ -23,20 +25,23 @@ const state = (correctChoices, isCorrect = false) => ({
 afterEach(clearPlayerName);
 
 it('renders without errors', () => {
-  const wrapper = shallow(
+  const wrapper = shallowWithIntl(
     <Summary
       base={mockBase()}
       gameState={state(1)}
+      intl={{ formatMessage: ({ id }) => id }}
       onRestartGame={() => {}}
       uid="user"
     />
   );
 
-  expect(wrapper.find('h1').text()).toEqual('Oops!');
+  const msg = wrapper.find('h1').find(FormattedMessage);
+
+  expect(msg.props().id).toEqual('summary.oops');
 });
 
 it('renders a custom message when no choices are correct', () => {
-  const wrapper = shallow(
+  const wrapper = mountWithIntl(
     <Summary
       base={mockBase()}
       gameState={state(0)}
@@ -46,12 +51,12 @@ it('renders a custom message when no choices are correct', () => {
   );
 
   expect(wrapper.find('.result').text().includes(
-    'You didn\'t make any correct choices'
+    'You made no correct choices'
   )).toEqual(true);
 });
 
 it('renders a custom message when one choice is correct', () => {
-  const wrapper = shallow(
+  const wrapper = mountWithIntl(
     <Summary
       base={mockBase()}
       gameState={state(1)}
@@ -60,14 +65,14 @@ it('renders a custom message when one choice is correct', () => {
     />
   );
 
-  const text = wrapper.find('.result').text();
+  const text = wrapper.find('.result').find(FormattedMessage).text();
 
-  expect(text.includes('You made 1 correct choice')).toEqual(true);
-  expect(text.includes('You made 1 correct choices')).not.toEqual(true);
+  expect(text.includes('You made one correct choice')).toEqual(true);
+  expect(text.includes('You made one correct choices')).not.toEqual(true);
 });
 
 it('renders a custom message when more than one choice is correct', () => {
-  const wrapper = shallow(
+  const wrapper = mountWithIntl(
     <Summary
       base={mockBase()}
       gameState={state(2)}
@@ -82,29 +87,35 @@ it('renders a custom message when more than one choice is correct', () => {
 });
 
 it('tells the visitor when their choice was incorrect', () => {
-  const wrapper = shallow(
+  const wrapper = shallowWithIntl(
     <Summary
       base={mockBase()}
       gameState={state(2, false)}
+      intl={{ formatMessage: ({ id }) => id }}
       onRestartGame={() => {}}
       uid="user"
     />
   );
 
-  expect(wrapper.find('h1').text()).toEqual('Oops!');
+  const msg = wrapper.find('h1').find(FormattedMessage);
+
+  expect(msg.props().id).toEqual('summary.oops');
 });
 
 it('tells the visitor when all choices were correct', () => {
-  const wrapper = shallow(
+  const wrapper = shallowWithIntl(
     <Summary
       base={mockBase()}
       gameState={state(2, true)}
+      intl={{ formatMessage: ({ id }) => id }}
       onRestartGame={() => {}}
       uid="user"
     />
   );
 
-  expect(wrapper.find('h1').text()).toEqual('Wow!');
+  const msg = wrapper.find('h1').find(FormattedMessage);
+
+  expect(msg.props().id).toEqual('summary.wow');
 });
 
 /**
@@ -114,10 +125,11 @@ it('tells the visitor when all choices were correct', () => {
 it('sends the player name without a challenge ID', () => {
   const base = mockBase();
 
-  const wrapper = shallow(
+  const wrapper = shallowWithIntl(
     <Summary
       base={base}
       gameState={state(2, true)}
+      intl={{ formatMessage: ({ id }) => id }}
       onRestartGame={() => {}}
       uid="user"
     />
@@ -132,10 +144,11 @@ it('sends the player name without a challenge ID', () => {
 it('sends the player name with a challenge ID', () => {
   const base = mockBase();
 
-  const wrapper = shallow(
+  const wrapper = shallowWithIntl(
     <Summary
       base={base}
       gameState={state(2, true)}
+      intl={{ formatMessage: ({ id }) => id }}
       onRestartGame={() => {}}
       challengeId="abc"
       uid="user"
@@ -153,10 +166,11 @@ it('resets the player name when blank', () => {
 
   const base = mockBase();
 
-  const wrapper = shallow(
+  const wrapper = shallowWithIntl(
     <Summary
       base={base}
       gameState={state(2, true)}
+      intl={{ formatMessage: ({ id }) => id }}
       onRestartGame={() => {}}
       challengeId="abc"
       uid="user"
@@ -194,10 +208,11 @@ const stateWithSummaries = (firstDelta = -1.0, secondDelta = -0.1) => ({
 });
 
 it('renders a list of the question choices', () => {
-  const wrapper = shallow(
+  const wrapper = shallowWithIntl(
     <Summary
       base={mockBase()}
       gameState={stateWithSummaries()}
+      intl={{ formatMessage: ({ id }) => id }}
       onRestartGame={() => {}}
       uid="user"
     />
@@ -211,10 +226,11 @@ it('renders a list of the question choices', () => {
 });
 
 it('sorts choices with the correct answer first', () => {
-  const wrapper = shallow(
+  const wrapper = shallowWithIntl(
     <Summary
       base={mockBase()}
       gameState={stateWithSummaries(1.0, -1.0)}
+      intl={{ formatMessage: ({ id }) => id }}
       onRestartGame={() => {}}
       uid="user"
     />

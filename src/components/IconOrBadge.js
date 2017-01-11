@@ -1,5 +1,6 @@
 import React, { PropTypes } from 'react';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
+import { FormattedNumber } from 'react-intl';
 
 import classNames from 'classnames';
 
@@ -75,7 +76,9 @@ const ResultBadge = (props) => {
 
   const value = Math.round(props.value * 100) / 100;
 
-  return (<div className={classes}>{value}%</div>);
+  return (
+    <div className={classes}><FormattedNumber value={value} />%</div>
+  );
 };
 
 ResultBadge.propTypes = {

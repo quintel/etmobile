@@ -1,7 +1,7 @@
 /* global it expect jest */
 
 import React from 'react';
-import { mount } from 'enzyme';
+import { mountWithIntl } from '../../utils/intlEnzymeHelper';
 
 import Choice from '../Choice';
 
@@ -14,7 +14,7 @@ const choiceFixture = (isCorrect = true) => ({
 });
 
 it('renders a correctly-chosen question button', () => {
-  const wrapper = mount(
+  const wrapper = mountWithIntl(
     <Choice
       choice={choiceFixture()}
       index={1}
@@ -39,7 +39,7 @@ it('renders a correctly-chosen question button', () => {
 });
 
 it('renders an incorrectly-chosen question button', () => {
-  const wrapper = mount(
+  const wrapper = mountWithIntl(
     <Choice
       choice={choiceFixture(false)}
       index={1}

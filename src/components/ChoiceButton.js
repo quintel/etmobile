@@ -1,4 +1,5 @@
 import React, { PropTypes } from 'react';
+import injectIntl from '../utils/injectIntl';
 
 import Chooser from './Chooser';
 
@@ -6,14 +7,18 @@ import Chooser from './Chooser';
  * A button which may be pressed to make a choice. The choice name is placed
  * on the button.
  */
-const ChoiceButton = (props) => {
+const ChoiceButton = (props, context) => {
   const isSelected = props.index === props.selectedIndex;
   const classes = { animated: true };
 
   let name = props.children;
 
   if (isSelected) {
-    name = props.isCorrect ? '✔︎ Correct!' : '✘ Incorrect!';
+    if (props.isCorrect) {
+      name = `✔︎ ${context.intl.formatMessage({ id: 'game.correct' })}!`;
+    } else {
+      name = `✘ ${context.intl.formatMessage({ id: 'game.incorrect' })}!`;
+    }
   }
 
   return (
@@ -39,4 +44,4 @@ ChoiceButton.propTypes = {
 
 ChoiceButton.defaultProps = { isCorrect: false, selectedIndex: null };
 
-export default ChoiceButton;
+export default injectIntl(ChoiceButton);

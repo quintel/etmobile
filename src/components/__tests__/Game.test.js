@@ -1,7 +1,7 @@
 /* global it expect jest jasmine spyOn afterEach */
 
 import React from 'react';
-import { mount } from 'enzyme';
+import { mountWithIntl } from '../../utils/intlEnzymeHelper';
 
 import Game from '../Game';
 import Question from '../../components/Question';
@@ -25,7 +25,7 @@ const stubBase = () => ({
 });
 
 it('renders an input list', () => {
-  const wrapper = mount(
+  const wrapper = mountWithIntl(
     <Game base={stubBase()} choices={choices} />
   );
 
@@ -42,7 +42,7 @@ it('renders an input list', () => {
 it('increments correctChoices when a correct answer is given', () => {
   const choice = { inputs: { abc: 10 }, isCorrect: true };
 
-  const wrapper = mount(
+  const wrapper = mountWithIntl(
     <Game choices={choices} base={stubBase()} />
   );
 
@@ -55,7 +55,7 @@ it('increments correctChoices when a correct answer is given', () => {
 it('does not increment correctChoices when a wrong answer is given', () => {
   const choice = { inputs: { abc: 10 }, isCorrect: false };
 
-  const wrapper = mount(
+  const wrapper = mountWithIntl(
     <Game choices={choices} base={stubBase()} />
   );
 
@@ -69,7 +69,7 @@ it('updates the high score list without a challenge', () => {
   const base = stubBase();
   const choice = { inputs: { abc: 10 }, isCorrect: true };
 
-  const wrapper = mount(
+  const wrapper = mountWithIntl(
     <Game base={base} choices={choices} />
   );
 
@@ -84,7 +84,7 @@ it('updates the high score list with a challenge', () => {
   setScore('all', 10);
   setScore('abc', 10);
 
-  const wrapper = mount(
+  const wrapper = mountWithIntl(
     <Game params={{ challengeId: 'abc' }} base={base} choices={choices} />
   );
 
@@ -96,7 +96,7 @@ it('does not update the high score list with a lower score', () => {
   const base = stubBase();
   const choice = { inputs: { abc: 10 }, isCorrect: true };
 
-  const wrapper = mount(
+  const wrapper = mountWithIntl(
     <Game params={{ challengeId: 'abc' }} base={base} choices={choices} />
   );
 
@@ -105,7 +105,7 @@ it('does not update the high score list with a lower score', () => {
 });
 
 it('shows the results page when all questions are answered', () => {
-  const wrapper = mount(
+  const wrapper = mountWithIntl(
     <Game base={stubBase()} choices={choices} />
   );
 
@@ -120,7 +120,7 @@ it('shows the results page when all questions are answered', () => {
 });
 
 it('resumes with the next question when restarting', () => {
-  const wrapper = mount(
+  const wrapper = mountWithIntl(
     <Game base={stubBase()} choices={choices} />
   );
 
@@ -143,7 +143,7 @@ it('resumes with the next question when restarting', () => {
 });
 
 it('starts over when restarting with all questions answered', () => {
-  const wrapper = mount(
+  const wrapper = mountWithIntl(
     <Game base={stubBase()} choices={choices} />
   );
 
@@ -177,7 +177,7 @@ it('registers a new user', () => {
   base.onAuth = jest.fn(cb => cb(null));
   base.auth = jest.fn().mockReturnValue({ signInAnonymously: () => promise });
 
-  const wrapper = mount(
+  const wrapper = mountWithIntl(
     <Game base={base} choices={choices} />
   );
 
@@ -196,7 +196,7 @@ it('authenticates an existing user', () => {
     signInAnonymously: () => Promise.resolve({ uid: 'xyz' })
   });
 
-  const wrapper = mount(
+  const wrapper = mountWithIntl(
     <Game base={base} choices={choices} />
   );
 

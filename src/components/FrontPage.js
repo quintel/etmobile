@@ -1,66 +1,59 @@
 import React, { PropTypes } from 'react';
 import { Link } from 'react-router';
 
+import { FormattedMessage, FormattedHTMLMessage } from 'react-intl';
+import injectIntl from '../utils/injectIntl';
+
 import LeaderBoard from './LeaderBoard';
 import ChallengeList from '../components/ChallengeList';
 import Footer from '../components/Footer';
 
 import mosaic from '../images/mosaic.png';
 
-const FrontPage = props => (
+const FrontPage = (props, context) => (
   <div className="front-page">
     <main>
       <h1>
-        Energy Transition Model
-        <span className="subtitle">Reduce your CO<sub>2</sub> emissions</span>
+        <FormattedMessage id="app.name" />
+        <span className="subtitle">
+          <FormattedHTMLMessage id="app.tagline" />
+        </span>
       </h1>
       <div className="mosaic" style={{ backgroundImage: `url(${mosaic})` }}>
         <div className="fade" />
       </div>
       <div className="game-info">
         <p>
-          <strong>
-            You will be presented with two choices; which one will lower
-            CO<sub>2</sub> the most? How many correct answers can you manage?
-          </strong>
+          <strong><FormattedHTMLMessage id="app.description" /></strong>
         </p>
 
         <div className="play-wrapper">
           <Link to="/play" className="button">
-            Play the game{' '}
+            <FormattedMessage id="frontPage.playGame" />{' '}
             <span className="arrows">&raquo;</span>
           </Link>
         </div>
 
-        <p>
-          &ldquo;Energy transition&rdquo; is the process of converting a
-          region&apos;s sources of energy from older, polluting technologies to
-          newer, cleaner, more sustainable sources.
-        </p>
-
-        <p>
-          It also explores how emerging technologies like batteries and electric
-          cars may change the way we use energy in the future.
-        </p>
+        <p><FormattedMessage id="frontPage.etmDescriptionOne" /></p>
+        <p><FormattedMessage id="frontPage.etmDescriptionTwo" /></p>
       </div>
 
       <LeaderBoard
         base={props.base}
         endpoint="all"
-        title="All-time high scores"
+        title={context.intl.formatMessage({ id: 'leaderboard.all' })}
       />
 
       <div className="challenges">
-        <h2>Challenges</h2>
+        <h2><FormattedMessage id="challenges.title" /></h2>
         <ChallengeList base={props.base} active />
 
         <Link to="/new-challenge" className="button new-challenge">
-          Create a new challenge
+          <FormattedMessage id="challenges.create" />
         </Link>
 
         <p className="challenge-info">
-          Challenges allow your conference, classroom, or group to have a
-          leaderboard all to yourselves!
+          <FormattedMessage id="challenges.description" />
         </p>
       </div>
     </main>
@@ -76,4 +69,4 @@ FrontPage.propTypes = {
   })
 };
 
-export default FrontPage;
+export default injectIntl(FrontPage);
