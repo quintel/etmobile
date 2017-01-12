@@ -8,7 +8,7 @@ import { HashRouter } from 'react-router';
 import { IntlProvider, addLocaleData } from 'react-intl';
 import englishLocaleData from 'react-intl/locale-data/en';
 import dutchLocaleData from 'react-intl/locale-data/nl';
-import englishMessages from './data/locales/en';
+import translations from './data/locales/translations';
 
 // Set up analytics.
 import { pageview } from './utils/analytics';
@@ -34,7 +34,7 @@ pageview(window.location.pathname);
 addLocaleData([...englishLocaleData, ...dutchLocaleData]);
 
 render(
-  <IntlProvider locale="en" messages={englishMessages}>
+  <IntlProvider locale="en" messages={translations('en')}>
     <HashRouter>
       <Root base={base} choices={gameChoices} />
     </HashRouter>

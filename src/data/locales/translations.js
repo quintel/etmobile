@@ -1,3 +1,13 @@
+const files = [
+  'app',
+  'challenges',
+  'footer',
+  'frontPage',
+  'game',
+  'leaderboard',
+  'summary'
+];
+
 const flatten = (nestedMessages, prefix = '') => (
   Object.keys(nestedMessages).reduce((messages, key) => {
     const value = nestedMessages[key];
@@ -13,4 +23,11 @@ const flatten = (nestedMessages, prefix = '') => (
   }, {})
 );
 
-export default flatten;
+export default (locale) => {
+  const messages = files.reduce((memo, name) => (
+    // eslint-disable-next-line
+    { ...memo, [name]: require(`./${locale}/${name}`).default }
+  ), {});
+
+  return flatten(messages);
+};
