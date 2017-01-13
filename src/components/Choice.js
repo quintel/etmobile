@@ -39,12 +39,17 @@ const Choice = ({ index, selectedIndex, choice, onChoiceSelected }) => (
   </div>
 );
 
+// Choice shape prior to translations.
+const sparseShapeObj = {
+  delta: PropTypes.number.isRequired,
+  icon: PropTypes.string.isRequired,
+  isCorrect: PropTypes.bool
+};
+
 Choice.propTypes = {
   choice: PropTypes.shape({
-    delta: PropTypes.number.isRequired,
+    ...sparseShapeObj,
     description: PropTypes.string.isRequired,
-    icon: PropTypes.string.isRequired,
-    isCorrect: PropTypes.bool,
     name: PropTypes.string.isRequired
   }).isRequired,
   index: PropTypes.number.isRequired,
@@ -52,4 +57,5 @@ Choice.propTypes = {
   onChoiceSelected: PropTypes.func.isRequired
 };
 
+export const sparseChoiceShape = PropTypes.shape(sparseShapeObj);
 export default Choice;

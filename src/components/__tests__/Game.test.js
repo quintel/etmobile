@@ -12,10 +12,42 @@ import store from '../../utils/store';
 afterEach(store.clear);
 
 const choices = [
-  { name: 'Choice A', description: '', icon: 'coal', inputs: {}, delta: 1 },
-  { name: 'Choice B', description: '', icon: 'wind', inputs: {}, delta: 2 },
-  { name: 'Choice C', description: '', icon: 'balloon', inputs: {}, delta: 1 },
-  { name: 'Choice D', description: '', icon: 'battery', inputs: {}, delta: 2 }
+  {
+    key: 'closeModernCoal',
+    header: 'Choice A',
+    name: 'Choice A',
+    description: '',
+    icon: 'coal',
+    inputs: {},
+    delta: 1
+  },
+  {
+    key: 'buildOffshoreTurbines',
+    header: 'Choice B',
+    name: 'Choice B',
+    description: '',
+    icon: 'wind',
+    inputs: {},
+    delta: 2
+  },
+  {
+    key: 'electricVehicles',
+    header: 'Choice C',
+    name: 'Choice C',
+    description: '',
+    icon: 'balloon',
+    inputs: {},
+    delta: 1
+  },
+  {
+    key: 'batteries',
+    header: 'Choice D',
+    name: 'Choice D',
+    description: '',
+    icon: 'battery',
+    inputs: {},
+    delta: 2
+  }
 ];
 
 const stubBase = () => ({

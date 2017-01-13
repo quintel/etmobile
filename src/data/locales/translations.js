@@ -1,6 +1,7 @@
 const files = [
   'app',
   'challenges',
+  'choices',
   'footer',
   'frontPage',
   'game',

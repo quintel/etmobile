@@ -5,7 +5,7 @@ import { Match, propTypes as RouterPropTypes } from 'react-router';
 import Game from '../components/Game';
 import NewChallenge from '../components/NewChallenge';
 import FrontPage from '../components/FrontPage';
-import Question from '../components/Question';
+import { sparseChoiceShape } from '../components/Choice';
 
 import { pageview } from '../utils/analytics';
 
@@ -71,7 +71,7 @@ Root.propTypes = {
     removeBinding: PropTypes.func.isRequired,
     update: PropTypes.func.isRequired
   }).isRequired,
-  choices: Question.propTypes.choices
+  choices: PropTypes.arrayOf(sparseChoiceShape).isRequired
 };
 
 export default Root;

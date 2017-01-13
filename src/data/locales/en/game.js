@@ -1,4 +1,5 @@
 export default {
   correct: 'Correct',
-  incorrect: 'Incorrect'
+  incorrect: 'Incorrect',
+  title: '{firstChoice} or {secondChoice}'
 };
