@@ -22,11 +22,13 @@ import base from './utils/base';
 
 import shuffleArray from './utils/shuffleArray';
 import mapAnswersToChoices from './utils/mapAnswersToChoices';
+import suitableLanguage from './utils/suitableLanguage';
 
 import './index.css';
 
 require('smoothscroll-polyfill').polyfill();
 
+const lang = suitableLanguage(navigator.languages);
 const gameChoices = shuffleArray(mapAnswersToChoices(answers, choices));
 
 pageview(window.location.pathname);
@@ -34,7 +36,7 @@ pageview(window.location.pathname);
 addLocaleData([...englishLocaleData, ...dutchLocaleData]);
 
 render(
-  <IntlProvider locale="en" messages={translations('en')}>
+  <IntlProvider locale={lang} messages={translations(lang)}>
     <HashRouter>
       <Root base={base} choices={gameChoices} />
     </HashRouter>
