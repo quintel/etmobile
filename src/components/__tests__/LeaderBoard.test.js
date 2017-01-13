@@ -57,10 +57,10 @@ it('renders the results', () => {
   const wrapper = mountWithIntl(<LeaderBoard base={base} endpoint="all" />);
 
   wrapper.setState({ results: [
-    { at: new Date().getTime() - (60 * 1000), score: 3, key: 'def' },
-    { at: new Date().getTime() - 10400, score: 4, key: 'abc' },
-    { at: new Date().getTime() - (120 * 1200), score: 2, key: 'hij' },
-    { at: new Date().getTime() - (180 * 1200), score: 1, key: 'klm' }
+    { at: new Date().getTime() - (60.4 * 1000), score: 3, key: 'def' },
+    { at: new Date().getTime() - (10.4 * 1000), score: 4, key: 'abc' },
+    { at: new Date().getTime() - (120.4 * 1200), score: 2, key: 'hij' },
+    { at: new Date().getTime() - (180.4 * 1200), score: 1, key: 'klm' }
   ] });
 
   expect(wrapper.find('li').length).toEqual(4);
