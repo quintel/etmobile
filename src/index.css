@@ -748,6 +748,7 @@ button .arrows {
   background: none;
   background-repeat: no-repeat;
   border: none;;
+  cursor: pointer;
   padding: 2px 0 3px 22px;
 }
 
