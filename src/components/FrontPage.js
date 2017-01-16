@@ -58,7 +58,7 @@ const FrontPage = (props, context) => (
       </div>
     </main>
 
-    <Footer />
+    <Footer setLocale={props.setLocale} />
   </div>
 );
 
@@ -66,7 +66,8 @@ FrontPage.propTypes = {
   base: PropTypes.shape({
     ...LeaderBoard.propTypes.base,
     ...ChallengeList.propTypes.base
-  })
+  }),
+  setLocale: PropTypes.func.isRequired
 };
 
 export default injectIntl(FrontPage);

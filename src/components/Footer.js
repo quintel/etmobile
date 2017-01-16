@@ -1,11 +1,37 @@
 import React, { PropTypes } from 'react';
 import { FormattedMessage } from 'react-intl';
 
-const Footer = ({ startYear }) => {
+import langEnSvg from '../images/lang/en.svg';
+import langNlSvg from '../images/lang/nl.svg';
+
+const Footer = ({ setLocale, startYear }) => {
   const endYear = new Date().getFullYear();
 
   return (
     <footer>
+      <div className="language-selection">
+        <FormattedMessage id="app.language" />:
+        <ul>
+          <li>
+            <button
+              className="en"
+              onClick={() => setLocale('en')}
+              style={{ backgroundImage: `url(${langEnSvg})` }}
+            >
+              English
+            </button>
+          </li>
+          <li>
+            <button
+              className="nl"
+              onClick={() => setLocale('nl')}
+              style={{ backgroundImage: `url(${langNlSvg})` }}
+            >
+              Nederlands
+            </button>
+          </li>
+        </ul>
+      </div>
       <p>
         <FormattedMessage
           id="footer.partOfTheETM"
@@ -40,6 +66,10 @@ const Footer = ({ startYear }) => {
 };
 
 Footer.defaultProps = { startYear: 2016 };
-Footer.propTypes = { startYear: PropTypes.number };
+
+Footer.propTypes = {
+  setLocale: PropTypes.func.isRequired,
+  startYear: PropTypes.number
+};
 
 export default Footer;

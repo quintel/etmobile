@@ -1,4 +1,4 @@
-/* global it expect */
+/* global it expect jest */
 
 import React from 'react';
 import { MemoryRouter } from 'react-router';
@@ -8,6 +8,9 @@ import Root from '../Root';
 import FrontPage from '../../components/FrontPage';
 import Game from '../../components/Game';
 import NewChallenge from '../../components/NewChallenge';
+import Footer from '../../components/Footer';
+
+import suitableLanguage from '../../utils/suitableLanguage';
 
 const stubBase = () => ({
   auth: () => {},
@@ -34,6 +37,18 @@ it('renders the front page at /', () => {
   return promise.then(() => {
     expect(wrapper.find(FrontPage).length).toEqual(1);
   });
+});
+
+it('changes the locale', () => {
+  const wrapper = mountWithIntl(
+    <MemoryRouter location="/">
+      <Root base={stubBase()} choices={[]} />
+    </MemoryRouter>,
+  );
+
+  wrapper.find(Footer).find('.language-selection button.nl').simulate('click');
+
+  expect(suitableLanguage([])).toEqual('nl');
 });
 
 it('renders the game at /play', () => {

@@ -718,6 +718,39 @@ button .arrows {
   text-decoration: none;
 }
 
+.front-page footer .language-selection {
+  background: #fff;
+  display: inline-block;
+  border-radius: 5px;
+  line-height: 1;
+  padding: 0 1.3rem;
+  margin-bottom: 2rem;
+  width: auto;
+}
+
+.front-page footer .language-selection,
+.front-page footer .language-selection button {
+  color: #70757b;
+}
+
+.front-page footer .language-selection ul {
+  display: inline-block;
+  list-style: none;
+  padding: 0;
+}
+
+.front-page footer .language-selection li {
+  display: inline-block;
+  margin-left: 0.4rem;
+}
+
+.front-page footer .language-selection button {
+  background: none;
+  background-repeat: no-repeat;
+  border: none;;
+  padding: 2px 0 3px 22px;
+}
+
 @media (min-width:1281px) {
   /* Narrow the UI on large displays. */
   html, body, #root {

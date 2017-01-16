@@ -18,6 +18,7 @@ it('renders a link to the play page', () => {
     <FrontPage
       base={mockBase()}
       intl={{ formatMessage: ({ id }) => id }}
+      setLocale={() => {}}
     />
   );
 
@@ -31,6 +32,7 @@ it('renders a leaderboard', () => {
     <FrontPage
       base={mockBase()}
       intl={{ formatMessage: ({ id }) => id }}
+      setLocale={() => {}}
     />
   );
 
