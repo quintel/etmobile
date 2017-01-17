@@ -1,8 +1,8 @@
 /* global it expect jest */
 
 import React from 'react';
-import { mount } from 'enzyme';
 import { MemoryRouter } from 'react-router';
+import { mountWithIntl } from '../../utils/intlEnzymeHelper';
 
 import Challenge from '../Challenge';
 import LeaderBoard from '../LeaderBoard';
@@ -14,7 +14,7 @@ const mockBase = () => ({
 
 it('renders a challenge', () => {
   // MemoryRouter is required to provide <Link /> with router context.
-  const wrapper = mount(
+  const wrapper = mountWithIntl(
     <MemoryRouter>
       <Challenge
         base={mockBase()}
@@ -32,7 +32,7 @@ it('renders a challenge', () => {
 });
 
 it('shows the leaderboard when clicking "Leaderboard"', () => {
-  const wrapper = mount(
+  const wrapper = mountWithIntl(
     <MemoryRouter>
       <Challenge
         base={mockBase()}

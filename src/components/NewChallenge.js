@@ -1,5 +1,7 @@
 import React, { PropTypes } from 'react';
 import { Redirect } from 'react-router';
+import { FormattedMessage } from 'react-intl';
+import injectIntl from '../utils/injectIntl';
 
 import Header from './Header';
 
@@ -11,6 +13,10 @@ import challengeExpiry from '../utils/challengeExpiry';
  * challenge will close.
  */
 const expiryFromSelect = field => challengeExpiry[field.value]().getTime();
+
+/**
+ * Retrieves a formatted error message by ID.
+ */
 
 class NewChallenge extends React.Component {
   constructor() {
@@ -33,15 +39,15 @@ class NewChallenge extends React.Component {
         `challenges/${challengeId}`, { data: { name, expires } }
       ).then(
         () => this.setState({ challengeId, name }),
-        () => {
-          this.setState({
-            errors: ['Sorry, there was an error starting your challenge.']
-          });
-        }
+        () => this.setState(this.errorFor('challenges.errors.starting'))
       );
     } else {
-      this.setState({ errors: ['You must enter a name for your challenge!'] });
+      this.setState(this.errorFor('challenges.errors.missingName'));
     }
+  }
+
+  errorFor(id) {
+    return { errors: [this.context.intl.formatMessage({ id })] };
   }
 
   render() {
@@ -68,7 +74,7 @@ class NewChallenge extends React.Component {
         <Header />
 
         <div className="new-challenge-wrapper">
-          <h1>Create a new challenge</h1>
+          <h1><FormattedMessage id="challenges.form.title" /></h1>
 
           <form
             disabled={this.state.challengeId != null}
@@ -77,17 +83,20 @@ class NewChallenge extends React.Component {
           >
             <div className="field-wrapper">
               <label htmlFor="new-challenge-name">
-                Challenge name
+                <FormattedMessage id="challenges.form.name.title" />
                 <span className="description">
-                  Choose a name for your challenge. For example, the name of
-                  your classroom, conference, or group.
+                  <FormattedMessage id="challenges.form.name.description" />
                 </span>
               </label>
               <div className="field">
                 <input
                   ref={(input) => { this.nameField = input; }}
                   type="text"
-                  placeholder="Choose a name&hellip;"
+                  placeholder={
+                    `${this.context.intl.formatMessage({
+                      id: 'challenges.form.name.placeholder'
+                    })}…`
+                  }
                   id="new-challenge-name"
                   name="name"
                   defaultValue={this.props.defaultName}
@@ -97,10 +106,9 @@ class NewChallenge extends React.Component {
 
             <div className="field-wrapper">
               <label htmlFor="new-challenge-expires">
-                Challenge lasts for&hellip;
+                <FormattedMessage id="challenges.form.expires.title" />&hellip;
                 <span className="description">
-                  Once your challenge has finished, no new entries will be shown
-                  on the leaderboard.
+                  <FormattedMessage id="challenges.form.expires.description" />
                 </span>
               </label>
               <div className="field">
@@ -125,7 +133,7 @@ class NewChallenge extends React.Component {
 
             <div className="field-wrapper buttons">
               <button>
-                Create challenge{' '}
+                <FormattedMessage id="challenges.form.submit" />{' '}
                 <span className="arrows">&raquo;</span>
               </button>
             </div>
@@ -141,4 +149,4 @@ NewChallenge.propTypes = {
   defaultName: PropTypes.string
 };
 
-export default NewChallenge;
+export default injectIntl(NewChallenge);

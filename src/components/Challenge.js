@@ -1,7 +1,6 @@
 import React, { PropTypes } from 'react';
 import { Link } from 'react-router';
-
-import distanceInWordsToNow from 'date-fns/distance_in_words_to_now';
+import { FormattedMessage, FormattedRelative } from 'react-intl';
 import classNames from 'classnames';
 
 import Leaderboard from './LeaderBoard';
@@ -35,14 +34,17 @@ class Challenge extends React.Component {
       <div className="challenge">
         <strong>{this.props.name}</strong>{' '}
         <span className="at">
-          Ends in {distanceInWordsToNow(new Date(this.props.expires))}
+          <FormattedMessage id="challenges.ends" />{' '}
+          <FormattedRelative value={new Date(this.props.expires)} />
         </span>
 
         <div className="buttons">
-          <Link className="button" to={`/play/${this.props.id}`}>Play!</Link>{' '}
+          <Link className="button" to={`/play/${this.props.id}`}>
+            <FormattedMessage id="challenges.play" />
+          </Link>{' '}
 
           <button className={lbClasses} onClick={this.toggleLeaderboard}>
-            Leaderboard
+            <FormattedMessage id="challenges.leaderboard" />
           </button>
         </div>
 

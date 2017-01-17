@@ -1,7 +1,7 @@
 /* global it expect jest */
 
 import React from 'react';
-import { shallow, mount } from 'enzyme';
+import { mountWithIntl, shallowWithIntl } from '../../utils/intlEnzymeHelper';
 
 import LeaderBoard from '../LeaderBoard';
 
@@ -11,7 +11,7 @@ const mockBase = () => ({
 });
 
 it('renders a title, when set', () => {
-  const wrapper = shallow(
+  const wrapper = shallowWithIntl(
     <LeaderBoard title="My leaderboard" base={mockBase()} endpoint="all" />
   );
 
@@ -20,7 +20,7 @@ it('renders a title, when set', () => {
 });
 
 it('renders no title by default', () => {
-  const wrapper = shallow(
+  const wrapper = shallowWithIntl(
     <LeaderBoard base={mockBase()} endpoint="all" />
   );
 
@@ -30,7 +30,7 @@ it('renders no title by default', () => {
 it('binds to the Firebase endpoint when mounting', () => {
   const base = mockBase();
 
-  mount(<LeaderBoard base={base} endpoint="all" />);
+  mountWithIntl(<LeaderBoard base={base} endpoint="all" />);
 
   expect(base.bindToState).toHaveBeenCalled();
   expect(base.bindToState.mock.calls[0][0]).toEqual('leaderboards/all');
@@ -38,7 +38,7 @@ it('binds to the Firebase endpoint when mounting', () => {
 
 it('removes the Firebase binding when unmounting', () => {
   const base = mockBase();
-  const wrapper = mount(<LeaderBoard base={base} endpoint="all" />);
+  const wrapper = mountWithIntl(<LeaderBoard base={base} endpoint="all" />);
 
   wrapper.unmount();
 
@@ -47,20 +47,20 @@ it('removes the Firebase binding when unmounting', () => {
 
 it('initially renders a loading message', () => {
   const base = mockBase();
-  const wrapper = mount(<LeaderBoard base={base} endpoint="all" />);
+  const wrapper = mountWithIntl(<LeaderBoard base={base} endpoint="all" />);
 
   expect(wrapper.text()).toContain('Loading');
 });
 
 it('renders the results', () => {
   const base = mockBase();
-  const wrapper = mount(<LeaderBoard base={base} endpoint="all" />);
+  const wrapper = mountWithIntl(<LeaderBoard base={base} endpoint="all" />);
 
   wrapper.setState({ results: [
-    { at: new Date().getTime() - (60 * 1000), score: 3, key: 'def' },
-    { at: new Date().getTime(), score: 4, key: 'abc' },
-    { at: new Date().getTime() - (120 * 1200), score: 2, key: 'hij' },
-    { at: new Date().getTime() - (180 * 1200), score: 1, key: 'klm' }
+    { at: new Date().getTime() - (60.4 * 1000), score: 3, key: 'def' },
+    { at: new Date().getTime() - (10.4 * 1000), score: 4, key: 'abc' },
+    { at: new Date().getTime() - (120.4 * 1200), score: 2, key: 'hij' },
+    { at: new Date().getTime() - (180.4 * 1200), score: 1, key: 'klm' }
   ] });
 
   expect(wrapper.find('li').length).toEqual(4);
@@ -71,7 +71,7 @@ it('renders the results', () => {
   const fourth = wrapper.find('li').at(3);
 
   expect(first.find('.at').text()).toContain('got 4 correct');
-  expect(first.find('.at').text()).toContain('less than a minute');
+  expect(first.find('.at').text()).toContain('10 seconds');
 
   expect(second.find('.at').text()).toContain('got 3 correct');
   expect(second.find('.at').text()).toContain('1 minute');
@@ -91,7 +91,7 @@ it('renders the results', () => {
 
 it('sorts equal-score results to be recent-first', () => {
   const base = mockBase();
-  const wrapper = mount(<LeaderBoard base={base} endpoint="all" />);
+  const wrapper = mountWithIntl(<LeaderBoard base={base} endpoint="all" />);
 
   wrapper.setState({ results: [
     { at: new Date().getTime() - (60 * 1000), score: 2, key: 'a', who: 'abc' },
@@ -112,7 +112,7 @@ it('sorts equal-score results to be recent-first', () => {
 
 it('renders a message when there are no games played', () => {
   const base = mockBase();
-  const wrapper = mount(<LeaderBoard base={base} endpoint="all" />);
+  const wrapper = mountWithIntl(<LeaderBoard base={base} endpoint="all" />);
 
   wrapper.setState({ results: [] });
 

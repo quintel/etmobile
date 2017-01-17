@@ -39,13 +39,7 @@ class Question extends React.Component {
 }
 
 Question.propTypes = {
-  choices: PropTypes.arrayOf(PropTypes.shape({
-    delta: PropTypes.number.isRequired,
-    name: PropTypes.string.isRequired,
-    inputs: PropTypes.object.isRequired,
-    icon: PropTypes.string.isRequired,
-    isCorrect: PropTypes.bool
-  })).isRequired,
+  choices: PropTypes.arrayOf(Choice.propTypes.choice).isRequired,
   onChoiceMade: PropTypes.func.isRequired,
   name: PropTypes.string.isRequired
 };

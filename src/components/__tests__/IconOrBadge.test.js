@@ -1,12 +1,12 @@
 /* global it expect jest */
 
 import React from 'react';
-import { shallow, mount } from 'enzyme';
+import { shallowWithIntl, mountWithIntl } from '../../utils/intlEnzymeHelper';
 
 import IconOrBadge from '../IconOrBadge';
 
 it('renders an icon when no choice has been made', () => {
-  const wrapper = shallow(
+  const wrapper = shallowWithIntl(
     <IconOrBadge
       choice={{ delta: 1.0, icon: 'wind', isCorrect: true }}
       index={0}
@@ -18,7 +18,7 @@ it('renders an icon when no choice has been made', () => {
 });
 
 it('renders a result badge when a choice has been made', () => {
-  const wrapper = mount(
+  const wrapper = mountWithIntl(
     <IconOrBadge
       choice={{ delta: 1.0, icon: 'wind', isCorrect: true }}
       index={0}

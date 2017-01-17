@@ -1,5 +1,6 @@
 import React, { PropTypes } from 'react';
-import distanceInWordsToNow from 'date-fns/distance_in_words_to_now';
+import { FormattedMessage, FormattedRelative } from 'react-intl';
+import injectIntl from '../utils/injectIntl';
 
 import trophyGold from '../images/leaderboard/gold.svg';
 import trophySilver from '../images/leaderboard/silver.svg';
@@ -22,7 +23,7 @@ const sortEntries = (a, b) => {
   return a.at < b.at ? 1 : -1;
 };
 
-const LeaderBoardItem = props => (
+const LeaderBoardItem = injectIntl(((props, context) => (
   <li>
     {positionImages[props.position] ?
       <img
@@ -35,15 +36,19 @@ const LeaderBoardItem = props => (
     }
     <div className="details">
       <div className="visitor">
-        {props.who || 'Anonymous'}
+        {props.who || context.intl.formatMessage({ id: 'leaderboard.anon' })}
       </div>
       <div className="at">
-        got {props.score} correct{' '}
-        {distanceInWordsToNow(props.at, { addSuffix: true })}
+        <FormattedMessage
+          id="leaderboard.result"
+          values={{ score: props.score }}
+        />
+        {' '}
+        <FormattedRelative value={props.at} />
       </div>
     </div>
   </li>
-);
+)));
 
 LeaderBoardItem.propTypes = {
   at: PropTypes.instanceOf(Date).isRequired,
@@ -97,7 +102,7 @@ class LeaderBoard extends React.Component {
       content = (
         <li>
           <div className="notice">
-            No players yet!
+            <FormattedMessage id="leaderboard.noPlayers" />
           </div>
         </li>
       );
@@ -105,7 +110,7 @@ class LeaderBoard extends React.Component {
       content = (
         <li>
           <div className="notice">
-            Loading leaderboard&hellip;
+            <FormattedMessage id="leaderboard.loading" />&hellip;
           </div>
         </li>
       );

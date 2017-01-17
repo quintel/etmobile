@@ -1,13 +1,16 @@
-/* global it expect */
+/* global it expect jest */
 
 import React from 'react';
-import { mount } from 'enzyme';
 import { MemoryRouter } from 'react-router';
+import { mountWithIntl } from '../../utils/intlEnzymeHelper';
 
 import Root from '../Root';
 import FrontPage from '../../components/FrontPage';
 import Game from '../../components/Game';
 import NewChallenge from '../../components/NewChallenge';
+import Footer from '../../components/Footer';
+
+import suitableLanguage from '../../utils/suitableLanguage';
 
 const stubBase = () => ({
   auth: () => {},
@@ -25,7 +28,7 @@ it('renders the front page at /', () => {
 
   base.fetch = () => promise;
 
-  const wrapper = mount(
+  const wrapper = mountWithIntl(
     <MemoryRouter location="/">
       <Root base={base} choices={[]} />
     </MemoryRouter>,
@@ -36,8 +39,20 @@ it('renders the front page at /', () => {
   });
 });
 
+it('changes the locale', () => {
+  const wrapper = mountWithIntl(
+    <MemoryRouter location="/">
+      <Root base={stubBase()} choices={[]} />
+    </MemoryRouter>,
+  );
+
+  wrapper.find(Footer).find('.language-selection button.nl').simulate('click');
+
+  expect(suitableLanguage([])).toEqual('nl');
+});
+
 it('renders the game at /play', () => {
-  const wrapper = mount(
+  const wrapper = mountWithIntl(
     <MemoryRouter location="/play">
       <Root base={stubBase()} choices={[]} />
     </MemoryRouter>,
@@ -48,7 +63,7 @@ it('renders the game at /play', () => {
 });
 
 it('renders a challenge game at /play/challengeId', () => {
-  const wrapper = mount(
+  const wrapper = mountWithIntl(
     <MemoryRouter location="/play/abc">
       <Root base={stubBase()} choices={[]} />
     </MemoryRouter>,
@@ -59,7 +74,7 @@ it('renders a challenge game at /play/challengeId', () => {
 });
 
 it('renders the new challenge page at /new-challenge', () => {
-  const wrapper = mount(
+  const wrapper = mountWithIntl(
     <MemoryRouter location="/new-challenge">
       <Root base={stubBase()} choices={[]} />
     </MemoryRouter>,

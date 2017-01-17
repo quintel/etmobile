@@ -1,10 +1,10 @@
 /* global it expect */
 
 import React from 'react';
-import { shallow } from 'enzyme';
+import { mountWithIntl } from '../../utils/intlEnzymeHelper';
 
 import Header from '../Header';
 
 it('renders the app name', () => {
-  expect(shallow(<Header />).text().includes('ETMobile')).toEqual(true);
+  expect(mountWithIntl(<Header />).text().includes('ETMobile')).toEqual(true);
 });

@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { Link } from 'react-router';
-import { shallow } from 'enzyme';
+import { shallowWithIntl } from '../../utils/intlEnzymeHelper';
 
 import FrontPage from '../FrontPage';
 import LeaderBoard from '../LeaderBoard';
@@ -14,14 +14,27 @@ const mockBase = () => ({
 });
 
 it('renders a link to the play page', () => {
-  const wrapper = shallow(<FrontPage base={mockBase()} />);
+  const wrapper = shallowWithIntl(
+    <FrontPage
+      base={mockBase()}
+      intl={{ formatMessage: ({ id }) => id }}
+      setLocale={() => {}}
+    />
+  );
+
   const link = wrapper.find(Link).at(0);
 
   expect(link.props().to).toEqual('/play');
 });
 
 it('renders a leaderboard', () => {
-  const wrapper = shallow(<FrontPage base={mockBase()} />);
+  const wrapper = shallowWithIntl(
+    <FrontPage
+      base={mockBase()}
+      intl={{ formatMessage: ({ id }) => id }}
+      setLocale={() => {}}
+    />
+  );
 
   expect(wrapper.find(LeaderBoard).length).toEqual(1);
 });

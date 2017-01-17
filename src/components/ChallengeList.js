@@ -1,4 +1,5 @@
 import React, { PropTypes } from 'react';
+import { FormattedMessage } from 'react-intl';
 
 import Challenge from './Challenge';
 
@@ -34,7 +35,7 @@ class ChallengeList extends React.Component {
     if (!this.state.challenges) {
       return (
         <div className="challenge loading">
-          Loading challenges&hellip;
+          <FormattedMessage id="challenges.loadingChallenges" />&hellip;
         </div>
       );
     }

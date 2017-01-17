@@ -1,9 +1,12 @@
 import React, { PropTypes } from 'react';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
+import { FormattedMessage } from 'react-intl';
+import injectIntl from '../utils/injectIntl';
 
 import Header from '../components/Header';
 import Question from '../components/Question';
 import Summary from '../components/Summary';
+import { sparseChoiceShape } from '../components/Choice';
 
 import authenticate from '../utils/authenticate';
 import questionFromChoices from '../utils/questionFromChoices';
@@ -88,7 +91,7 @@ class Game extends React.Component {
       choices = this.state.availableChoices;
     }
 
-    const question = questionFromChoices(choices);
+    const question = questionFromChoices(choices, this.context.intl);
 
     const nextState = {
       lastChoice: null,
@@ -141,7 +144,10 @@ class Game extends React.Component {
     });
 
     window.setTimeout(() => {
-      const question = questionFromChoices(this.state.availableChoices);
+      const question = questionFromChoices(
+        this.state.availableChoices, this.context.intl
+      );
+
       const availableChoices = this.state.availableChoices.slice(2);
 
       // Push the unchosen choice back onto the list for later.
@@ -195,7 +201,7 @@ class Game extends React.Component {
                   <span className="correct-count">
                     {this.state.correctChoices}
                   </span>
-                  correct
+                  <FormattedMessage id="game.correct" />
                 </footer>
               </div>
             </ReactCSSTransitionGroup>
@@ -237,8 +243,8 @@ Game.propTypes = {
     onAuth: PropTypes.func.isRequired,
     update: PropTypes.func.isRequired
   }).isRequired,
-  choices: Question.propTypes.choices,
+  choices: PropTypes.arrayOf(sparseChoiceShape),
   params: PropTypes.shape({ challengeId: PropTypes.string }).isRequired
 };
 
-export default Game;
+export default injectIntl(Game, { withRef: true });

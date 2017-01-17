@@ -1,4 +1,5 @@
 import React from 'react';
+import { FormattedNumber } from 'react-intl';
 
 import Choice from './Choice';
 import * as choiceImages from '../images/choices';
@@ -18,7 +19,7 @@ const ChoiceSummary = props => (
         alt="presentation"
       />
       <span className={`change ${props.isCorrect ? 'correct' : 'incorrect'}`}>
-        {Math.round(props.delta * 100) / 100}%
+        <FormattedNumber value={Math.round(props.delta * 100) / 100} />%
       </span>
     </div>
     <div className="info">

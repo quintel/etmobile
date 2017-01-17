@@ -1,12 +1,12 @@
 /* global it expect jest */
 
 import React from 'react';
-import { shallow, mount } from 'enzyme';
+import { shallowWithIntl, mountWithIntl } from '../../utils/intlEnzymeHelper';
 
 import ChoiceButton from '../ChoiceButton';
 
 it('renders an active button', () => {
-  const wrapper = mount(
+  const wrapper = mountWithIntl(
     <ChoiceButton isCorrect onClick={() => {}} index={0}>
       My Button
     </ChoiceButton>
@@ -21,7 +21,7 @@ it('renders an active button', () => {
 });
 
 it('renders a chosen, correct button', () => {
-  const wrapper = mount(
+  const wrapper = mountWithIntl(
     <ChoiceButton isCorrect selectedIndex={0} index={0}>
       My Button
     </ChoiceButton>
@@ -31,7 +31,7 @@ it('renders a chosen, correct button', () => {
 });
 
 it('renders an unchosen, correct button', () => {
-  const wrapper = mount(
+  const wrapper = mountWithIntl(
     <ChoiceButton isCorrect selectedIndex={1} index={0}>
       My Button
     </ChoiceButton>
@@ -41,7 +41,7 @@ it('renders an unchosen, correct button', () => {
 });
 
 it('renders a chosen, incorrect button', () => {
-  const wrapper = mount(
+  const wrapper = mountWithIntl(
     <ChoiceButton selectedIndex={0} index={0}>
       My Button
     </ChoiceButton>
@@ -51,7 +51,7 @@ it('renders a chosen, incorrect button', () => {
 });
 
 it('renders an unchosen, incorrect button', () => {
-  const wrapper = mount(
+  const wrapper = mountWithIntl(
     <ChoiceButton selectedIndex={1} index={0}>
       My Button
     </ChoiceButton>
@@ -63,7 +63,7 @@ it('renders an unchosen, incorrect button', () => {
 it('binds the onClick listener to the buttons', () => {
   const onClick = jest.fn();
 
-  const wrapper = shallow(
+  const wrapper = shallowWithIntl(
     <ChoiceButton onClick={onClick} index={0}>Hello</ChoiceButton>
   );
 
