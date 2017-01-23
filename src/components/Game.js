@@ -6,6 +6,7 @@ import injectIntl from '../utils/injectIntl';
 import Header from '../components/Header';
 import Question from '../components/Question';
 import Summary from '../components/Summary';
+import ProgressBar from '../components/ProgressBar';
 import { sparseChoiceShape } from '../components/Choice';
 
 import authenticate from '../utils/authenticate';
@@ -13,7 +14,10 @@ import questionFromChoices from '../utils/questionFromChoices';
 import { setScore } from '../utils/highScore';
 import { getPlayerName } from '../utils/playerName';
 
+import * as gameModes from '../data/gameModes';
+
 const NEXT_QUESTION_WAIT = process.env.NODE_ENV === 'test' ? 1 : 2000;
+const DEFAULT_MODE = 'easy';
 
 /**
  * Returns the path to the Firebase endpoint for a leaderboard.
@@ -29,19 +33,21 @@ const lbEndpoint = (leaderboard, uid) => (
 /**
  * Updates Firebase with a new high-score.
  *
- * @param {object} base        The re-base instance.
- * @param {number} score       The high score to be stored.
- * @param {string} uid         The unique ID of the current user.
- * @param {string} challengeId The unique challenge ID, or null.
+ * @param {object} base            The re-base instance.
+ * @param {number} score           The high score to be stored.
+ * @param {string} uid             The unique ID of the current user.
+ * @param {string} genericEndpoint The endpoint for all scores in this game
+ *                                 mode. Typically "easy", "medium", etc.
+ * @param {string} challengeId     The unique challenge ID, or null.
  *
  * Returns a Promise which wraps the update promises.
  */
-const updateHighScore = (base, score, uid, challengeId) => {
+const updateHighScore = (base, score, uid, genericEndpoint, challengeId) => {
   const data = { score, at: new Date().getTime(), who: getPlayerName() };
   const promises = [];
 
-  if (setScore('all', score)) {
-    promises.push(base.update(lbEndpoint('all', uid), { data }));
+  if (setScore(genericEndpoint, score)) {
+    promises.push(base.update(lbEndpoint(genericEndpoint, uid), { data }));
   }
 
   if (challengeId && setScore(challengeId, score)) {
@@ -56,8 +62,9 @@ class Game extends React.Component {
     super();
 
     this.state = {
-      correctChoices: 0,
+      attemptsRemaining: gameModes[DEFAULT_MODE].attempts,
       bestScore: 0,
+      correctChoices: 0,
       lastChoice: null
     };
 
@@ -92,13 +99,16 @@ class Game extends React.Component {
     }
 
     const question = questionFromChoices(choices, this.context.intl);
+    const mode = gameModes[this.props.mode || DEFAULT_MODE];
 
     const nextState = {
       lastChoice: null,
       lastQuestion: null,
       correctChoices: 0,
       availableChoices: choices.slice(2),
-      currentQuestion: question
+      currentQuestion: question,
+      attemptsRemaining: mode.attempts,
+      mode
     };
 
     this.setState(nextState);
@@ -116,6 +126,7 @@ class Game extends React.Component {
    */
   handleQuestionChoice(choice) {
     const lastQuestion = this.state.currentQuestion;
+    let attemptsRemaining = this.state.attemptsRemaining;
 
     if (choice.isCorrect) {
       const nextState = { correctChoices: this.state.correctChoices + 1 };
@@ -132,9 +143,12 @@ class Game extends React.Component {
           this.props.base,
           nextState.bestScore,
           this.state.uid,
+          this.state.mode.endpoint,
           this.props.params.challengeId
         );
       }
+    } else {
+      attemptsRemaining -= 1;
     }
 
     let resolveChangeQuestion;
@@ -158,6 +172,7 @@ class Game extends React.Component {
       this.setState({
         lastChoice: choice,
         currentQuestion: question,
+        attemptsRemaining,
         availableChoices,
         lastQuestion
       });
@@ -175,38 +190,43 @@ class Game extends React.Component {
 
   render() {
     let content;
+
     const lastChoice = this.state.lastChoice;
 
-    if ((!lastChoice || lastChoice.isCorrect) && this.state.currentQuestion) {
-      content = (
-        <div>
-          <main className="question-wrapper">
-            <ReactCSSTransitionGroup
-              component="div"
-              transitionName={{ enter: 'fadeInUp', leave: 'fadeOutUp' }}
-              transitionEnterTimeout={1000}
-              transitionLeaveTimeout={1000}
-            >
-              <div
-                className="animated"
-                style={{ position: 'absolute' }}
-                key={this.state.currentQuestion.name}
-              >
-                <Question
-                  onChoiceMade={this.handleQuestionChoice}
-                  {...this.state.currentQuestion}
-                />
+    const showQuestion = this.state.currentQuestion && (
+      !lastChoice || // First question to be shown.
+      lastChoice.isCorrect ||
+      this.state.attemptsRemaining > 0
+    );
 
-                <footer>
-                  <span className="correct-count">
-                    {this.state.correctChoices}
-                  </span>
-                  <FormattedMessage id="game.correct" />
-                </footer>
-              </div>
-            </ReactCSSTransitionGroup>
-          </main>
-        </div>
+    if (showQuestion) {
+      content = (
+        <main className="question-wrapper">
+          <ReactCSSTransitionGroup
+            component="div"
+            transitionName={{ enter: 'fadeInUp', leave: 'fadeOutUp' }}
+            transitionEnterTimeout={1000}
+            transitionLeaveTimeout={1000}
+          >
+            <div
+              className="animated"
+              style={{ position: 'absolute' }}
+              key={this.state.currentQuestion.name}
+            >
+              <Question
+                onChoiceMade={this.handleQuestionChoice}
+                {...this.state.currentQuestion}
+              />
+
+              <footer>
+                <span className="correct-count">
+                  {this.state.correctChoices}
+                </span>
+                <FormattedMessage id="game.correct" />
+              </footer>
+            </div>
+          </ReactCSSTransitionGroup>
+        </main>
       );
     } else if (lastChoice) {
       content = (
@@ -227,6 +247,12 @@ class Game extends React.Component {
     return (
       <div>
         <Header />
+        {this.state.mode && this.state.mode.attempts > 1 ?
+          <ProgressBar
+            current={this.state.mode.attempts - this.state.attemptsRemaining}
+            total={this.state.mode.attempts}
+          /> :
+          null }
         {content}
       </div>
     );
@@ -244,6 +270,7 @@ Game.propTypes = {
     update: PropTypes.func.isRequired
   }).isRequired,
   choices: PropTypes.arrayOf(sparseChoiceShape),
+  mode: PropTypes.string,
   params: PropTypes.shape({ challengeId: PropTypes.string }).isRequired
 };
 

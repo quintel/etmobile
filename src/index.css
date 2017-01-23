@@ -398,13 +398,11 @@ button .arrows {
 
 .progress-bar {
   background: #d5f0fe;
-  box-shadow: inset 0 1px 0 #c1e0f2, inset 0 2px 0 #dff6ff;
+  box-shadow: inset 0 1px 0 #bedaea, 0 1px 0 white;
   height: 4px;
-  left: 0;
-  position: absolute;
-  top: -1px;
+  margin-top: -1px;
+  position: relative;
   width: 100%;
-  z-index: 5;
 }
 
 .progress-bar .amount {

@@ -9,6 +9,8 @@ import Question from '../../components/Question';
 import { setScore } from '../../utils/highScore';
 import store from '../../utils/store';
 
+import { hard as hardMode } from '../../data/gameModes';
+
 afterEach(store.clear);
 
 const choices = [
@@ -58,7 +60,7 @@ const stubBase = () => ({
 
 it('renders an input list', () => {
   const wrapper = mountWithIntl(
-    <Game base={stubBase()} choices={choices} />
+    <Game base={stubBase()} choices={choices} mode="hard" />
   );
 
   expect(wrapper.find(Question).length).toEqual(1);
@@ -75,7 +77,7 @@ it('increments correctChoices when a correct answer is given', () => {
   const choice = { inputs: { abc: 10 }, isCorrect: true };
 
   const wrapper = mountWithIntl(
-    <Game choices={choices} base={stubBase()} />
+    <Game choices={choices} base={stubBase()} mode="hard" />
   );
 
   const correct = wrapper.state('correctChoices');
@@ -88,7 +90,7 @@ it('does not increment correctChoices when a wrong answer is given', () => {
   const choice = { inputs: { abc: 10 }, isCorrect: false };
 
   const wrapper = mountWithIntl(
-    <Game choices={choices} base={stubBase()} />
+    <Game choices={choices} base={stubBase()} mode="hard" />
   );
 
   const correct = wrapper.state('correctChoices');
@@ -97,12 +99,37 @@ it('does not increment correctChoices when a wrong answer is given', () => {
     .then(() => expect(wrapper.state('correctChoices')).toEqual(correct));
 });
 
+it('resumes with the next question when attempts are remaining', () => {
+  const choice = { inputs: { abc: 10 }, isCorrect: false };
+
+  const wrapper = mountWithIntl(
+    <Game choices={choices} base={stubBase()} mode="easy" />
+  );
+
+  const correct = wrapper.state('correctChoices');
+  const attempts = wrapper.state('attemptsRemaining');
+
+  return wrapper.instance().handleQuestionChoice(choice)
+    .then(() => {
+      // correctChoices is not incremented
+      expect(wrapper.state('correctChoices')).toEqual(correct);
+
+      // one life is lost
+      expect(wrapper.state('attemptsRemaining')).toEqual(attempts - 1);
+
+      // two questions may be present: the old one transitioning out, and the
+      // new one transitioning in.
+      expect(wrapper.find(Question).length).toBeGreaterThanOrEqual(1);
+      expect(wrapper.find('.results').length).toEqual(0);
+    });
+});
+
 it('updates the high score list without a challenge', () => {
   const base = stubBase();
   const choice = { inputs: { abc: 10 }, isCorrect: true };
 
   const wrapper = mountWithIntl(
-    <Game base={base} choices={choices} />
+    <Game base={base} choices={choices} mode="hard" />
   );
 
   return wrapper.instance().handleQuestionChoice(choice)
@@ -113,11 +140,16 @@ it('updates the high score list with a challenge', () => {
   const base = stubBase();
   const choice = { inputs: { abc: 10 }, isCorrect: true };
 
-  setScore('all', 10);
+  setScore(hardMode.endpoint, 10);
   setScore('abc', 10);
 
   const wrapper = mountWithIntl(
-    <Game params={{ challengeId: 'abc' }} base={base} choices={choices} />
+    <Game
+      params={{ challengeId: 'abc' }}
+      base={base}
+      choices={choices}
+      mode="hard"
+    />
   );
 
   return wrapper.instance().handleQuestionChoice(choice)
@@ -129,7 +161,12 @@ it('does not update the high score list with a lower score', () => {
   const choice = { inputs: { abc: 10 }, isCorrect: true };
 
   const wrapper = mountWithIntl(
-    <Game params={{ challengeId: 'abc' }} base={base} choices={choices} />
+    <Game
+      params={{ challengeId: 'abc' }}
+      base={base}
+      choices={choices}
+      mode="hard"
+    />
   );
 
   return wrapper.instance().handleQuestionChoice(choice)
@@ -138,13 +175,14 @@ it('does not update the high score list with a lower score', () => {
 
 it('shows the results page when all questions are answered', () => {
   const wrapper = mountWithIntl(
-    <Game base={stubBase()} choices={choices} />
+    <Game base={stubBase()} choices={choices} mode="hard" />
   );
 
   wrapper.setState({
     lastChoice: { isCorrect: false },
     lastQuestion: { choices: [] },
-    currentQuestion: 9999
+    currentQuestion: 9999,
+    attemptsRemaining: 0
   });
 
   expect(wrapper.find(Question).length).toEqual(0);
@@ -153,12 +191,13 @@ it('shows the results page when all questions are answered', () => {
 
 it('resumes with the next question when restarting', () => {
   const wrapper = mountWithIntl(
-    <Game base={stubBase()} choices={choices} />
+    <Game base={stubBase()} choices={choices} mode="hard" />
   );
 
   wrapper.setState({
     lastChoice: { isCorrect: false },
-    lastQuestion: { choices: [] }
+    lastQuestion: { choices: [] },
+    attemptsRemaining: 0
   });
 
   wrapper.instance().handleRestartGame();
@@ -176,7 +215,7 @@ it('resumes with the next question when restarting', () => {
 
 it('starts over when restarting with all questions answered', () => {
   const wrapper = mountWithIntl(
-    <Game base={stubBase()} choices={choices} />
+    <Game base={stubBase()} choices={choices} mode="hard" />
   );
 
   wrapper.setState({
@@ -210,7 +249,7 @@ it('registers a new user', () => {
   base.auth = jest.fn().mockReturnValue({ signInAnonymously: () => promise });
 
   const wrapper = mountWithIntl(
-    <Game base={base} choices={choices} />
+    <Game base={base} choices={choices} mode="hard" />
   );
 
   expect(base.onAuth).toHaveBeenCalled();
@@ -229,7 +268,7 @@ it('authenticates an existing user', () => {
   });
 
   const wrapper = mountWithIntl(
-    <Game base={base} choices={choices} />
+    <Game base={base} choices={choices} mode="hard" />
   );
 
   expect(base.onAuth).toHaveBeenCalled();
