@@ -501,7 +501,7 @@ button .arrows {
   text-align: center;
 }
 
-.leaderboard h2, .challenges h2 {
+.global-leaderboards h2, .challenges h2 {
   margin-bottom: 1rem;
 }
 
@@ -554,6 +554,7 @@ button .arrows {
 }
 
 .leaderboard .notice {
+  padding: 1rem 0;
   text-align: center;
   width: 100%;
 }
@@ -561,6 +562,49 @@ button .arrows {
 .leaderboard .at, .challenge .at {
   color: #70757b;
   font-size: 0.875rem;
+}
+
+.global-leaderboards .leaderboard li:first-child {
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+
+.global-leaderboards .ReactTabs__TabList {
+  display: flex;
+  font-size: 0.875rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.global-leaderboards .ReactTabs__TabList li {
+  border: 1px solid #d3deea;
+  border-bottom: none;
+  color: #3373cb;
+  cursor: pointer;
+  flex: 1;
+  line-height: 1;
+  padding: 0.5rem 0;
+  text-align: center;
+  margin: 0;
+}
+
+.global-leaderboards .ReactTabs__TabList li:first-child {
+  border-top-left-radius: 5px;
+}
+
+.global-leaderboards .ReactTabs__TabList li:last-child {
+  border-top-right-radius: 5px;
+}
+
+.global-leaderboards .ReactTabs__TabList li + li {
+  border-left: none;
+}
+
+.global-leaderboards .ReactTabs__TabList .ReactTabs__Tab--selected {
+  background: white;
+  color: #222325;
+  font-weight: bold;
 }
 
 .front-page main {
