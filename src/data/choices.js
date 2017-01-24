@@ -127,13 +127,6 @@ export default [
     }
   },
   {
-    key: 'cheaperOil',
-    icon: 'oil',
-    inputs: {
-      costs_oil: -50
-    }
-  },
-  {
     key: 'refineryEfficiency',
     icon: 'wrench',
     inputs: {
