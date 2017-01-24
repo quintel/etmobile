@@ -14,10 +14,7 @@ import questionFromChoices from '../utils/questionFromChoices';
 import { setScore } from '../utils/highScore';
 import { getPlayerName } from '../utils/playerName';
 
-import * as gameModes from '../data/gameModes';
-
 const NEXT_QUESTION_WAIT = process.env.NODE_ENV === 'test' ? 1 : 2000;
-const DEFAULT_MODE = 'easy';
 
 /**
  * Returns the path to the Firebase endpoint for a leaderboard.
@@ -62,7 +59,7 @@ class Game extends React.Component {
     super();
 
     this.state = {
-      attemptsRemaining: gameModes[DEFAULT_MODE].attempts,
+      attemptsRemaining: null,
       bestScore: 0,
       correctChoices: 0,
       lastChoice: null
@@ -99,7 +96,6 @@ class Game extends React.Component {
     }
 
     const question = questionFromChoices(choices, this.context.intl);
-    const mode = gameModes[this.props.mode || DEFAULT_MODE];
 
     const nextState = {
       lastChoice: null,
@@ -107,8 +103,7 @@ class Game extends React.Component {
       correctChoices: 0,
       availableChoices: choices.slice(2),
       currentQuestion: question,
-      attemptsRemaining: mode.attempts,
-      mode
+      attemptsRemaining: this.props.mode.attempts
     };
 
     this.setState(nextState);
@@ -143,8 +138,8 @@ class Game extends React.Component {
           this.props.base,
           nextState.bestScore,
           this.state.uid,
-          this.state.mode.endpoint,
-          this.props.params.challengeId
+          this.props.mode.endpoint,
+          this.props.challengeId
         );
       }
     } else {
@@ -232,7 +227,7 @@ class Game extends React.Component {
       content = (
         <Summary
           base={this.props.base}
-          challengeId={this.props.params.challengeId}
+          challengeId={this.props.challengeId}
           gameState={this.gameState()}
           onRestartGame={this.handleRestartGame}
           uid={this.state.uid}
@@ -247,10 +242,10 @@ class Game extends React.Component {
     return (
       <div>
         <Header />
-        {this.state.mode && this.state.mode.attempts > 1 ?
+        {this.props.mode.attempts > 1 ?
           <ProgressBar
-            current={this.state.mode.attempts - this.state.attemptsRemaining}
-            total={this.state.mode.attempts}
+            current={this.props.mode.attempts - this.state.attemptsRemaining}
+            total={this.props.mode.attempts}
           /> :
           null }
         {content}
@@ -259,9 +254,7 @@ class Game extends React.Component {
   }
 }
 
-Game.defaultProps = {
-  params: { challengeId: null }
-};
+Game.defaultProps = { challengeId: null };
 
 Game.propTypes = {
   base: PropTypes.shape({
@@ -269,9 +262,12 @@ Game.propTypes = {
     onAuth: PropTypes.func.isRequired,
     update: PropTypes.func.isRequired
   }).isRequired,
+  challengeId: PropTypes.string,
   choices: PropTypes.arrayOf(sparseChoiceShape),
-  mode: PropTypes.string,
-  params: PropTypes.shape({ challengeId: PropTypes.string }).isRequired
+  mode: PropTypes.shape({
+    attempts: PropTypes.number.isRequired,
+    endpoint: PropTypes.string.isRequired
+  })
 };
 
 export default injectIntl(Game, { withRef: true });

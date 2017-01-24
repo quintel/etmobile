@@ -58,9 +58,11 @@ const stubBase = () => ({
   auth: () => ({ signInAnonymously: Promise.resolve({ uid: 'xyz' }) })
 });
 
+const stubMode = (attempts = 1) => ({ ...hardMode, attempts });
+
 it('renders an input list', () => {
   const wrapper = mountWithIntl(
-    <Game base={stubBase()} choices={choices} mode="hard" />
+    <Game base={stubBase()} choices={choices} mode={stubMode()} />
   );
 
   expect(wrapper.find(Question).length).toEqual(1);
@@ -77,7 +79,7 @@ it('increments correctChoices when a correct answer is given', () => {
   const choice = { inputs: { abc: 10 }, isCorrect: true };
 
   const wrapper = mountWithIntl(
-    <Game choices={choices} base={stubBase()} mode="hard" />
+    <Game choices={choices} base={stubBase()} mode={stubMode()} />
   );
 
   const correct = wrapper.state('correctChoices');
@@ -90,7 +92,7 @@ it('does not increment correctChoices when a wrong answer is given', () => {
   const choice = { inputs: { abc: 10 }, isCorrect: false };
 
   const wrapper = mountWithIntl(
-    <Game choices={choices} base={stubBase()} mode="hard" />
+    <Game choices={choices} base={stubBase()} mode={stubMode()} />
   );
 
   const correct = wrapper.state('correctChoices');
@@ -103,7 +105,7 @@ it('resumes with the next question when attempts are remaining', () => {
   const choice = { inputs: { abc: 10 }, isCorrect: false };
 
   const wrapper = mountWithIntl(
-    <Game choices={choices} base={stubBase()} mode="easy" />
+    <Game choices={choices} base={stubBase()} mode={stubMode(3)} />
   );
 
   const correct = wrapper.state('correctChoices');
@@ -129,14 +131,14 @@ it('updates the high score list without a challenge', () => {
   const choice = { inputs: { abc: 10 }, isCorrect: true };
 
   const wrapper = mountWithIntl(
-    <Game base={base} choices={choices} mode="hard" />
+    <Game base={base} choices={choices} mode={stubMode()} />
   );
 
   return wrapper.instance().handleQuestionChoice(choice)
     .then(() => expect(base.update.mock.calls.length).toEqual(1));
 });
 
-it('updates the high score list with a challenge', () => {
+it('does not update the high score list with a lower score', () => {
   const base = stubBase();
   const choice = { inputs: { abc: 10 }, isCorrect: true };
 
@@ -145,10 +147,10 @@ it('updates the high score list with a challenge', () => {
 
   const wrapper = mountWithIntl(
     <Game
-      params={{ challengeId: 'abc' }}
+      challengeId="abc"
       base={base}
       choices={choices}
-      mode="hard"
+      mode={stubMode()}
     />
   );
 
@@ -156,16 +158,16 @@ it('updates the high score list with a challenge', () => {
     .then(() => expect(base.update.mock.calls.length).toEqual(0));
 });
 
-it('does not update the high score list with a lower score', () => {
+it('updates the high score list with a challenge', () => {
   const base = stubBase();
   const choice = { inputs: { abc: 10 }, isCorrect: true };
 
   const wrapper = mountWithIntl(
     <Game
-      params={{ challengeId: 'abc' }}
+      challengeId="abc"
       base={base}
       choices={choices}
-      mode="hard"
+      mode={stubMode()}
     />
   );
 
@@ -175,7 +177,7 @@ it('does not update the high score list with a lower score', () => {
 
 it('shows the results page when all questions are answered', () => {
   const wrapper = mountWithIntl(
-    <Game base={stubBase()} choices={choices} mode="hard" />
+    <Game base={stubBase()} choices={choices} mode={stubMode()} />
   );
 
   wrapper.setState({
@@ -191,7 +193,7 @@ it('shows the results page when all questions are answered', () => {
 
 it('resumes with the next question when restarting', () => {
   const wrapper = mountWithIntl(
-    <Game base={stubBase()} choices={choices} mode="hard" />
+    <Game base={stubBase()} choices={choices} mode={stubMode()} />
   );
 
   wrapper.setState({
@@ -215,7 +217,7 @@ it('resumes with the next question when restarting', () => {
 
 it('starts over when restarting with all questions answered', () => {
   const wrapper = mountWithIntl(
-    <Game base={stubBase()} choices={choices} mode="hard" />
+    <Game base={stubBase()} choices={choices} mode={stubMode()} />
   );
 
   wrapper.setState({
@@ -249,7 +251,7 @@ it('registers a new user', () => {
   base.auth = jest.fn().mockReturnValue({ signInAnonymously: () => promise });
 
   const wrapper = mountWithIntl(
-    <Game base={base} choices={choices} mode="hard" />
+    <Game base={base} choices={choices} mode={stubMode()} />
   );
 
   expect(base.onAuth).toHaveBeenCalled();
@@ -268,7 +270,7 @@ it('authenticates an existing user', () => {
   });
 
   const wrapper = mountWithIntl(
-    <Game base={base} choices={choices} mode="hard" />
+    <Game base={base} choices={choices} mode={stubMode()} />
   );
 
   expect(base.onAuth).toHaveBeenCalled();

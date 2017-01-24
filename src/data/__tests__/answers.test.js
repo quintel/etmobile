@@ -1,11 +1,16 @@
 /* global describe it expect */
 
-import data from '../answers';
+import answers from '../answers';
+import choices from '../choices';
+
+it('must have one answer for each choice', () => {
+  expect(answers.length).toEqual(choices.length);
+});
 
 it('must be an array', () => {
-  expect(data).toBeInstanceOf(Array);
+  expect(answers).toBeInstanceOf(Array);
 });
 
 it('must have a number as each item', () => {
-  data.forEach(value => expect(typeof value).toEqual('number'));
+  answers.forEach(value => expect(typeof value).toEqual('number'));
 });
