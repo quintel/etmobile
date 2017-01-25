@@ -5,6 +5,8 @@ import classNames from 'classnames';
 
 import Leaderboard from './LeaderBoard';
 
+import * as gameModes from '../data/gameModes';
+
 class Challenge extends React.Component {
   constructor() {
     super();
@@ -36,6 +38,8 @@ class Challenge extends React.Component {
         <span className="at">
           <FormattedMessage id="challenges.ends" />{' '}
           <FormattedRelative value={new Date(this.props.expires)} />
+          {' '}&middot;{' '}
+          <FormattedMessage id={gameModes[this.props.modeName].name} />
         </span>
 
         <div className="buttons">
@@ -61,7 +65,8 @@ Challenge.propTypes = {
   }).isRequired,
   expires: PropTypes.instanceOf(Date).isRequired,
   id: PropTypes.string.isRequired,
-  name: PropTypes.string.isRequired
+  name: PropTypes.string.isRequired,
+  modeName: PropTypes.string.isRequired
 };
 
 export default Challenge;

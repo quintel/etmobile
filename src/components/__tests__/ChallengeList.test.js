@@ -63,11 +63,12 @@ it('fetches inactive challenges from Firebase', () => {
 
 it('renders challenges', () => {
   const expires = new Date(new Date().getTime() + 1000);
+  const mode = 'easy';
 
   const promise = Promise.resolve([
-    { key: 'abc', name: 'My first challenge', expires },
-    { key: 'def', name: 'another challenge', expires },
-    { key: 'hij', name: 'Z Final challenge', expires }
+    { key: 'abc', name: 'My first challenge', expires, mode },
+    { key: 'def', name: 'another challenge', expires, mode },
+    { key: 'hij', name: 'Z Final challenge', expires, mode }
   ]);
 
   const base = mockBase();
