@@ -42,12 +42,13 @@ class ChallengeList extends React.Component {
 
     return (
       <div>
-        {this.state.challenges.map(({ key, name, expires }) => (
+        {this.state.challenges.map(({ key, name, expires, mode }) => (
           <Challenge
             key={key}
             base={this.props.base}
             expires={new Date(expires)}
             id={key}
+            modeName={mode}
             name={name}
           />
         ))}

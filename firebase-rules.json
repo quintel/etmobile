@@ -11,12 +11,13 @@
       ".write": "auth != null",
 
       "$challenge_id": {
-        ".validate": "newData.hasChildren(['expires', 'name'])",
+        ".validate": "newData.hasChildren(['expires', 'mode', 'name'])",
 
         // Unix timestamp.
         "expires": { ".validate": "newData.isNumber() && newData.val() > 0" },
 
-        // Challenge name must be a string.
+        // Challenge name and mode must be strings.
+        "mode": { ".validate": "newData.isString()" },
         "name": { ".validate": "newData.isString()" },
 
         // No other fields can be included.

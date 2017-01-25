@@ -5,7 +5,7 @@ import { Link } from 'react-router';
 import { shallowWithIntl } from '../../utils/intlEnzymeHelper';
 
 import FrontPage from '../FrontPage';
-import LeaderBoard from '../LeaderBoard';
+import GlobalLeaderBoards from '../GlobalLeaderBoards';
 
 const mockBase = () => ({
   bindToState: () => {},
@@ -27,7 +27,7 @@ it('renders a link to the play page', () => {
   expect(link.props().to).toEqual('/play');
 });
 
-it('renders a leaderboard', () => {
+it('renders a global leaderboard', () => {
   const wrapper = shallowWithIntl(
     <FrontPage
       base={mockBase()}
@@ -36,5 +36,5 @@ it('renders a leaderboard', () => {
     />
   );
 
-  expect(wrapper.find(LeaderBoard).length).toEqual(1);
+  expect(wrapper.find(GlobalLeaderBoards).length).toEqual(1);
 });

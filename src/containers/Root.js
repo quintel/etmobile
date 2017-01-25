@@ -6,7 +6,7 @@ import { IntlProvider, addLocaleData } from 'react-intl';
 import englishLocaleData from 'react-intl/locale-data/en';
 import dutchLocaleData from 'react-intl/locale-data/nl';
 
-import Game from '../components/Game';
+import GameChallenge from '../components/GameChallenge';
 import NewChallenge from '../components/NewChallenge';
 import FrontPage from '../components/FrontPage';
 import { sparseChoiceShape } from '../components/Choice';
@@ -73,7 +73,7 @@ class Root extends React.Component {
           <Match
             pattern="/play/:challengeId?"
             render={({ params }) => (
-              <Game
+              <GameChallenge
                 choices={this.props.choices}
                 base={this.props.base}
                 params={params}

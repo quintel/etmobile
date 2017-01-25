@@ -21,6 +21,15 @@ export default {
       placeholder: 'Choose a name'
     },
 
+    difficulty: {
+      title: 'Difficulty setting',
+      description: `
+        “Normal” permits two incorrect answers before the game end.
+        “Challenging” allows one, while “expert” ends upon the first incorrect
+        answer.
+      `
+    },
+
     expires: {
       title: 'Challenge lasts for',
       description: `

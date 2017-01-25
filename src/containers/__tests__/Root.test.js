@@ -6,7 +6,7 @@ import { mountWithIntl } from '../../utils/intlEnzymeHelper';
 
 import Root from '../Root';
 import FrontPage from '../../components/FrontPage';
-import Game from '../../components/Game';
+import GameChallenge from '../../components/GameChallenge';
 import NewChallenge from '../../components/NewChallenge';
 import Footer from '../../components/Footer';
 
@@ -58,8 +58,8 @@ it('renders the game at /play', () => {
     </MemoryRouter>,
   );
 
-  expect(wrapper.find(Game).length).toEqual(1);
-  expect(wrapper.find(Game).props().params.challengeId).toEqual(undefined);
+  expect(wrapper.find(GameChallenge).length).toEqual(1);
+  expect(wrapper.find(GameChallenge).props().challengeId).toEqual(undefined);
 });
 
 it('renders a challenge game at /play/challengeId', () => {
@@ -69,8 +69,8 @@ it('renders a challenge game at /play/challengeId', () => {
     </MemoryRouter>,
   );
 
-  expect(wrapper.find(Game).length).toEqual(1);
-  expect(wrapper.find(Game).props().params.challengeId).toEqual('abc');
+  expect(wrapper.find(GameChallenge).length).toEqual(1);
+  expect(wrapper.find(GameChallenge).props().params.challengeId).toEqual('abc');
 });
 
 it('renders the new challenge page at /new-challenge', () => {

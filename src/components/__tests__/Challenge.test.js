@@ -20,6 +20,7 @@ it('renders a challenge', () => {
         base={mockBase()}
         expires={new Date(new Date().getTime() + 1000)}
         id="abc"
+        modeName="easy"
         name="My first challenge"
       />
     </MemoryRouter>
@@ -38,6 +39,7 @@ it('shows the leaderboard when clicking "Leaderboard"', () => {
         base={mockBase()}
         expires={new Date(new Date().getTime() + 1000)}
         id="abc"
+        modeName="easy"
         name="My first challenge"
       />
     </MemoryRouter>
