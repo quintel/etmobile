@@ -36,7 +36,16 @@ export default {
       description: `
         Once your challenge has finished, no new entries will be shown
         on the leaderboard.
-      `
+      `,
+      options: {
+        '4h': '4 hours',
+        '8h': '8 hours',
+        '1d': '1 day',
+        '3d': '3 days',
+        '1w': '1 week',
+        '2w': '2 weeks',
+        '1m': '1 month'
+      }
     },
 
     submit: 'Create challenge'

@@ -71,7 +71,6 @@ it('renders the results', () => {
   const fourth = wrapper.find('li').at(3);
 
   expect(first.find('.at').text()).toContain('got 4 correct');
-  expect(first.find('.at').text()).toContain('10 seconds');
 
   expect(second.find('.at').text()).toContain('got 3 correct');
   expect(second.find('.at').text()).toContain('1 minute');
