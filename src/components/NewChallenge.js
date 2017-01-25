@@ -119,13 +119,41 @@ class NewChallenge extends React.Component {
                   name="expires"
                   defaultValue="1d"
                 >
-                  <option value="4h">4 hours</option>
-                  <option value="8h">8 hours</option>
-                  <option value="1d">1 day</option>
-                  <option value="3d">3 days</option>
-                  <option value="1w">1 week</option>
-                  <option value="2w">2 weeks</option>
-                  <option value="1m">1 month</option>
+                  <option value="4h">
+                    {this.context.intl.formatMessage({
+                      id: 'challenges.form.expires.options.4h'
+                    })}
+                  </option>
+                  <option value="8h">
+                    {this.context.intl.formatMessage({
+                      id: 'challenges.form.expires.options.8h'
+                    })}
+                  </option>
+                  <option value="1d">
+                    {this.context.intl.formatMessage({
+                      id: 'challenges.form.expires.options.1d'
+                    })}
+                  </option>
+                  <option value="3d">
+                    {this.context.intl.formatMessage({
+                      id: 'challenges.form.expires.options.3d'
+                    })}
+                  </option>
+                  <option value="1w">
+                    {this.context.intl.formatMessage({
+                      id: 'challenges.form.expires.options.1w'
+                    })}
+                  </option>
+                  <option value="2w">
+                    {this.context.intl.formatMessage({
+                      id: 'challenges.form.expires.options.2w'
+                    })}
+                  </option>
+                  <option value="1m">
+                    {this.context.intl.formatMessage({
+                      id: 'challenges.form.expires.options.1m'
+                    })}
+                  </option>
                 </select>
               </div>
             </div>
