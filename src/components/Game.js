@@ -212,13 +212,6 @@ class Game extends React.Component {
                 onChoiceMade={this.handleQuestionChoice}
                 {...this.state.currentQuestion}
               />
-
-              <footer>
-                <span className="correct-count">
-                  {this.state.correctChoices}
-                </span>
-                <FormattedMessage id="game.correct" />
-              </footer>
             </div>
           </ReactCSSTransitionGroup>
         </main>
@@ -241,7 +234,12 @@ class Game extends React.Component {
 
     return (
       <div>
-        <Header />
+        <Header>
+          <span className="correct-count">
+            {this.state.correctChoices}
+          </span>{' '}
+          <FormattedMessage id="game.correct" />
+        </Header>
         {this.props.mode.attempts > 1 ?
           <ProgressBar
             current={this.props.mode.attempts - this.state.attemptsRemaining}
