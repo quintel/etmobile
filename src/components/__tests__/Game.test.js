@@ -72,7 +72,7 @@ it('renders an input list', () => {
   expect(firstChoice.name).toEqual('Choice A');
   expect(secondChoice.name).toEqual('Choice B');
 
-  expect(wrapper.find('footer .correct-count').text()).toEqual('0');
+  expect(wrapper.find('.correct-count').text()).toEqual('0');
 });
 
 it('increments correctChoices when a correct answer is given', () => {
@@ -212,7 +212,7 @@ it('resumes with the next question when restarting', () => {
   expect(firstChoice.name).toEqual('Choice C');
   expect(secondChoice.name).toEqual('Choice D');
 
-  expect(wrapper.find('footer .correct-count').text()).toEqual('0');
+  expect(wrapper.find('.correct-count').text()).toEqual('0');
 });
 
 it('starts over when restarting with all questions answered', () => {
@@ -236,7 +236,7 @@ it('starts over when restarting with all questions answered', () => {
   expect(firstChoice.name).toEqual('Choice A');
   expect(secondChoice.name).toEqual('Choice B');
 
-  expect(wrapper.find('footer .correct-count').text()).toEqual('0');
+  expect(wrapper.find('.correct-count').text()).toEqual('0');
 });
 
 /**
