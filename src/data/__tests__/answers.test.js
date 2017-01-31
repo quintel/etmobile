@@ -3,14 +3,30 @@
 import answers from '../answers';
 import choices from '../choices';
 
-it('must have one answer for each choice', () => {
-  expect(answers.length).toEqual(choices.length);
+it('must have answers for each choice', () => {
+  const choiceKeys = choices.map(({ key }) => key);
+  const answerKeys = Object.keys(answers);
+
+  const undef = choiceKeys.filter(key => answerKeys.indexOf(key) === -1);
+
+  expect(undef).toEqual([]);
 });
 
-it('must be an array', () => {
-  expect(answers).toBeInstanceOf(Array);
+it('must not have answers for non-existent choices', () => {
+  const choiceKeys = choices.map(({ key }) => key);
+  const answerKeys = Object.keys(answers);
+
+  const undef = answerKeys.filter(key => choiceKeys.indexOf(key) === -1);
+
+  expect(undef).toEqual([]);
+});
+
+it('must be an object', () => {
+  expect(answers).toBeInstanceOf(Object);
 });
 
 it('must have a number as each item', () => {
-  answers.forEach(value => expect(typeof value).toEqual('number'));
+  Object.keys(answers).forEach(
+    key => expect(typeof answers[key]
+  ).toEqual('number'));
 });
