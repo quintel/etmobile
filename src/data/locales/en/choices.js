@@ -16,15 +16,6 @@ export default {
       capacity ~40% of the time, if there is not too much need for maintenance.
     `
   },
-  cheaperOil: {
-    name: 'Make oil cheaper',
-    header: 'Cheaper oil',
-    description: `
-      The price of oil is tracked by many and discussed on a daily basis in
-      the news. Does it have an impact of the CO<sub>2</sub> emissions of our
-      energy system?
-    `
-  },
   closeConventionalCoal: {
     name: 'Close a conventional coal power plant',
     description: `

@@ -16,15 +16,6 @@ export default {
       niet altijd waait. Windturbines op zee produceren ~40% van de tijd op vol vermogen.
     `
   },
-  cheaperOil: {
-    name: 'Make oil cheaper',
-    header: 'Cheaper oil',
-    description: `
-      The price of oil is tracked by many and discussed on a daily basis in
-      the news. Does it have an impact of the CO<sub>2</sub> emissions of our
-      energy system?
-    `
-  },
   closeConventionalCoal: {
     name: 'Sluit een conventionele kolencentrale',
     description: `
