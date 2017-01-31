@@ -73,7 +73,6 @@ it('renders the results', () => {
   expect(first.find('.at').text()).toContain('got 4 correct');
 
   expect(second.find('.at').text()).toContain('got 3 correct');
-  expect(second.find('.at').text()).toContain('1 minute');
 
   expect(third.find('.at').text()).toContain('got 2 correct');
   expect(fourth.find('.at').text()).toContain('got 1 correct');
