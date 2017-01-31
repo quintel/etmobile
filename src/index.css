@@ -242,14 +242,13 @@ h2 {
 
 .question .choices-container .description,
 .question .choices-container div {
-  margin-right: 0.5rem;
   flex: 1;
 }
 
 .question .choices-container .description + .description,
 .question .choices-container .choice-info + .choice-info {
   margin-right: 0;
-  margin-left: 0.5rem;
+  margin-left: 1rem;
 }
 
 .question button, .results button, form button, .challenge button, a.button {
