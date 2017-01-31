@@ -37,7 +37,7 @@ it('renders without errors', () => {
 
   const msg = wrapper.find('h1').find(FormattedMessage);
 
-  expect(msg.props().id).toEqual('summary.oops');
+  expect(msg.props().id).toEqual('summary.header');
 });
 
 it('renders a custom message when no choices are correct', () => {
@@ -97,9 +97,10 @@ it('tells the visitor when their choice was incorrect', () => {
     />
   );
 
-  const msg = wrapper.find('h1').find(FormattedMessage);
+  const msg = wrapper.find('.result').find(FormattedMessage);
 
-  expect(msg.props().id).toEqual('summary.oops');
+  expect(msg.props().id).toEqual('summary.numberCorrect');
+  expect(msg.props().values.correct).toEqual(2);
 });
 
 it('tells the visitor when all choices were correct', () => {
@@ -113,9 +114,9 @@ it('tells the visitor when all choices were correct', () => {
     />
   );
 
-  const msg = wrapper.find('h1').find(FormattedMessage);
+  const msg = wrapper.find('.result').find(FormattedMessage);
 
-  expect(msg.props().id).toEqual('summary.wow');
+  expect(msg.props().id).toEqual('summary.allCorrect');
 });
 
 /**

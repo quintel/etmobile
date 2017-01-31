@@ -8,7 +8,6 @@ export default {
       other {{correct} correct choices.}
     }
   `,
-  oops: 'Oops!',
-  tryAgain: 'Try again?',
-  wow: 'Wow!'
+  header: 'Nice try!',
+  tryAgain: 'Try again?'
 };

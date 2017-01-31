@@ -14,10 +14,6 @@ import {
   setPlayerName
 } from '../utils/playerName';
 
-const correctChoicesText = correct => (
-  <FormattedMessage id="summary.numberCorrect" values={{ correct }} />
-);
-
 /**
  * Sorts the two choices in the most recent question so that the correct answer
  * always appears first.
@@ -72,14 +68,14 @@ class Summary extends React.Component {
     return (
       <main className="results animated" key="results">
         <h1>
-          <FormattedMessage
-            id={`summary.${lastChoice.isCorrect ? 'wow' : 'oops'}`}
-          />
+          <FormattedMessage id="summary.header" />
         </h1>
         <h2 className="result">
           { lastChoice.isCorrect ?
             <FormattedMessage id="summary.allCorrect" /> :
-            correctChoicesText(correctChoices) }
+            <FormattedMessage
+              id="summary.numberCorrect" values={{ correct: correctChoices }}
+            /> }
         </h2>
 
         <div className="result-item leaderboard">
