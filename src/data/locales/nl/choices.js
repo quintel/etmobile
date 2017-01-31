@@ -1,178 +1,157 @@
-/* istanbul ignore next */
 export default {
   batteries: {
-    name: 'Store electricity in batteries',
+    name: 'Thuisbatterijen',
     description: `
-      You can give an additional 20% of all households a battery that can store
-      19.8 kWh of electricity and can be charged using grid power or solar.
+      Geef 20% van alle huishoudens een thuisbatterij die 19.8 kWh aan elektriciteit
+      kan opslaan. Hiermee kunnen overschotten wind- en zonnestroom op een later 
+      tijdstip worden benut.
     `
   },
   buildOffshoreTurbines: {
-    name: 'Build 250 offshore turbines',
-    header: 'Wind',
+    name: 'Bouw 250 offshore windturbines',
+    header: 'Wind op zee',
     description: `
-      You can build 250 wind turbines of 3 MWe each. Wind turbines produce
-      less electricity per MWe than fossil-fired or nuclear plants do because
-      of varying wind conditions. Offshore wind turbines produce at maximum
-      capacity ~40% of the time, if there is not too much need for maintenance.
+      Bouw 250 windturbines van 3 MWe. Windturbines produceren
+      minder elektriciteit per MWe opgesteld vermogen dan fossiele centrales omdat het
+      niet altijd waait. Windturbines op zee produceren ~40% van de tijd op vol vermogen.
     `
   },
   closeConventionalCoal: {
-    name: 'Close a conventional coal power plant',
+    name: 'Sluit een conventionele kolencentrale',
     description: `
-      You can close a conventional 800 megawatt electric (MWe)
-      ultra-supercritical pulverized coal-fired plant. These plants are not
-      build anymore in rich countries due to environmental restrictions. The
-      Netherlands still possesses 1,200 MW of production capacity from this type
-      of power plant.
+      Sluit een conventionele 800 megawatt (MWe) kolencentrale. De centrales worden
+      niet meer gebouwd in welvarende landen vanwegen strengere milieuwetgevingen.
     `
   },
   closeModernCoal: {
-    name: 'Close a modern coal power plant',
+    name: 'Sluit een moderne kolencentrale',
     description: `
-      You can close a modern 800 megawatt electric (MWe) ultra-supercritical
-      pulverized coal-fired plant. Of all types of power plants, coal and
-      lignite-fired contribute most to pollution of the environment. This is the
-      most common type of modern coal-fired power plant in rich countries, with
-      relatively strict regulations for air pollution.
+      Sluit een moderne 800 megawatt (MWe) ckolencentrale. Dit is het meest
+      gebruikelijke type kolencentrale in welvarende landen welke voldoet aan
+      de relatief strikte milieuwetgevingen.
     `
   },
   electricTrucks: {
-    name: 'Increase electric trucks with 20%',
-    header: '20% electric trucks',
+    name: '20% meer elektrische vrachtwagens',
+    header: '20% elektrische vrachtwagens',
     description: `
-      Trucks need to drive longer distances and sometimes have less time to
-      stop and recharge than cars. Siemens is testing electric trucks that can
-      be charged using a catenary while driving on the highway.
+      In Nederland verbruiken vrachtwagens ongeveer evenveel energie als autos. 
+      Wat zou het potentieel zijn voor elektrificatie van het vrachtvervoer?
     `
   },
   electricVehicles: {
-    name: 'Add one million electric cars',
-    header: 'Travel by electric car',
+    name: 'Een miljoen extra elektrische autos',
+    header: 'Reis per elektrische auto',
     description: `
-      These cars use less than half the energy from ‘well to wheels’ of good
-      diesel cars and are even more efficient compared to gasoline engines.
-      They are emission free, which is a bonus to the environment in our cities
-      and villages!
+      Elektrische autos gebruiken maar de helft van de ‘well-to-wheel’ energie in
+      vergelijking tot autos op benzine of diesel.
+      Ze veroorzaken ook geen directe uitstoot dus zijn lekker schoon voor jou stad of dorp!
     `
   },
   fossilCarEfficiency: {
-    name: 'Make fossil cars more efficient',
-    header: 'Fossil cars more efficient',
+    name: 'Maak fossiele autos efficienter',
+    header: 'Fossiele autos efficienter',
     description: `
-      New cars become almost 2% more efficient every year. To reduce
-      CO<sub>2</sub> emissions, it is important that people replace their
-      old puffing machines with shiny new ones as technology improves.
+      Nieuwe autos worden elk jaar bijna 2% efficienter. Om CO<sub>2</sub>-uitstoot te 
+      reduceren kun je beter in een efficientere nieuwe auto rijden.
     `
   },
   greenGas: {
-    name: 'Make 10% of gas green',
-    header: '10% green gas',
+    name: 'Maak 10% van het gas groen',
+    header: '10% groengas',
     description: `
-      Green gas is biogas that has been upgraded to natural gas quality and can
-      be fed into the gas mains. Biogas is conventionally produced by bacteria
-      that digest biological material. In the future, such gas may be produced
-      by ‘gasification’ of biomass.
+      Groengas is biogas dat opgewaardeerd is om bijmenging in het gasnet mogelijk te maken. 
+      Biogas kan worden gemaakt door vergisting of vergassing van biomassa.
     `
   },
   householdInsulationNew: {
-    name: 'Double insulation of new houses',
-    header: 'Insulate new houses',
+    name: 'Dubbele isolatie van nieuwe huizen',
+    header: 'Isolatie nieuwe huizen',
     description: `
-      Newly built houses – namely those build after 1990 – already have a higher
-      degree of insulation than older homes. In general, they have been built
-      with cavity walls containing insulation, insulated glazing, roofs and
-      floors. What if we insulate these houses further to their maximum
-      potential?
+      Nieuwbouw huizen – gebouwd na 1991 – hebben al een hogere isolatiegraad dan oudere huizen. 
+      In het algemeen hebben deze huizen geisoleerde spouwmuren, dubbelglas, en isolatie in vloeren
+      en daken. Wat is de impact van het nog verder (maximaal) isoleren van deze huizen?
     `
   },
   householdInsulationOld: {
-    name: 'Double insulation of existing houses',
-    header: 'Insulate existing houses',
+    name: 'Dubbele isolatie van oude huizen',
+    header: 'Isolatie oude huizen',
     description: `
-      The most important insulation measures are roof, wall, floor insulation,
-      and insulated glazing. These four account for roughly 75% of the total
-      potential savings. What if we can double the average insulation level
-      of houses that were built before 1990?
+      De belangrijkste isolatiemaatregelen zijn dak-, muur-, vloerisolatie,
+      en dubbelglas. Deze vier zijn verantwoordelijk voor 75% van de potentiële
+      besparingen. Wat als we de gemiddelde isolatiegraad van huizen van vóór 1991 
+      konden verdubbelen?
     `
   },
   hybridHeatPumps: {
-    name: 'Use hybrid heat pumps',
+    name: 'Hybride warmtepompen',
     description: `
-      This heater is a combination of an electric heat pump that draws its heat
-      from the outside air and an efficient conventional gas-fired boiler.
-      Essentially, the hybrid heat pump offers a way to strongly reduce natural
-      gas demand for heating, while buying time for grid management companies to
-      reinforce grids.
+      Deze verwarmingsoptie is een combinatie van een kleine elektrische warmtepomp
+      en een hoge rendementsketel op gas.
+      Wat als elk huis met deze technologie zou worden verwarmd?
     `
   },
   ledLightingHouseholds: {
-    name: 'Use LED light bulbs',
+    name: 'Gebruik van LED-lampen',
     description: `
-      Replace all the light bulbs in households with LED-lights. A old-fashioned
-      incandescent light bulb lasts for 1,000 hours, but LED-lights last for
-      50,000 hours! So, less changing as well.
+      Vervang alle lampen met LED-lampen in woningen. Ouderwetse gloeilampen hebben 
+      gemiddeld 1000 branduren, maar LED-lampen kunnen wel 50000 mee gaan. Daarnaast zijn 
+      ze ook nog eens 10 keer efficienter!
     `
   },
   ledLightingOffices: {
-    name: 'Use LED light bulbs in offices',
+    name: 'Gebruik van LED-lampen in kantoren',
     description: `
-      You can turn 100% of the lights at offices into LED lights. These lights
-      also need to be replaced a lot less often that the old fashioned light
-      bulbs, so you will also save money!
+      Vervang alle lampen met LED-lampen in kantoren en andere niet-residentiële gebouwen.
+      LED-lampen zijn wel 10 keer zo efficient als gloeilampen en gaan ook nog eens langer mee!
     `
   },
   lngShips: {
-    name: 'Use only LNG ships',
-    header: 'LNG ships',
+    name: 'Alleen nog LNG-schepen',
+    header: 'Schepen op LNG',
     description: `
-      Compared to diesel ships an LNG ship has a 50% advantage in its emissions
-      of sulfur particles, and a 60% advantage in particulate matter. Because of
-      methane slip at the ship's engine, the CO<sub>2</sub> difference is very
-      small.
+      Vervang diesel met 'liquified natural gas' (LNG) voor scheepvaart. 
+      In vergelijking tot dieselschepen stoten shepen die op LNG 
+      varen 50% minder zwavel en 60% minder fijnstof uit. Het verschil in CO<sub>2</sub>-
+      uitstoot is echter zeer klein.
     `
   },
   lngTrucks: {
-    name: 'Use only LNG trucks',
-    header: 'LNG trucks',
+    name: 'Alleen nog LNG-vrachtwagens',
+    header: 'Vrachtwagens op LNG',
     description: `
-      You can replace diesel trucks with electric trucks, but you may also
-      want to replace part of the fleet with liquified natural gas (LNG).
-      This fuel emits about 30% less CO<sub>2</sub> per km.
+      Vervang diesel met 'liquified natural' gas (LNG) voor vrachtvervoer op de weg.
+      Deze brandstof reduceert de CO<sub>2</sub> per km met 30%.
     `
   },
   refineryEfficiency: {
-    name: 'Make refineries 1% per year more efficient',
-    header: 'More efficient refineries',
+    name: '1% efficientie-toename per jaar voor raffinaderijen',
+    header: 'Efficientere raffinaderijen',
     description: `
-      Refineries use a lot of energy breaking down crude oil into oil products.
-      In recent decades, these plants have become a lot more efficient. What
-      if we keep making them 1% more efficient each year?
+      Raffinaderijen gebruiken veel energie om olie om te zetten in olieproducten.
+      Wat gebeurt er als deze energieslurpers de komende 33 jaar elk jaar 1% efficienter maken?
     `
   },
   replaceOldHouses: {
-    name: 'Replace old with new houses',
+    name: 'Oude met nieuwe huizen vervangen',
     description: `
-      One million old houses will be replaced with newly build houses. Newly
-      build houses have much more stricter regulations with regards to
-      insulation.
+      Vervang een miljoen oude huizen met nieuwe, energiezuinigere huizen.
     `
   },
   solarPanels: {
-    name: 'Install solar PV panels',
+    name: 'Zonnepanelen op huizen',
     description: `
-      With a solar panel on your roof, you will turn yourself from a mere
-      energy consumer into a producer. What if <strong>all</strong> houses
-      would be equiped with solar PV panels?
+      Met een zonnepaneel op je dak ben je niet alleen consument maar ook producent van stroom. 
+      Wat als we if <strong>alle</strong> huizen met zonnepanelen zouden bedekken?
     `
   },
   travelByTrain: {
-    name: '5% of car journeys instead done by train',
-    header: 'Travel by train',
+    name: '5% van de autoritten per trein',
+    header: 'Reizen per trein',
     description: `
-      People spent a lot of energy driving around in cars. What if we managed
-      to convice 5% to use the train instead of a car? This will save energy,
-      CO<sub>2</sub> emissions, costs and shorten traffic jams!
+      Autovervoer kost veel energie. Wat als we mensen kunnen overhalen om 5% (meer) van 
+      hun personenvervoer met de trein te doen? Dit bespaart energie, CO<sub>2</sub>-uitstoot, 
+      kosten en scheelt files.
     `
   }
 };

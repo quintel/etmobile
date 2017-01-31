@@ -34,9 +34,10 @@ class NewChallenge extends React.Component {
     if (name.length) {
       const challengeId = randomId();
       const expires = expiryFromSelect(this.expiresField);
+      const mode = this.difficultyField.value;
 
       this.props.base.post(
-        `challenges/${challengeId}`, { data: { name, expires } }
+        `challenges/${challengeId}`, { data: { name, expires, mode } }
       ).then(
         () => this.setState({ challengeId, name }),
         () => this.setState(this.errorFor('challenges.errors.starting'))
@@ -118,13 +119,77 @@ class NewChallenge extends React.Component {
                   name="expires"
                   defaultValue="1d"
                 >
-                  <option value="4h">4 hours</option>
-                  <option value="8h">8 hours</option>
-                  <option value="1d">1 day</option>
-                  <option value="3d">3 days</option>
-                  <option value="1w">1 week</option>
-                  <option value="2w">2 weeks</option>
-                  <option value="1m">1 month</option>
+                  <option value="4h">
+                    {this.context.intl.formatMessage({
+                      id: 'challenges.form.expires.options.4h'
+                    })}
+                  </option>
+                  <option value="8h">
+                    {this.context.intl.formatMessage({
+                      id: 'challenges.form.expires.options.8h'
+                    })}
+                  </option>
+                  <option value="1d">
+                    {this.context.intl.formatMessage({
+                      id: 'challenges.form.expires.options.1d'
+                    })}
+                  </option>
+                  <option value="3d">
+                    {this.context.intl.formatMessage({
+                      id: 'challenges.form.expires.options.3d'
+                    })}
+                  </option>
+                  <option value="1w">
+                    {this.context.intl.formatMessage({
+                      id: 'challenges.form.expires.options.1w'
+                    })}
+                  </option>
+                  <option value="2w">
+                    {this.context.intl.formatMessage({
+                      id: 'challenges.form.expires.options.2w'
+                    })}
+                  </option>
+                  <option value="1m">
+                    {this.context.intl.formatMessage({
+                      id: 'challenges.form.expires.options.1m'
+                    })}
+                  </option>
+                </select>
+              </div>
+            </div>
+
+            <div className="field-wrapper">
+              <label htmlFor="new-challenge-difficulty">
+                <FormattedMessage id="challenges.form.difficulty.title" />
+                <span className="description">
+                  <FormattedMessage
+                    id="challenges.form.difficulty.description"
+                  />
+                </span>
+              </label>
+
+              <div className="field">
+                <select
+                  ref={(select) => { this.difficultyField = select; }}
+                  id="new-challenge-difficulty"
+                  name="difficulty"
+                  defaultValue="easy"
+                >
+                  <option value="easy">
+                    {this.context.intl.formatMessage({
+                      id: 'game.difficultyEasy'
+                    })}
+                  </option>
+                  <option value="medium">
+                    {this.context.intl.formatMessage({
+                      id: 'game.difficultyMedium'
+                    })}
+                  </option>
+                  <option value="hard">
+                    {this.context.intl.formatMessage({
+                      id: 'game.difficultyHard'
+                    })}
+                  </option>
                 </select>
               </div>
             </div>

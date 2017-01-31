@@ -4,6 +4,7 @@ import { Link } from 'react-router';
 import { FormattedMessage, FormattedHTMLMessage } from 'react-intl';
 import injectIntl from '../utils/injectIntl';
 
+import GlobalLeaderBoards from './GlobalLeaderBoards';
 import LeaderBoard from './LeaderBoard';
 import ChallengeList from '../components/ChallengeList';
 import Footer from '../components/Footer';
@@ -38,11 +39,10 @@ const FrontPage = (props, context) => (
         <p><FormattedMessage id="frontPage.etmDescriptionTwo" /></p>
       </div>
 
-      <LeaderBoard
-        base={props.base}
-        endpoint="all"
-        title={context.intl.formatMessage({ id: 'leaderboard.all' })}
-      />
+      <div className="global-leaderboards">
+        <h2><FormattedMessage id="leaderboard.all" /></h2>
+        <GlobalLeaderBoards base={props.base} />
+      </div>
 
       <div className="challenges">
         <h2><FormattedMessage id="challenges.title" /></h2>
