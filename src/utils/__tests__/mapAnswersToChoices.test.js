@@ -3,10 +3,13 @@
 import mapAnswersToChoices from '../mapAnswersToChoices';
 
 const choices = [
-  { name: 'C1' }, { name: 'C2' }, { name: 'C3' }, { name: 'C4' }
+  { key: 'a', name: 'C1' },
+  { key: 'b', name: 'C2' },
+  { key: 'c', name: 'C3' },
+  { key: 'd', name: 'C4' }
 ];
 
-const answers = [-1.0, 0.2, -3.2, -3.3];
+const answers = { a: -1.0, b: 0.2, c: -3.2, d: -3.3 };
 
 it('maps answers to each choice', () => {
   const mapped = mapAnswersToChoices(answers, choices);
