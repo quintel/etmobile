@@ -139,3 +139,8 @@ the visitor makes their choice.
 [homebrew]: http://brew.sh
 [yarn]: https://yarnpkg.com
 [cra]: https://github.com/facebookincubator/create-react-app/blob/master/packages/react-scripts/template/README.md
+
+## Deploying the application (internal use only)
+
+Build a deployable instance and deploy them to live with 
+`yarn build && yarn deploy`.
