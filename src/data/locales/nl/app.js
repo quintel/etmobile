@@ -1,13 +1,14 @@
 /* istanbul ignore next */
 export default {
-  name: 'Energy Transition Model',
+  name: 'Energietransitiemodel',
   shortName: 'ETMobile',
-  tagline: 'Reduce your CO<sub>2</sub> emissions',
+  tagline: 'Reduceer je CO<sub>2</sub>-uitstoot',
 
   description: `
-    You will be presented with two choices; which one will lower
-    CO<sub>2</sub> the most? How many correct answers can you manage?
+    Je krijgt steeds een keuze tussen twee opties voorgeschoteld;
+    welke brengt je CO<sub>2</sub>-uitstoot het meeste naar beneden?
+    Hoeveel goede antwoorden kun je achter elkaar geven?
   `,
 
-  language: 'Language'
+  language: 'Taal'
 };

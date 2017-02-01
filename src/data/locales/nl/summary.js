@@ -1,14 +1,14 @@
 /* istanbul ignore next */
 export default {
-  allCorrect: 'You got all the questions correct!',
-  correctWas: 'The correct answer was',
+  allCorrect: 'Je hebt alle antwoorden goed!',
+  correctWas: 'Het goede antwoord was',
   numberCorrect: `
-    You made {correct, plural,
+    Je had {correct, plural,
       =0 {no correct choices!}
-      one {one correct choice.}
-      other {{correct} correct choices.}
+      één {one correct choice.}
+      ander {{correct} correct choices.}
     }
   `,
-  header: 'Nice try!',
-  tryAgain: 'Try again?'
+  header: 'Goed geprobeerd!',
+  tryAgain: 'Nog een keertje?'
 };

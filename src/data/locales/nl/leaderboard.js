@@ -1,13 +1,13 @@
 /* istanbul ignore next */
 export default {
-  all: 'All-time high scores',
-  anon: 'Anonymous',
-  loading: 'Loading leaderboard',
-  noPlayers: 'No players yet!',
+  all: 'Het Scorebord',
+  anon: 'Anoniem',
+  loading: 'Aan het laden',
+  noPlayers: 'Nog geen spelers!',
   playerNameDescription: `
-    This is how you will appear on the leaderboard. You may remain anonymous
-    if you prefer.
+    Dit is hoe je verschijnt op het scorebord. Je mag uiteraard Anoniem blijven
+    als je dat wilt.
   `,
-  result: 'got {score} correct',
-  yourName: 'Your name'
+  result: 'je hebt {score} goed',
+  yourName: 'Je naam'
 };

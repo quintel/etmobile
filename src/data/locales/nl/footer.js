@@ -1,9 +1,9 @@
 /* istanbul ignore next */
 export default {
-  developedBy: 'Developed by Quintel Intelligence',
-  etm: 'Energy Transition Model',
-  iconsBy: 'Icons by Vectors Market and Freepik at {link}',
-  partOfTheETM: 'Part of the {etmLink}',
+  developedBy: 'Ontwikkeld door Quintel Intelligence',
+  etm: 'Energietransitiemodel',
+  iconsBy: 'Icoontjes van Vectors Market en Freepik at {link}',
+  partOfTheETM: 'Onderdeel van {etmLink}',
   privacy: 'Privacy',
-  terms: 'Terms of Service'
+  terms: 'Gebruikersvoorwaarden'
 };
