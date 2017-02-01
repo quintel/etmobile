@@ -1,54 +1,54 @@
 /* istanbul ignore next */
 export default {
   title: 'Challenges',
-  create: 'Create a new challenge',
-  loadingChallenges: 'Loading challenges',
-  ends: 'Ends', /* Ends in ... */
+  create: 'Creëer een nieuwe challenge',
+  loadingChallenges: 'Laden van de challenges',
+  ends: 'Eindigt', /* Eindigt in ... */
 
   errors: {
-    starting: 'Sorry, there was an error starting your challenge.',
-    missingName: 'You must enter a name for your challenge!'
+    starting: 'Sorry, er gaat iets mis bij het openen van deze challenge',
+    missingName: 'Je moet een naam opgeven voor deze challenge.'
   },
 
   form: {
-    title: 'Create a new challenge',
+    title: 'Creëer een nieuwe challenge',
 
     name: {
-      title: 'Challenge name',
+      title: 'Naam van de challenge',
       description: `
-        Choose a name for your challenge. For example, the name of
-        your classroom, conference, or group.
+        Kies een naam voor deze challenge. Bijvoorbeeld de naam van je
+        klas, de conferentie waar je bent, of de naam van je groep.
       `,
-      placeholder: 'Choose a name'
+      placeholder: 'Kies een naam'
     },
 
     difficulty: {
-      title: 'Difficulty setting',
+      title: 'Moeilijkheidsgraad',
       description: `
-        “Normal” permits two incorrect answers before the game end.
-        “Challenging” allows one, while “expert” ends upon the first incorrect
-        answer.
+        Bij “Normal” mag je twee fouten maken.
+        Bij “Uitdagend” mag je maar één fout maken, en bij “expert” mag je
+        zelfs maar nul fouten maken!
       `
     },
 
     expires: {
-      title: 'Challenge lasts for',
+      title: 'Uitdaging duurt:',
       description: `
-        Once your challenge has finished, no new entries will be shown
-        on the leaderboard.
+        Als je uitdaging is afgelopen, kan niemand meer meestrijden om de
+        eerste plek!
       `,
       options: {
-        '4h': '4 hours',
-        '8h': '8 hours',
-        '1d': '1 day',
-        '3d': '3 days',
+        '4h': '4 uur',
+        '8h': '8 uur',
+        '1d': '1 dag',
+        '3d': '3 dagen',
         '1w': '1 week',
-        '2w': '2 weeks',
-        '1m': '1 month'
+        '2w': '2 weken',
+        '1m': '1 maand'
       }
     },
 
-    submit: 'Create challenge'
+    submit: 'Creëer een challenge.'
   },
 
   description: `

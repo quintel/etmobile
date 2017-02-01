@@ -1,15 +1,16 @@
 /* istanbul ignore next */
 export default {
   etmDescriptionOne: `
-    “Energy transition” is the process of converting a region's sources of
-    energy from older, polluting technologies to newer, cleaner, more
-    sustainable sources.
+    “Energietransitie” is de omschakeling van het energiesysteem van een oude
+    situatie naar een nieuwe situatie, van oud naar nieuw, van vervuilend naar
+    schonere en meer duurzame bronnen.
   `,
 
   etmDescriptionTwo: `
-    It also explores how emerging technologies like batteries and electric
-    cars may change the way we use energy in the future.
+    Het verkent ook een nieuwe energietoekomst waarin nieuwe technologieën
+    zoals batterijen en elektrische auto's de manier waarop we energie
+    gebruiken en de manier waarop we leven fundamenteel veranderen.
   `,
 
-  playGame: 'Play the game'
+  playGame: 'Speel het spel'
 };
