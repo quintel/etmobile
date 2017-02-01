@@ -52,10 +52,10 @@ export default {
   },
 
   description: `
-    Challenges allow your conference, classroom, or group to have a
-    leaderboard all to yourselves!
+    Challanges stellen je in staat om jouw eigen conferentie, klas of
+    groep een eigen scorebord te geven!
   `,
 
-  play: 'Play now!',
-  leaderboard: 'Leaderboard'
+  play: 'Speel nu!',
+  leaderboard: 'Scorebord'
 };
