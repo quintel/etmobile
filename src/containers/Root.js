@@ -49,7 +49,9 @@ class Root extends React.Component {
   }
 
   activeLocale() {
-    return this.state.locale || suitableLanguage(navigator.languages);
+    return this.state.locale || suitableLanguage(
+      navigator.languages || (navigator.language && [navigator.language]) || []
+    );
   }
 
   render() {
