@@ -6,5 +6,5 @@ export default {
   difficultyMedium: 'Challenging',
   difficultyHard: 'Expert',
   incorrect: 'Incorrect',
-  title: '{firstChoice} or {secondChoice}'
+  title: '{firstChoice} of {secondChoice}'
 };
