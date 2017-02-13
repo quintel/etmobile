@@ -99,6 +99,25 @@ it('renders a correctly-chosen question button', () => {
   expect(wrapper.find('button.incorrect').length).toEqual(0);
 });
 
+it('does not permit answering more than once', () => {
+  const onChoiceMade = jest.fn();
+
+  const wrapper = mountWithIntl(
+    <Question
+      code="abcdef"
+      name="My Question"
+      description={{ __html: 'Hello there' }}
+      choices={choicesFixture()}
+      onChoiceMade={onChoiceMade}
+    />
+  );
+
+  wrapper.instance().onChoiceSelected(0);
+  wrapper.instance().onChoiceSelected(0);
+
+  expect(onChoiceMade).toHaveBeenCalledTimes(1);
+});
+
 it('renders an incorrectly-chosen question button', () => {
   const wrapper = mountWithIntl(
     <Question

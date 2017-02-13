@@ -11,6 +11,10 @@ class Question extends React.Component {
   }
 
   onChoiceSelected(choiceIndex) {
+    if (this.state.choice !== null) {
+      return;
+    }
+
     const choice = this.props.choices[choiceIndex];
 
     this.setState({ choice: choiceIndex });
