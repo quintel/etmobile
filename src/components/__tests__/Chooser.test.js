@@ -81,12 +81,14 @@ it('renders an unchosen, incorrect button', () => {
 
 it('binds the onClick listener to the buttons', () => {
   const onClick = jest.fn();
+  const preventDefault = jest.fn();
 
   const wrapper = shallow(
     <Chooser onClick={onClick} index={0}>Hello</Chooser>
   );
 
-  wrapper.simulate('click');
+  wrapper.simulate('click', { preventDefault });
 
   expect(onClick).toHaveBeenCalled();
+  expect(preventDefault).toHaveBeenCalled();
 });

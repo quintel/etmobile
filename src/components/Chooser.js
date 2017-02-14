@@ -14,9 +14,14 @@ const Chooser = (props) => {
     ...(props.classNames || {})
   });
 
+  const onClick = (event) => {
+    event.preventDefault();
+    props.onClick(props.index);
+  };
+
   return (
     <button
-      onClick={() => props.onClick(props.index)}
+      onClick={onClick}
       disabled={props.selectedIndex !== null}
       className={classNames(classes)}
     >
