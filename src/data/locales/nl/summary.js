@@ -5,8 +5,8 @@ export default {
   numberCorrect: `
     Je had {correct, plural,
       =0 {geen goede antwoorden}
-      één {een goed antwoord.}
-      ander {{correct} goede antwoorden.}
+      one {een goed antwoord.}
+      other {{correct} goede antwoorden.}
     }
   `,
   header: 'Heel goed geprobeerd!',
