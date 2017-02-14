@@ -4,11 +4,11 @@ export default {
   correctWas: 'Het goede antwoord was',
   numberCorrect: `
     Je had {correct, plural,
-      =0 {no correct choices!}
-      één {one correct choice.}
-      ander {{correct} correct choices.}
+      =0 {geen goede antwoorden}
+      één {een goed antwoord.}
+      ander {{correct} goede antwoorden.}
     }
   `,
-  header: 'Goed geprobeerd!',
+  header: 'Heel goed geprobeerd!',
   tryAgain: 'Nog een keertje?'
 };
