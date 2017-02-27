@@ -4,7 +4,7 @@ import { FormattedMessage } from 'react-intl';
 import injectIntl from '../utils/injectIntl';
 
 import Choice from './Choice';
-import ChoiceSummary from './ChoiceSummary';
+import QuestionSummary from './QuestionSummary';
 
 import { balloon } from '../images/choices';
 
@@ -13,12 +13,6 @@ import {
   getPlayerName,
   setPlayerName
 } from '../utils/playerName';
-
-/**
- * Sorts the two choices in the most recent question so that the correct answer
- * always appears first.
- */
-const sortChoicesByCO2 = (a, b) => (a.delta < b.delta ? -1 : 1);
 
 /**
  * Returns the path to the Firebase endpoint for a leaderboard.
@@ -61,7 +55,7 @@ class Summary extends React.Component {
 
   render() {
     const {
-      gameState: { lastChoice, lastQuestion, correctChoices },
+      gameState: { answeredQuestions, correctChoices },
       onRestartGame
     } = this.props;
 
@@ -71,7 +65,7 @@ class Summary extends React.Component {
           <FormattedMessage id="summary.header" />
         </h1>
         <h2 className="result">
-          { lastChoice.isCorrect ?
+          { answeredQuestions[0].selected.isCorrect ?
             <FormattedMessage id="summary.allCorrect" /> :
             <FormattedMessage
               id="summary.numberCorrect" values={{ correct: correctChoices }}
@@ -113,13 +107,17 @@ class Summary extends React.Component {
           <FormattedMessage id="summary.tryAgain" />
         </button>
 
-        <div className="choice-summary">
+        <div className="recap">
           <h2><FormattedMessage id="summary.correctWas" />&hellip;</h2>
 
-          {lastQuestion.choices.sort(sortChoicesByCO2).map((choice, index) => (
-            <ChoiceSummary key={index} {...choice} />
+          {answeredQuestions.map((question, index) => (
+            <QuestionSummary key={index} question={question} />
           ))}
         </div>
+
+        <button onClick={onRestartGame}>
+          <FormattedMessage id="summary.tryAgain" />
+        </button>
       </main>
     );
   }
@@ -130,10 +128,9 @@ Summary.propTypes = {
   challengeId: PropTypes.string,
   gameState: PropTypes.shape({
     correctChoices: PropTypes.number.isRequired,
-    lastChoice: PropTypes.shape({ isCorrect: PropTypes.boolean }).isRequired,
-    lastQuestion: PropTypes.shape({
+    answeredQuestions: PropTypes.arrayOf(PropTypes.shape({
       choices: PropTypes.arrayOf(Choice.propTypes.choice)
-    })
+    })).isRequired
   }).isRequired,
   onRestartGame: PropTypes.func.isRequired,
   uid: PropTypes.string

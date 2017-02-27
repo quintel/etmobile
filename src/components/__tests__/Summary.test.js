@@ -6,7 +6,6 @@ import { FormattedMessage } from 'react-intl';
 import { shallowWithIntl, mountWithIntl } from '../../utils/intlEnzymeHelper';
 
 import Summary from '../Summary';
-import ChoiceSummary from '../ChoiceSummary';
 
 import {
   clearPlayerName,
@@ -17,8 +16,7 @@ import {
 const mockBase = () => ({ update: jest.fn() });
 
 const state = (correctChoices, isCorrect = false) => ({
-  lastChoice: { isCorrect },
-  lastQuestion: { choices: [] },
+  answeredQuestions: [{ name: 'A > B?', selected: { isCorrect }, choices: [] }],
   correctChoices
 });
 
@@ -182,64 +180,4 @@ it('resets the player name when blank', () => {
 
   expect(base.update.mock.calls.length).toEqual(2);
   expect(getPlayerName()).toEqual(null);
-});
-
-/**
- * Choice summaries
- */
-
-const stateWithSummaries = (firstDelta = -1.0, secondDelta = -0.1) => ({
-  correctChoices: 1,
-  lastChoice: { isCorrect: true },
-  lastQuestion: {
-    choices: [{
-      icon: 'wind',
-      isCorrect: true,
-      name: 'First choice',
-      description: 'Desc of choice 1',
-      delta: firstDelta
-    }, {
-      icon: 'wind',
-      isCorrect: true,
-      name: 'Second choice',
-      description: 'Desc of choice 2',
-      delta: secondDelta
-    }]
-  }
-});
-
-it('renders a list of the question choices', () => {
-  const wrapper = shallowWithIntl(
-    <Summary
-      base={mockBase()}
-      gameState={stateWithSummaries()}
-      intl={{ formatMessage: ({ id }) => id }}
-      onRestartGame={() => {}}
-      uid="user"
-    />
-  );
-
-  const summaries = wrapper.find(ChoiceSummary);
-
-  expect(summaries.length).toEqual(2);
-  expect(summaries.at(0).props().name).toEqual('First choice');
-  expect(summaries.at(1).props().name).toEqual('Second choice');
-});
-
-it('sorts choices with the correct answer first', () => {
-  const wrapper = shallowWithIntl(
-    <Summary
-      base={mockBase()}
-      gameState={stateWithSummaries(1.0, -1.0)}
-      intl={{ formatMessage: ({ id }) => id }}
-      onRestartGame={() => {}}
-      uid="user"
-    />
-  );
-
-  const summaries = wrapper.find(ChoiceSummary);
-
-  expect(summaries.length).toEqual(2);
-  expect(summaries.at(0).props().name).toEqual('Second choice');
-  expect(summaries.at(1).props().name).toEqual('First choice');
 });

@@ -60,9 +60,9 @@ class Game extends React.Component {
 
     this.state = {
       attemptsRemaining: null,
+      answeredQuestions: [],
       bestScore: 0,
-      correctChoices: 0,
-      lastChoice: null
+      correctChoices: 0
     };
 
     this.handleQuestionChoice = this.handleQuestionChoice.bind(this);
@@ -78,8 +78,7 @@ class Game extends React.Component {
   gameState() {
     return {
       correctChoices: this.state.correctChoices,
-      lastQuestion: this.state.lastQuestion,
-      lastChoice: this.state.lastChoice
+      answeredQuestions: this.state.answeredQuestions
     };
   }
 
@@ -98,8 +97,7 @@ class Game extends React.Component {
     const question = questionFromChoices(choices, this.context.intl);
 
     const nextState = {
-      lastChoice: null,
-      lastQuestion: null,
+      answeredQuestions: [],
       correctChoices: 0,
       availableChoices: choices.slice(2),
       currentQuestion: question,
@@ -165,12 +163,16 @@ class Game extends React.Component {
         this.state.currentQuestion.choices.find(other => other !== choice)
       );
 
+      const answeredQuestions = [
+        { selected: choice, ...lastQuestion },
+        ...this.state.answeredQuestions
+      ];
+
       this.setState({
-        lastChoice: choice,
         currentQuestion: question,
+        answeredQuestions,
         attemptsRemaining,
-        availableChoices,
-        lastQuestion
+        availableChoices
       });
 
       window.scroll({ top: 0, left: 0, behavior: 'smooth' });
@@ -186,8 +188,11 @@ class Game extends React.Component {
 
   render() {
     let content;
+    let lastChoice;
 
-    const lastChoice = this.state.lastChoice;
+    if (this.state.answeredQuestions.length) {
+      lastChoice = this.state.answeredQuestions[0].selected;
+    }
 
     const showQuestion = this.state.currentQuestion && (
       !lastChoice || // First question to be shown.
