@@ -7,7 +7,7 @@
 }
 
 body {
-  background-color: #f1f7fe;
+  background-color: #f5f9ff;
   color: #222325;
   margin: 0;
   padding: 0;
@@ -232,7 +232,7 @@ h2 {
 }
 
 .question .choice-info .badge.incorrect {
-  background: linear-gradient(#c54444, #a92f2f);
+  background: linear-gradient(#dc4545, #b92d2d);
   text-shadow: 0 1px 0 #961a1a;
 }
 
@@ -311,9 +311,9 @@ a.button {
 
 .question button.incorrect,
 .question button.incorrect[disabled] {
-  background: linear-gradient(#c54444, #a92f2f);
+  background: linear-gradient(#dc4545, #b92d2d);
   border: 1px solid #8a1a1a;
-  border-top-color: #9e2828;
+  border-top-color: #b32d2d;
   border-bottom-color: #961a1a;
   opacity: 1;
   text-shadow: 0 1px 0 #961a1a;
@@ -769,13 +769,13 @@ button .arrows {
 }
 
 .front-page .fade {
-  background: linear-gradient(90deg, #f1f7fe, rgba(241, 247, 254, 0) 25%, rgba(241, 247, 254, 0) 75%, #f1f7fe);
+  background: linear-gradient(90deg, #f5f9ff, rgba(245, 249, 255, 0) 25%, rgba(245, 249, 255, 0) 75%, #f5f9ff);
   height: 100%;
   width: 100%;
 }
 
 .front-page .play-wrapper a {
-  background-image: linear-gradient(#68c250, #4aa33b);
+  background-image: linear-gradient(#68c250, #4aad39);
   border: 1px solid #2e9d44;
   border-top-color: #3ba54e;
   border-bottom-color: #22963a;
