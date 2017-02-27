@@ -107,6 +107,7 @@ class Game extends React.Component {
     };
 
     this.setState(nextState);
+    window.scrollTo(0, 0);
   }
 
   /**
