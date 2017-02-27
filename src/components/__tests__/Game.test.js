@@ -181,8 +181,11 @@ it('shows the results page when all questions are answered', () => {
   );
 
   wrapper.setState({
-    lastChoice: { isCorrect: false },
-    lastQuestion: { choices: [] },
+    answeredQuestions: [{
+      name: 'P != NP?',
+      selected: { isCorrect: false },
+      choices: []
+    }],
     currentQuestion: 9999,
     attemptsRemaining: 0
   });
@@ -197,8 +200,11 @@ it('resumes with the next question when restarting', () => {
   );
 
   wrapper.setState({
-    lastChoice: { isCorrect: false },
-    lastQuestion: { choices: [] },
+    answeredQuestions: [{
+      name: 'P != NP?',
+      selected: { isCorrect: false },
+      choices: []
+    }],
     attemptsRemaining: 0
   });
 

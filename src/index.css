@@ -427,14 +427,35 @@ button .arrows {
   transition: width 1s ease;
 }
 
-.choice-summary {
+.recap {
   border-top: 1px solid #d3deea;
   margin-top: 2rem;
   padding-top: 3rem;
 }
 
-.choice-summary h2 {
-  padding-bottom: 0.5rem;
+.recap h2 {
+  padding-bottom: 0rem;
+  margin-bottom: 0;
+}
+
+.recap button {
+  background: none;
+  border: none;
+  color: black;
+  padding: 0;
+  text-shadow: none;
+}
+
+.recap h3 {
+  font-size: 1.25rem;
+}
+
+.recap .question-summary {
+  border-bottom: 1px solid #d3deea;
+}
+
+.recap .question-summary:last-child {
+  border-bottom: none;
 }
 
 .choice-summary .target-delta {
