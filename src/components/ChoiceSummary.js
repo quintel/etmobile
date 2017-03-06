@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { PropTypes } from 'react';
 import { FormattedNumber } from 'react-intl';
 
 import Choice from './Choice';
@@ -24,11 +24,17 @@ const ChoiceSummary = props => (
     </div>
     <div className="info">
       <h4>{props.name}</h4>
-      <p dangerouslySetInnerHTML={{ __html: props.description }} />
+      <p
+        className="why"
+        dangerouslySetInnerHTML={{ __html: props.why || props.description }}
+      />
     </div>
   </div>
 );
 
-ChoiceSummary.propTypes = Choice.propTypes.choice;
+ChoiceSummary.propTypes = {
+  why: PropTypes.string,
+  ...Choice.propTypes.choice
+};
 
 export default ChoiceSummary;

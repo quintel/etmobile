@@ -20,6 +20,11 @@ const mapTranslationsToChoice = (choice, intl) => {
     id: `choices.${choice.key}.description`
   });
 
+  translated.why = intl.formatMessage({
+    id: `choices.${choice.key}.why`,
+    defaultMessage: translated.description
+  });
+
   translated.header = choice.header || intl.formatMessage({
     id: `choices.${choice.key}.header`,
     defaultMessage: translated.name
