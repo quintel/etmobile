@@ -3,7 +3,7 @@ export default {
     name: 'Thuisbatterijen',
     description: `
       Geef 20% van alle huishoudens een thuisbatterij die 19.8 kWh aan elektriciteit
-      kan opslaan. Hiermee kunnen overschotten wind- en zonnestroom op een later 
+      kan opslaan. Hiermee kunnen overschotten wind- en zonnestroom op een later
       tijdstip worden benut.
     `,
     why: `
@@ -26,7 +26,7 @@ export default {
       zonder CO2-uitstoot. Het waait natuurlijk niet altijd, daar moeten we rekening mee
       houden. Grappig genoeg is het dus verstandig om je telefoon op te laden als het buiten
       hard waait!
-    `    
+    `
   },
   closeConventionalCoal: {
     name: 'Sluit een conventionele kolencentrale',
@@ -61,7 +61,7 @@ export default {
     name: '20% meer elektrische vrachtwagens',
     header: '20% elektrische vrachtwagens',
     description: `
-      In Nederland verbruiken vrachtwagens ongeveer evenveel energie als autos. 
+      In Nederland verbruiken vrachtwagens ongeveer evenveel energie als autos.
       Wat zou het potentieel zijn voor elektrificatie van het vrachtvervoer?
     `,
     why: `
@@ -90,7 +90,7 @@ export default {
     name: 'Maak fossiele autos efficienter',
     header: 'Fossiele autos efficienter',
     description: `
-      Nieuwe autos worden elk jaar bijna 2% efficienter. Om CO<sub>2</sub>-uitstoot te 
+      Nieuwe autos worden elk jaar bijna 2% efficienter. Om CO<sub>2</sub>-uitstoot te
       reduceren kun je beter in een efficientere nieuwe auto rijden.
     `,
     why: `
@@ -103,7 +103,7 @@ export default {
     name: 'Maak 10% van het gas groen',
     header: '10% groengas',
     description: `
-      Groengas is biogas dat opgewaardeerd is om bijmenging in het gasnet mogelijk te maken. 
+      Groengas is biogas dat opgewaardeerd is om bijmenging in het gasnet mogelijk te maken.
       Biogas kan worden gemaakt door vergisting of vergassing van biomassa.
     `,
     why: `
@@ -116,7 +116,7 @@ export default {
     name: 'Dubbele isolatie van nieuwe huizen',
     header: 'Isolatie nieuwe huizen',
     description: `
-      Nieuwbouwhuizen – gebouwd na 1991 – hebben al een hogere isolatiegraad dan oudere huizen. 
+      Nieuwbouwhuizen – gebouwd na 1991 – hebben al een hogere isolatiegraad dan oudere huizen.
       In het algemeen hebben deze huizen geisoleerde spouwmuren, dubbelglas, en isolatie in vloeren
       en daken. Wat is de impact van het nog verder (maximaal) isoleren van deze huizen?
     `,
@@ -132,7 +132,7 @@ export default {
     description: `
       De belangrijkste isolatiemaatregelen zijn dak-, muur-, vloerisolatie,
       en dubbelglas. Deze vier zijn verantwoordelijk voor 75% van de potentiële
-      besparingen. Wat als we de gemiddelde isolatiegraad van huizen van vóór 1991 
+      besparingen. Wat als we de gemiddelde isolatiegraad van huizen van vóór 1991
       konden verdubbelen?
     `,
     why: `
@@ -160,13 +160,13 @@ export default {
   ledLightingHouseholds: {
     name: 'Gebruik van LED-lampen',
     description: `
-      Vervang alle lampen met LED-lampen in woningen. Ouderwetse gloeilampen hebben 
-      gemiddeld 1000 branduren, maar LED-lampen kunnen wel 50000 mee gaan. Daarnaast zijn 
+      Vervang alle lampen met LED-lampen in woningen. Ouderwetse gloeilampen hebben
+      gemiddeld 1000 branduren, maar LED-lampen kunnen wel 50000 mee gaan. Daarnaast zijn
       ze ook nog eens 10 keer efficienter!
     `,
     why: `
       Natuurlijk willen we alleen nog maar LED-verlichting, want je kan hiermee makkelijk energie en
-      geld besparen. Maar, misschien valt dit getal een beetje tegen? Dat horen we wel vaker. We 
+      geld besparen. Maar, misschien valt dit getal een beetje tegen? Dat horen we wel vaker. We
       besteden gewoon niet zoveel energie aan lampen. Verwarming en autorijden, dat kost veel meer
       energie!
     `
@@ -177,9 +177,9 @@ export default {
       Vervang alle lampen met LED-lampen in kantoren en andere niet-residentiële gebouwen.
       LED-lampen zijn wel 10 keer zo efficient als gloeilampen en gaan ook nog eens langer mee!
     `,
-    why; `
+    why: `
       Natuurlijk willen we alleen nog maar LED-verlichting, want je kan hiermee makkelijk energie en
-      geld besparen. Maar, misschien valt dit getal een beetje tegen? Dat horen we wel vaker. We 
+      geld besparen. Maar, misschien valt dit getal een beetje tegen? Dat horen we wel vaker. We
       besteden gewoon niet zoveel energie aan lampen. Verwarming en autorijden, dat kost veel meer
       energie. Dit getal is wel hoger dan de besparing in de huishoudens, omdat kantoren nu eenmaal
       meer lampen hebben en ze ook nog eens langer branden.
@@ -189,9 +189,9 @@ export default {
     name: 'Alleen nog LNG-schepen',
     header: 'Schepen op LNG',
     description: `
-      Vervang diesel met 'liquified natural gas' (LNG) voor scheepvaart. 
-      In vergelijking tot dieselschepen stoten shepen die op LNG 
-      varen 50% minder zwavel en 60% minder fijnstof uit. 
+      Vervang diesel met 'liquified natural gas' (LNG) voor scheepvaart.
+      In vergelijking tot dieselschepen stoten shepen die op LNG
+      varen 50% minder zwavel en 60% minder fijnstof uit.
     `,
     why: `
       Het verschil in CO<sub>2</sub>-uitstoot is niet zo heel groot. Dat komt omdat LNG ook weer een
@@ -238,7 +238,7 @@ export default {
   solarPanels: {
     name: 'Zonnepanelen op huizen',
     description: `
-      Met een zonnepaneel op je dak ben je niet alleen consument maar ook producent van stroom. 
+      Met een zonnepaneel op je dak ben je niet alleen consument maar ook producent van stroom.
       Wat als we if <strong>alle</strong> huizen met zonnepanelen zouden bedekken?
     `,
     why: `
@@ -252,8 +252,8 @@ export default {
     name: '5% van de autoritten per trein',
     header: 'Reizen per trein',
     description: `
-      Autovervoer kost veel energie. Wat als we mensen kunnen overhalen om 5% (meer) van 
-      hun personenvervoer met de trein te doen? Dit bespaart energie, CO<sub>2</sub>-uitstoot, 
+      Autovervoer kost veel energie. Wat als we mensen kunnen overhalen om 5% (meer) van
+      hun personenvervoer met de trein te doen? Dit bespaart energie, CO<sub>2</sub>-uitstoot,
       kosten en scheelt files.
     `,
     why: `
