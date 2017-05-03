@@ -2,6 +2,7 @@
 export default {
   allCorrect: 'Je hebt alle antwoorden goed!',
   correctWas: 'Het goede antwoord was',
+  hideExplanation: 'Verberg uitlen',
   numberCorrect: `
     Je had {correct, plural,
       =0 {geen goede antwoorden}

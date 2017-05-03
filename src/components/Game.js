@@ -7,6 +7,7 @@ import Header from '../components/Header';
 import Question from '../components/Question';
 import Summary from '../components/Summary';
 import ProgressBar from '../components/ProgressBar';
+import PreviousSummary from '../components/PreviousSummary';
 import { sparseChoiceShape } from '../components/Choice';
 
 import authenticate from '../utils/authenticate';
@@ -205,6 +206,19 @@ class Game extends React.Component {
         <main className="question-wrapper">
           <ReactCSSTransitionGroup
             component="div"
+            transitionName={{ enter: 'fadeIn', leave: 'fadeOutUp' }}
+            transitionEnterTimeout={1000}
+            transitionLeaveTimeout={1000}
+          >
+            {this.state.answeredQuestions[0] ?
+              <PreviousSummary
+                question={this.state.answeredQuestions[0]}
+                key="previous-summary"
+              /> :
+              null}
+          </ReactCSSTransitionGroup>
+          <ReactCSSTransitionGroup
+            component="div"
             transitionName={{ enter: 'fadeInUp', leave: 'fadeOutUp' }}
             transitionEnterTimeout={1000}
             transitionLeaveTimeout={1000}
@@ -251,12 +265,25 @@ class Game extends React.Component {
             current={this.props.mode.attempts - this.state.attemptsRemaining}
             total={this.props.mode.attempts}
           /> :
-          null }
+          null}
         {content}
       </div>
     );
   }
 }
+
+/*<div className="previous-result">
+  <button>
+    <div className="choice incorrect">-0.15%</div>
+    <div className="divider">?</div>
+    <div className="choice correct selected">-1.50%</div>
+  </button>
+  {this.state.answeredQuestions[0] ?
+    <div className="recap">
+      <QuestionSummary question={this.state.answeredQuestions[0]} />
+    </div> :
+    null}
+</div>*/
 
 Game.defaultProps = { challengeId: null };
 
