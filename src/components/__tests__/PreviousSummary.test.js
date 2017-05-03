@@ -37,6 +37,16 @@ it('renders a simple summary when closed', () => {
   expect(numbers.at(1).props().value).toEqual(-0.1);
 });
 
+it('toggles display of the explanations', () => {
+  const wrapper = shallow(
+    <PreviousSummary question={stateWithSummaries()} />
+  );
+
+  expect(wrapper.find(QuestionSummary).length).toEqual(0);
+  wrapper.instance().toggle();
+  expect(wrapper.find(QuestionSummary).length).toEqual(1);
+});
+
 it('renders no quesiton summary when closed', () => {
   const wrapper = shallow(
     <PreviousSummary question={stateWithSummaries()} />
