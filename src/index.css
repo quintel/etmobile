@@ -380,12 +380,12 @@ button .arrows {
 }
 
 .previous-result .choice {
-  background: white;
-  border: 2px solid #d6e1ed;
+  background-image: linear-gradient(#57b863, #41a94f);
   border-radius: 3px;
-  color: #41a94f;
+  color: white;
   display: inline-block;
-  padding: 0.25rem 0;
+  padding: 0.375rem 0;
+  text-shadow: 0 1px 0 #268842;
   width: 40%;
 }
 
@@ -394,7 +394,8 @@ button .arrows {
 }
 
 .previous-result .incorrect {
-  color: #dc4545;
+  background: linear-gradient(#dc4545, #b92d2d);
+  text-shadow: 0 1px 0 #961a1a;
 }
 
 .previous-result .choice:first-child {
@@ -416,11 +417,12 @@ button .arrows {
 .previous-result .divider {
   background: linear-gradient(#5998de, #4488d7);
   border-radius: 60px;
+  border: 2px solid #f5f9ff;
   color: #fff;
   display: inline-block;
   font-size: 1rem;
   line-height: 1;
-  margin-top: -0.1875rem;
+  margin-top: -0.325rem;
   margin-left: -1rem;
   margin-right: -1rem;
   padding: 0.5rem 0;
