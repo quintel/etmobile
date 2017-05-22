@@ -1,37 +1,14 @@
 import React, { PropTypes } from 'react';
 import { FormattedMessage } from 'react-intl';
 
-import langEnSvg from '../images/lang/en.svg';
-import langNlSvg from '../images/lang/nl.svg';
+import LanguageSelection from './LanguageSelection';
 
 const Footer = ({ setLocale, startYear }) => {
   const endYear = new Date().getFullYear();
 
   return (
     <footer>
-      <div className="language-selection">
-        <FormattedMessage id="app.language" />:
-        <ul>
-          <li>
-            <button
-              className="en"
-              onClick={() => setLocale('en')}
-              style={{ backgroundImage: `url(${langEnSvg})` }}
-            >
-              English
-            </button>
-          </li>
-          <li>
-            <button
-              className="nl"
-              onClick={() => setLocale('nl')}
-              style={{ backgroundImage: `url(${langNlSvg})` }}
-            >
-              Nederlands
-            </button>
-          </li>
-        </ul>
-      </div>
+      <LanguageSelection includePrompt setLocale={setLocale} />
       <p>
         <FormattedMessage
           id="footer.partOfTheETM"

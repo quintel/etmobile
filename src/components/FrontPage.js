@@ -9,6 +9,7 @@ import LeaderBoard from './LeaderBoard';
 import ChallengeList from '../components/ChallengeList';
 import Footer from '../components/Footer';
 import HiddenText from '../components/HiddenText';
+import LanguageSelection from '../components/LanguageSelection';
 
 import mosaic from '../images/mosaic.png';
 
@@ -44,6 +45,8 @@ const FrontPage = (props, context) => (
             <FormattedMessage id="frontPage.playGame" />{' '}
             <span className="arrows">&raquo;</span>
           </Link>
+
+          <LanguageSelection setLocale={props.setLocale} />
         </div>
       </div>
 

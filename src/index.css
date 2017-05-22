@@ -925,7 +925,7 @@ button .arrows {
   text-decoration: none;
 }
 
-.front-page footer .language-selection {
+.language-selection {
   background: #fff;
   display: inline-block;
   border-radius: 5px;
@@ -935,23 +935,49 @@ button .arrows {
   width: auto;
 }
 
-.front-page footer .language-selection,
-.front-page footer .language-selection button {
+.play-wrapper .language-selection {
+  border-top: 1px solid #d6e1ed;
+  border-radius: 0;
+  font-size: 0.75rem;
+  margin: 1rem 0 0;
+  padding: 1rem 1rem 0;
+}
+
+.play-wrapper .language-selection ul {
+  margin: 0;
+  padding: 0;
+}
+
+.play-wrapper .language-selection li {
+  padding-left: 0.4rem;
+  padding-right: 0.4rem;
+}
+
+.language-selection,
+.language-selection button {
   color: #70757b;
 }
 
-.front-page footer .language-selection ul {
+.language-selection ul {
   display: inline-block;
   list-style: none;
   padding: 0;
 }
 
-.front-page footer .language-selection li {
+.language-selection li {
   display: inline-block;
   margin-left: 0.4rem;
 }
 
-.front-page footer .language-selection button {
+.language-selection li:first-child {
+  margin-left: 0;
+}
+
+.language-selection .prompt {
+  margin-right: 0.4rem;
+}
+
+.language-selection button {
   background: none;
   background-repeat: no-repeat;
   border: none;;
