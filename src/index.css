@@ -266,6 +266,22 @@ h2 {
   width: 100%;
 }
 
+a {
+  color: #3373cb;
+  text-decoration: none;
+}
+
+button.link {
+  background: none;
+  border: none;
+  color: #3373cb;
+  cursor: pointer;
+}
+
+button.link-button:active {
+  outline: none;
+}
+
 a.button {
   box-sizing: border-box;
   line-height: 1.15;
@@ -753,6 +769,12 @@ button .arrows {
   padding: 1rem;
 }
 
+.front-page .etm-description {
+  color: #70757b;
+  font-size: .875rem;
+  padding: 0 1rem;
+}
+
 .front-page .play-wrapper {
   background: #fff;
   border-top: 1px solid #d6e1ed;
@@ -761,7 +783,6 @@ button .arrows {
   padding: 1rem;
 }
 
-.front-page .game-info,
 .front-page .leaderboard,
 .front-page .challenges {
   border-bottom: 1px solid #d3deea;
