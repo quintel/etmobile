@@ -19,19 +19,3 @@ it('shows a year range when the app was developed a previous year', () => {
 
   expect(wrapper.text()).toContain(`2014-${thisYear}`);
 });
-
-it('permits selecting Dutch as a locale', () => {
-  const setLocale = jest.fn();
-  const wrapper = shallow(<Footer setLocale={setLocale} />);
-  wrapper.find('.language-selection button.nl').simulate('click');
-
-  expect(setLocale).toHaveBeenCalledWith('nl');
-});
-
-it('permits selecting English as a locale', () => {
-  const setLocale = jest.fn();
-  const wrapper = shallow(<Footer setLocale={setLocale} />);
-  wrapper.find('.language-selection button.en').simulate('click');
-
-  expect(setLocale).toHaveBeenCalledWith('en');
-});

@@ -49,9 +49,9 @@ class Root extends React.Component {
   }
 
   activeLocale() {
-    return this.state.locale || suitableLanguage(
-      navigator.languages || (navigator.language && [navigator.language]) || []
-    );
+    // By request of the main client, use NL by default rather than detecting
+    // the browser preference.
+    return this.state.locale || suitableLanguage(['nl']);
   }
 
   render() {

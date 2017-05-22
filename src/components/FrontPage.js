@@ -8,6 +8,8 @@ import GlobalLeaderBoards from './GlobalLeaderBoards';
 import LeaderBoard from './LeaderBoard';
 import ChallengeList from '../components/ChallengeList';
 import Footer from '../components/Footer';
+import HiddenText from '../components/HiddenText';
+import LanguageSelection from '../components/LanguageSelection';
 
 import mosaic from '../images/mosaic.png';
 
@@ -28,15 +30,24 @@ const FrontPage = (props, context) => (
           <strong><FormattedHTMLMessage id="app.description" /></strong>
         </p>
 
+        <HiddenText
+          buttonText={context.intl.formatMessage({
+            id: 'frontPage.readDescription'
+          })}
+        >
+          <div className="etm-description">
+            <FormattedHTMLMessage id="frontPage.etmDescription" />
+          </div>
+        </HiddenText>
+
         <div className="play-wrapper">
           <Link to="/play" className="button">
             <FormattedMessage id="frontPage.playGame" />{' '}
             <span className="arrows">&raquo;</span>
           </Link>
-        </div>
 
-        <p><FormattedMessage id="frontPage.etmDescriptionOne" /></p>
-        <p><FormattedMessage id="frontPage.etmDescriptionTwo" /></p>
+          <LanguageSelection setLocale={props.setLocale} />
+        </div>
       </div>
 
       <div className="global-leaderboards">
