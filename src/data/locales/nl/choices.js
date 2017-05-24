@@ -19,7 +19,7 @@ export default {
     description: `
       Bouw 250 windturbines met een capaciteit van 3 MWe. Windturbines produceren
       minder elektriciteit per MWe opgesteld vermogen dan fossiele centrales omdat het
-      niet altijd waait. Windturbines op zee produceren ~40% van de tijd op vol vermogen. Samen genereren deze molens jaarlijks dus ca. 300 MWh; dat is voldoende elektriciteit voor … huishoudens.
+      niet altijd waait. Windturbines op zee produceren ~40% van de tijd op vol vermogen. Samen genereren deze molens jaarlijks dus ca. 2.600 GWh; dat is voldoende elektriciteit voor 730.000 huishoudens.
     `,
     why: `
       Wind op zee heeft een grote impact op CO2-besparing. Deze stroom wordt geproduceerd
@@ -105,7 +105,7 @@ export default {
       Biogas kan worden gemaakt door vergisting of vergassing van biomassa.
     `,
     why: `
-      De naam zegt het al: groengas is groen! Groengas wordt gemaakt van bomen of planten en
+      De naam zegt het al: groengas is groen! Groengas wordt gemaakt van mest en/of plantaardig materiaal en
       telt dus niet mee voor onze CO2-uitstoot. Aangezien we in Nederland zeer veel gas
       gebruiken, heeft 10% een behoorlijke impact.
     `
@@ -143,7 +143,7 @@ export default {
     name: 'Hybride warmtepompen',
     description: `
       Deze verwarmingsoptie is een combinatie van een kleine elektrische warmtepomp
-      en een hoogrendementsketel op gas.Wat als elk huis met deze technologie zou worden verwarmd?
+      en een hoogrendementsketel op gas. Wat als elk huis met deze technologie zou worden verwarmd?
     `,
     why: `
       Het mooie van deze technologie is dat we onze bestaande huizen de meeste dagen goed
@@ -154,7 +154,7 @@ export default {
   ledLightingHouseholds: {
     name: 'Gebruik van LED-lampen',
     description: `
-      Vervang alle lampen met moderne ultrazuinige LED-lampen in woningen. Ouderwetse gloeilampen hebben gemiddeld 1000 branduren, maar LED-lampen kunnen wel 50000 mee gaan. Daarnaast zijn ze ook nog eens 10 keer efficiënter!
+      Vervang alle lampen met moderne ultrazuinige LED-lampen in woningen. Ouderwetse gloeilampen hebben gemiddeld 1000 branduren, maar LED-lampen kunnen wel 50000 uur mee gaan. Daarnaast zijn ze ook nog eens 6 keer efficiënter!
     `,
     why: `
       Natuurlijk willen we alleen nog maar LED-verlichting, want je kan hiermee makkelijk energie en
@@ -166,7 +166,7 @@ export default {
   ledLightingOffices: {
     name: 'Gebruik van LED-lampen in kantoren',
     description: `
-      Vervang alle lampen met LED-lampen in kantoren en andere niet-residentiële gebouwen.
+      Vervang alle lampen met LED-lampen in kantoren en andere gebouwen waar niet in gewoond wordt.
       LED-lampen zijn 10 keer zo efficiënt als gloeilampen en gaan ook nog eens langer mee.
     `,
     why: `
@@ -244,7 +244,7 @@ export default {
     `,
     why: `
       dit bespaart een half procent. Dat lijkt weinig maar is eigenlijk veel als we bedenken
-      dat maar een op de twintig mensen zijn of haar auto zou moeten verruilen voor de trein? Voor een elektrisch vervoermiddel dus, met gratis chauffeur.
+      dat maar één op de twintig mensen zijn of haar auto zou moeten verruilen voor de trein? Voor een elektrisch vervoermiddel dus, met gratis chauffeur.
     `
   }
 };
