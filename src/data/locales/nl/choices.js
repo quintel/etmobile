@@ -238,7 +238,7 @@ export default {
     name: 'Zonnepanelen op huizen',
     description: `
       Met een zonnepaneel op je dak ben je niet alleen consument maar ook producent van stroom.
-      Wat gebeurt als we if <strong>alle</strong> huizen met zonnepanelen zouden bedekken?
+      Wat gebeurt als we <strong>alle</strong> huizen met zonnepanelen zouden bedekken?
     `,
     why: `
       Dit is een flinke besparing. We zullen waarschijnlijk wel het elektriciteitsnetwerk
