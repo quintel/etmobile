@@ -25,6 +25,7 @@
     "eslint-plugin-jsx": "0.0.2",
     "eslint-plugin-jsx-a11y": "^2.2.3",
     "eslint-plugin-react": "^6.3.0",
+    "intl": "^1.2.5",
     "localstorage-memory": "^1.0.2",
     "normalize.css": "^5.0.0",
     "re-base": "^2.5.0",

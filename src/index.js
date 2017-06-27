@@ -5,6 +5,8 @@ import React from 'react';
 import { render } from 'react-dom';
 import { HashRouter } from 'react-router';
 
+import './utils/polyfills';
+
 // Set up analytics.
 import { pageview } from './utils/analytics';
 
