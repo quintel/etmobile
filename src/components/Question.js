@@ -1,13 +1,31 @@
 import React, { PropTypes } from 'react';
+import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
+
+import { FormattedMessage } from 'react-intl';
 
 import Choice from './Choice';
+
+import {
+  shouldShowExplanation,
+  setShowExplanations
+} from '../utils/explanations';
+
+const onChangeAutoDismiss = event => (
+  setShowExplanations(!event.target.checked)
+);
 
 class Question extends React.Component {
   constructor() {
     super();
 
-    this.state = { choice: null };
+    this.state = {
+      choice: null,
+      didDismissExplanation: false,
+      showExplanations: false
+    };
+
     this.onChoiceSelected = this.onChoiceSelected.bind(this);
+    this.onExplanationDismiss = this.onExplanationDismiss.bind(this);
   }
 
   onChoiceSelected(choiceIndex) {
@@ -15,10 +33,25 @@ class Question extends React.Component {
       return;
     }
 
-    const choice = this.props.choices[choiceIndex];
+    if (shouldShowExplanation()) {
+      this.setState({ choice: choiceIndex, showExplanations: true });
+    } else {
+      this.setState(
+        () => ({ choice: choiceIndex }),
+        () => this.onExplanationDismiss(false)
+      );
+    }
+  }
 
-    this.setState({ choice: choiceIndex });
-    this.props.onChoiceMade(choice);
+  onExplanationDismiss(immediate) {
+    this.setState(
+      () => ({ didDismissExplanation: true }),
+      () => this.props.onChoiceMade(
+        this.props.choices[this.state.choice],
+        // will be false when manually triggered, true or an Event otherwise.
+        !!immediate
+      )
+    );
   }
 
   render() {
@@ -34,9 +67,39 @@ class Question extends React.Component {
               index={index}
               onChoiceSelected={this.onChoiceSelected}
               selectedIndex={this.state.choice}
+              showExplanations={this.state.showExplanations}
             />
           ))}
         </div>
+
+        <ReactCSSTransitionGroup
+          component="div"
+          transitionName={{ enter: 'fadeIn', leave: 'fadeOut' }}
+          transitionEnterTimeout={1000}
+          transitionLeaveTimeout={1000}
+        >
+          {this.state.showExplanations ?
+            <div key="dismiss" className="dismiss-explanation animated">
+              <button
+                disabled={this.state.didDismissExplanation}
+                onClick={this.onExplanationDismiss}
+              >
+                <FormattedMessage id="game.nextQuestion" /> &raquo;
+              </button>
+
+              <label htmlFor="auto-dismiss" className="auto-dismiss">
+                <input
+                  type="checkbox"
+                  id="auto-dismiss"
+                  onChange={onChangeAutoDismiss}
+                />
+                {' '}
+                <FormattedMessage id="game.autoSkipExplanations" />
+              </label>
+            </div>
+            : null
+          }
+        </ReactCSSTransitionGroup>
       </div>
     );
   }

@@ -5,7 +5,7 @@ import langEnSvg from '../images/lang/en.svg';
 import langNlSvg from '../images/lang/nl.svg';
 
 const LanguageSelection = ({ includePrompt, setLocale }) => (
-  <div className="language-selection">
+  <div className="app-option language-selection">
     {includePrompt ?
       <span className="prompt"><FormattedMessage id="app.language" /></span> :
       null}

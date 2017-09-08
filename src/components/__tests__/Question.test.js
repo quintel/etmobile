@@ -6,6 +6,11 @@ import { shallowWithIntl, mountWithIntl } from '../../utils/intlEnzymeHelper';
 import Question from '../Question';
 import ChoiceButton from '../ChoiceButton';
 
+import {
+  shouldShowExplanation,
+  withExplanations
+} from '../../utils/explanations';
+
 const choicesFixture = () => ([
   {
     name: 'Zero',
@@ -99,6 +104,75 @@ it('renders a correctly-chosen question button', () => {
   expect(wrapper.find('button.incorrect').length).toEqual(0);
 });
 
+it('requires "next question" button with explanations on', () => {
+  withExplanations(true, () => {
+    const onChoiceMade = jest.fn();
+
+    const wrapper = mountWithIntl(
+      <Question
+        code="abcdef"
+        name="My Question"
+        description={{ __html: 'Hello there' }}
+        choices={choicesFixture()}
+        onChoiceMade={onChoiceMade}
+      />
+    );
+
+    wrapper.instance().onChoiceSelected(0);
+    expect(onChoiceMade).toHaveBeenCalledTimes(0);
+
+    wrapper.find('.dismiss-explanation button').simulate('click');
+    expect(onChoiceMade).toHaveBeenCalledTimes(1);
+  });
+});
+
+it('does not require "next question" button with explanations off', () => {
+  withExplanations(false, () => {
+    const onChoiceMade = jest.fn();
+
+    const wrapper = mountWithIntl(
+      <Question
+        code="abcdef"
+        name="My Question"
+        description={{ __html: 'Hello there' }}
+        choices={choicesFixture()}
+        onChoiceMade={onChoiceMade}
+      />
+    );
+
+    wrapper.instance().onChoiceSelected(0);
+    expect(onChoiceMade).toHaveBeenCalledTimes(1);
+
+    expect(wrapper.find('.dismiss-explanation').length).toEqual(0);
+  });
+});
+
+it('permits disabling the "next question" button', () => {
+  withExplanations(true, () => {
+    const wrapper = mountWithIntl(
+      <Question
+        code="abcdef"
+        name="My Question"
+        description={{ __html: 'Hello there' }}
+        choices={choicesFixture()}
+        onChoiceMade={() => {}}
+      />
+    );
+
+    wrapper.instance().onChoiceSelected(0);
+
+    expect(shouldShowExplanation()).toEqual(true);
+
+    const checkbox = wrapper.find(
+      '.dismiss-explanation input[type="checkbox"]'
+    );
+
+    checkbox.simulate('change', { target: { checked: true } });
+
+    expect(shouldShowExplanation()).toEqual(false);
+  });
+});
+
 it('does not permit answering more than once', () => {
   const onChoiceMade = jest.fn();
 
@@ -113,7 +187,13 @@ it('does not permit answering more than once', () => {
   );
 
   wrapper.instance().onChoiceSelected(0);
-  wrapper.instance().onChoiceSelected(0);
+  expect(wrapper.instance().state.choice).toEqual(0);
+
+  wrapper.instance().onChoiceSelected(1);
+  expect(wrapper.instance().state.choice).toEqual(0);
+
+  wrapper.find('.dismiss-explanation button').simulate('click');
+  wrapper.find('.dismiss-explanation button').simulate('click');
 
   expect(onChoiceMade).toHaveBeenCalledTimes(1);
 });
