@@ -2,6 +2,12 @@ import React, { PropTypes } from 'react';
 import { FormattedMessage } from 'react-intl';
 
 import LanguageSelection from './LanguageSelection';
+import ExplanationSelection from './ExplanationSelection';
+
+import {
+  setShowExplanations,
+  shouldShowExplanation
+} from '../utils/explanations';
 
 const Footer = ({ setLocale, startYear }) => {
   const endYear = new Date().getFullYear();
@@ -9,6 +15,12 @@ const Footer = ({ setLocale, startYear }) => {
   return (
     <footer>
       <LanguageSelection includePrompt setLocale={setLocale} />
+
+      <ExplanationSelection
+        selected={shouldShowExplanation()}
+        onChange={setShowExplanations}
+      />
+
       <p>
         <FormattedMessage
           id="footer.partOfTheETM"

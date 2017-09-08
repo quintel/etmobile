@@ -4,7 +4,7 @@ import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 import ChoiceButton from './ChoiceButton';
 import IconOrBadge from './IconOrBadge';
 
-const Choice = ({ index, selectedIndex, choice, onChoiceSelected }) => (
+const Choice = ({ index, selectedIndex, choice, onChoiceSelected, showExplanations }) => (
   <div className="choice-info" key={`choice-${index}`}>
     <div className="icon-wrapper">
       <IconOrBadge
@@ -32,10 +32,23 @@ const Choice = ({ index, selectedIndex, choice, onChoiceSelected }) => (
       </ChoiceButton>
     </ReactCSSTransitionGroup>
 
-    <p
-      className="description"
-      dangerouslySetInnerHTML={{ __html: choice.description }}
-    />
+    <div style={{ position: 'relative' }}>
+      <ReactCSSTransitionGroup
+        component="div"
+        transitionName={{ enter: 'fadeIn', leave: 'fadeOut' }}
+        transitionEnterTimeout={1000}
+        transitionLeaveTimeout={1000}
+      >
+        <p
+          style={{ position: 'absolute' }}
+          className="description animated"
+          key={`choice-description-${showExplanations ? '0' : '1'}`}
+          dangerouslySetInnerHTML={{
+            __html: (showExplanations ? choice.why : choice.description)
+          }}
+        />
+      </ReactCSSTransitionGroup>
+    </div>
   </div>
 );
 

@@ -7,7 +7,6 @@ import Header from '../components/Header';
 import Question from '../components/Question';
 import Summary from '../components/Summary';
 import ProgressBar from '../components/ProgressBar';
-import PreviousSummary from '../components/PreviousSummary';
 import { sparseChoiceShape } from '../components/Choice';
 
 import authenticate from '../utils/authenticate';
@@ -119,7 +118,7 @@ class Game extends React.Component {
    * @return {Promise} A promise which resolves when the inputs have been
    *                   updated and the next question has loaded.
    */
-  handleQuestionChoice(choice) {
+  handleQuestionChoice(choice, immediate) {
     const lastQuestion = this.state.currentQuestion;
     let attemptsRemaining = this.state.attemptsRemaining;
 
@@ -179,7 +178,7 @@ class Game extends React.Component {
       window.scroll({ top: 0, left: 0, behavior: 'smooth' });
 
       resolveChangeQuestion();
-    }, NEXT_QUESTION_WAIT);
+    }, immediate ? 0 : NEXT_QUESTION_WAIT);
 
     // Consider the choice completed only once we have received a response from
     // ETEngine and the state has been changed so as to display the next
@@ -206,26 +205,12 @@ class Game extends React.Component {
         <main className="question-wrapper">
           <ReactCSSTransitionGroup
             component="div"
-            transitionName={{ enter: 'fadeIn', leave: 'fadeOutUp' }}
-            transitionEnterTimeout={1000}
-            transitionLeaveTimeout={1000}
-          >
-            {this.state.answeredQuestions[0] ?
-              <PreviousSummary
-                question={this.state.answeredQuestions[0]}
-                key="previous-summary"
-              /> :
-              null}
-          </ReactCSSTransitionGroup>
-          <ReactCSSTransitionGroup
-            component="div"
             transitionName={{ enter: 'fadeInUp', leave: 'fadeOutUp' }}
             transitionEnterTimeout={1000}
             transitionLeaveTimeout={1000}
           >
             <div
-              className="animated"
-              style={{ position: 'absolute' }}
+              className="animated question-animated"
               key={this.state.currentQuestion.name}
             >
               <Question
@@ -271,19 +256,6 @@ class Game extends React.Component {
     );
   }
 }
-
-/*<div className="previous-result">
-  <button>
-    <div className="choice incorrect">-0.15%</div>
-    <div className="divider">?</div>
-    <div className="choice correct selected">-1.50%</div>
-  </button>
-  {this.state.answeredQuestions[0] ?
-    <div className="recap">
-      <QuestionSummary question={this.state.answeredQuestions[0]} />
-    </div> :
-    null}
-</div>*/
 
 Game.defaultProps = { challengeId: null };
 

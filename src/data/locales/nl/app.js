@@ -10,5 +10,9 @@ export default {
     we hebben om de CO<sub>2</sub>-uitstoot terug te dringen.
   `,
 
-  language: 'Taal'
+  language: 'Taal',
+
+  yes: 'Ja',
+  no: 'Nee',
+  showExplanations: 'Show explanations after each choice?'
 };

@@ -154,6 +154,12 @@ main.question-wrapper {
   position: relative;
 }
 
+.question-animated {
+  left: 0;
+  position: absolute;
+  right: 0;
+}
+
 .question, .results {
   box-sizing: border-box;
   padding: 1rem;
@@ -173,6 +179,11 @@ h1,
 .question .description {
   text-align: center;
   text-shadow: 0 1px 0 white;
+}
+
+.question .description {
+  /* Space for fixed "Next question" button. */
+  padding-bottom: 8rem;
 }
 
 h2 {
@@ -316,7 +327,8 @@ a.button {
 }
 
 .question button.correct,
-.question button.correct[disabled] {
+.question button.correct[disabled],
+.question .dismiss-explanation button {
   background-image: linear-gradient(#57b863, #41a94f);
   border: 1px solid #2e9d44;
   border-top-color: #3ba54e;
@@ -342,6 +354,25 @@ button .arrows {
   line-height: 0;
   margin-top: 9px;
   vertical-align: top;
+}
+
+.dismiss-explanation {
+  background: #fffff3;
+  border-top: 1px solid #d6e1ed;
+  bottom: 0px;
+  box-sizing: border-box;
+  left: 0;
+  right: 0;
+  padding: 1rem;
+  position: fixed;
+}
+
+.dismiss-explanation .auto-dismiss {
+  color: #70757b;
+  display: block;
+  font-size: 12px;
+  line-height: 1;
+  padding-top: 1.0rem;
 }
 
 .question-wrapper footer {
@@ -925,14 +956,18 @@ button .arrows {
   text-decoration: none;
 }
 
-.language-selection {
+.app-option {
   background: #fff;
   display: inline-block;
   border-radius: 5px;
   line-height: 1;
   padding: 0 1.3rem;
-  margin-bottom: 2rem;
+  margin: 0 0.5rem 1rem;
   width: auto;
+}
+
+.app-option + .app-option {
+  margin-left: 1rem;
 }
 
 .play-wrapper .language-selection {
@@ -953,36 +988,46 @@ button .arrows {
   padding-right: 0.4rem;
 }
 
-.language-selection,
-.language-selection button {
+.app-option li.selected button {
+  color: #22963a;
+}
+
+.app-option,
+.app-option button {
   color: #70757b;
 }
 
-.language-selection ul {
+.app-option ul {
   display: inline-block;
   list-style: none;
   padding: 0;
 }
 
-.language-selection li {
+.app-option li {
   display: inline-block;
   margin-left: 0.4rem;
 }
 
-.language-selection li:first-child {
+.app-option li:first-child {
   margin-left: 0;
 }
 
-.language-selection .prompt {
+.app-option .prompt {
   margin-right: 0.4rem;
 }
 
-.language-selection button {
+.app-option button {
   background: none;
   background-repeat: no-repeat;
-  border: none;;
+  background-size: contain;
+  border: none;
   cursor: pointer;
   padding: 2px 0 3px 22px;
+}
+
+.app-option.explanation-selection button {
+  background-size: 1rem;
+  background-position: 1px 1px;
 }
 
 @media (min-width:1281px) {
@@ -997,6 +1042,13 @@ button .arrows {
     border-right: 1px solid #d6e1ed;
     margin: 0 auto;
     max-width: 768px;
+  }
+
+  .dismiss-explanation {
+    left: inherit;
+    margin-left: -1rem;
+    right: inherit;
+    width: 768px;
   }
 
   header .title {

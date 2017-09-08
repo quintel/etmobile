@@ -8,5 +8,9 @@ export default {
     CO<sub>2</sub> the most? How many correct answers can you manage?
   `,
 
-  language: 'Language'
+  language: 'Language',
+
+  yes: 'Yes',
+  no: 'No',
+  showExplanations: 'Show explanations after each choice?'
 };
