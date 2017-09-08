@@ -5,6 +5,7 @@ import LanguageSelection from './LanguageSelection';
 import ExplanationSelection from './ExplanationSelection';
 
 import {
+  explanationsSupported,
   setShowExplanations,
   shouldShowExplanation
 } from '../utils/explanations';
@@ -16,10 +17,12 @@ const Footer = ({ setLocale, startYear }) => {
     <footer>
       <LanguageSelection includePrompt setLocale={setLocale} />
 
-      <ExplanationSelection
-        selected={shouldShowExplanation()}
-        onChange={setShowExplanations}
-      />
+      {explanationsSupported() ?
+        <ExplanationSelection
+          selected={shouldShowExplanation()}
+          onChange={setShowExplanations}
+        />
+        : null}
 
       <p>
         <FormattedMessage

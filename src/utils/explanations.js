@@ -1,11 +1,21 @@
 import store from './store';
+import localeSettings from '../data/locales/settings';
+import suitableLanguage from './suitableLanguage';
+
+/**
+ * Determines if the current locale is able to support explanation texts between
+ * questions.
+ */
+export const explanationsSupported = () => (
+  localeSettings(suitableLanguage(['nl'])).doesSupportExplanations
+);
 
 /**
  * Returns whether the user should be shown an explanation after selecting a
  * choice.
  */
 export const shouldShowExplanation = () => (
-  store.getItem('showExplanations') !== 'false'
+  explanationsSupported() && store.getItem('showExplanations') !== 'false'
 );
 
 /**
