@@ -14,5 +14,5 @@ export default {
 
   yes: 'Ja',
   no: 'Nee',
-  showExplanations: 'Show explanations after each choice?'
+  showExplanations: 'Na elke vraag uitleg tonen?'
 };

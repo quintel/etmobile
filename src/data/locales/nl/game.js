@@ -1,12 +1,12 @@
 /* istanbul ignore next */
 export default {
-  autoSkipExplanations: 'Automatically skip to the next question',
+  autoSkipExplanations: 'Skip automatisch naar de volgende vraag',
   correct: 'Correct',
-  difficulty: '{mode} difficulty',
-  difficultyEasy: 'Normal',
-  difficultyMedium: 'Challenging',
+  difficulty: '{mode} moeilijkheidsgraad',
+  difficultyEasy: 'Normaal',
+  difficultyMedium: 'Uitdagend',
   difficultyHard: 'Expert',
   incorrect: 'Incorrect',
-  nextQuestion: 'Next question',
+  nextQuestion: 'Volgende vraag',
   title: '{firstChoice} of {secondChoice}'
 };
