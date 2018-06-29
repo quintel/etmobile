@@ -3,14 +3,14 @@ export default {
     name: 'Thuisbatterijen',
     description: `
       Geef 20% van alle huishoudens een thuisbatterij die 19,8 kWh aan elektriciteit
-      kan opslaan. Ter vergelijking: een gemiddeld huishouden gebruikt ongeveer 6 KWh elektriciteit per dag. 
+      kan opslaan. Ter vergelijking: een gemiddeld huishouden gebruikt ongeveer 6 KWh elektriciteit per dag.
       Hiermee kunnen overschotten wind- en zonnestroom op een later tijdstip worden benut.
     `,
     why: `
       Helaas heeft het toevoegen van batterijen vanuit de bestaande situatie in Nederland
-      nog geen zin voor de CO2-besparing. Als we de batterijen kunnen inzetten
+      nog geen zin voor de CO<sub>2</sub>-besparing. Als we de batterijen kunnen inzetten
       om wind- en zonnestroom op te slaan (die anders verloren zou zijn gegaan) hebben
-      batterijen effect voor CO2-besparing.
+      batterijen effect voor CO<sub>2</sub>-besparing.
     `
   },
   buildOffshoreTurbines: {
@@ -19,11 +19,11 @@ export default {
     description: `
       Bouw 250 windturbines met een capaciteit van 3 MWe. Windturbines produceren
       minder elektriciteit per MWe opgesteld vermogen dan fossiele centrales omdat het
-      niet altijd waait. Windturbines op zee produceren ~40% van de tijd op vol vermogen. 
+      niet altijd waait. Windturbines op zee produceren ~40% van de tijd op vol vermogen.
       Samen genereren deze molens jaarlijks dus ca. 2.600 GWh; dat is voldoende elektriciteit voor 730.000 huishoudens.
     `,
     why: `
-      Wind op zee heeft een grote impact op CO2-besparing, omdat zonder CO2-uitstoot elektricteit
+      Wind op zee heeft een grote impact op CO<sub>2</sub>-besparing, omdat zonder CO<sub>2</sub>-uitstoot elektricteit
       wordt geproduceerd. Het waait natuurlijk lang niet altijd. Daar moeten we rekening mee
       houden. Grappig genoeg is het straks dus verstandig om je telefoon op te laden als het buiten
       hard waait!
@@ -36,7 +36,7 @@ export default {
       niet meer gebouwd in welvarende landen, omdat ze teveel vervuilen.
     `,
     why: `
-      Van alle fossiele elektriciteitscentrales stoten kolencentrales de meeste CO2 uit. 
+      Van alle fossiele elektriciteitscentrales stoten kolencentrales de meeste CO<sub>2</sub> uit.
       Oude centrales zijn minder efficiënt dan nieuwe en stoten daarom nog meer uit.
       Daarnaast vervuilen kolencentrales ook nog eens, doordat ze fijnstof uitstoten en
       kankerverwekkende PCA's. Nederland importeert zijn steenkool uit andere landen, voor-
@@ -51,7 +51,7 @@ export default {
       relatief strikte milieuregels.
     `,
     why: `
-      Van alle fossiele elektriciteitscentrales stoten kolencentrales de meeste CO2 uit.
+      Van alle fossiele elektriciteitscentrales stoten kolencentrales de meeste CO<sub>2</sub> uit.
       Daarnaast vervuilen kolencentrales ook nog eens, doordat ze fijnstof uitstoten en
       kankerverwekkende PCA's. Nederland importeert zijn steenkool uit andere landen, voor-
       namelijk uit Colombia, waar de omstandigheden ook niet goed zijn voor de mensen die
@@ -67,9 +67,9 @@ export default {
     `,
     why: `
       Elektrische vrachtauto's hebben ook met de bestaande elektriciteitsmix (die toch
-      voor het overgrote deel fossiel is) een positieve impact op de CO2-uitstoot. En als
+      voor het overgrote deel fossiel is) een positieve impact op de CO<sub>2</sub>-uitstoot. En als
       we in de toekomst overschakelen naar meer wind- en zonnestroom, wordt deze winst
-      makkelijk vertienvoudigd! Het is op dit moment nog niet aantrekkelijk om elektrische 
+      makkelijk vertienvoudigd! Het is op dit moment nog niet aantrekkelijk om elektrische
       vrachtwagens voor lang en zwaar transport te kopen.
     `
   },
@@ -83,7 +83,7 @@ export default {
     `,
     why: `
       Elektrische auto's hebben ook met de bestaande elektriciteitsmix (die toch
-      voor het overgrote deel fossiel is) een positieve impact op de CO2-uitstoot. En als
+      voor het overgrote deel fossiel is) een positieve impact op de CO<sub>2</sub>-uitstoot. En als
       we in de toekomst overschakelen naar meer wind- en zonnestroom, wordt deze winst
       makkelijk vertienvoudigd!
     `
@@ -96,8 +96,8 @@ export default {
       reduceren kun je dan ook beter in een efficiëntere nieuwe auto rijden.
     `,
     why: `
-      Er zijn bijna acht miljoen auto's in Nederland! Deze stoten gezamenlijk heel veel CO2 uit.
-      Als deze auto’s zuiniger worden en daardoor minder benzine en diesel gebruiken, (), scheelt dat veel CO2-uitstoot!
+      Er zijn bijna acht miljoen auto's in Nederland! Deze stoten gezamenlijk heel veel CO<sub>2</sub> uit.
+      Als deze auto’s zuiniger worden en daardoor minder benzine en diesel gebruiken, (), scheelt dat veel CO<sub>2</sub>-uitstoot!
     `
   },
   greenGas: {
@@ -109,7 +109,7 @@ export default {
     `,
     why: `
       De naam zegt het al: groengas is groen! Groengas wordt gemaakt van mest en/of plantaardig materiaal en
-      telt dus niet mee voor onze CO2-uitstoot. Aangezien we in Nederland zeer veel gas
+      telt dus niet mee voor onze CO<sub>2</sub>-uitstoot. Aangezien we in Nederland zeer veel gas
       gebruiken, heeft 10% een behoorlijke impact.
     `
   },
@@ -133,14 +133,14 @@ export default {
     description: `
       De belangrijkste isolatiemaatregelen zijn dak-, muur-, vloerisolatie,
       en dubbelglas. Met dit viertal kan 75% van de potentiële
-      besparingen worden gerealiseerd. Wat zou het betekenen als we de gemiddelde isolatiegraad 
+      besparingen worden gerealiseerd. Wat zou het betekenen als we de gemiddelde isolatiegraad
       van huizen van vóór 1991 konden verdubbelen?
     `,
     why: `
       Oude huizen gebruiken relatief heel veel energie doordat ze zo slecht geïsoleerd zijn. Als je de
       verwarming aanzet, verdwijnt de meeste warmte door de ramen, kieren en muren naar
       buiten. Als we deze weggegooide energie kunnen tegenhouden, besparen we veel
-      energie en daarmee CO2-uitstoot.
+      energie en daarmee CO<sub>2</sub>-uitstoot.
     `
   },
   hybridHeatPumps: {
@@ -151,23 +151,23 @@ export default {
     `,
     why: `
       Het mooie van deze technologie is dat we onze bestaande huizen de meeste dagen goed
-      kunnen verwarmen met de warmtepomp. We pompen hiermee namelijk gratis energie van buiten 
+      kunnen verwarmen met de warmtepomp. We pompen hiermee namelijk gratis energie van buiten
       naar binnen. Dit is duurzaam en relatief goedkoop. Maar als het buiten echt heel koud is, dan kan
-      dit niet meer zo makkelijk. Dan kan dit slimme apparaat overschakelen op (groen) gas en er alsnog 
+      dit niet meer zo makkelijk. Dan kan dit slimme apparaat overschakelen op (groen) gas en er alsnog
       voor zorgen dat het binnen aangenaam warm wordt.
     `
   },
   ledLightingHouseholds: {
     name: 'Gebruik van LED-lampen',
     description: `
-      Vervang alle lampen door moderne ultrazuinige LED-lampen in woningen. 
-      Ouderwetse gloeilampen hebben gemiddeld 1000 branduren, maar LED-lampen kunnen wel 50.000 uur mee gaan. 
+      Vervang alle lampen door moderne ultrazuinige LED-lampen in woningen.
+      Ouderwetse gloeilampen hebben gemiddeld 1000 branduren, maar LED-lampen kunnen wel 50.000 uur mee gaan.
       Daarnaast zijn ze ook nog eens 6 keer efficiënter!
     `,
     why: `
       Natuurlijk willen we alleen nog maar zuinige verlichting, want je kan hiermee makkelijk energie en
       geld besparen. Maar, misschien valt dit getal een beetje tegen? Dat horen we vaker. We
-      besteden gewoon niet zoveel energie aan verlichting van woningen. 
+      besteden gewoon niet zoveel energie aan verlichting van woningen.
       Verwarming en autorijden, dat kost veel meer energie.
     `
   },
@@ -181,7 +181,7 @@ export default {
       Natuurlijk willen we alleen nog maar zuinige verlichting, want je kunt hiermee makkelijk energie en
       geld besparen. Maar, misschien valt dit getal een beetje tegen? Dat horen we wel vaker. We
       besteden gewoon niet zoveel energie aan verlichting. Verwarming en autorijden, dat kost veel meer
-      energie. Dit getal is wel hoger dan de besparing in de huishoudens, doordat kantoren, scholen en 
+      energie. Dit getal is wel hoger dan de besparing in de huishoudens, doordat kantoren, scholen en
       ziekenhuizen nu eenmaal meer lampen hebben en ze ook nog eens veel langer branden.
     `
   },
@@ -194,8 +194,8 @@ export default {
       varen 50% minder zwavel en 60% minder fijnstof uit.
     `,
     why: `
-      Het verschil in CO2-uitstoot is niet zo heel groot. 
-      Dat komt doordat LNG ook een fossiele brandstof is. Het is wel veel schoner voor wat betreft 
+      Het verschil in CO<sub>2</sub>-uitstoot is niet zo heel groot.
+      Dat komt doordat LNG ook een fossiele brandstof is. Het is wel veel schoner voor wat betreft
       uitstoot van zwaveldioxide en fijnstof, dus voor de luchtkwaliteit wel veel beter dan diesel.
     `
   },
@@ -207,7 +207,7 @@ export default {
       Deze brandstof reduceert de CO<sub>2</sub> per km met 30% en stoot ook minder fijnstof uit.
     `,
     why: `
-      Omdat we hiermee 30% CO2-uitstoot per kilometer besparen en een groot deel 
+      Omdat we hiermee 30% CO<sub>2</sub>-uitstoot per kilometer besparen en een groot deel
       van het transport door vrachtwagens wordt verzorgd, is deze vervanging een goed idee.
     `
   },
@@ -220,7 +220,7 @@ export default {
     `,
     why: `
       In Nederland staan veel raffinaderijen, maar die produceren ook benzine en
-      diesel voor het buitenland. Dus dit helpt niet veel voor de CO2-uitstoot van ons
+      diesel voor het buitenland. Dus dit helpt niet veel voor de CO<sub>2</sub>-uitstoot van ons
       land.
     `
   },
@@ -230,8 +230,8 @@ export default {
       Vervang een miljoen oude huizen door nieuwe, energiezuinigere huizen.
     `,
     why: `
-      We hebben in Nederland zeven en een half miljoen woningen. Een flink deel hiervan vervangen door nieuwe, scheelt veel CO2-uitstoot.
-      
+      We hebben in Nederland zeven en een half miljoen woningen. Een flink deel hiervan vervangen door nieuwe, scheelt veel CO<sub>2</sub>-uitstoot.
+
     `
   },
   solarPanels: {
@@ -242,7 +242,7 @@ export default {
     `,
     why: `
       Dit is een flinke besparing. We zullen waarschijnlijk wel het elektriciteitsnetwerk
-      bij je in de buurt een keertje moeten upgraden, maar we kunnen heel veel CO2-uitstoot
+      bij je in de buurt een keertje moeten upgraden, maar we kunnen heel veel CO<sub>2</sub>-uitstoot
       besparen als we dit doen. Je kan zelfs met een modern huis vol met zonnepanelen nu al net
       zoveel energie opwekken als je gebruikt. Dat noemen we 'Nul op de meter'.
     `
@@ -251,13 +251,13 @@ export default {
     name: 'vijf procentvan de autoritten per trein',
     header: 'Reizen per trein',
     description: `
-      Autovervoer kost veel energie. Wat gebeurt als we mensen kunnen overhalen om vijf procent 
-      (meer) van hun personenvervoer met de trein te doen? Dit bespaart energie, 
+      Autovervoer kost veel energie. Wat gebeurt als we mensen kunnen overhalen om vijf procent
+      (meer) van hun personenvervoer met de trein te doen? Dit bespaart energie,
       CO<sub>2</sub>-uitstoot,kosten én scheelt files.
     `,
     why: `
       dit bespaart een half procent. Dat lijkt weinig maar is eigenlijk veel als we bedenken
-      dat maar één op de twintig mensen zijn of haar auto zou moeten verruilen voor de trein? 
+      dat maar één op de twintig mensen zijn of haar auto zou moeten verruilen voor de trein?
       Voor een elektrisch vervoermiddel dus, met gratis chauffeur.
     `
   }
