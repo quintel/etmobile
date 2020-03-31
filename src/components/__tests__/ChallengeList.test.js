@@ -82,8 +82,8 @@ it('renders challenges', () => {
   return promise.then(() => {
     const challenges = wrapper.find('.challenge');
 
-    expect(challenges.at(0).text()).toContain('another challenge');
-    expect(challenges.at(1).text()).toContain('My first challenge');
+    expect(challenges.at(0).text()).toContain('My first challenge');
+    expect(challenges.at(1).text()).toContain('another challenge');
     expect(challenges.at(2).text()).toContain('Z Final challenge');
   });
 });
