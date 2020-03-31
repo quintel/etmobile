@@ -1,6 +1,7 @@
 /* global it expect jest */
 
 import React from 'react';
+import { MemoryRouter, Route } from 'react-router-dom';
 import { mountWithIntl } from '../../utils/intlEnzymeHelper';
 
 import NewChallenge from '../NewChallenge';
@@ -20,7 +21,18 @@ it('triggers onSubmit when submitting', () => {
   const base = { post: jest.fn().mockReturnValue(promise) };
 
   const wrapper = mountWithIntl(
-    <NewChallenge base={base} defaultName="Hi" />
+    <MemoryRouter initialEntries={['/new-challenge']}>
+      <div>
+        <Route
+          path="/new-challenge"
+          render={() => <NewChallenge base={base} defaultName="Hi" />}
+        />
+        <Route
+          path="/play/:challengeId"
+          render={({ match: { params } }) => <em>{params.challengeId}</em>}
+        />
+      </div>
+    </MemoryRouter>
   );
 
   const form = wrapper.find('form');
@@ -32,7 +44,7 @@ it('triggers onSubmit when submitting', () => {
   expect(base.post).toHaveBeenCalled();
 
   return promise.then(() => {
-    expect(wrapper.state('challengeId').length).toEqual(16);
+    expect(wrapper.find('em').text().length).toEqual(16);
   });
 });
 
