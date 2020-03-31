@@ -1,5 +1,5 @@
 import React, { PropTypes } from 'react';
-import { Redirect } from 'react-router';
+import { Redirect } from 'react-router-dom';
 import { FormattedMessage } from 'react-intl';
 import injectIntl from '../utils/injectIntl';
 

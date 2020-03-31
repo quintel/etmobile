@@ -1,7 +1,7 @@
 /* global it expect jest */
 
 import React from 'react';
-import { MemoryRouter } from 'react-router';
+import { MemoryRouter } from 'react-router-dom';
 import { FormattedMessage } from 'react-intl';
 
 import { mountWithIntl, shallowWithIntl } from '../../utils/intlEnzymeHelper';

@@ -1,6 +1,6 @@
 import React, { PropTypes } from 'react';
 
-import { Match, propTypes as RouterPropTypes } from 'react-router';
+import { Route } from 'react-router-dom';
 
 import { IntlProvider, addLocaleData } from 'react-intl';
 import englishLocaleData from 'react-intl/locale-data/en';
@@ -29,13 +29,14 @@ class Root extends React.Component {
   componentDidMount() {
     // Enable scroll-to-top when navigating to a new page.
     /* istanbul ignore next */
-    this.historyUnlisten = this.context.history.listen((location, type) => {
-      if (type !== 'POP') {
-        window.scrollTo(0, 0);
-      }
+    this.historyUnlisten =
+      this.context.router.history.listen((location, type) => {
+        if (type !== 'POP') {
+          window.scrollTo(0, 0);
+        }
 
-      pageview(location.pathname);
-    });
+        pageview(location.pathname);
+      });
   }
 
   /* istanbul ignore next */
@@ -61,9 +62,9 @@ class Root extends React.Component {
         messages={translations(this.activeLocale())}
       >
         <div>
-          <Match
-            exactly
-            pattern="/"
+          <Route
+            exact
+            path="/"
             render={() => (
               <FrontPage
                 base={this.props.base}
@@ -72,19 +73,17 @@ class Root extends React.Component {
             )}
           />
 
-          <Match
-            pattern="/play/:challengeId?"
-            render={({ params }) => (
-              <GameChallenge
-                choices={this.props.choices}
-                base={this.props.base}
-                params={params}
-              />
-            )}
+          <Route
+            path="/play/:challengeId?"
+            render={({ match: { params } }) => (<GameChallenge
+              choices={this.props.choices}
+              base={this.props.base}
+              params={params}
+            />)}
           />
 
-          <Match
-            pattern="/new-challenge"
+          <Route
+            path="/new-challenge"
             render={() => <NewChallenge base={this.props.base} />}
           />
         </div>
@@ -94,8 +93,7 @@ class Root extends React.Component {
 }
 
 Root.contextTypes = {
-  history: RouterPropTypes.historyContext.isRequired,
-  router: RouterPropTypes.routerContext.isRequired
+  router: PropTypes.any
 };
 
 Root.propTypes = {

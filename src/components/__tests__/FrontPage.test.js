@@ -1,7 +1,7 @@
 /* global it expect */
 
 import React from 'react';
-import { Link } from 'react-router';
+import { Link } from 'react-router-dom';
 import { shallowWithIntl } from '../../utils/intlEnzymeHelper';
 
 import FrontPage from '../FrontPage';

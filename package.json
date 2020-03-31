@@ -35,7 +35,7 @@
     "react-ga": "^2.1.2",
     "react-headroom": "^2.1.2",
     "react-intl": "^2.2.2",
-    "react-router": "4.0.0-alpha.6",
+    "react-router-dom": "4.3.1",
     "react-tabs": "^0.8.2",
     "smoothscroll-polyfill": "^0.3.4",
     "whatwg-fetch": "^2.0.1"
