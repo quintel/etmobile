@@ -3,7 +3,7 @@ import 'animate.css';
 
 import React from 'react';
 import { render } from 'react-dom';
-import { HashRouter } from 'react-router';
+import { BrowserRouter } from 'react-router-dom';
 
 import './utils/polyfills';
 
@@ -29,8 +29,8 @@ const gameChoices = shuffleArray(mapAnswersToChoices(answers, choices));
 pageview(window.location.pathname);
 
 render(
-  <HashRouter>
+  <BrowserRouter>
     <Root base={base} choices={gameChoices} />
-  </HashRouter>,
+  </BrowserRouter>,
   document.getElementById('root')
 );
