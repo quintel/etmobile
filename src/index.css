@@ -1034,7 +1034,7 @@ button .arrows {
   /* Narrow the UI on large displays. */
   html, body, #root {
     /* Extend the left and right borders the full height of the page. */
-    height: 100%;
+    min-height: 100vh;
   }
 
   #root {
