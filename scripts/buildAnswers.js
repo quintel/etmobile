@@ -7,7 +7,8 @@ import fs from 'fs';
 import process from 'process';
 import dotenv from 'dotenv';
 
-import staticChoices from '../src/data/choices';
+// eslint-disable-next-line import/extensions
+import staticChoices from '../src/data/choices.js';
 
 dotenv.config({ silent: true });
 
