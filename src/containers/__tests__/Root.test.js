@@ -29,7 +29,7 @@ it('renders the front page at /', () => {
   base.fetch = () => promise;
 
   const wrapper = mountWithIntl(
-    <MemoryRouter location="/">
+    <MemoryRouter initialEntries={['/']}>
       <Root base={base} choices={[]} />
     </MemoryRouter>,
   );
@@ -41,9 +41,9 @@ it('renders the front page at /', () => {
 
 it('changes the locale', () => {
   const wrapper = mountWithIntl(
-    <MemoryRouter location="/">
+    <MemoryRouter initialEntries={['/']}>
       <Root base={stubBase()} choices={[]} />
-    </MemoryRouter>,
+    </MemoryRouter>
   );
 
   wrapper.find(Footer).find('.language-selection button.nl').simulate('click');
@@ -53,7 +53,7 @@ it('changes the locale', () => {
 
 it('renders the game at /play', () => {
   const wrapper = mountWithIntl(
-    <MemoryRouter location="/play">
+    <MemoryRouter initialEntries={['/play']}>
       <Root base={stubBase()} choices={[]} />
     </MemoryRouter>,
   );
@@ -64,7 +64,7 @@ it('renders the game at /play', () => {
 
 it('renders a challenge game at /play/challengeId', () => {
   const wrapper = mountWithIntl(
-    <MemoryRouter location="/play/abc">
+    <MemoryRouter initialEntries={['/play/abc']}>
       <Root base={stubBase()} choices={[]} />
     </MemoryRouter>,
   );
@@ -75,7 +75,7 @@ it('renders a challenge game at /play/challengeId', () => {
 
 it('renders the new challenge page at /new-challenge', () => {
   const wrapper = mountWithIntl(
-    <MemoryRouter location="/new-challenge">
+    <MemoryRouter initialEntries={['/new-challenge']}>
       <Root base={stubBase()} choices={[]} />
     </MemoryRouter>,
   );
