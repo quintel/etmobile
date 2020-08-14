@@ -10,6 +10,6 @@ export default {
       other {{correct} goede antwoorden.}
     }
   `,
-  header: 'Heel goed geprobeerd!',
+  header: 'Lekker gewerkt!',
   tryAgain: 'Nog een keertje?'
 };

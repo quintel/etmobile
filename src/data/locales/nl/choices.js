@@ -2,65 +2,61 @@ export default {
   batteries: {
     name: 'Thuisbatterijen',
     description: `
-      Geef 20% van alle huishoudens een thuisbatterij die 19,8 kWh aan elektriciteit
-      kan opslaan. Ter vergelijking: een gemiddeld huishouden gebruikt ongeveer 6 KWh elektriciteit per dag.
-      Hiermee kunnen overschotten wind- en zonnestroom op een later tijdstip worden benut.
+      Geef 25% van alle huishoudens een thuisbatterij die 19,8 kWh aan elektriciteit
+      kan opslaan. Ter vergelijking: een gemiddeld huishouden gebruikt ongeveer 6-8 KWh elektriciteit per dag.
+      Hiermee kunnen overschotten wind  en zonnestroom op een later tijdstip worden benut.
     `,
     why: `
       Helaas heeft het toevoegen van batterijen vanuit de bestaande situatie in Nederland
-      nog geen zin voor de CO<sub>2</sub>-besparing. Als we de batterijen kunnen inzetten
-      om wind- en zonnestroom op te slaan (die anders verloren zou zijn gegaan) hebben
-      batterijen effect voor CO<sub>2</sub>-besparing.
+      nog geen zin voor de CO<sub>2</sub> besparing. Als we de batterijen kunnen inzetten
+      om wind en zonnestroom op te slaan (die anders verloren zou zijn gegaan) hebben
+      batterijen effect voor CO<sub>2</sub> besparing.
     `
   },
   buildOffshoreTurbines: {
-    name: 'Bouw 250 offshore windturbines',
+    name: 'Bouw 500 offshore windturbines',
     header: 'Wind op zee',
     description: `
-      Bouw 250 windturbines met een capaciteit van 3 MWe. Windturbines produceren
-      minder elektriciteit per MWe opgesteld vermogen dan fossiele centrales omdat het
-      niet altijd waait. Windturbines op zee produceren ~40% van de tijd op vol vermogen.
-      Samen genereren deze molens jaarlijks dus ca. 2.600 GWh; dat is voldoende elektriciteit voor 730.000 huishoudens.
+      Bouw 500 windturbines met een capaciteit van 10 MWe. Deze windturbines staan op de Noordzee en produceren enkel waneer het hard genoeg waait.
+
+
+
     `,
     why: `
-      Wind op zee heeft een grote impact op CO<sub>2</sub>-besparing, omdat zonder CO<sub>2</sub>-uitstoot elektricteit
-      wordt geproduceerd. Het waait natuurlijk lang niet altijd. Daar moeten we rekening mee
-      houden. Grappig genoeg is het straks dus verstandig om je telefoon op te laden als het buiten
-      hard waait!
+      Wind op zee heeft een grote impact op CO<sub>2</sub> besparing, omdat zonder CO<sub>2</sub>-uitstoot elektricteit
+      wordt geproduceerd. Het waait natuurlijk lang niet altijd. Echter, windturbines op zee produceren toch ~40%-50% van de tijd op vol vermogen.
+      Samen genereren deze molens jaarlijks ca. 19.700 GWh; dat is voldoende elektriciteit voor 5.8 miljoen huishouden!
+      Dat het niet altijd waait moeten we rekening meehouden. Grappig genoeg is het straks dus verstandig om je telefoon op te laden als het buiten
+      hard waait of de zon schijnt!
     `
   },
-  closeConventionalCoal: {
-    name: 'Sluit een conventionele kolencentrale',
+  closeCoal: {
+    name: 'Sluit alle kolencentrales',
     description: `
-      Sluit een oude 800 megawatt (MWe) kolencentrale. Dit type centrale wordt
-      niet meer gebouwd in welvarende landen, omdat ze teveel vervuilen.
+      Het sluiten van alle kolencentrales in Nederland zonder dat de elektriciteitsvraag verandert betekent dat onze stroom ergens anders vandaan moet komen.
+      In dit geval gaan wij ervanuit dat de gascentrales de weggevallen stroomproductie op zich nemen
     `,
     why: `
-      Van alle fossiele elektriciteitscentrales stoten kolencentrales de meeste CO<sub>2</sub> uit.
-      Oude centrales zijn minder efficiënt dan nieuwe en stoten daarom nog meer uit.
-      Daarnaast vervuilen kolencentrales ook nog eens, doordat ze fijnstof uitstoten en
-      kankerverwekkende PCA's. Nederland importeert zijn steenkool uit andere landen, voor-
-      namelijk uit Colombia, waar de arbeidsomstandigheden te wensen overlaten.
+      Van fossiele elektriciteitscentrales stoten kolencentrales de meeste CO<sub>2</sub> uit.
+      Vervanging van de productie uit kolen naar fossiel gas bespaart dus al fors CO<sub>2</sub>.
     `
   },
-  closeModernCoal: {
-    name: 'Sluit een moderne kolencentrale',
+  openNuclear: {
+    name: 'Open een nieuwe kerncentrale',
     description: `
-      Sluit een moderne 800 megawatt (MWe) kolencentrale. Dit is het meest
-      gebruikelijke type kolencentrale in welvarende landen, die voldoet aan
-      relatief strikte milieuregels.
+     Open een nieuwe kerncentrale van het huidige formaat als in Borsele (515 MWe).
+     Kerncentrales zijn er in alle maten. Borsele is zeker niet de grootste. In Japan staat de allergrootste kerncentrale die is 16x groter dan in Borsele.
     `,
     why: `
-      Van alle fossiele elektriciteitscentrales stoten kolencentrales de meeste CO<sub>2</sub> uit.
-      Daarnaast vervuilen kolencentrales ook nog eens, doordat ze fijnstof uitstoten en
-      kankerverwekkende PCA's. Nederland importeert zijn steenkool uit andere landen, voor-
-      namelijk uit Colombia, waar de omstandigheden ook niet goed zijn voor de mensen die
-      daar wonen en werken.
+      Kerncentrales stoten geen CO<sub>2</sub> uit bij de productie van elektriciteit.
+      Wat dat betreft past het goed in een klimaatneutraal energiesysteem
+      Wel is er veel discussie over het radioactieve afval, de impact als het toch fout gaat en de hoge investeringskosten.
+      Ook is het de vraag of wind en kernenergie goed in een zelfde systeem werken. Een kerncentrale zet je liever niet uit en aan om de windpieken op te vangen.
     `
   },
   electricTrucks: {
-    name: '20% meer elektrische vrachtwagens',
-    header: '20% elektrische vrachtwagens',
+    name: '50% van de vrachtwagens elektrisch',
+    header: 'Elektrische vrachtwagens',
     description: `
       In Nederland verbruiken vrachtwagens ongeveer evenveel energie als auto’s.
       Wat zijn de mogelijkheden voor elektrificatie van het vrachtvervoer?
@@ -68,13 +64,13 @@ export default {
     why: `
       Elektrische vrachtauto's hebben ook met de bestaande elektriciteitsmix (die toch
       voor het overgrote deel fossiel is) een positieve impact op de CO<sub>2</sub>-uitstoot. En als
-      we in de toekomst overschakelen naar meer wind- en zonnestroom, wordt deze winst
+      we in de toekomst overschakelen naar meer wind-  en zonnestroom, wordt deze winst
       makkelijk vertienvoudigd! Het is op dit moment nog niet aantrekkelijk om elektrische
-      vrachtwagens voor lang en zwaar transport te kopen.
+      vrachtwagens voor lang en zwaar transport te kopen, maar in de steden zie je ze veel meer.
     `
   },
   electricVehicles: {
-    name: 'Een miljoen extra elektrische auto’s',
+    name: 'Elke auto elektrisch',
     header: 'Reis per elektrische auto',
     description: `
       Elektrische auto’s gebruiken maar de helft van de ‘well-to-wheel’ energie in
@@ -84,61 +80,59 @@ export default {
     why: `
       Elektrische auto's hebben ook met de bestaande elektriciteitsmix (die toch
       voor het overgrote deel fossiel is) een positieve impact op de CO<sub>2</sub>-uitstoot. En als
-      we in de toekomst overschakelen naar meer wind- en zonnestroom, wordt deze winst
-      makkelijk vertienvoudigd!
+      we in de toekomst overschakelen naar meer wind- en zonnestroom, wordt deze winst vele malen hoger!
     `
   },
-  fossilCarEfficiency: {
-    name: 'Maak fossiele auto’s efficiënter',
-    header: 'Fossiele auto’s efficiënter',
+  travelByBikes: {
+    name: 'Twee keer meer fietsen',
+    header: 'Twee keer meer fietsen',
     description: `
-      Nieuwe auto’s worden elk jaar bijna 2% efficiënter. Om CO<sub>2</sub>-uitstoot te
-      reduceren kun je dan ook beter in een efficiëntere nieuwe auto rijden.
+      Fietsen is naast lopen misschien wel de meest Klimaatvriendelijke manier om je te verplaatsen
+      Nederlanders fietsen jaarlijks bijna 1000 kilometer, wat als wij twee keer zoveel zouden fietsen en minder de auto gebruiken?
     `,
     why: `
-      Er zijn bijna acht miljoen auto's in Nederland! Deze stoten gezamenlijk heel veel CO<sub>2</sub> uit.
-      Als deze auto’s zuiniger worden en daardoor minder benzine en diesel gebruiken, (), scheelt dat veel CO<sub>2</sub>-uitstoot!
+      Fietsen in plaats van met de auto heeft zeker impact. Zowel op het klimaat, op jouw gezondheid en op de drukte in het verkeer.
+      Met alleen wat meer fietsen gaat de transitie niet lukken, maar draagt wel een steentje bij.
     `
   },
   greenGas: {
     name: 'Maak 10% van het gas groen',
     header: '10% groengas',
     description: `
-      Groengas is biogas dat opgewaardeerd is om bijmenging in het gasnet mogelijk te maken.
-      Biogas kan worden gemaakt door vergisting of vergassing van biomassa.
+      De naam zegt het al: groengas is groen! Groengas kan onder andere worden gemaakt vanuit mest en/of plantaardig materiaal.
+      Verder is dit precies hetzelde als het huidige fossiele gas. Het is namelijk methaan.
     `,
     why: `
-      De naam zegt het al: groengas is groen! Groengas wordt gemaakt van mest en/of plantaardig materiaal en
-      telt dus niet mee voor onze CO<sub>2</sub>-uitstoot. Aangezien we in Nederland zeer veel gas
-      gebruiken, heeft 10% een behoorlijke impact.
+      Aangezien we in Nederland nu zeer veel gas gebruiken, heeft 10% een behoorlijke impact.
+      Er is echter niet voldoende groengas om alle huidige fossiele gas te vervangen.
     `
   },
-  householdInsulationNew: {
-    name: 'Dubbele isolatie van nieuwe huizen',
-    header: 'Isolatie nieuwe huizen',
+  beterInsulationHomes: {
+    name: 'Beter geïsoleerde huizen',
+    header: 'Isolatie huizen',
     description: `
-      Nieuwbouwhuizen – gebouwd na 1991 – zijn al beter geïsoleerd dan oudere huizen.
-      In het algemeen hebben deze huizen dubbelglas en geïsoleerde spouwmuren, vloeren
-      en daken. Wat levert het nog verder (maximaal) isoleren van deze huizen op?
+      Isolatie van woningen zorgt ervoor dat in de winter de warmte binnen blijft en in de zomer buiten.
+      Denk bij isolatie aan dubbel of driedubbel glas, dakisolatie, vloerisolatie of de muren beter isoleren.
+
     `,
     why: `
-      Nieuwe huizen gebruiken al relatief weinig energie, dus nog meer besparen heeft hier niet zo veel zin.
-      Oude slecht geïsoleerde huizen gebruiken veruit de meeste energie. Daar lekt de energie echt
-      weg!
+      Heel veel woningen, met name de oudere woningen, kunnen veel beter geïsoleerd worden.
+      Er is hier nog veel winst te behalen, zowel voor de portemonnee als voor het klimaat.
+      Denk eens na wat er beter zou kunnen in jouw huis. Zou jij het weten?
     `
   },
-  householdInsulationOld: {
-    name: 'Dubbele isolatie van oude huizen',
-    header: 'Isolatie oude huizen',
+  beterInsulationOffices: {
+    name: 'Beter geïsoleerde scholen en kantoren',
+    header: 'Isolatie kantoren',
     description: `
-      De belangrijkste isolatiemaatregelen zijn dak-, muur-, vloerisolatie,
+      De belangrijkste isolatiemaatregelen zijn dak-, muur-, vloerisolatie
       en dubbelglas. Met dit viertal kan 75% van de potentiële
-      besparingen worden gerealiseerd. Wat zou het betekenen als we de gemiddelde isolatiegraad
-      van huizen van vóór 1991 konden verdubbelen?
+      besparingen worden gerealiseerd.
+      Wat zou het betekenen als wij al deze gebouwen eens veel beter zouden isoleren?
     `,
     why: `
-      Oude huizen gebruiken relatief heel veel energie doordat ze zo slecht geïsoleerd zijn. Als je de
-      verwarming aanzet, verdwijnt de meeste warmte door de ramen, kieren en muren naar
+      Kantoren, maar ook scholen en ziekenhuizen gebruiken veel energie voor het verwarmen en koelen. Als je de
+      verwarming aanzet verdwijnt veel warmte door de ramen, kieren en muren naar
       buiten. Als we deze weggegooide energie kunnen tegenhouden, besparen we veel
       energie en daarmee CO<sub>2</sub>-uitstoot.
     `
@@ -147,7 +141,7 @@ export default {
     name: 'Hybride warmtepompen',
     description: `
       Deze verwarmingsoptie is een combinatie van een kleine elektrische warmtepomp
-      en een hoogrendementsketel op gas. Wat als elk huis met deze technologie zou worden verwarmd?
+      en een HR ketel op gas. Wat als elk huis met deze technologie zou worden verwarmd?
     `,
     why: `
       Het mooie van deze technologie is dat we onze bestaande huizen de meeste dagen goed
@@ -185,13 +179,13 @@ export default {
       ziekenhuizen nu eenmaal meer lampen hebben en ze ook nog eens veel langer branden.
     `
   },
-  lngShips: {
-    name: 'Alleen nog LNG-schepen',
-    header: 'Schepen op LNG',
+  heatPumps: {
+    name: 'Alle woningen een warmtepomp',
+    header: 'Woningen een warmtepomp',
     description: `
-      Vervang diesel door vloeibaar aardgas (LNG) voor scheepvaart.
-      In vergelijking met dieselschepen stoten schepen die op LNG
-      varen 50% minder zwavel en 60% minder fijnstof uit.
+      Deze verwarmingsoptie maakt gebruik elektrische warmtepomp. Dit is eigenlijk een omgekeerde koelkast.
+      Met elektriciteit wordt lucht samengeperst en hierdoor neemt het volume af en de temperatuur toe.
+      Het omgekeerde effect zie je ook bij spuitbussen deodorant. Dit koelt af bij het spuiten omdat de lucht buiten de fles een groter volume krijgt.
     `,
     why: `
       Het verschil in CO<sub>2</sub>-uitstoot is niet zo heel groot.
@@ -199,40 +193,41 @@ export default {
       uitstoot van zwaveldioxide en fijnstof, dus voor de luchtkwaliteit wel veel beter dan diesel.
     `
   },
-  lngTrucks: {
-    name: 'Alleen nog LNG-vrachtwagens',
-    header: 'Vrachtwagens op LNG',
+  carPooling: {
+    name: 'Carpoolen',
+    header: 'Carpoolen',
     description: `
-      Vervang diesel door vloeibaar aardgas (LNG) voor vrachtvervoer over de weg.
-      Deze brandstof reduceert de CO<sub>2</sub> per km met 30% en stoot ook minder fijnstof uit.
+      Carpoolen betekent dat je i.p.v. alleen met meerdere mensen in de auto gaat zitten. Dit scheelt niet alleen ruimte op de weg, maar ook energie.
+      Gemiddeld is de bezettingsgraad per gereden kilometer 1,43 persoon per auto. Wat als wij dit zouden verdubbelen?
     `,
     why: `
-      Omdat we hiermee 30% CO<sub>2</sub>-uitstoot per kilometer besparen en een groot deel
-      van het transport door vrachtwagens wordt verzorgd, is deze vervanging een goed idee.
+      Het effect van autodelen door verdubbelend inzittenden van 1.4 naar 2.8 levert 43% besparing op auto's op. Dit is heel fors.
+      Dat het geen 50% is komt doordat je vaak iets meer moet omrijden. Het is circa per rit circa 10% meer brandstof voor het omrijden en 3% meer voor het extra gewicht. Dus samen rijden is zowel gezelliger als duurzamer!
     `
   },
-  refineryEfficiency: {
-    name: '1% efficiëntie-toename per jaar voor raffinaderijen',
-    header: 'Efficiëntere raffinaderijen',
+  wasteHeatIndustry: {
+    name: 'Restwarmte uit de industrie inzetten voor verwarmen huizen',
+    header: 'Restwarmtenet',
     description: `
-      Raffinaderijen gebruiken veel energie om olie om te zetten in olieproducten.
-      Wat gebeurt er als we deze installaties de komende 33 jaar elk jaar 1% efficiënter maken?
+      De industrie en datacenters hebben in sommige gevallen veel warmte waar ze zelf niets meer mee kunnen. Wat als deze 25 % van de huizen met industriële restwarmte wordt gevoed?
     `,
     why: `
-      In Nederland staan veel raffinaderijen, maar die produceren ook benzine en
-      diesel voor het buitenland. Dus dit helpt niet veel voor de CO<sub>2</sub>-uitstoot van ons
-      land.
+      In Nederland is veel industrie. Ook deze industrie is in transitie naar CO2-vrije productie. Alsnog kan deze industrie restwarmte produceren waar ze zelf niet mee kunnen.
+      Het zou een mooie en impactvolle oplossing zijn om deze retwarmte nuttig te gebruiken.
+      Het verwarmen van woningen in de dichtbebouwde binnensteden is dan een goede optie.
     `
   },
-  replaceOldHouses: {
-    name: 'Oude door nieuwe huizen vervangen',
+  solarThermalParks: {
+    name: 'Zonthermische parken',
     description: `
-      Vervang een miljoen oude huizen door nieuwe, energiezuinigere huizen.
+      Zonthermische parken zijn zonnepanelen die warmte produceren. Ze vangen de hitte op uit de zon en slaan dit op in water om later te gebruiken.
+      Het werkt hetzelde als die leren autostoel die bloedheet wordt in de zon.
     `,
     why: `
-      We hebben in Nederland zeven en een half miljoen woningen. Een flink deel hiervan vervangen door nieuwe, scheelt veel CO<sub>2</sub>-uitstoot.
-
-    `
+      Zonthermische parken kunnen een bijdrage leveren aan onze warm watervraag om bijvoorbeeld te douchen.
+      Daarnaast is het ook mogelijk om het in te voeden in warmtenetten en om huizen mee te verwarmen.
+      Een uitdaging is wel dat de warmteproductie vooral in de zomer is en de vraag in de winter, met opslag is dit grotendeels op te lossen.
+  `
   },
   solarPanels: {
     name: 'Zonnepanelen op huizen',
@@ -248,21 +243,16 @@ export default {
     `
   },
   travelByTrain: {
-    name: 'vijf procentvan de autoritten per trein',
+    name: 'Verdubbelen ritten per trein',
     header: 'Reizen per trein',
     description: `
-      Autovervoer kost veel energie. Wat gebeurt als we mensen kunnen overhalen om vijf procent
-      (meer) van hun personenvervoer met de trein te doen? Dit bespaart energie,
-      CO<sub>2</sub>-uitstoot,kosten én scheelt files.
+      Autovervoer kost veel energie. Wat gebeurt als we zoveel mensen kunnen overhalen om de trein te nemen dat het aantal treinreizigers verdubbeld?
+      Het scheelt CO<sub>2</sub>-uitstoot, energie én files.
     `,
     why: `
-      dit bespaart een half procent. Dat lijkt weinig maar is eigenlijk veel als we bedenken
-      dat maar één op de twintig mensen zijn of haar auto zou moeten verruilen voor de trein?
-      Voor een elektrisch vervoermiddel dus, met gratis chauffeur.
+      Treinreizen bespaart zeker een hoop CO<sub>2</sub>-uitstoot. Echter, alleen treinreizen is niet voldoende om de Klimaatdoelen te halen.
+      Daarnaast zijn er voor vervoer over de weg ook steeds meer CO2-neutrale opties, zoals elektrisch rijden.
+      De trein blijft een snel en handig vervoersmiddel met gratis chauffeur, een soort elektrisch carpoolen.
     `
   }
 };
-
-
-
-
