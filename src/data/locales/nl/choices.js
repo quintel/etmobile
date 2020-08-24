@@ -17,7 +17,8 @@ export default {
     name: 'Bouw 500 offshore windturbines',
     header: 'Wind op zee',
     description: `
-      Bouw 500 windturbines met een capaciteit van 10 MW, met een hoogte van bijna 200 meter. Deze windturbines staan op de Noordzee en produceren enkel waneer het hard genoeg waait.
+      Bouw 500 windturbines met een capaciteit van 10 MW, met een hoogte van bijna 200 meter.
+      Deze windturbines staan op de Noordzee en produceren enkel waneer het hard genoeg waait.
     `,
     why: `
       Wind op zee heeft een grote impact op CO<sub>2</sub> besparing, omdat zonder CO<sub>2</sub>-uitstoot elektricteit
