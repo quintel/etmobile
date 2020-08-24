@@ -107,7 +107,7 @@ export default [
     key: 'travelByBikes',
     icon: 'car',
     inputs: {
-transport_bicycles_share: 16
+      transport_bicycles_share: 16
     }
   },
   {
