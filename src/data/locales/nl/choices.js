@@ -17,16 +17,13 @@ export default {
     name: 'Bouw 500 offshore windturbines',
     header: 'Wind op zee',
     description: `
-      Bouw 500 windturbines met een capaciteit van 10 MWe. Deze windturbines staan op de Noordzee en produceren enkel waneer het hard genoeg waait.
-
-
-
+      Bouw 500 windturbines met een capaciteit van 10 MW, met een hoogte van bijna 200 meter. Deze windturbines staan op de Noordzee en produceren enkel waneer het hard genoeg waait.
     `,
     why: `
       Wind op zee heeft een grote impact op CO<sub>2</sub> besparing, omdat zonder CO<sub>2</sub>-uitstoot elektricteit
       wordt geproduceerd. Het waait natuurlijk lang niet altijd. Echter, windturbines op zee produceren toch ~40%-50% van de tijd op vol vermogen.
-      Samen genereren deze molens jaarlijks ca. 19.700 GWh; dat is voldoende elektriciteit voor 5.8 miljoen huishouden!
-      Dat het niet altijd waait moeten we rekening meehouden. Grappig genoeg is het straks dus verstandig om je telefoon op te laden als het buiten
+      Samen genereren deze molens jaarlijks ca. 19.700 GWh; dat is voldoende elektriciteit voor 5.8 miljoen huishoudens!
+      Het waait alleen niet altijd. Grappig genoeg is het straks dus verstandig om je telefoon op te laden als het buiten
       hard waait of de zon schijnt!
     `
   },
@@ -62,11 +59,11 @@ export default {
       Wat zijn de mogelijkheden voor elektrificatie van het vrachtvervoer?
     `,
     why: `
-      Elektrische vrachtauto's hebben ook met de bestaande elektriciteitsmix (die toch
-      voor het overgrote deel fossiel is) een positieve impact op de CO<sub>2</sub>-uitstoot. En als
-      we in de toekomst overschakelen naar meer wind-  en zonnestroom, wordt deze winst
-      makkelijk vertienvoudigd! Het is op dit moment nog niet aantrekkelijk om elektrische
-      vrachtwagens voor lang en zwaar transport te kopen, maar in de steden zie je ze veel meer.
+      Elektrische vrachtauto's hebben ook met de huidige elektriciteitsmix (die toch
+      voor het overgrote deel fossiel is) niet meteen een positieve impact op de CO<sub>2</sub>-uitstoot. Echter, nu
+      wij overschakelen naar meer wind-  en zonnestroom, wordt de klimaatwinst veel groter!
+      Het is op dit moment nog niet aantrekkelijk om elektrische vrachtwagens voor lang en zwaar transport te kopen,
+      maar in de steden zie je ze veel meer.
     `
   },
   electricVehicles: {
@@ -92,7 +89,7 @@ export default {
     `,
     why: `
       Fietsen in plaats van met de auto heeft zeker impact. Zowel op het klimaat, op jouw gezondheid en op de drukte in het verkeer.
-      Met alleen wat meer fietsen gaat de transitie niet lukken, maar draagt wel een steentje bij.
+      Met alleen wat meer fietsen gaat de transitie niet lukken, maar het draagt wel een steentje bij.
     `
   },
   greenGas: {
@@ -138,7 +135,8 @@ export default {
     `
   },
   hybridHeatPumps: {
-    name: 'Hybride warmtepompen',
+    name: 'Alle woningen op hybride warmtepompen',
+    header: 'Woningen een hybride-warmtepomp',
     description: `
       Deze verwarmingsoptie is een combinatie van een kleine elektrische warmtepomp
       en een HR ketel op gas. Wat als elk huis met deze technologie zou worden verwarmd?
@@ -152,7 +150,7 @@ export default {
     `
   },
   ledLightingHouseholds: {
-    name: 'Gebruik van LED-lampen',
+    name: 'Gebruik van LED-lampen in woningen',
     description: `
       Vervang alle lampen door moderne ultrazuinige LED-lampen in woningen.
       Ouderwetse gloeilampen hebben gemiddeld 1000 branduren, maar LED-lampen kunnen wel 50.000 uur mee gaan.
