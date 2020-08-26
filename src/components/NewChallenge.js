@@ -6,6 +6,7 @@ import injectIntl from '../utils/injectIntl';
 
 import Header from './Header';
 
+import authenticate from '../utils/authenticate';
 import randomId from '../utils/randomId';
 import challengeExpiry from '../utils/challengeExpiry';
 
@@ -37,12 +38,14 @@ class NewChallenge extends React.Component {
       const expires = expiryFromSelect(this.expiresField);
       const mode = this.difficultyField.value;
 
-      this.props.base.post(
-        `challenges/${challengeId}`, { data: { name, expires, mode } }
-      ).then(
-        () => this.setState({ challengeId, name }),
-        () => this.setState(this.errorFor('challenges.errors.starting'))
-      );
+      authenticate(this.props.base, () => {
+        this.props.base.post(
+          `challenges/${challengeId}`, { data: { name, expires, mode } }
+        ).then(
+          () => this.setState({ challengeId, name }),
+          () => this.setState(this.errorFor('challenges.errors.starting'))
+        );
+      });
     } else {
       this.setState(this.errorFor('challenges.errors.missingName'));
     }
