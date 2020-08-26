@@ -18,7 +18,10 @@ it('render a name field', () => {
 
 it('triggers onSubmit when submitting', () => {
   const promise = Promise.resolve();
-  const base = { post: jest.fn().mockReturnValue(promise) };
+  const base = {
+    post: jest.fn().mockReturnValue(promise),
+    onAuth: cb => cb({ uid: 'abc' })
+  };
 
   const wrapper = mountWithIntl(
     <MemoryRouter initialEntries={['/new-challenge']}>
@@ -62,7 +65,10 @@ it('does not submit if the name is blank', () => {
 
 it('shows an error when the post fails', () => {
   const promise = Promise.reject();
-  const base = { post: jest.fn().mockReturnValue(promise) };
+  const base = {
+    post: jest.fn().mockReturnValue(promise),
+    onAuth: cb => cb({ uid: 'abc' })
+  };
 
   const wrapper = mountWithIntl(
     <NewChallenge base={base} defaultName="Hi" />
