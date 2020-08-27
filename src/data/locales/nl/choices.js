@@ -32,7 +32,7 @@ export default {
     name: 'Sluit alle kolencentrales',
     description: `
       Het sluiten van alle kolencentrales in Nederland zonder dat de elektriciteitsvraag verandert betekent dat onze stroom ergens anders vandaan moet komen.
-      In dit geval gaan wij ervanuit dat de gascentrales de weggevallen stroomproductie op zich nemen
+      In dit geval gaan wij ervanuit dat de gascentrales de weggevallen stroomproductie op zich nemen.
     `,
     why: `
       Van fossiele elektriciteitscentrales stoten kolencentrales de meeste CO<sub>2</sub> uit.
@@ -42,14 +42,14 @@ export default {
   openNuclear: {
     name: 'Open een nieuwe kerncentrale',
     description: `
-     Open een nieuwe kerncentrale van het huidige formaat als in Borsele (515 MWe).
-     Kerncentrales zijn er in alle maten. Borsele is zeker niet de grootste. In Japan staat de allergrootste kerncentrale die is 16x groter dan in Borsele.
+     Open een nieuwe kerncentrale met hetzelfde formaat als de Borssele centrale (515 MWe).
+     Kerncentrales zijn er in alle maten. Borssele is zeker niet de grootste. In Japan staat de allergrootste kerncentrale die is 16x groter dan in Borssele.
     `,
     why: `
       Kerncentrales stoten geen CO<sub>2</sub> uit bij de productie van elektriciteit.
       Wat dat betreft past het goed in een klimaatneutraal energiesysteem
       Wel is er veel discussie over het radioactieve afval, de impact als het toch fout gaat en de hoge investeringskosten.
-      Ook is het de vraag of wind en kernenergie goed in een zelfde systeem werken. Een kerncentrale zet je liever niet uit en aan om de windpieken op te vangen.
+      Ook is het de vraag of wind- en kernenergie goed in eenzelfde systeem werken. Een kerncentrale zet je liever niet uit en aan om de windpieken op te vangen.
     `
   },
   electricTrucks: {
@@ -62,7 +62,7 @@ export default {
     why: `
       Elektrische vrachtauto's hebben ook met de huidige elektriciteitsmix (die toch
       voor het overgrote deel fossiel is) niet meteen een positieve impact op de CO<sub>2</sub>-uitstoot. Echter, nu
-      wij overschakelen naar meer wind-  en zonnestroom, wordt de klimaatwinst veel groter!
+      wij overschakelen naar meer wind- en zonnestroom, wordt de klimaatwinst veel groter!
       Het is op dit moment nog niet aantrekkelijk om elektrische vrachtwagens voor lang en zwaar transport te kopen,
       maar in de steden zie je ze veel meer.
     `
@@ -85,11 +85,11 @@ export default {
     name: 'Twee keer meer fietsen',
     header: 'Twee keer meer fietsen',
     description: `
-      Fietsen is naast lopen misschien wel de meest Klimaatvriendelijke manier om je te verplaatsen
-      Nederlanders fietsen jaarlijks bijna 1000 kilometer, wat als wij twee keer zoveel zouden fietsen en minder de auto gebruiken?
+      Fietsen is naast lopen misschien wel de meest klimaatvriendelijke manier om je te verplaatsen.
+      Nederlanders fietsen jaarlijks bijna 1000 kilometer. Wat als wij twee keer zoveel zouden fietsen en minder de auto gebruiken?
     `,
     why: `
-      Fietsen in plaats van met de auto heeft zeker impact. Zowel op het klimaat, op jouw gezondheid en op de drukte in het verkeer.
+      Fietsen in plaats van met de auto heeft zeker impact. Op het klimaat, op jouw gezondheid en op de drukte in het verkeer.
       Met alleen wat meer fietsen gaat de transitie niet lukken, maar het draagt wel een steentje bij.
     `
   },
@@ -98,11 +98,11 @@ export default {
     header: '10% groengas',
     description: `
       De naam zegt het al: groengas is groen! Groengas kan onder andere worden gemaakt vanuit mest en/of plantaardig materiaal.
-      Verder is dit precies hetzelde als het huidige fossiele gas. Het is namelijk methaan.
+      Verder is dit precies hetzelfde als het huidige fossiele gas. Het is namelijk methaan.
     `,
     why: `
       Aangezien we in Nederland nu zeer veel gas gebruiken, heeft 10% een behoorlijke impact.
-      Er is echter niet voldoende groengas om alle huidige fossiele gas te vervangen.
+      Er is echter niet voldoende groengas om de huidige fossiele gasvraag te vervangen.
     `
   },
   beterInsulationHomes: {
@@ -182,7 +182,7 @@ export default {
     name: 'Alle woningen een warmtepomp',
     header: 'Woningen een warmtepomp',
     description: `
-      Deze verwarmingsoptie maakt gebruik elektrische warmtepomp. Dit is eigenlijk een omgekeerde koelkast.
+      Deze verwarmingsoptie maakt gebruik van een elektrische warmtepomp. Dit is eigenlijk een omgekeerde koelkast.
       Met elektriciteit wordt lucht samengeperst en hierdoor neemt het volume af en de temperatuur toe.
       Het omgekeerde effect zie je ook bij spuitbussen deodorant. Dit koelt af bij het spuiten omdat de lucht buiten de fles een groter volume krijgt.
     `,
@@ -196,35 +196,35 @@ export default {
     name: 'Carpoolen',
     header: 'Carpoolen',
     description: `
-      Carpoolen betekent dat je i.p.v. alleen met meerdere mensen in de auto gaat zitten. Dit scheelt niet alleen ruimte op de weg, maar ook energie.
+      Carpoolen betekent dat je met meerdere mensen in de auto gaat zitten i.p.v. alleen. Dit scheelt niet alleen ruimte op de weg, maar ook energie.
       Gemiddeld is de bezettingsgraad per gereden kilometer 1,43 persoon per auto. Wat als wij dit zouden verdubbelen?
     `,
     why: `
-      Het effect van autodelen door verdubbelend inzittenden van 1.4 naar 2.8 levert 43% besparing op auto's op. Dit is heel fors.
-      Dat het geen 50% is komt doordat je vaak iets meer moet omrijden. Het is circa per rit circa 10% meer brandstof voor het omrijden en 3% meer voor het extra gewicht. Dus samen rijden is zowel gezelliger als duurzamer!
+      Het effect van autodelen door verdubbelend inzittenden van 1,4 naar 2,8 levert 43% energiebesparing voor auto's op. Dit is heel fors. Samen rijden is dus zowel gezelliger als duurzamer!
+      Dat het geen 50% is komt doordat je vaak iets meer moet omrijden. Het kost per rit circa 10% meer brandstof voor het omrijden en 3% meer voor het extra gewicht.
     `
   },
   wasteHeatIndustry: {
     name: 'Restwarmte uit de industrie inzetten voor verwarmen huizen',
     header: 'Restwarmtenet',
     description: `
-      De industrie en datacenters hebben in sommige gevallen veel warmte waar ze zelf niets meer mee kunnen. Wat als deze 25 % van de huizen met industriële restwarmte wordt gevoed?
+      De industrie en datacenters hebben in sommige gevallen veel warmte waar ze zelf niets meer mee kunnen. Wat als deze 25% van de huizen met industriële restwarmte wordt gevoed?
     `,
     why: `
-      In Nederland is veel industrie. Ook deze industrie is in transitie naar CO2-vrije productie. Alsnog kan deze industrie restwarmte produceren waar ze zelf niet mee kunnen.
+      In Nederland is veel industrie. Ook deze industrie is in transitie naar CO<sub>2</sub>-vrije productie. Alsnog kan deze industrie restwarmte produceren waar ze zelf niets mee kunnen.
       Het zou een mooie en impactvolle oplossing zijn om deze retwarmte nuttig te gebruiken.
-      Het verwarmen van woningen in de dichtbebouwde binnensteden is dan een goede optie.
+      Het verwarmen van woningen in dichtbebouwde binnensteden is dan een goede optie.
     `
   },
   solarThermalParks: {
     name: 'Zonthermische parken',
     description: `
       Zonthermische parken zijn zonnepanelen die warmte produceren. Ze vangen de hitte op uit de zon en slaan dit op in water om later te gebruiken.
-      Het werkt hetzelde als die leren autostoel die bloedheet wordt in de zon.
+      Het werkt hetzelfde als die leren autostoel die bloedheet wordt in de zon.
     `,
     why: `
-      Zonthermische parken kunnen een bijdrage leveren aan onze warm watervraag om bijvoorbeeld te douchen.
-      Daarnaast is het ook mogelijk om het in te voeden in warmtenetten en om huizen mee te verwarmen.
+      Zonthermische parken kunnen een bijdrage leveren aan onze warmwatervraag om bijvoorbeeld te douchen.
+      Daarnaast is het ook mogelijk om het in te voeden in warmtenetten en zo huizen mee te verwarmen.
       Een uitdaging is wel dat de warmteproductie vooral in de zomer is en de vraag in de winter, met opslag is dit grotendeels op te lossen.
   `
   },
@@ -249,9 +249,9 @@ export default {
       Het scheelt CO<sub>2</sub>-uitstoot, energie én files.
     `,
     why: `
-      Treinreizen bespaart zeker een hoop CO<sub>2</sub>-uitstoot. Echter, alleen treinreizen is niet voldoende om de Klimaatdoelen te halen.
-      Daarnaast zijn er voor vervoer over de weg ook steeds meer CO2-neutrale opties, zoals elektrisch rijden.
-      De trein blijft een snel en handig vervoersmiddel met gratis chauffeur, een soort elektrisch carpoolen.
+      Treinreizen bespaart zeker een hoop CO<sub>2</sub>-uitstoot. Echter, alleen treinreizen is niet voldoende om de klimaatdoelen te halen.
+      Daarnaast zijn er voor vervoer over de weg ook steeds meer CO<sub>2</sub>-neutrale opties, zoals elektrisch rijden.
+      De trein blijft een snel en handig vervoersmiddel met een gratis chauffeur, een soort elektrisch carpoolen.
     `
   }
 };
