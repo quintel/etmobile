@@ -1,17 +1,17 @@
 export const easy = {
   name: 'game.difficultyEasy',
   endpoint: '_easy',
-  attempts: 3
+  attempts: 6
 };
 
 export const medium = {
   name: 'game.difficultyMedium',
   endpoint: '_medium',
-  attempts: 2
+  attempts: 4
 };
 
 export const hard = {
   name: 'game.difficultyHard',
   endpoint: '_hard',
-  attempts: 1
+  attempts: 2
 };
