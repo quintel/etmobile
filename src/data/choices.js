@@ -1,30 +1,34 @@
 export default [
   {
-    key: 'closeModernCoal',
+    key: 'openNuclear',
     icon: 'coal',
     inputs: {
-      number_of_energy_power_ultra_supercritical_coal: 0.3
+      capacity_of_energy_power_nuclear_gen3_uranium_oxide: 515
     }
   },
   {
-    key: 'closeConventionalCoal',
+    key: 'closeCoal',
     icon: 'coal',
     inputs: {
-      number_of_energy_power_supercritical_coal: 0.5
+      capacity_of_energy_power_ultra_supercritical_coal: 0.0,
+      capacity_of_energy_power_ultra_supercritical_cofiring_coal: 0.0,
+      capacity_of_energy_chp_ultra_supercritical_coal: 0.0,
+      capacity_of_energy_chp_ultra_supercritical_cofiring_coal: 0.0,
+      capacity_of_energy_power_supercritical_coal: 0.0
     }
   },
   {
     key: 'buildOffshoreTurbines',
     icon: 'wind',
     inputs: {
-      number_of_energy_power_wind_turbine_offshore: 321.3
+      capacity_of_energy_power_wind_turbine_coastal: 5000
     }
   },
   {
     key: 'batteries',
     icon: 'battery',
     inputs: {
-      households_flexibility_p2p_electricity_market_penetration: 20
+      households_flexibility_p2p_electricity_market_penetration: 25
     }
   },
   {
@@ -49,74 +53,79 @@ export default [
     }
   },
   {
-    key: 'replaceOldHouses',
+    key: 'solarThermalParks',
     icon: 'house',
     inputs: {
-      households_number_of_old_houses: 4.7,
-      households_number_of_new_houses: 2.7
+      capacity_of_energy_heat_solar_thermal: 10000,
+      households_heater_district_heating_steam_hot_water_share: 12.5,
+      heat_storage_enabled: 1
     }
   },
   {
     key: 'hybridHeatPumps',
     icon: 'radiator',
     inputs: {
-      households_space_heater_hybrid_heatpump_air_water_electricity_share: 100
+      households_heater_hybrid_heatpump_air_water_electricity_share: 100
     }
   },
   {
     key: 'travelByTrain',
     icon: 'train',
     inputs: {
-      transport_useful_demand_car_kms: -0.15
+      transport_passenger_trains_share: 17.4
     }
   },
   {
     key: 'electricVehicles',
     icon: 'electricVehicle',
     inputs: {
-      transport_car_using_electricity_share: 12.6
+      transport_car_using_electricity_share: 100
     }
   },
   {
     key: 'electricTrucks',
     icon: 'truck',
     inputs: {
-      transport_truck_using_electricity_share: 20.0
+      transport_truck_using_electricity_share: 50
     }
   },
   {
-    key: 'lngTrucks',
+    key: 'carPooling',
     icon: 'truck',
     inputs: {
-      transport_truck_using_lng_mix_share: 100
+      transport_vehicle_combustion_engine_efficiency: 2
     }
   },
   {
-    key: 'lngShips',
+    key: 'heatPumps',
     icon: 'ship',
     inputs: {
-      transport_ship_using_lng_mix_share: 100
+      households_heater_heatpump_air_water_electricity_share: 100
     }
   },
   {
-    key: 'fossilCarEfficiency',
+    key: 'travelByBikes',
     icon: 'car',
     inputs: {
-      transport_car_using_diesel_mix_efficiency: 2
+      transport_bicycles_share: 16
     }
   },
   {
-    key: 'householdInsulationOld',
+    key: 'beterInsulationOffices',
     icon: 'house',
     inputs: {
-      households_insulation_level_old_houses: 1.0
+      buildings_insulation_level: 60
     }
   },
   {
-    key: 'householdInsulationNew',
+    key: 'beterInsulationHomes',
     icon: 'house',
     inputs: {
-      households_insulation_level_new_houses: 3.0
+      households_insulation_level_apartments: 40,
+      households_insulation_level_corner_houses: 40,
+      households_insulation_level_detached_houses: 40,
+      households_insulation_level_semi_detached_houses: 40,
+      households_insulation_level_terraced_houses: 40
     }
   },
   {
@@ -127,10 +136,12 @@ export default [
     }
   },
   {
-    key: 'refineryEfficiency',
+    key: 'wasteHeatIndustry',
     icon: 'wrench',
     inputs: {
-      industry_useful_demand_for_chemical_refineries_electricity_efficiency: 1
+      households_heater_district_heating_steam_hot_water_share: 25.0,
+      volume_of_imported_heat: 60,
+      co2_emissions_of_imported_heat: 0
     }
   }
 ];
