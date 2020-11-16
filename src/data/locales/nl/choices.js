@@ -244,10 +244,10 @@ export default {
       Wat gebeurt als we alle geschikte daken van huizen met zonnepanelen zouden bedekken?
     `,
     why: `
-    Dit leidt tot een flinke besparing. Het elektriciteitsnetwerk bij je in de buurt zal waarschijnlijk wel
-    een keertje verzwaard moeten worden, maar we kunnen heel veel CO<sub>2</sub>-uitstoot besparen als we dit doen.
-    Je kan zelfs met een modern huis waarvan het dak vol met zonnepanelen ligt nu al net zoveel energie opwekken als je gebruikt.
-    Als dat lukt, spreken we van ‘nul op de meter’. Betaalbare opslag van zoveel elektriciteit is nog wel een probleem.
+      Dit leidt tot een flinke besparing. Het elektriciteitsnetwerk bij je in de buurt zal waarschijnlijk wel
+      een keertje verzwaard moeten worden, maar we kunnen heel veel CO<sub>2</sub>-uitstoot besparen als we dit doen.
+      Je kan zelfs met een modern huis waarvan het dak vol met zonnepanelen ligt nu al net zoveel elektriciteit opwekken als je gebruikt.
+      Als dat lukt, spreken we van ‘nul op de meter’. Betaalbare opslag van zoveel elektriciteit is nog wel een probleem.
     `
   },
   travelByTrain: {
