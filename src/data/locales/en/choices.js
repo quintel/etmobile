@@ -1,257 +1,263 @@
 export default {
   batteries: {
-    name: 'Thuisbatterijen',
+    name: 'Home battery',
     description: `
-      Geef 25% van alle huishoudens een thuisbatterij die 19,8 kWh aan elektriciteit
-      kan opslaan. Ter vergelijking: een gemiddeld huishouden gebruikt ongeveer 6-8 KWh elektriciteit per dag.
-      Hiermee kunnen overschotten wind  en zonnestroom op een later tijdstip worden benut.
+      Provide 25% of all households with a home battery with a storage capacity of 19.8 kWh 
+      electricity. In comparison: an average household uses about 6-8 KWh of electricity 
+      per day. This allows for surplus wind and solar power to be used at a later time.
     `,
     why: `
-      Helaas heeft het toevoegen van batterijen vanuit de bestaande situatie in Nederland
-      nog geen zin voor de CO<sub>2</sub> besparing. Als we de batterijen kunnen inzetten
-      om wind en zonnestroom op te slaan (die anders verloren zou zijn gegaan) hebben
-      batterijen effect voor CO<sub>2</sub> besparing.
+      Unfortunately, to decrease CO<sub>2</sub> adding batteries does not make sense regarding 
+      the present situation in the Netherlands. However, if we use the batteries to store wind 
+      and solar power (which would otherwise have been lost), batteries can have a positive 
+      effect on CO<sub>2</sub> emissions.
     `
   },
   buildOffshoreTurbines: {
-    name: 'Bouw 500 offshore windturbines',
-    header: 'Wind op zee',
+    name: 'Built 500 offshore wind turbines',
+    header: 'Wind at sea',
     description: `
       Bouw 500 windturbines met een capaciteit van 10 MW, met een hoogte van bijna 200 meter.
       Deze windturbines staan op de Noordzee en produceren enkel waneer het hard genoeg waait.
     `,
     why: `
-      Wind op zee heeft een grote impact op CO<sub>2</sub> besparing, omdat zonder CO<sub>2</sub>-uitstoot elektricteit
-      wordt geproduceerd. Het waait natuurlijk lang niet altijd. Echter, windturbines op zee produceren toch ~40%-50% van de tijd op vol vermogen.
-      Samen genereren deze molens jaarlijks ca. 19.700 GWh; dat is voldoende elektriciteit voor 5.8 miljoen huishoudens!
-      Het waait alleen niet altijd. Grappig genoeg is het straks dus verstandig om je telefoon op te laden als het buiten
-      hard waait of de zon schijnt!
+      Offshore wind has a major impact on CO<sub>2</sub> emissions since electricity is 
+      produced without CO<sub>2</sub> emissions. However, wind is not always available. Still, 
+      offshore wind turbines still produce ~40% -50% of the time at full power. Together these 
+      turbines generate approximately 19,700 GWh annually; that is enough electricity for 5.8 
+      million households! It is just not always windy. Funnily enough, it will soon be wise to charge 
+      your phone when wind is blasting, or the sun is shining.
     `
   },
   closeCoal: {
-    name: 'Sluit alle kolencentrales',
+    name: 'Close all coal power plants',
     description: `
-      Het sluiten van alle kolencentrales in Nederland zonder dat de elektriciteitsvraag verandert betekent dat onze stroom ergens anders vandaan moet komen.
-      In dit geval gaan wij ervanuit dat de gascentrales de weggevallen stroomproductie op zich nemen.
+      Shutting down all coal-fired power stations in the Netherlands without changing electricity 
+      demand means that our electricity has to be produced elsewhere. In this case we assume 
+      that gas-fired power stations will fill the gap in power production.
     `,
     why: `
-      Van fossiele elektriciteitscentrales stoten kolencentrales de meeste CO<sub>2</sub> uit.
-      Vervanging van de productie uit kolen naar fossiel gas bespaart dus al fors CO<sub>2</sub>.
+      Of fossil power plants, coal-fired power plants emit most of the CO<sub>2</sub>. Replacing 
+      the production of coal to fossil gas thus saves a lot of CO<sub>2</sub>.
     `
   },
   openNuclear: {
-    name: 'Open een nieuwe kerncentrale',
+    name: 'Open a new coal power plant',
     description: `
-     Open een nieuwe kerncentrale met hetzelfde formaat als de Borssele centrale (515 MWe).
-     Kerncentrales zijn er in alle maten. Borssele is zeker niet de grootste. In Japan staat de allergrootste kerncentrale die is 16x groter dan in Borssele.
+      Open a new nuclear power plant with the same size as the Borssele power station (515 MWe). 
+      Nuclear power plants come in many different sizes. Borssele is certainly not the largest. 
+      Japan has the largest nuclear power plant which is 16x bigger than Borssele.
     `,
     why: `
-      Kerncentrales stoten geen CO<sub>2</sub> uit bij de productie van elektriciteit.
-      Wat dat betreft past het goed in een klimaatneutraal energiesysteem
-      Wel is er veel discussie over het radioactieve afval, de impact als het toch fout gaat en de hoge investeringskosten.
-      Ook is het de vraag of wind- en kernenergie goed in eenzelfde systeem werken. Een kerncentrale zet je liever niet uit en aan om de windpieken op te vangen.
+      Nuclear power plants do not emit CO<sub>2</sub> during the production of electricity. 
+      Following this reasoning, it fits well in a climate-neutral energy system. 
+      However, there are heated discussions about the resulting radioactive waste, 
+      the impact of possible hazards and the high investment costs. 
+      We are also not certain if wind and nuclear energy work well in the same system. 
+      Switching nuclear power plants on and off to absorb the wind peaks is not ideal.
     `
   },
   electricTrucks: {
-    name: '50% van de vrachtwagens elektrisch',
-    header: 'Elektrische vrachtwagens',
+    name: '50% of trucks become electric',
+    header: 'Electric trucks',
     description: `
-      In Nederland verbruiken vrachtwagens ongeveer evenveel energie als auto’s.
-      Wat zijn de mogelijkheden voor elektrificatie van het vrachtvervoer?
+      In the Netherlands, trucks and cars consume around the same amount of energy. 
+      What are the possibilities for the electrification of freight transport?
     `,
     why: `
-      Elektrische vrachtauto's hebben ook met de huidige elektriciteitsmix (die toch
-      voor het overgrote deel fossiel is) niet meteen een positieve impact op de CO<sub>2</sub>-uitstoot. Echter, nu
-      wij overschakelen naar meer wind- en zonnestroom, wordt de klimaatwinst veel groter!
-      Het is op dit moment nog niet aantrekkelijk om elektrische vrachtwagens voor lang en zwaar transport te kopen,
-      maar in de steden zie je ze veel meer.
+      Electric trucks do not have an immediate positive impact on CO<sub>2</sub>emissions, 
+      even with the current electricity mix (which is largely based on fossil fuels). 
+      However, since we are switching to more wind and solar power, the climate gains will become much greater! 
+      At the moment it is not attractive to buy electric trucks for long and heavy transport, but in cities they are increasingly visible. 
     `
   },
   electricVehicles: {
-    name: 'Elke auto elektrisch',
-    header: 'Reis per elektrische auto',
+    name: 'Every car electric',
+    header: 'Travel with electric car',
     description: `
-      Elektrische auto’s gebruiken maar de helft van de ‘well-to-wheel’ energie in
-      vergelijking tot auto's op benzine of diesel.
-      Ze veroorzaken ook geen directe uitstoot, dus zijn lekker schoon voor jouw stad of dorp!
+      Electric cars only use half of the well-to-wheel energy compared to petrol or diesel cars. 
+      On top of this they do not cause direct emissions and are therefore clean for your town or village!
     `,
     why: `
-      Elektrische auto's hebben ook met de bestaande elektriciteitsmix (die toch
-      voor het overgrote deel fossiel is) een positieve impact op de CO<sub>2</sub>-uitstoot. En als
-      we in de toekomst overschakelen naar meer wind- en zonnestroom, wordt deze winst vele malen hoger!
+      Electric cars have a positive impact on CO<sub>2</sub> emissions even when taking the 
+      existing electricity mix (which is largely fossil) into account. 
+      If we switch to more wind and solar power in the future, the decrease in emissions will become much higher!
     `
   },
   travelByBikes: {
-    name: 'Twee keer meer fietsen',
-    header: 'Twee keer meer fietsen',
+    name: 'Bike twice as much',
+    header: 'Bike twice as much',
     description: `
-      Fietsen is naast lopen misschien wel de meest klimaatvriendelijke manier om je te verplaatsen.
-      Nederlanders fietsen jaarlijks bijna 1000 kilometer. Wat als wij twee keer zoveel zouden fietsen en minder de auto gebruiken?
+      Besides walking, cycling is perhaps the most climate-friendly way to get around. 
+      The Dutch cycle almost 1000 kilometers a year. What if we cycled twice as much and used our car less?
     `,
     why: `
-      Fietsen in plaats van met de auto heeft zeker impact. Op het klimaat, op jouw gezondheid en op de drukte in het verkeer.
-      Met alleen wat meer fietsen gaat de transitie niet lukken, maar het draagt wel een steentje bij.
+      Cycling, instead traveling by car, definitely has an impact. On the climate, on your health and on overall traffic. 
+      With only a few extra bike rides we will not reach our transition goals, however, it does contribute. 
     `
   },
   greenGas: {
-    name: 'Maak 10% van het gas groen',
-    header: '10% groengas',
+    name: 'Make 10% of the gas green',
+    header: '10% green gas',
     description: `
-      De naam zegt het al: groengas is groen! Groengas kan onder andere worden gemaakt vanuit mest en/of plantaardig materiaal.
-      Verder is dit precies hetzelfde als het huidige fossiele gas. Het is namelijk methaan.
+      It is all in the name: green gas is green! Green gas can be made from manure and/or plant material. 
+      Furthermore, it has exactly the same composition as the current fossil gas: it is methane.     
     `,
     why: `
-      Aangezien we in Nederland nu zeer veel gas gebruiken, heeft 10% een behoorlijke impact.
-      Er is echter niet voldoende groengas om de huidige fossiele gasvraag te vervangen.
+      Currently we use a considerable amount of gas in the Netherlands and therefore 10% has a significant impact. 
+      However, there is not enough green gas to replace the current fossil gas demand.
     `
   },
   beterInsulationHomes: {
-    name: 'Beter geïsoleerde huizen',
-    header: 'Isolatie huizen',
+    name: 'Better insulation for homes',
+    header: 'Insulation for homes',
     description: `
-      Isolatie van woningen zorgt ervoor dat in de winter de warmte binnen blijft en in de zomer buiten.
-      Denk bij isolatie aan dubbel of driedubbel glas, dakisolatie, vloerisolatie of de muren beter isoleren.
-
+      Insulation of households ensures that heat stays indoors in winter and outdoors in summer. 
+      For insulation, think of double or triple glass, roof insulation, floor insulation or better insulation in general.
     `,
     why: `
-      Heel veel woningen, met name de oudere woningen, kunnen veel beter geïsoleerd worden.
-      Er is hier nog veel winst te behalen, zowel voor de portemonnee als voor het klimaat.
-      Denk eens na wat er beter zou kunnen in jouw huis. Zou jij het weten?
+      Many homes, especially historic ones, can use extra insulation. 
+      There is a considerable amount of profit that can be made here, both economically and climate wise. 
+      Think about what could improve in your home. Any idea?
     `
   },
   beterInsulationOffices: {
-    name: 'Beter geïsoleerde scholen en kantoren',
-    header: 'Isolatie kantoren',
+    name: 'Better insulated schools and offices',
+    header: 'Insulation offices',
     description: `
-      De belangrijkste isolatiemaatregelen zijn dak-, muur-, vloerisolatie
-      en dubbelglas. Met dit viertal kan 75% van de potentiële
-      besparingen worden gerealiseerd.
-      Wat zou het betekenen als wij al deze gebouwen eens veel beter zouden isoleren?
+      The main insulation measures are roof, wall or floor insulation and double glazing. 
+      With these four, 75% of potential savings can be achieved. 
+      What would it mean if we were to improve insulation in all of these buildings?
     `,
     why: `
-      Kantoren, maar ook scholen en ziekenhuizen gebruiken veel energie voor het verwarmen en koelen. Als je de
-      verwarming aanzet verdwijnt veel warmte door de ramen, kieren en muren naar
-      buiten. Als we deze weggegooide energie kunnen tegenhouden, besparen we veel
-      energie en daarmee CO<sub>2</sub>-uitstoot.
+      Offices, but also schools and hospitals, use a considerable amount of energy for heating and cooling. 
+      When you turn on heating, much of the heat disappears through windows, cracks and outer walls. 
+      If we can stop discarding this energy, we will save a lot and thus decrease CO<sub>2</sub> emissions.
     `
   },
   hybridHeatPumps: {
-    name: 'Alle woningen op hybride warmtepompen',
-    header: 'Woningen een hybride-warmtepomp',
+    name: 'All dwellings use hybrid heat pumps',
+    header: 'Homes on hybrid heat pumps',
     description: `
-      Deze verwarmingsoptie is een combinatie van een kleine elektrische warmtepomp
-      en een HR ketel op gas. Wat als elk huis met deze technologie zou worden verwarmd?
+      This heating option is a combination of a small electric heat pump and a typical gas boiler. 
+      What if every house is heated using this technology?
     `,
     why: `
-      Het mooie van deze technologie is dat we onze bestaande huizen de meeste dagen goed
-      kunnen verwarmen met de warmtepomp. We pompen hiermee namelijk gratis energie van buiten
-      naar binnen. Dit is duurzaam en relatief goedkoop. Maar als het buiten echt heel koud is, dan kan
-      dit niet meer zo makkelijk. Dan kan dit slimme apparaat overschakelen op (groen) gas en er alsnog
-      voor zorgen dat het binnen aangenaam warm wordt.
+      The beauty of this technology is that existing houses can be heated most days using the heat pump. 
+      We use free energy abstracted from the environment. This is a sustainable and relatively cheap method. 
+      However, this is not as effective if it is really cold outside. 
+      In this case, the device is still able to provide enough heat by switching to (green) gas.
     `
   },
   ledLightingHouseholds: {
-    name: 'Gebruik van LED-lampen in woningen',
+    name: 'Using LED-lighting in homes',
     description: `
-      Vervang alle lampen door moderne ultrazuinige LED-lampen in woningen.
-      Ouderwetse gloeilampen hebben gemiddeld 1000 branduren, maar LED-lampen kunnen wel 50.000 uur mee gaan.
-      Daarnaast zijn ze ook nog eens 6 keer efficiënter!
+      Replace all lighting in homes with modern, ultra-efficient LED bulbs.
+      Old-fashioned bulbs function 1,000 hours on average, but LED bulbs can last up to 50,000 hours. 
+      In addition, they are also 6 times more efficient!      
     `,
     why: `
-      Natuurlijk willen we alleen nog maar zuinige verlichting, want je kan hiermee makkelijk energie en
-      geld besparen. Maar, misschien valt dit getal een beetje tegen? Dat horen we vaker. We
-      besteden gewoon niet zoveel energie aan verlichting van woningen.
-      Verwarming en autorijden, dat kost veel meer energie.
+    Of course, everyone wants more efficient lighting since it can easily save energy and money. 
+    However, this number might be a little disappointing. We hear this a lot. 
+    We do not spend a lot of energy on lighting our homes. Heating and driving, that is the real deal.    
     `
   },
   ledLightingOffices: {
-    name: 'Gebruik van LED-lampen in kantoren',
+    name: 'Using LED-lighting in offices',
     description: `
-      Vervang alle lampen door LED-lampen in kantoren en andere gebouwen waar niet in gewoond wordt.
-      LED-lampen zijn 6 keer zo efficiënt als gloeilampen en gaan ook nog eens veel langer mee.
+      Replace all lighting with LED bulbs in offices and other buildings that are not used for living. 
+      LED bulbs are 6 times more efficient compared to old-fashioned bulbs and last much longer.
     `,
     why: `
-      Natuurlijk willen we alleen nog maar zuinige verlichting, want je kunt hiermee makkelijk energie en
-      geld besparen. Maar, misschien valt dit getal een beetje tegen? Dat horen we wel vaker. We
-      besteden gewoon niet zoveel energie aan verlichting. Verwarming en autorijden, dat kost veel meer
-      energie. Dit getal is wel hoger dan de besparing in de huishoudens, doordat kantoren, scholen en
-      ziekenhuizen nu eenmaal meer lampen hebben en ze ook nog eens veel langer branden.
+      Of course, everyone wants more efficient lighting since it can easily save energy and money. 
+      However, this number might be a little disappointing. We hear this a lot. 
+      We do not spend a lot of energy on lighting our homes. Heating and driving, that is the real deal. 
+      This figure is higher compared to CO<sub>2</sub> savings in households as offices, 
+      schools and hospitals use more lighting and for a much longer time period during the day.
     `
   },
   heatPumps: {
-    name: 'Alle woningen een warmtepomp',
-    header: 'Woningen een warmtepomp',
+    name: 'All dwellings use a heat pump',
+    header: 'Homes on heat pump',
     description: `
-      Deze verwarmingsoptie maakt gebruik van een elektrische warmtepomp. Dit is eigenlijk een omgekeerde koelkast.
-      Met elektriciteit wordt lucht samengeperst en hierdoor neemt het volume af en de temperatuur toe.
-      Het omgekeerde effect zie je ook bij spuitbussen deodorant. Dit koelt af bij het spuiten omdat de lucht buiten de fles een groter volume krijgt.
+      This heating option uses an electric heat pump. A heat pump is actually an inverted fridge. 
+      With electricity, air is compressed and resulting in an increase in volume and temperature. 
+      The reverse effect can also be seen with aerosol deodorant. 
+      This cools down when spraying because the volume of the air outside the bottle increases.
     `,
     why: `
-      Het verschil in CO<sub>2</sub>-uitstoot is niet zo heel groot.
-      Dat komt doordat LNG ook een fossiele brandstof is. Het is wel veel schoner voor wat betreft
-      uitstoot van zwaveldioxide en fijnstof, dus voor de luchtkwaliteit wel veel beter dan diesel.
+      When all homes start using a heat pump it definitely has an effect. However, not all dwellings are suitable for a heat pump.
+      First, a house must be insulated to at least label A or B. Sadly this is not possible for all homes in an affordable way.
+      On top of this we need to produce more sustainable electricity in the Netherlands for a larger decrease in CO<sub>2</sub>-emissions.
     `
   },
   carPooling: {
-    name: 'Carpoolen',
-    header: 'Carpoolen',
+    name: 'Carpooling',
+    header: 'Carpooling',
     description: `
-      Carpoolen betekent dat je met meerdere mensen in de auto gaat zitten i.p.v. alleen. Dit scheelt niet alleen ruimte op de weg, maar ook energie.
-      Gemiddeld is de bezettingsgraad per gereden kilometer 1,43 persoon per auto. Wat als wij dit zouden verdubbelen?
+      Carpooling means that you use a car with several people compared to when you use your car alone. 
+      This saves space on the road as well as energy. 
+      On average, the occupancy rate per driven kilometer is 1.43 people per car. What if we doubled this?
     `,
     why: `
-      Het effect van autodelen door verdubbelend inzittenden van 1,4 naar 2,8 levert 43% energiebesparing voor auto's op. Dit is heel fors. Samen rijden is dus zowel gezelliger als duurzamer!
-      Dat het geen 50% is komt doordat je vaak iets meer moet omrijden. Het kost per rit circa 10% meer brandstof voor het omrijden en 3% meer voor het extra gewicht.
+      The effect of car sharing by doubling occupants from 1.4 to 2.8 results in 43% energy savings for cars. This is a huge difference. 
+      Driving together is therefore cozier as well as more sustainable! 
+      It is not 50% due to the fact that you often have to drive a little longer. 
+      It costs about 10% more fuel per ride for the detour and 3% more for the extra weight.
     `
   },
   wasteHeatIndustry: {
-    name: 'Restwarmte uit de industrie inzetten voor verwarmen huizen',
-    header: 'Restwarmtenet',
+    name: 'Using industrial residual heat to heat homes ',
+    header: 'Residual heat grid',
     description: `
-      De industrie en datacenters hebben in sommige gevallen veel warmte waar ze zelf niets meer mee kunnen. Wat als deze 25% van de huizen met industriële restwarmte wordt gevoed?
+      In some cases, industry and data centers have surplus heat which they can no longer use within their process. 
+      What if 25% of houses are fed with industrial residual heat?
     `,
     why: `
-      In Nederland is veel industrie. Ook deze industrie is in transitie naar CO<sub>2</sub>-vrije productie. Alsnog kan deze industrie restwarmte produceren waar ze zelf niets mee kunnen.
-      Het zou een mooie en impactvolle oplossing zijn om deze retwarmte nuttig te gebruiken.
-      Het verwarmen van woningen in dichtbebouwde binnensteden is dan een goede optie.
+      Industry is a large sector in the Netherlands. It is also transitioning to a CO<sub>2</sub>-free production. 
+      Still, industry can produce residual heat which is of no further use to them.
+      It would be a nice and impactful solution to use this residual heat effectively.
+      Heating homes in densely built-up inner cities is therefore a good option.
     `
   },
   solarThermalParks: {
-    name: 'Zonthermische parken',
+    name: 'Solar thermal field',
     description: `
-      Zonthermische parken zijn zonnepanelen die warmte produceren. Ze vangen de hitte op uit de zon en slaan dit op in water om later te gebruiken.
-      Het werkt hetzelfde als die leren autostoel die bloedheet wordt in de zon.
+      Solar thermal fields are solar panels that produce heat. 
+      They use heat from the sun and store it in water for later use. It is similar to a leather car seat which is heated by the sun.
     `,
     why: `
-      Zonthermische parken kunnen een bijdrage leveren aan onze warmwatervraag om bijvoorbeeld te douchen.
-      Daarnaast is het ook mogelijk om het in te voeden in warmtenetten en zo huizen mee te verwarmen.
-      Een uitdaging is wel dat de warmteproductie vooral in de zomer is en de vraag in de winter, met opslag is dit grotendeels op te lossen.
+      Solar thermal fields can contribute to our hot water demand for showers, for example. 
+      In addition, it is also possible to supply heat to heat grids and households further down the pipe. 
+      A disadvantage is that the heat production takes place mainly in the summer and the demand is at its highest in the winter. 
+      However, with storage this can be largely solved.
   `
   },
   solarPanels: {
-    name: 'Zonnepanelen op huizen',
+    name: 'Solar panels on households',
     description: `
-      Met een zonnepaneel op je dak ben je niet alleen consument maar ook producent van stroom.
-      Wat gebeurt als we <strong>alle</strong> huizen met zonnepanelen zouden bedekken?
+      With a solar panel on your roof, you are not only a consumer but also become a producer of electricity. 
+      What happens if we covered all suitable roofs of homes with solar panels?
     `,
     why: `
-      Dit is een flinke besparing. We zullen waarschijnlijk wel het elektriciteitsnetwerk
-      bij je in de buurt een keertje moeten upgraden, maar we kunnen heel veel CO<sub>2</sub>-uitstoot
-      besparen als we dit doen. Je kan zelfs met een modern huis vol met zonnepanelen nu al net
-      zoveel energie opwekken als je gebruikt. Dat noemen we 'Nul op de meter'.
+    This leads to a considerable saving. 
+    The power grid near you probably has to be increased once, but we can save a lot of CO<sub>2</sub> emissions if we do this. 
+    Even a modern home with a roof full of solar panels can already generate the same amount of electricity compared to the electricity used. 
+    If we can do that it means your home will zero on the meter. Affordable electricity storage is however still a problem.
     `
   },
   travelByTrain: {
-    name: 'Verdubbelen ritten per trein',
-    header: 'Reizen per trein',
+    name: 'Doubling train rides',
+    header: 'Travelling by train',
     description: `
-      Autovervoer kost veel energie. Wat gebeurt als we zoveel mensen kunnen overhalen om de trein te nemen dat het aantal treinreizigers verdubbeld?
-      Het scheelt CO<sub>2</sub>-uitstoot, energie én files.
+      Car transport is very energy intensive. 
+      What happens if we can persuade people to take the train resulting in double the amount of train passengers? 
+      It saves both CO<sub>2</sub>emissions, energy and traffic jams.
     `,
     why: `
-      Treinreizen bespaart zeker een hoop CO<sub>2</sub>-uitstoot. Echter, alleen treinreizen is niet voldoende om de klimaatdoelen te halen.
-      Daarnaast zijn er voor vervoer over de weg ook steeds meer CO<sub>2</sub>-neutrale opties, zoals elektrisch rijden.
-      De trein blijft een snel en handig vervoersmiddel met een gratis chauffeur, een soort elektrisch carpoolen.
-    `
+      Rail travel certainly decreases CO<sub>2</sub> emissions. However, only train travel is not enough to meet climate targets. 
+      In addition, there are more and more CO<sub>2</sub>-neutral options, such as electric driving. 
+      Nevertheless, the train remains a fast and convenient means of transport, sort of electric carpooling. 
+      `
   }
 };
