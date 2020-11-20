@@ -246,8 +246,8 @@ export default {
     why: `
       Dit leidt tot een flinke besparing. Het elektriciteitsnetwerk bij je in de buurt zal waarschijnlijk wel
       een keertje verzwaard moeten worden, maar we kunnen heel veel CO<sub>2</sub>-uitstoot besparen als we dit doen.
-      Je kan zelfs met een modern huis waarvan het dak vol met zonnepanelen ligt nu al net zoveel elektriciteit opwekken als je gebruikt.
-      Als dat lukt, spreken we van ‘nul op de meter’. Betaalbare opslag van zoveel elektriciteit is nog wel een probleem.
+      Je kan zelfs met een modern huis waarvan het dak vol met zonnepanelen ligt nu al net zoveel elektriciteit opwekken als dat het aan energie gebruikt.
+      Als dat lukt, spreken we van ‘nul op de meter’. Betaalbare opslag van zoveel elektriciteit is nog wel een probleem en energie is meer dan elektriciteit.
     `
   },
   travelByTrain: {
